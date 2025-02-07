@@ -116,8 +116,9 @@
 
 .rating {
   display: flex;
+  gap: 4px;
   align-items: center;
-  margin: 5px 0;
+  margin: 8px 0;
   font-size: 14px;
   color: #777;
 }
