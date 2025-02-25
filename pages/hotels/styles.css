@@ -1,0 +1,353 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px; /* Increased padding to double the navbar size */
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 40px; /* Increased font size */
+  font-weight: bold;
+  color: #222;
+}
+
+.logo img {
+  width: 60px; /* Doubled the logo size */
+  height: 60px;
+  margin-right: 12px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* Increased spacing between elements */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: red;
+  font-size: 16px; /* Increased font size */
+  font-weight: bold; /* Made the text bold */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.search-section {
+  text-align: left;
+  padding: 20px;
+  margin: 30px 40px;
+  background-color: white;
+}
+
+.search-title {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #1a1f71; /* Membership banner color */
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: transparent; /* Removed white background */
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  width: 30%;
+  background-color: transparent; /* Removed white background */
+}
+
+.input-group i {
+  font-size: 18px;
+  color: #555;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  color: #1a1f71; /* Membership text color */
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+  background: transparent;
+}
+
+.search-button {
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+/* Membership banner styles */
+.membership-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #121c3b;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 30px 40px;
+}
+
+.membership-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.membership-content i {
+  font-size: 24px;
+  background-color: #a05ce6;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.sign-in-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.sign-in-button:hover {
+  background-color: #0056b3;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+/* Title */
+.title {
+  font-size: 40px;
+  font-weight: bold;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+/* Carousel */
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* The scrollable area */
+.carousel {
+  width: 90%;
+  overflow: hidden;
+}
+
+/* Card Wrapper */
+.card-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Each Card */
+.card {
+  width: 350px; /* Increased width so only 5 cards fit */
+  height: 300px;
+  margin: 0 12px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  border-radius: 20px;
+}
+
+.card img {
+  border-radius: 20px;
+  width: 300px;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card Title - Positioned at bottom left */
+.card-title {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background: rgba(0, 0, 0, 0);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Navigation Buttons */
+.nav-button {
+  background: #ccc;
+  border: none;
+  padding: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  margin: 0 20px;
+  transition: background 0.3s;
+}
+
+.nav-button:hover {
+  background: #999;
+}
+
+/* Container Styles */
+.hotel-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.hotel-container p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Carousel Wrapper */
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+
+/* Hotel Carousel */
+.hotel-carousel {
+  overflow: hidden;
+  width: 80%;
+  max-width: 900px;
+  display: flex;
+}
+
+.hotel-cards {
+  display: flex;
+  gap: 15px;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Hotel Cards */
+
+/*.card {
+  min-width: 250px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  text-align: center;
+}*/
+
+/*.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}*/
+
+.card h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.card p {
+  font-size: 14px;
+  color: #666;
+}
+
+.card .rating {
+  display: block;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #1e73d9;
+}
+
+.arrow-btn {
+  background-color: #1e73d9;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* View All Link */
+/*.view-all {
+  display: block;
+  margin-top: 15px;
+  font-size: 16px;
+  color: #1e73d9;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.view-all:hover {
+  text-decoration: underline;
+}
+  */
