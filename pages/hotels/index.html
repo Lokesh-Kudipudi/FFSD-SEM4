@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotels Navbar</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <img
+          src="../hotels/images/cropped_image.png"
+          alt="Chasing Horizons Logo"
+        />
+        <span>Chasing Horizons</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="#">List your property</a>
+        <a href="#">Support</a>
+        <a href="#">Trips</a>
+        <a href="#">Sign in</a>
+      </div>
+    </nav>
+    <!-- Navigation Bar -->
+    <div class="search-section">
+      <h1 class="search-title">Where to?</h1>
+      <div class="search-box">
+        <div class="input-group">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <label>Where to?</label>
+            <input type="text" placeholder="Mumbai, Maharashtra, India" />
+          </div>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-calendar-alt"></i>
+          <div>
+            <label>Dates</label>
+            <input type="text" placeholder="17 Feb - 3 Mar" />
+          </div>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <div>
+            <label>Travellers</label>
+            <input type="text" placeholder="2 travellers, 1 room" />
+          </div>
+        </div>
+        <button class="search-button">Search</button>
+      </div>
+    </div>
+
+    <div class="membership-banner">
+      <div class="membership-content">
+        <i class="fas fa-tag"></i>
+        <span
+          >Members save 10% or more on over 100,000 hotels worldwide when signed
+          in</span
+        >
+      </div>
+      <button class="sign-in-button">Sign in now</button>
+    </div>
+
+    <!-- Title -->
+
+    <h1
+      class="title"
+      style="color: darkblue; font-size: 40px; margin: 30px; padding: 40px"
+    >
+      Discover your new favourite stay
+    </h1>
+
+    <!-- Carousel Container -->
+    <div class="carousel-container">
+      <button id="prevBtn" class="nav-button">&larr;</button>
+      <div class="carousel">
+        <div id="card-container" class="card-wrapper">
+          <div class="card" onclick="alert('Villa clicked')">
+            <img src="../hotels/images/villa.jpg" alt="Villa" />
+            <div class="card-title">Villa</div>
+          </div>
+          <div class="card" onclick="alert('All Inclusive clicked')">
+            <img src="../hotels/images/all inclusive.jpg" alt="All Inclusive" />
+            <div class="card-title">All Inclusive</div>
+          </div>
+          <div class="card" onclick="alert('Houseboat clicked')">
+            <img src="../hotels/images/house-boat.jpg" alt="Houseboat" />
+            <div class="card-title">Houseboat</div>
+          </div>
+          <div class="card" onclick="alert('Apartment clicked')">
+            <img src="./images/apartment.webp" alt="Apartment" />
+            <div class="card-title">Apartment</div>
+          </div>
+          <div class="card" onclick="alert('Spa clicked')">
+            <img src="./images/spa.webp" alt="Spa" />
+            <div class="card-title">Spa</div>
+          </div>
+          <div class="card" onclick="alert('Luxury Stay clicked')">
+            <img
+              src="https://source.unsplash.com/600x400/?luxury"
+              alt="Luxury Stay"
+            />
+            <div class="card-title">Luxury Stay</div>
+          </div>
+          <div class="card" onclick="alert('Beachfront clicked')">
+            <img
+              src="https://source.unsplash.com/600x400/?beach"
+              alt="Beachfront"
+            />
+            <div class="card-title">Beachfront</div>
+          </div>
+          <div class="card" onclick="alert('Cabin clicked')">
+            <img src="https://source.unsplash.com/600x400/?cabin" alt="Cabin" />
+            <div class="card-title">Cabin</div>
+          </div>
+          <div class="card" onclick="alert('Mansion clicked')">
+            <img
+              src="https://source.unsplash.com/600x400/?mansion"
+              alt="Mansion"
+            />
+            <div class="card-title">Mansion</div>
+          </div>
+          <div class="card" onclick="alert('Bungalow clicked')">
+            <img
+              src="https://source.unsplash.com/600x400/?bungalow"
+              alt="Bungalow"
+            />
+            <div class="card-title">Bungalow</div>
+          </div>
+        </div>
+      </div>
+      <button id="nextBtn" class="nav-button">&rarr;</button>
+    </div>
+
+    <div class="hotel-container">
+      <h2
+        style="
+          color: darkblue;
+          font-size: 40px;
+          margin-left: 0px;
+          padding: 40px 0;
+          text-align: left;
+          width: fit-content;
+        "
+      >
+        Recommended Stays for You
+      </h2>
+
+      <p>Based on your most recently viewed property</p>
+
+      <div class="carousel-wrapper">
+        <button id="leftArrow" class="arrow-btn">&lt;</button>
+        <div class="hotel-carousel">
+          <div class="hotel-cards">
+            <!-- Cards will be injected dynamically -->
+          </div>
+        </div>
+        <button id="rightArrow" class="arrow-btn">&gt;</button>
+      </div>
+
+      <a href="#" class="view-all">See all properties →</a>
+      <script src="script.js"></script>
+    </div>
+  </body>
+</html>
