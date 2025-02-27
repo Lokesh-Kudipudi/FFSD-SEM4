@@ -1,4 +1,8 @@
 function handleSearch() {
   const input = document.querySelector("#location");
-  console.log(input.value);
+  window.location.href = `/tours/search?tour=${input.value}`;
+}
+
+function handleExploreClick() {
+  window.location.href = "/tours/search";
 }

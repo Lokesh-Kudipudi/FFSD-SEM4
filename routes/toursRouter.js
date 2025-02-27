@@ -11,8 +11,15 @@ toursRouter.route("/").get((req, res) => {
 
 // Define route for the search path of tours
 toursRouter.route("/search").get((req, res) => {
+  const searchParam = req.query;
+  console.log(searchParam);
   // Render the 'tours/tours' view
   res.render("tours/tours");
 });
 
 // Define route
+toursRouter.route("/tours/:id").get((req, res) => {
+  res.render("tours/tour");
+});
+
+module.exports = toursRouter;
