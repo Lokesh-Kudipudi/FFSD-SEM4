@@ -22,6 +22,11 @@
   font-size: 48px;
 }
 
+.hero-description {
+  margin-top: 8px;
+  color: grey;
+}
+
 .hero-duration {
   margin-top: 8px;
 }

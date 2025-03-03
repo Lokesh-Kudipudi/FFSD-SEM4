@@ -10,6 +10,8 @@
     <title>Document</title>
   </head>
   <body>
-    Index Main <%=name%>
+    <% data.hobbies.forEach((hobby) => { %>
+      <li><%=hobby%></li>
+      <%}) %>
   </body>
 </html>
