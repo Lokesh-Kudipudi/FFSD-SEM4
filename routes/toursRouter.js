@@ -1036,6 +1036,12 @@ const tours = [
   },
 ];
 
+function containsSubstring(mainString, subString) {
+  return mainString
+    .toLowerCase()
+    .includes(subString.toLowerCase());
+}
+
 // Define route for the search path of tours
 toursRouter.route("/search").get((req, res) => {
   const searchParam = req.query;
@@ -1043,6 +1049,22 @@ toursRouter.route("/search").get((req, res) => {
 
   let currentPage = searchParam?.page;
   let rating = searchParam?.rating;
+  let query = searchParam?.q;
+
+  let toursToDisplay = allTours;
+
+  if (query) {
+    toursToDisplay = toursToDisplay.filter((tour) => {
+      return containsSubstring(
+        [
+          tour.title,
+          ...tour.itinerary.flatMap((i) => i.activities),
+          ...tour.destinations.map((d) => d.name),
+        ].join(" "),
+        query
+      );
+    });
+  }
 
   if (currentPage == undefined) {
     currentPage = 0;
@@ -1051,8 +1073,6 @@ toursRouter.route("/search").get((req, res) => {
   if (rating == undefined) {
     rating = 1;
   }
-
-  let toursToDisplay = allTours;
 
   if (rating != undefined) {
     toursToDisplay = toursToDisplay.filter((tour) => {
