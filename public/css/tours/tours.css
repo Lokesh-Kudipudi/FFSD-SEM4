@@ -114,6 +114,11 @@
   font-size: 18px;
 }
 
+.card-content h3:hover {
+  color: blue;
+  cursor: pointer;
+}
+
 .rating {
   display: flex;
   gap: 4px;

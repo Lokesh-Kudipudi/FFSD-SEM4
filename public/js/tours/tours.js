@@ -3,9 +3,9 @@ const buttonRight = document.querySelector(".buttonRight");
 const allToursContainer = document.querySelector(
   ".allToursContainer"
 );
-const locationHeader = document.querySelector(
-  ".dropdown-header-location"
-);
+// const locationHeader = document.querySelector(
+//   ".dropdown-header-location"
+// );
 const ratingHeader = document.querySelector(
   ".dropdown-header-rating"
 );
@@ -26,13 +26,13 @@ buttonLeft.addEventListener("click", () => {
   window.location.search = urlParams.toString();
 });
 
-document
-  .getElementById("dropdownContentLocation")
-  .addEventListener("change", function (event) {
-    if (event.target.type === "checkbox") {
-      console.log(event.target.parentElement.textContent.trim());
-    }
-  });
+// document
+//   .getElementById("dropdownContentLocation")
+//   .addEventListener("change", function (event) {
+//     if (event.target.type === "checkbox") {
+//       console.log(event.target.parentElement.textContent.trim());
+//     }
+//   });
 
 document
   .getElementById("dropdownContentRating")
@@ -69,6 +69,10 @@ ratingHeader.addEventListener("click", () => {
   toggleDropdown("Rating");
 });
 
-locationHeader.addEventListener("click", () => {
-  toggleDropdown("Location");
-});
+// locationHeader.addEventListener("click", () => {
+//   toggleDropdown("Location");
+// });
+
+function handleTourClick(tourId) {
+  window.location.href = `${window.location.protocol}//${window.location.host}/tours/tour/${tourId}`;
+}

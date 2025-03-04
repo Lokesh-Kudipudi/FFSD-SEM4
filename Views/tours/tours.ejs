@@ -19,7 +19,7 @@
     <div class="allToursHeader"></div>
     <div class="toursContainer">
       <div class="filter">
-        <div class="dropdown">
+        <!-- <div class="dropdown">
           <div class="dropdown-header dropdown-header-location">
             Locations <span id="arrowLocation">&#9650;</span>
           </div>
@@ -42,7 +42,8 @@
               ><input type="checkbox" /> Jammu & Kashmir</label
             >
           </div>
-        </div>
+        </div> -->
+        
         <div class="dropdown">
           <div class="dropdown-header dropdown-header-rating">
             Rating <span id="arrowRating">&#9650;</span>
@@ -295,13 +296,13 @@
             </div>
 
             <div class="card-content">
-              <h3> <%= tour.title %> </h3>
+              <h3 onclick="handleTourClick(`<%=tour.id%>`)" > <%= tour.title %> </h3>
               <div class="rating">
                 <% for(let i = 0; i < tour.rating; i++) { %>
                   <i class="fas fa-star"></i>
                 <% } %>
               </div>
-              <div class="price"> <%= tour.price %> </div>
+              <div class="price"> <%= tour.price.amount %> <%= tour.price.currency %></div>
               <div class="duration"> <%= tour.duration %> </div>
             </div>
           </div>
@@ -345,6 +346,6 @@
         </div>
       </div>
     </div>
-    <script type="module" src="/js/tours/tours.js"></script>
+    <script src="/js/tours/tours.js"></script>
   </body>
 </html>
