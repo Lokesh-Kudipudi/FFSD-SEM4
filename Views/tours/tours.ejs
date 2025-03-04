@@ -52,7 +52,7 @@
             id="dropdownContentRating"
           >
             <label>
-              <input type="checkbox" value="5" />
+              <input type="checkbox" value="5" <%= !(rating > 5) ? 'checked' : '' %> />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -120,7 +120,7 @@
               </svg>
             </label>
             <label
-              ><input type="checkbox" value="4" />
+              ><input type="checkbox" value="4" <%= !(rating > 4) ? 'checked' : '' %>  />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -175,7 +175,7 @@
               </svg>
             </label>
             <label
-              ><input type="checkbox" value="3" />
+              ><input type="checkbox" value="3" <%= !(rating > 3) ? 'checked' : '' %> />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -217,7 +217,7 @@
               </svg>
             </label>
             <label
-              ><input type="checkbox" value="2" /><svg
+              ><input type="checkbox" value="2" <%= !(rating > 2) ? 'checked' : '' %> /><svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
@@ -245,7 +245,7 @@
               </svg>
             </label>
             <label
-              ><input type="checkbox" value="1" /><svg
+              ><input type="checkbox" value="1" <%= !(rating > 1) ? 'checked' : '' %> /><svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
@@ -281,34 +281,67 @@
             <div class="duration">7 days 6 nights</div>
           </div>
         </div> -->
+
+        <% tours.forEach(tour => {  %>
+          <div class="card">
+            <div style="position: relative;">
+              <img
+              src="<%= tour.mainImage %>"
+              alt="Tour Image"
+              />
+              <% if(tour.tag) { %>
+                <div class="featured"><%= tour.tag %></div>
+              <% }; %>
+            </div>
+
+            <div class="card-content">
+              <h3> <%= tour.title %> </h3>
+              <div class="rating">
+                <% for(let i = 0; i < tour.rating; i++) { %>
+                  <i class="fas fa-star"></i>
+                <% } %>
+              </div>
+              <div class="price"> <%= tour.price %> </div>
+              <div class="duration"> <%= tour.duration %> </div>
+            </div>
+          </div>
+        <% });%>
         </div>
         <div class="paginationButtonsContainer">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="size-6 button buttonLeft"
-            width="50"
-          >
-            <path
+          <div class="buttonLeft">
+            <% if(displayButton.displayLeftButton) { %>
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6 button"
+              width="50"
+              >
+              <path
               fill-rule="evenodd"
               d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-4.28 9.22a.75.75 0 0 0 0 1.06l3 3a.75.75 0 1 0 1.06-1.06l-1.72-1.72h5.69a.75.75 0 0 0 0-1.5h-5.69l1.72-1.72a.75.75 0 0 0-1.06-1.06l-3 3Z"
               clip-rule="evenodd"
-            />
-          </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="size-6 button buttonRight"
-            width="50"
-          >
+              />
+            </svg>
+            <% }; %>
+          </div>
+          <div class="buttonRight">
+            <% if(displayButton.displayRightButton) { %>
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="size-6 button"
+              width="50"
+              >
             <path
-              fill-rule="evenodd"
-              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z"
-              clip-rule="evenodd"
+            fill-rule="evenodd"
+            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z"
+            clip-rule="evenodd"
             />
           </svg>
+          <% }; %>
+        </div>
         </div>
       </div>
     </div>
