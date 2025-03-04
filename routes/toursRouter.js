@@ -15,7 +15,7 @@ const allTours = [
     title: "Golden Triangle Tour: Delhi, Agra & Jaipur",
     tags: ["Cultural", "Heritage", "Guided"],
     mainImage:
-      "https://triptovaranasi.in/wp-content/uploads/2023/08/Varanasi-1024x664.webp",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Lotus_Temple_in_New_Delhi_03-2016.jpg/1024px-Lotus_Temple_in_New_Delhi_03-2016.jpg",
     images: [
       "https://upload.wikimedia.org/wikipedia/commons/3/30/India_Gate_in_New_Delhi_03-2016_img3.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/9/9a/Taj_Mahal_%28Edited%29.jpg",
@@ -43,17 +43,17 @@ const allTours = [
       {
         name: "Delhi, India",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/3/30/India_Gate_in_New_Delhi_03-2016_img3.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Tomb_of_Humayun%2C_Delhi.jpg/1024px-Tomb_of_Humayun%2C_Delhi.jpg",
       },
       {
         name: "Agra, India",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/9/9a/Taj_Mahal_%28Edited%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Taj_Mahal%2C_Agra%2C_India.jpg/1200px-Taj_Mahal%2C_Agra%2C_India.jpg",
       },
       {
         name: "Jaipur, India",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/f/f6/Hawa_Mahal_2011.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg/1024px-East_facade_Hawa_Mahal_Jaipur_from_ground_level_%28July_2022%29_-_img_01.jpg",
       },
     ],
     itinerary: [
@@ -141,7 +141,7 @@ const allTours = [
     title: "Kerala Backwaters Retreat: Alleppey & Kumarakom",
     tags: ["Nature", "Relaxation", "Luxury"],
     mainImage:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbadu9m2jEZPw8VwMwbViQlXerMZ_TTc-hg&s",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Alappuzha_Boat_Beauty_W.jpg/432px-Alappuzha_Boat_Beauty_W.jpg",
     images: [
       "https://upload.wikimedia.org/wikipedia/commons/9/9f/Alleppey_Backwaters.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/4/49/Kumarakom_Houseboat.jpg",
@@ -164,12 +164,12 @@ const allTours = [
       {
         name: "Alleppey, India",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/9/9f/Alleppey_Backwaters.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/%E0%B4%95%E0%B5%86%E0%B4%9F%E0%B5%8D%E0%B4%9F%E0%B5%81%E0%B4%B5%E0%B4%B3%E0%B5%8D%E0%B4%B3%E0%B4%99%E0%B5%8D%E0%B4%99%E0%B5%BE-%E0%B4%95%E0%B5%81%E0%B4%9F%E0%B5%8D%E0%B4%9F%E0%B4%A8%E0%B4%BE%E0%B4%9F%E0%B4%BF%E0%B4%A8%E0%B5%8D%E0%B4%B1%E0%B5%86_%E0%B4%AE%E0%B5%81%E0%B4%96%E0%B4%AE%E0%B5%81%E0%B4%A6%E0%B5%8D%E0%B4%B0.jpg/1024px-%E0%B4%95%E0%B5%86%E0%B4%9F%E0%B5%8D%E0%B4%9F%E0%B5%81%E0%B4%B5%E0%B4%B3%E0%B5%8D%E0%B4%B3%E0%B4%99%E0%B5%8D%E0%B4%99%E0%B5%BE-%E0%B4%95%E0%B5%81%E0%B4%9F%E0%B5%8D%E0%B4%9F%E0%B4%A8%E0%B4%BE%E0%B4%9F%E0%B4%BF%E0%B4%A8%E0%B5%8D%E0%B4%B1%E0%B5%86_%E0%B4%AE%E0%B5%81%E0%B4%96%E0%B4%AE%E0%B5%81%E0%B4%A6%E0%B5%8D%E0%B4%B0.jpg",
       },
       {
         name: "Kumarakom, India",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/4/49/Kumarakom_Houseboat.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Kumarkom.jpg/375px-Kumarkom.jpg",
       },
     ],
     itinerary: [
@@ -239,7 +239,7 @@ const allTours = [
     title: "Majestic Rajasthan: Udaipur, Jodhpur & Jaisalmer",
     tags: ["Cultural", "Heritage", "Desert", "Forts"],
     mainImage:
-      "https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvZnJpbmRpYV9jb2tlX3B1ZXJ0YV9tZXJsaW5fMC1pbWFnZS1reWJkZmpqci5qcGc.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Evening_view%2C_City_Palace%2C_Udaipur.jpg/1024px-Evening_view%2C_City_Palace%2C_Udaipur.jpg",
     images: [
       "https://www.rajasthantourism.gov.in/content/dam/rajasthan-tourism/images/city/large/udaipur-city-palace.jpg",
       "https://www.rajasthantourism.gov.in/content/dam/rajasthan-tourism/images/city/large/mehrangarh-fort-jodhpur.jpg",
@@ -269,17 +269,17 @@ const allTours = [
       {
         name: "Udaipur, India",
         image:
-          "https://www.rajasthantourism.gov.in/content/dam/rajasthan-tourism/images/city/large/udaipur-city-palace.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Evening_view%2C_City_Palace%2C_Udaipur.jpg/1024px-Evening_view%2C_City_Palace%2C_Udaipur.jpg",
       },
       {
         name: "Jodhpur, India",
         image:
-          "https://www.rajasthantourism.gov.in/content/dam/rajasthan-tourism/images/city/large/mehrangarh-fort-jodhpur.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Mehrangarh_Fort_sanhita.jpg/1024px-Mehrangarh_Fort_sanhita.jpg",
       },
       {
         name: "Jaisalmer, India",
         image:
-          "https://www.rajasthantourism.gov.in/content/dam/rajasthan-tourism/images/city/large/jaisalmer-fort.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Jaisalmer%2C_India%2C_Palace%2C_Haveli.jpg/1024px-Jaisalmer%2C_India%2C_Palace%2C_Haveli.jpg",
       },
     ],
     itinerary: [
@@ -392,7 +392,7 @@ const allTours = [
     title: "Spiritual Varanasi & Sarnath Tour",
     tags: ["Spiritual", "Religious", "Ganges", "Temples"],
     mainImage:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Varanasi_Ganges_Sunrise.jpg/1280px-Varanasi_Ganges_Sunrise.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Varanasi%2C_India%2C_Ghats%2C_Cremation_ceremony_in_progress.jpg/357px-Varanasi%2C_India%2C_Ghats%2C_Cremation_ceremony_in_progress.jpg",
     images: [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Dashashwamedh_Ghat_Varanasi.jpg/1280px-Dashashwamedh_Ghat_Varanasi.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Sarnath_Dhamek_Stupa.jpg/1280px-Sarnath_Dhamek_Stupa.jpg",
@@ -421,12 +421,12 @@ const allTours = [
       {
         name: "Varanasi, India",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Varanasi_Ganges_Sunrise.jpg/1280px-Varanasi_Ganges_Sunrise.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Varanasi%2C_India%2C_Ghats%2C_Cremation_ceremony_in_progress.jpg/357px-Varanasi%2C_India%2C_Ghats%2C_Cremation_ceremony_in_progress.jpg",
       },
       {
         name: "Sarnath, India",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Sarnath_Dhamek_Stupa.jpg/1280px-Sarnath_Dhamek_Stupa.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Ancient_Buddhist_monasteries_near_Dhamekh_Stupa_Monument_Site%2C_Sarnath.jpg/375px-Ancient_Buddhist_monasteries_near_Dhamekh_Stupa_Monument_Site%2C_Sarnath.jpg",
       },
     ],
     itinerary: [
@@ -500,7 +500,7 @@ const allTours = [
       "Adventure",
     ],
     mainImage:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Dal_Lake_Srinagar_%283%29.jpg/1280px-Dal_Lake_Srinagar_%283%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Houseboats%2C_Dal_Lake%2C_Kashmir.jpg/395px-Houseboats%2C_Dal_Lake%2C_Kashmir.jpg",
     images: [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Gulmarg_Gondola.jpg/1280px-Gulmarg_Gondola.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Pahalgam_Valley.jpg/1280px-Pahalgam_Valley.jpg",
@@ -529,17 +529,17 @@ const allTours = [
       {
         name: "Srinagar, India",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Dal_Lake_Srinagar_%283%29.jpg/1280px-Dal_Lake_Srinagar_%283%29.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Houseboats%2C_Dal_Lake%2C_Kashmir.jpg/395px-Houseboats%2C_Dal_Lake%2C_Kashmir.jpg",
       },
       {
         name: "Gulmarg, India",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Gulmarg_Gondola.jpg/1280px-Gulmarg_Gondola.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Gulmarg_-_Jannat_on_Earth.jpg/372px-Gulmarg_-_Jannat_on_Earth.jpg",
       },
       {
         name: "Pahalgam, India",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Pahalgam_Valley.jpg/1280px-Pahalgam_Valley.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Pahalgam_views_13.JPG/375px-Pahalgam_views_13.JPG",
       },
     ],
     itinerary: [
@@ -627,7 +627,7 @@ const allTours = [
       "Relaxation",
     ],
     mainImage:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Palolem_Beach_Goa_India.jpg/1280px-Palolem_Beach_Goa_India.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/BeachFun.jpg/432px-BeachFun.jpg",
     images: [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Calangute_Beach_North_Goa.jpg/1280px-Calangute_Beach_North_Goa.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Dudhsagar_Falls_Goa.jpg/1280px-Dudhsagar_Falls_Goa.jpg",
@@ -656,12 +656,12 @@ const allTours = [
       {
         name: "North Goa, India",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Calangute_Beach_North_Goa.jpg/1280px-Calangute_Beach_North_Goa.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Basilica_of_bom_jesus_-_Front_View.jpg/432px-Basilica_of_bom_jesus_-_Front_View.jpg",
       },
       {
         name: "South Goa, India",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Palolem_Beach_Goa_India.jpg/1280px-Palolem_Beach_Goa_India.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/BeachFun.jpg/432px-BeachFun.jpg",
       },
     ],
     itinerary: [
@@ -737,7 +737,7 @@ const allTours = [
     title: "Himalayan Escape: Shimla & Manali",
     tags: ["Mountains", "Nature", "Adventure", "Hill Station"],
     mainImage:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Manali_Hills.jpg/1280px-Manali_Hills.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Shimla_night.jpg/387px-Shimla_night.jpg",
     images: [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Shimla_Ridge.jpg/1280px-Shimla_Ridge.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Solang_Valley_Manali.jpg/1280px-Solang_Valley_Manali.jpg",
@@ -766,12 +766,12 @@ const allTours = [
       {
         name: "Shimla, India",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Shimla_Ridge.jpg/1280px-Shimla_Ridge.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Shimla_night.jpg/387px-Shimla_night.jpg",
       },
       {
         name: "Manali, India",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Manali_Hills.jpg/1280px-Manali_Hills.jpg",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Manali_City.jpg/417px-Manali_City.jpg",
       },
     ],
     itinerary: [
