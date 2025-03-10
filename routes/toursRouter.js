@@ -21,7 +21,7 @@ const allTours = [
       "https://upload.wikimedia.org/wikipedia/commons/9/9a/Taj_Mahal_%28Edited%29.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/f/f6/Hawa_Mahal_2011.jpg",
     ],
-    rating: 4.8,
+    rating: 5,
     duration: "7 days 6 nights",
     startLocation: "Delhi",
     description:
@@ -146,7 +146,7 @@ const allTours = [
       "https://upload.wikimedia.org/wikipedia/commons/9/9f/Alleppey_Backwaters.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/4/49/Kumarakom_Houseboat.jpg",
     ],
-    rating: 4.9,
+    rating: 5,
     duration: "5 days 4 nights",
     startLocation: "Kochi",
     description:
@@ -245,7 +245,7 @@ const allTours = [
       "https://www.rajasthantourism.gov.in/content/dam/rajasthan-tourism/images/city/large/mehrangarh-fort-jodhpur.jpg",
       "https://www.rajasthantourism.gov.in/content/dam/rajasthan-tourism/images/excursion/large/sam-sand-dunes-jaisalmer.jpg",
     ],
-    rating: 4.7,
+    rating: 1,
     duration: "9 days 8 nights",
     startLocation: "Udaipur",
     description:
@@ -398,7 +398,7 @@ const allTours = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Sarnath_Dhamek_Stupa.jpg/1280px-Sarnath_Dhamek_Stupa.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Ganga_Aarti_Varanasi.jpg/1280px-Ganga_Aarti_Varanasi.jpg",
     ],
-    rating: 4.6,
+    rating: 2,
     duration: "4 days 3 nights",
     startLocation: "Varanasi",
     description:
@@ -506,7 +506,7 @@ const allTours = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Pahalgam_Valley.jpg/1280px-Pahalgam_Valley.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Srinagar_Mughal_Gardens.jpg/1280px-Srinagar_Mughal_Gardens.jpg",
     ],
-    rating: 4.9,
+    rating: 5,
     duration: "6 days 5 nights",
     startLocation: "Srinagar",
     description:
@@ -633,7 +633,7 @@ const allTours = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Dudhsagar_Falls_Goa.jpg/1280px-Dudhsagar_Falls_Goa.jpg",
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Goa_Water_Sports.jpg/1280px-Goa_Water_Sports.jpg",
     ],
-    rating: 4.7,
+    rating: 4,
     duration: "5 days 4 nights",
     startLocation: "Goa Airport",
     description:
@@ -867,67 +867,6 @@ const allTours = [
 
 const tours = [
   {
-    id: "123",
-    title: "Golden Triangle: Delhi, Agra & Jaipur",
-    tag: "featured",
-    rating: 5,
-    duration: "6 days 5 nights",
-    price: "28,000.00",
-    mainImage:
-      "https://triptovaranasi.in/wp-content/uploads/2023/08/Varanasi-1024x664.webp",
-  },
-  {
-    title: "Backwaters of Kerala: Alleppey & Kumarakom",
-    tag: "popular",
-    rating: 4,
-    duration: "5 days 4 nights",
-    price: "22,500.00",
-    mainImage:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbadu9m2jEZPw8VwMwbViQlXerMZ_TTc-hg&s",
-  },
-  {
-    title: "Majestic Rajasthan: Udaipur, Jodhpur & Jaisalmer",
-    tag: "new",
-    rating: 5,
-    duration: "8 days 7 nights",
-    price: "30,000.00",
-    mainImage:
-      "https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvZnJpbmRpYV9jb2tlX3B1ZXJ0YV9tZXJsaW5fMC1pbWFnZS1reWJkZmpqci5qcGc.jpg",
-  },
-  {
-    title: "Spiritual Varanasi & Sarnath Tour",
-    tag: "spiritual",
-    rating: 5,
-    duration: "4 days 3 nights",
-    price: "15,000.00",
-    mainImage:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9_VDxOBv8Q1u3yjsZO6aUgbFsaEXL0cb6NA&s",
-  },
-  {
-    title: "Kashmir Paradise: Srinagar, Gulmarg & Pahalgam",
-    rating: 4,
-    duration: "7 days 6 nights",
-    price: "35,000.00",
-    mainImage:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTDtqVgKil3J5sQeg_u8xU5FhfXJ52zEps9Q&s",
-  },
-  {
-    title: "Goa Beach & Adventure Tour",
-    rating: 3,
-    duration: "5 days 4 nights",
-    price: "20,500.00",
-    mainImage:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhwZZXAO5lOnJ5ue3I3mx2KIQ19rmdZs3eWw&s",
-  },
-  {
-    title: "Himalayan Escape: Shimla & Manali",
-    rating: 4,
-    duration: "6 days 5 nights",
-    price: "26,000.00",
-    mainImage:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaWtgI18oOyQCJpoOIoLuQAbPGYrgT1QkoAQ&s",
-  },
-  {
     title: "Andaman Islands: Port Blair & Havelock",
     rating: 4,
     duration: "6 days 5 nights",
@@ -1020,7 +959,7 @@ const tours = [
   {
     title: "Bhubaneswar & Puri: Odisha Heritage",
 
-    rating: 5,
+    rating: 4,
     duration: "5 days 4 nights",
     price: "21,000.00",
     mainImage:
@@ -1036,47 +975,35 @@ const tours = [
   },
 ];
 
-function containsSubstring(mainString, subString) {
-  return mainString
-    .toLowerCase()
-    .includes(subString.toLowerCase());
-}
-
 // Define route for the search path of tours
 toursRouter.route("/search").get((req, res) => {
   const searchParam = req.query;
-  console.log(searchParam);
 
   let currentPage = searchParam?.page;
-  let rating = searchParam?.rating;
+  let rating = searchParam?.rating?.split(",");
   let query = searchParam?.q;
-
   let toursToDisplay = allTours;
-
-  if (query) {
-    toursToDisplay = toursToDisplay.filter((tour) => {
-      return containsSubstring(
-        [
-          tour.title,
-          ...tour.itinerary.flatMap((i) => i.activities),
-          ...tour.destinations.map((d) => d.name),
-        ].join(" "),
-        query
-      );
-    });
-  }
 
   if (currentPage == undefined) {
     currentPage = 0;
   }
 
-  if (rating == undefined) {
-    rating = 1;
+  if (rating) {
+    toursToDisplay = toursToDisplay.filter((tour) =>
+      rating.includes(String(tour.rating))
+    );
   }
 
-  if (rating != undefined) {
+  if (query) {
     toursToDisplay = toursToDisplay.filter((tour) => {
-      return +rating <= tour.rating;
+      return [
+        tour.title,
+        ...tour.itinerary.flatMap((i) => i.activities),
+        ...tour.destinations.map((d) => d.name),
+      ]
+        .join(" ")
+        .toLowerCase()
+        .includes(query.toLowerCase());
     });
   }
 
@@ -1101,11 +1028,16 @@ toursRouter.route("/search").get((req, res) => {
     displayLeftButton = false;
   }
 
+  if (toursToDisplay.length == 0) {
+    res.render("tours/noTours");
+    return;
+  }
+
   // Render the 'tours/tours' view
   res.render("tours/tours", {
     tours: toursToDisplay,
     displayButton: { displayLeftButton, displayRightButton },
-    rating: rating,
+    rating,
   });
 });
 

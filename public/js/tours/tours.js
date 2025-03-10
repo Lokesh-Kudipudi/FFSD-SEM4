@@ -41,7 +41,30 @@ document
       let urlParams = new URLSearchParams(
         window.location.search
       );
-      urlParams.set("rating", +event.target.value);
+      let rating = urlParams.get("rating");
+      let ratingArray = [];
+
+      if (rating) {
+        ratingArray = rating.split(",");
+      } else {
+        ratingArray.push(event.target.value);
+      }
+
+      if (rating) {
+        if (ratingArray.includes(event.target.value)) {
+          ratingArray = ratingArray.filter(
+            (rat) => rat != event.target.value
+          );
+        } else {
+          ratingArray = [...ratingArray, event.target.value];
+        }
+      }
+
+      console.log(ratingArray);
+      ratingArray.length == 0
+        ? urlParams.delete("rating")
+        : urlParams.set("rating", ratingArray.join(","));
+
       window.location.search = urlParams.toString();
     }
   });
@@ -76,3 +99,25 @@ ratingHeader.addEventListener("click", () => {
 function handleTourClick(tourId) {
   window.location.href = `${window.location.protocol}//${window.location.host}/tours/tour/${tourId}`;
 }
+
+function initialHeaderHeight(filter) {
+  let content = document.getElementById(
+    `dropdownContent${filter}`
+  );
+  let arrow = document.getElementById(`arrow${filter}`);
+
+  let url = new URLSearchParams(window.location.search);
+  const rating = url.get("rating");
+
+  if (rating) {
+    content.style.maxHeight = "300px";
+    content.style.padding = "10px";
+    arrow.innerHTML = "&#9660;";
+  } else {
+    content.style.maxHeight = "0px";
+    content.style.padding = "0px 10px";
+    arrow.innerHTML = "&#9650;";
+  }
+}
+
+initialHeaderHeight("Rating");

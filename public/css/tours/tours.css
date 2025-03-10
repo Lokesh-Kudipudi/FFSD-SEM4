@@ -61,10 +61,17 @@
   display: block;
   margin: 8px 0;
   font-size: 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .dropdown-content input {
   margin-right: 8px;
+
+  width: 16px;
+  height: 16px;
 }
 
 .toursContainer {
