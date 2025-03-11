@@ -9,6 +9,7 @@ const allToursContainer = document.querySelector(
 const ratingHeader = document.querySelector(
   ".dropdown-header-rating"
 );
+const input = document.querySelector("#location");
 
 buttonRight.addEventListener("click", () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -100,6 +101,8 @@ function handleTourClick(tourId) {
   window.location.href = `${window.location.protocol}//${window.location.host}/tours/tour/${tourId}`;
 }
 
+// Funtion to set intial Filter height by default
+
 function initialHeaderHeight(filter) {
   let content = document.getElementById(
     `dropdownContent${filter}`
@@ -121,3 +124,23 @@ function initialHeaderHeight(filter) {
 }
 
 initialHeaderHeight("Rating");
+
+// Funtion to manage search in tours
+
+function handleSearch() {
+  if (input.value.length == 0) {
+    window.location.href = `/tours/search`;
+  } else {
+    window.location.href = `/tours/search?q=${input.value}`;
+  }
+}
+
+function setInputValue() {
+  const url = new URLSearchParams(window.location.search);
+  const query = url.get("q");
+  if (query) {
+    input.value = query;
+  }
+}
+
+setInputValue();

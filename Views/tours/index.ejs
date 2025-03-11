@@ -9,6 +9,7 @@
     <link rel="icon" href="data:," />
     <title>Chasing Horizons | Tourism</title>
     <link href="/css/tours/index.css" rel="stylesheet" />
+    <link href="/css/tours/header.css" rel="stylesheet" />
     <link href="/css/tours/toursFooter.css" rel="stylesheet" />
     <link
       rel="stylesheet"
@@ -18,12 +19,29 @@
   <body>
     <section class="heroSection">
       <div class="heroBackground">
-        <img
+        <!-- <img
           src="https://images.pexels.com/photos/22614625/pexels-photo-22614625/free-photo-of-idyllic-beach-on-bangaram-island-in-india.jpeg"
           alt="Hero Background"
           class="heroBackgroundImage"
-        />
+        /> -->
+        <video class="heroBackgroundVideo" autoplay muted >
+          <source src="/videos/tours/toursBg.mp4" type="video/mp4" >
+          Your browser does not support video tag
+        </video>
       </div>
+      <header class="headerContainer" style="position: absolute; top: 10px; width: 95%;">
+        <div class="headerDiv">
+          <img class="headerLogo" src="/images/tours/logo.png" alt="logo">
+          <div class="headerLinkContainer">
+            <a class="headerLink" href="/tours">Tours</a>
+            <a class="headerLink" href="#">Hotels</a>
+            <a class="headerLink" href="#">Contact Us</a>
+          </div>
+          <div class="headerSignInContainer">
+            <button class="headerSignInButton">Sign In</button>
+          </div>
+        </div>
+      </header>
       <div class="heroMain">
         <h1 class="heroText">Its Time to Chase Horizons.</h1>
         <h3 class="heroSubText">
@@ -227,8 +245,8 @@
         <div class="footer-links">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Tours</a></li>
+            <li><a href="/tours">Home</a></li>
+            <li><a href="/tours/search">Tours</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact</a></li>
           </ul>

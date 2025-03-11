@@ -1,0 +1,42 @@
+.headerContainer {
+  padding: 20px;
+}
+
+.headerDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  backdrop-filter: blur(50px);
+  border-radius: 12px 8px;
+}
+
+.headerLogo {
+  width: 50px;
+}
+
+.headerLinkContainer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.headerLink {
+  display: inline-block;
+  text-decoration: none;
+  color: red;
+  font-size: 18px;
+
+  font-weight: 600;
+}
+
+.headerSignInButton {
+  border: none;
+  padding: 8px 10px;
+  color: white;
+
+  font-size: 20px;
+
+  border-radius: 8px;
+  background-color: #fe6c3b;
+}

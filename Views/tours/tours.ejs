@@ -8,6 +8,8 @@
     />
     <link rel="icon" href="data:," />
     <link href="/css/tours/tours.css" rel="stylesheet" />
+    <link href="/css/tours/filter.css" rel="stylesheet" />
+    <link href="/css/tours/header.css" rel="stylesheet" />
     <link href="/css/tours/toursFooter.css" rel="stylesheet" />
     <link
       rel="stylesheet"
@@ -17,7 +19,40 @@
   </head>
 
   <body>
-    <div class="allToursHeader"></div>
+    <header class="headerContainer">
+      <div class="headerDiv">
+        <img class="headerLogo" src="/images/tours/logo.png" alt="logo">
+        <div class="headerLinkContainer">
+          <a class="headerLink" href="/tours" >Tours</a>
+          <a class="headerLink" href="#">Hotels</a>
+          <a class="headerLink" href="#">Contact Us</a>
+        </div>
+        <div class="headerSignInContainer">
+          <button class="headerSignInButton">Sign In</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="search-container">
+      <div class="search-box">
+        <span class="icon">📍</span>
+        <div class="input-wrapper">
+          <label for="location">Location</label>
+          <input
+            type="text"
+            id="location"
+            placeholder="Where are you going?"
+          />
+        </div>
+        <button
+          class="search-button"
+          onclick="handleSearch()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+
     <div class="toursContainer">
       <div class="filter">
         <!-- <div class="dropdown">
@@ -172,8 +207,8 @@
         <div class="footer-links">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Tours</a></li>
+            <li><a href="/tours">Home</a></li>
+            <li><a href="/tours/search">Tours</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact</a></li>
           </ul>

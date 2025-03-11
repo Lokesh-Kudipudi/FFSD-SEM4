@@ -23,12 +23,18 @@
   height: 100%;
 }
 
-.heroBackgroundImage {
-  filter: brightness(30%);
+.heroBackgroundVideo {
+  width: 100vw;
+  object-fit: cover;
+  filter: brightness(40%);
+}
+
+/* .heroBackgroundImage {
+  filter: blur(2px);
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image covers the full area without stretching */
-}
+  object-fit: cover; 
+} */
 
 .heroMain {
   position: relative;
