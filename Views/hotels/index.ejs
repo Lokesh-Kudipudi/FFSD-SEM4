@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hotels Navbar</title>
     <link rel="stylesheet" href="/css/hotels/index.css" />
     <script
@@ -39,10 +36,7 @@
           <i class="fas fa-map-marker-alt"></i>
           <div>
             <label>Where to?</label>
-            <input
-              type="text"
-              placeholder="Mumbai, Maharashtra, India"
-            />
+            <input type="text" placeholder="Mumbai, Maharashtra, India" />
           </div>
         </div>
         <div class="input-group">
@@ -56,10 +50,7 @@
           <i class="fas fa-user"></i>
           <div>
             <label>Travellers</label>
-            <input
-              type="text"
-              placeholder="2 travellers, 1 room"
-            />
+            <input type="text" placeholder="2 travellers, 1 room" />
           </div>
         </div>
         <button class="search-button">Search</button>
@@ -70,8 +61,8 @@
       <div class="membership-content">
         <i class="fas fa-tag"></i>
         <span
-          >Members save 10% or more on over 100,000 hotels
-          worldwide when signed in</span
+          >Members save 10% or more on over 100,000 hotels worldwide when signed
+          in</span
         >
       </div>
       <button class="sign-in-button">Sign in now</button>
@@ -81,12 +72,7 @@
 
     <h1
       class="title"
-      style="
-        color: darkblue;
-        font-size: 40px;
-        margin: 30px;
-        padding: 40px;
-      "
+      style="color: darkblue; font-size: 40px; margin: 30px; padding: 40px"
     >
       Discover your new favourite stay
     </h1>
@@ -96,73 +82,52 @@
       <button id="prevBtn" class="nav-button">&larr;</button>
       <div class="carousel">
         <div id="card-container" class="card-wrapper">
-          <div class="card" onclick="alert('Villa clicked')">
+          <div class="card1" onclick="alert('Villa clicked')">
             <img src="/images/hotels/villa.jpg" alt="Villa" />
             <div class="card-title">Villa</div>
           </div>
-          <div
-            class="card"
-            onclick="alert('All Inclusive clicked')"
-          >
-            <img
-              src="/images/hotels/all inclusive.jpg"
-              alt="All Inclusive"
-            />
+          <div class="card1" onclick="alert('All Inclusive clicked')">
+            <img src="/images/hotels/all inclusive.jpg" alt="All Inclusive" />
             <div class="card-title">All Inclusive</div>
           </div>
-          <div class="card" onclick="alert('Houseboat clicked')">
-            <img
-              src="/images/hotels/house-boat.jpg"
-              alt="Houseboat"
-            />
+          <div class="card1" onclick="alert('Houseboat clicked')">
+            <img src="/images/hotels/house-boat.jpg" alt="Houseboat" />
             <div class="card-title">Houseboat</div>
           </div>
-          <div class="card" onclick="alert('Apartment clicked')">
-            <img
-              src="/images/hotels/apartment.webp"
-              alt="Apartment"
-            />
+          <div class="card1" onclick="alert('Apartment clicked')">
+            <img src="/images/hotels/apartment.webp" alt="Apartment" />
             <div class="card-title">Apartment</div>
           </div>
-          <div class="card" onclick="alert('Spa clicked')">
+          <div class="card1" onclick="alert('Spa clicked')">
             <img src="/images/hotels/spa.webp" alt="Spa" />
             <div class="card-title">Spa</div>
           </div>
-          <div
-            class="card"
-            onclick="alert('Luxury Stay clicked')"
-          >
+          <div class="card1" onclick="alert('Luxury Stay clicked')">
             <img
               src="https://source.unsplash.com/600x400/?luxury"
               alt="Luxury Stay"
             />
             <div class="card-title">Luxury Stay</div>
           </div>
-          <div
-            class="card"
-            onclick="alert('Beachfront clicked')"
-          >
+          <div class="card1" onclick="alert('Beachfront clicked')">
             <img
               src="https://source.unsplash.com/600x400/?beach"
               alt="Beachfront"
             />
             <div class="card-title">Beachfront</div>
           </div>
-          <div class="card" onclick="alert('Cabin clicked')">
-            <img
-              src="https://source.unsplash.com/600x400/?cabin"
-              alt="Cabin"
-            />
+          <div class="card1" onclick="alert('Cabin clicked')">
+            <img src="https://source.unsplash.com/600x400/?cabin" alt="Cabin" />
             <div class="card-title">Cabin</div>
           </div>
-          <div class="card" onclick="alert('Mansion clicked')">
+          <div class="card1" onclick="alert('Mansion clicked')">
             <img
               src="https://source.unsplash.com/600x400/?mansion"
               alt="Mansion"
             />
             <div class="card-title">Mansion</div>
           </div>
-          <div class="card" onclick="alert('Bungalow clicked')">
+          <div class="card1" onclick="alert('Bungalow clicked')">
             <img
               src="https://source.unsplash.com/600x400/?bungalow"
               alt="Bungalow"
@@ -175,33 +140,595 @@
     </div>
 
     <div class="hotel-container">
-      <h2
-        style="
-          color: darkblue;
-          font-size: 40px;
-          margin-left: 0px;
-          padding: 40px 0;
-          text-align: left;
-          width: fit-content;
-        "
-      >
-        Recommended Stays for You
-      </h2>
-
-      <p>Based on your most recently viewed property</p>
+      <h2 class="recommended-title">Recommended Stays for You</h2>
+      <p class="recently-viewed">Based on your most recently viewed property</p>
 
       <div class="carousel-wrapper">
-        <button id="leftArrow" class="arrow-btn">&lt;</button>
+        <button id="leftArrow" class="nav-button">&lt;</button>
         <div class="hotel-carousel">
           <div class="hotel-cards">
             <!-- Cards will be injected dynamically -->
           </div>
         </div>
-        <button id="rightArrow" class="arrow-btn">&gt;</button>
+        <button id="rightArrow" class="nav-button">&gt;</button>
+      </div>
+      <a href="#" class="view-all">See all properties →</a>
+
+      <div class="zebra-container">
+        <h2 class="fancy-title">Top deals for a last minute getaway</h2>
+        <p class="date-info">Showing deals for: 12 Mar - 14 Mar</p>
+
+        <div class="swipe-wrapper">
+          <div class="swipe-cards">
+            <!-- Card 1 -->
+            <div class="zebra-card">
+              <div class="card-img-wrapper">
+                <div class="image-carousel">
+                  <img
+                    src="/images/hotels/villa.jpg"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="/images/hotels/house-boat.jpg"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="/images/hotels/Bungalow.jpg"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="/images/hotels/villa.jpg"
+                    alt="Ebony Boutique Hotel"
+                  />
+                </div>
+                <button class="left-img-nav">&lt;</button>
+                <button class="right-img-nav">&gt;</button>
+              </div>
+              <div class="card-info">
+                <h3>Ebony Boutique Hotel</h3>
+                <p>Hyderabad</p>
+                <span class="rating"
+                  ><span>8.0</span> Very good (1 review)</span
+                >
+                <p class="price">₹4,409 <span>₹5,799</span> per night</p>
+                <p class="total">₹10,917 total includes taxes & fees</p>
+                <span class="discount-badge">25% off</span>
+                <span class="member-price">Member Price available</span>
+              </div>
+            </div>
+            <div class="zebra-card">
+              <div class="card-img-wrapper">
+                <div class="image-carousel">
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+1"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+2"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+3"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+4"
+                    alt="Ebony Boutique Hotel"
+                  />
+                </div>
+                <button class="left-img-nav">&lt;</button>
+                <button class="right-img-nav">&gt;</button>
+              </div>
+              <div class="card-info">
+                <h3>Ebony Boutique Hotel</h3>
+                <p>Hyderabad</p>
+                <span class="rating">⭐ 8.0 Very good (1 review)</span>
+                <p class="price">₹4,409 <span>₹5,799</span> per night</p>
+                <p class="total">₹10,917 total includes taxes & fees</p>
+                <span class="member-price">Member Price available</span>
+              </div>
+            </div>
+            <div class="zebra-card">
+              <div class="card-img-wrapper">
+                <div class="image-carousel">
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+1"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+2"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+3"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+4"
+                    alt="Ebony Boutique Hotel"
+                  />
+                </div>
+                <button class="left-img-nav">&lt;</button>
+                <button class="right-img-nav">&gt;</button>
+              </div>
+              <div class="card-info">
+                <h3>Ebony Boutique Hotel</h3>
+                <p>Hyderabad</p>
+                <span class="rating">⭐ 8.0 Very good (1 review)</span>
+                <p class="price">₹4,409 <span>₹5,799</span> per night</p>
+                <p class="total">₹10,917 total includes taxes & fees</p>
+                <span class="member-price">Member Price available</span>
+              </div>
+            </div>
+            <div class="zebra-card">
+              <div class="card-img-wrapper">
+                <div class="image-carousel">
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+1"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+2"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+3"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+4"
+                    alt="Ebony Boutique Hotel"
+                  />
+                </div>
+                <button class="left-img-nav">&lt;</button>
+                <button class="right-img-nav">&gt;</button>
+              </div>
+              <div class="card-info">
+                <h3>Ebony Boutique Hotel</h3>
+                <p>Hyderabad</p>
+                <span class="rating">⭐ 8.0 Very good (1 review)</span>
+                <p class="price">₹4,409 <span>₹5,799</span> per night</p>
+                <p class="total">₹10,917 total includes taxes & fees</p>
+                <span class="member-price">Member Price available</span>
+              </div>
+            </div>
+            <div class="zebra-card">
+              <div class="card-img-wrapper">
+                <div class="image-carousel">
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+1"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+2"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+3"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+4"
+                    alt="Ebony Boutique Hotel"
+                  />
+                </div>
+                <button class="left-img-nav">&lt;</button>
+                <button class="right-img-nav">&gt;</button>
+              </div>
+              <div class="card-info">
+                <h3>Ebony Boutique Hotel</h3>
+                <p>Hyderabad</p>
+                <span class="rating">⭐ 8.0 Very good (1 review)</span>
+                <p class="price">₹4,409 <span>₹5,799</span> per night</p>
+                <p class="total">₹10,917 total includes taxes & fees</p>
+                <span class="member-price">Member Price available</span>
+              </div>
+            </div>
+            <div class="zebra-card">
+              <div class="card-img-wrapper">
+                <div class="image-carousel">
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+1"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+2"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+3"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+4"
+                    alt="Ebony Boutique Hotel"
+                  />
+                </div>
+                <button class="left-img-nav">&lt;</button>
+                <button class="right-img-nav">&gt;</button>
+              </div>
+              <div class="card-info">
+                <h3>Ebony Boutique Hotel</h3>
+                <p>Hyderabad</p>
+                <span class="rating">⭐ 8.0 Very good (1 review)</span>
+                <p class="price">₹4,409 <span>₹5,799</span> per night</p>
+                <p class="total">₹10,917 total includes taxes & fees</p>
+                <span class="member-price">Member Price available</span>
+              </div>
+            </div>
+            <div class="zebra-card">
+              <div class="card-img-wrapper">
+                <div class="image-carousel">
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+1"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+2"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+3"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+4"
+                    alt="Ebony Boutique Hotel"
+                  />
+                </div>
+                <button class="left-img-nav">&lt;</button>
+                <button class="right-img-nav">&gt;</button>
+              </div>
+              <div class="card-info">
+                <h3>Ebony Boutique Hotel</h3>
+                <p>Hyderabad</p>
+                <span class="rating">⭐ 8.0 Very good (1 review)</span>
+                <p class="price">₹4,409 <span>₹5,799</span> per night</p>
+                <p class="total">₹10,917 total includes taxes & fees</p>
+                <span class="member-price">Member Price available</span>
+              </div>
+            </div>
+            <div class="zebra-card">
+              <div class="card-img-wrapper">
+                <div class="image-carousel">
+                  <img
+                    src="/images/hotels/villa.jpg"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="/images/hotels/house-boat.jpg"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+3"
+                    alt="Ebony Boutique Hotel"
+                  />
+                  <img
+                    src="https://via.placeholder.com/350x200?text=Image+4"
+                    alt="Ebony Boutique Hotel"
+                  />
+                </div>
+                <button class="left-img-nav">&lt;</button>
+                <button class="right-img-nav">&gt;</button>
+              </div>
+              <div class="card-info">
+                <h3>Ebony Boutique Hotel</h3>
+                <p>Hyderabad</p>
+                <span class="rating">⭐ 8.0 Very good (1 review)</span>
+                <p class="price">₹4,409 <span>₹5,799</span> per night</p>
+                <p class="total">₹10,917 total includes taxes & fees</p>
+                <span class="member-price">Member Price available</span>
+              </div>
+            </div>
+            <!-- Repeat similar structure for other cards -->
+          </div>
+          <button class="right-nav-btn">&gt;</button>
+        </div>
       </div>
 
-      <a href="#" class="view-all">See all properties →</a>
+      <div class="kcn-wrapper">
+        <h1 class="zcx-heading">Explore these unique stays</h1>
+        <p class="lkm-dates">Showing deals for: 4 Apr - 6 Apr</p>
+
+        <div class="qwf-carousel-container">
+          <div class="hjk-outer-nav zpq-left" onclick="scrollCards('left')">
+            &lt;
+          </div>
+
+          <div class="uvb-cards-container" id="cardsContainer">
+            <!-- Card 1 -->
+            <div class="mns-card">
+              <div class="rty-image-carousel">
+                <div class="bnm-images-wrapper" id="imageWrapper0">
+                  <img src="/images/hotels/villa.jpg" alt="Villa Image" />
+                  <img src="/images/hotels/house-boat.jpg" alt="Villa Image" />
+                  <img src="/images/hotels/Bungalow.jpg" alt="Villa Image" />
+                  <img
+                    src="https://via.placeholder.com/300x200/8A3A8A/FFFFFF?text=Villa+4"
+                    alt="Villa Image"
+                  />
+                </div>
+                <div
+                  class="fgh-image-nav xcv-left"
+                  onclick="navigateImage(0, 'prev')"
+                >
+                  &lt;
+                </div>
+                <div
+                  class="fgh-image-nav xcv-right"
+                  onclick="navigateImage(0, 'next')"
+                >
+                  &gt;
+                </div>
+              </div>
+              <div class="poj-content">
+                <div class="iuy-rating-container">
+                  <span class="ghj-rating-badge">9.6</span>
+                  <span class="xsw-rating-text">Exceptional</span>
+                  <span class="qaz-reviews">(4 reviews)</span>
+                </div>
+                <h3 class="wsx-title">amā Stays & Trails Pathiramanal Villa</h3>
+                <p class="edc-location">Alappuzha</p>
+                <p class="rfv-host">Muhamma</p>
+                <div class="tgb-price-container">
+                  <span class="yhn-price">₹28,020</span>
+                  <span class="ujm-per-night">per night</span>
+                </div>
+                <p class="ikl-total">₹66,127 total</p>
+                <p class="olp-includes">includes taxes & fees</p>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="mns-card">
+              <div class="rty-image-carousel">
+                <div class="bnm-images-wrapper" id="imageWrapper1">
+                  <img
+                    src="https://via.placeholder.com/300x200/6D3582/FFFFFF?text=Palace+1"
+                    alt="Palace Image"
+                  />
+                  <img
+                    src="https://via.placeholder.com/300x200/358276/FFFFFF?text=Palace+2"
+                    alt="Palace Image"
+                  />
+                  <img
+                    src="https://via.placeholder.com/300x200/823535/FFFFFF?text=Palace+3"
+                    alt="Palace Image"
+                  />
+                  <img
+                    src="https://via.placeholder.com/300x200/353582/FFFFFF?text=Palace+4"
+                    alt="Palace Image"
+                  />
+                </div>
+                <div
+                  class="fgh-image-nav xcv-left"
+                  onclick="navigateImage(1, 'prev')"
+                >
+                  &lt;
+                </div>
+                <div
+                  class="fgh-image-nav xcv-right"
+                  onclick="navigateImage(1, 'next')"
+                >
+                  &gt;
+                </div>
+              </div>
+              <div class="poj-content">
+                <div class="iuy-rating-container">
+                  <span class="ghj-rating-badge">9.2</span>
+                  <span class="xsw-rating-text">Wonderful</span>
+                  <span class="qaz-reviews">(21 reviews)</span>
+                </div>
+                <h3 class="wsx-title">Rajmahal Palace RAAS</h3>
+                <p class="edc-location">Jaipur</p>
+                <div class="tgb-price-container">
+                  <span class="yhn-price">₹57,710</span>
+                  <span class="ujm-per-night">per night</span>
+                </div>
+                <p class="ikl-total">₹1,36,196 total</p>
+                <p class="olp-includes">includes taxes & fees</p>
+                <div class="tyu-badge">Member Price available</div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="mns-card">
+              <div class="rty-image-carousel">
+                <div class="bnm-images-wrapper" id="imageWrapper2">
+                  <img
+                    src="https://via.placeholder.com/300x200/4A865A/FFFFFF?text=Beach+1"
+                    alt="Beach Hut Image"
+                  />
+                  <img
+                    src="https://via.placeholder.com/300x200/865A4A/FFFFFF?text=Beach+2"
+                    alt="Beach Hut Image"
+                  />
+                  <img
+                    src="https://via.placeholder.com/300x200/5A4A86/FFFFFF?text=Beach+3"
+                    alt="Beach Hut Image"
+                  />
+                  <img
+                    src="https://via.placeholder.com/300x200/4A6D86/FFFFFF?text=Beach+4"
+                    alt="Beach Hut Image"
+                  />
+                </div>
+                <div
+                  class="fgh-image-nav xcv-left"
+                  onclick="navigateImage(2, 'prev')"
+                >
+                  &lt;
+                </div>
+                <div
+                  class="fgh-image-nav xcv-right"
+                  onclick="navigateImage(2, 'next')"
+                >
+                  &gt;
+                </div>
+              </div>
+              <div class="poj-content">
+                <div class="iuy-rating-container">
+                  <span class="ghj-rating-badge">10</span>
+                  <span class="xsw-rating-text">Exceptional</span>
+                  <span class="qaz-reviews">(1 review)</span>
+                </div>
+                <h3 class="wsx-title">Basho Beach Huts & Cafe</h3>
+                <p class="edc-location">Arambol</p>
+                <div class="tgb-price-container">
+                  <span class="yhn-price">₹3,420</span>
+                  <span class="ujm-per-night">per night</span>
+                </div>
+                <p class="ikl-total">₹7,661 total</p>
+                <p class="olp-includes">includes taxes & fees</p>
+                <div class="tyu-badge pli-off">10% off</div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="mns-card">
+              <div class="rty-image-carousel">
+                <div class="bnm-images-wrapper" id="imageWrapper3">
+                  <img
+                    src="https://via.placeholder.com/300x200/3A9D78/FFFFFF?text=Cottage+1"
+                    alt="Cottage Image"
+                  />
+                  <img
+                    src="https://via.placeholder.com/300x200/9D783A/FFFFFF?text=Cottage+2"
+                    alt="Cottage Image"
+                  />
+                  <img
+                    src="https://via.placeholder.com/300x200/783A9D/FFFFFF?text=Cottage+3"
+                    alt="Cottage Image"
+                  />
+                  <img
+                    src="https://via.placeholder.com/300x200/3A649D/FFFFFF?text=Cottage+4"
+                    alt="Cottage Image"
+                  />
+                </div>
+                <div
+                  class="fgh-image-nav xcv-left"
+                  onclick="navigateImage(3, 'prev')"
+                >
+                  &lt;
+                </div>
+                <div
+                  class="fgh-image-nav xcv-right"
+                  onclick="navigateImage(3, 'next')"
+                >
+                  &gt;
+                </div>
+              </div>
+              <div class="poj-content">
+                <div class="iuy-rating-container">
+                  <span class="ghj-rating-badge">10</span>
+                  <span class="xsw-rating-text">Exceptional</span>
+                  <span class="qaz-reviews">(1 review)</span>
+                </div>
+                <h3 class="wsx-title">Amā Stays & Trails Puttabong Cottage</h3>
+                <p class="edc-location">Darjeeling</p>
+                <div class="tgb-price-container">
+                  <span class="yhn-price">₹1,00,000</span>
+                  <span class="ujm-per-night">per night</span>
+                </div>
+                <p class="ikl-total">₹2,36,000 total</p>
+                <p class="olp-includes">includes taxes & fees</p>
+              </div>
+            </div>
+
+            <!-- Card 5 (Additional card to demonstrate scrolling) -->
+            <div class="mns-card">
+              <div class="rty-image-carousel">
+                <div class="bnm-images-wrapper" id="imageWrapper4">
+                  <img
+                    src="https://via.placeholder.com/300x200/4F7942/FFFFFF?text=Villa+1"
+                    alt="Villa Image"
+                  />
+                  <img
+                    src="https://via.placeholder.com/300x200/794F42/FFFFFF?text=Villa+2"
+                    alt="Villa Image"
+                  />
+                  <img
+                    src="https://via.placeholder.com/300x200/42497F/FFFFFF?text=Villa+3"
+                    alt="Villa Image"
+                  />
+                  <img
+                    src="https://via.placeholder.com/300x200/7F4279/FFFFFF?text=Villa+4"
+                    alt="Villa Image"
+                  />
+                </div>
+                <div
+                  class="fgh-image-nav xcv-left"
+                  onclick="navigateImage(4, 'prev')"
+                >
+                  &lt;
+                </div>
+                <div
+                  class="fgh-image-nav xcv-right"
+                  onclick="navigateImage(4, 'next')"
+                >
+                  &gt;
+                </div>
+              </div>
+              <div class="poj-content">
+                <div class="iuy-rating-container">
+                  <span class="ghj-rating-badge">10</span>
+                  <span class="xsw-rating-text">Exceptional</span>
+                  <span class="qaz-reviews">(3 reviews)</span>
+                </div>
+                <h3 class="wsx-title">amā Stays & Trails Luxury Villa</h3>
+                <p class="edc-location">Thiruvananthapuram</p>
+                <div class="tgb-price-container">
+                  <span class="yhn-price">₹29,500</span>
+                  <span class="ujm-per-night">per night</span>
+                </div>
+                <p class="ikl-total">₹68,450 total</p>
+                <p class="olp-includes">includes taxes & fees</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="hjk-outer-nav zpq-right" onclick="scrollCards('right')">
+            &gt;
+          </div>
+        </div>
+      </div>
+
       <script src="/js/hotels/index.js"></script>
     </div>
+    <footer class="footer-section">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h2>Chasing Horizons</h2>
+          <p>
+            Explore the beauty of India with us. Your journey to breathtaking
+            destinations starts here!
+          </p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Tours</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"
+              ><img src="/images/hotels/path-to-youtube-icon.png" alt="YouTube"
+            /></a>
+            <a href="#"
+              ><img
+                src="/images/hotels/path-to-instagram-icon.png"
+                alt="Instagram"
+            /></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <p>&copy; 2023 Chasing Horizons. All Rights Reserved.</p>
+      </div>
+    </footer>
   </body>
 </html>
