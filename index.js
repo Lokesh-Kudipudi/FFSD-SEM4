@@ -15,7 +15,7 @@ app.use(express.json());
 
 // Define the root route
 app.get("/", (req, res) => {
-  res.render("index", { data: { hobbies: ["Test", "Test1"] } });
+  res.render("./login/index", { data: { hobbies: ["Test", "Test1"] } });
 });
 
 // Use the tours router for routes starting with "/tours"
