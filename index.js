@@ -17,7 +17,7 @@ app.use(morgan("tiny"));
 
 // Define the root route
 app.get("/", (req, res) => {
-  res.render("./login/index", { data: { hobbies: ["Test", "Test1"] } });
+  res.render("index", { data: { hobbies: ["Test", "Test1"] } });
 });
 
 // Use the tours router for routes starting with "/tours"
