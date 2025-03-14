@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link rel="icon" href="data:," />
+    <link
+      href="/css/dashboard/user/styles.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/css/dashboard/user/navBar.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/css/dashboard/user/sidebar.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/css/dashboard/user/myTrips.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <div class="header-content">
+          <div class="logo">
+            <i class="fas fa-globe"></i>
+            <h1>Chasing Horizons</h1>
+          </div>
+          <div class="user-actions">
+            <div class="notification-bell">
+              <i class="fas fa-bell"></i>
+              <span class="notification-count">3</span>
+            </div>
+            <div class="user-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="main-content">
+        <nav class="sidebar">
+          <a
+            href="/dashboard"
+            class="nav-item"
+            data-tab="overview"
+          >
+            <i class="fas fa-globe"></i>
+            <span>Overview</span>
+          </a>
+          <a
+            href="/dashboard/myTrips"
+            class="nav-item active"
+            data-tab="trips"
+          >
+            <i class="fas fa-calendar"></i>
+            <span>My Trips</span>
+          </a>
+          <a
+            href="/dashboard/settings"
+            class="nav-item"
+            data-tab="settings"
+          >
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </nav>
+
+        <main class="dashboard-myTrips">
+          <div class="dashboard-header">
+            <h1 class="dashboard-title">My Trips</h1>
+            <button class="btn btn-primary">
+              <span>+</span> Plan New Trip
+            </button>
+          </div>
+
+          <div class="trip-filters">
+            <div class="filter-group">
+              <span class="filter-label">Filter by:</span>
+              <select class="filter-select">
+                <option>All Trips</option>
+                <option>Upcoming</option>
+                <option>Completed</option>
+                <option>Canceled</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <select class="filter-select">
+                <option>Sort: Date (Newest)</option>
+                <option>Sort: Date (Oldest)</option>
+                <option>Sort: Duration</option>
+                <option>Sort: Destination</option>
+              </select>
+            </div>
+
+            <div class="filter-spacer"></div>
+
+            <div class="filter-group">
+              <input
+                type="text"
+                placeholder="Search trips..."
+                class="filter-search"
+              />
+            </div>
+          </div>
+
+          <div class="trips-section">
+            <div class="section-header">
+              <h2 class="section-title">Upcoming Trips</h2>
+            </div>
+
+            <div class="trips-grid">
+              <!-- Trip Card 1 -->
+              <div class="trip-card">
+                <div style="position: relative">
+                  <img
+                    src="/api/placeholder/400/320"
+                    alt="Bali"
+                    class="trip-image"
+                  />
+                  <div class="trip-status status-upcoming">
+                    Upcoming
+                  </div>
+                </div>
+                <div class="trip-content">
+                  <div class="trip-date">
+                    <span>📅</span> May 15 - May 28, 2025
+                  </div>
+                  <h3 class="trip-title">
+                    Bali Paradise Getaway
+                  </h3>
+                  <div class="trip-destination">
+                    <span>📍</span> Bali, Indonesia
+                  </div>
+
+                  <div class="trip-stats">
+                    <div class="stat">
+                      <div class="stat-value">14</div>
+                      <div class="stat-label">Days</div>
+                    </div>
+                    <div class="stat">
+                      <div class="stat-value">4</div>
+                      <div class="stat-label">Destinations</div>
+                    </div>
+                    <div class="stat">
+                      <div class="stat-value">3</div>
+                      <div class="stat-label">Activities</div>
+                    </div>
+                  </div>
+
+                  <div class="trip-actions">
+                    <button class="trip-action-btn btn-outline">
+                      View Details
+                    </button>
+                    <button class="trip-action-btn btn-primary">
+                      Manage
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Trip Card 2 -->
+              <div class="trip-card">
+                <div style="position: relative">
+                  <img
+                    src="/api/placeholder/400/320"
+                    alt="Tokyo"
+                    class="trip-image"
+                  />
+                  <div class="trip-status status-upcoming">
+                    Upcoming
+                  </div>
+                </div>
+                <div class="trip-content">
+                  <div class="trip-date">
+                    <span>📅</span> July 10 - July 17, 2025
+                  </div>
+                  <h3 class="trip-title">
+                    Tokyo Tech Adventure
+                  </h3>
+                  <div class="trip-destination">
+                    <span>📍</span> Tokyo, Japan
+                  </div>
+
+                  <div class="trip-stats">
+                    <div class="stat">
+                      <div class="stat-value">8</div>
+                      <div class="stat-label">Days</div>
+                    </div>
+                    <div class="stat">
+                      <div class="stat-value">1</div>
+                      <div class="stat-label">Destinations</div>
+                    </div>
+                    <div class="stat">
+                      <div class="stat-value">5</div>
+                      <div class="stat-label">Activities</div>
+                    </div>
+                  </div>
+
+                  <div class="trip-actions">
+                    <button class="trip-action-btn btn-outline">
+                      View Details
+                    </button>
+                    <button class="trip-action-btn btn-primary">
+                      Manage
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Trip Card 3 -->
+              <div class="trip-card">
+                <div style="position: relative">
+                  <img
+                    src="/api/placeholder/400/320"
+                    alt="Paris"
+                    class="trip-image"
+                  />
+                  <div class="trip-status status-upcoming">
+                    Upcoming
+                  </div>
+                </div>
+                <div class="trip-content">
+                  <div class="trip-date">
+                    <span>📅</span> Sept 5 - Sept 12, 2025
+                  </div>
+                  <h3 class="trip-title">
+                    Romantic Paris Escape
+                  </h3>
+                  <div class="trip-destination">
+                    <span>📍</span> Paris, France
+                  </div>
+
+                  <div class="trip-stats">
+                    <div class="stat">
+                      <div class="stat-value">7</div>
+                      <div class="stat-label">Days</div>
+                    </div>
+                    <div class="stat">
+                      <div class="stat-value">1</div>
+                      <div class="stat-label">Destinations</div>
+                    </div>
+                    <div class="stat">
+                      <div class="stat-value">6</div>
+                      <div class="stat-label">Activities</div>
+                    </div>
+                  </div>
+
+                  <div class="trip-actions">
+                    <button class="trip-action-btn btn-outline">
+                      View Details
+                    </button>
+                    <button class="trip-action-btn btn-primary">
+                      Manage
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="past-trips-section">
+            <div class="section-header">
+              <h2 class="section-title">Past Trips</h2>
+              <a href="#" class="section-link">View All</a>
+            </div>
+
+            <div class="trips-grid">
+              <!-- Trip Card 4 -->
+              <div class="trip-card">
+                <div style="position: relative">
+                  <img
+                    src="/api/placeholder/400/320"
+                    alt="New York"
+                    class="trip-image"
+                  />
+                  <div class="trip-status status-completed">
+                    Completed
+                  </div>
+                </div>
+                <div class="trip-content">
+                  <div class="trip-date">
+                    <span>📅</span> Jan 5 - Jan 10, 2025
+                  </div>
+                  <h3 class="trip-title">New York City Tour</h3>
+                  <div class="trip-destination">
+                    <span>📍</span> New York, USA
+                  </div>
+
+                  <div class="trip-stats">
+                    <div class="stat">
+                      <div class="stat-value">5</div>
+                      <div class="stat-label">Days</div>
+                    </div>
+                    <div class="stat">
+                      <div class="stat-value">1</div>
+                      <div class="stat-label">Destinations</div>
+                    </div>
+                    <div class="stat">
+                      <div class="stat-value">8</div>
+                      <div class="stat-label">Activities</div>
+                    </div>
+                  </div>
+
+                  <div class="trip-actions">
+                    <button class="trip-action-btn btn-outline">
+                      View Photos
+                    </button>
+                    <button class="trip-action-btn btn-outline">
+                      Add Review
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Trip Card 5 -->
+              <div class="trip-card">
+                <div style="position: relative">
+                  <img
+                    src="/api/placeholder/400/320"
+                    alt="Cancun"
+                    class="trip-image"
+                  />
+                  <div class="trip-status status-completed">
+                    Completed
+                  </div>
+                </div>
+                <div class="trip-content">
+                  <div class="trip-date">
+                    <span>📅</span> Dec 20 - Dec 27, 2024
+                  </div>
+                  <h3 class="trip-title">
+                    Cancun Beach Vacation
+                  </h3>
+                  <div class="trip-destination">
+                    <span>📍</span> Cancun, Mexico
+                  </div>
+
+                  <div class="trip-stats">
+                    <div class="stat">
+                      <div class="stat-value">7</div>
+                      <div class="stat-label">Days</div>
+                    </div>
+                    <div class="stat">
+                      <div class="stat-value">1</div>
+                      <div class="stat-label">Destinations</div>
+                    </div>
+                    <div class="stat">
+                      <div class="stat-value">4</div>
+                      <div class="stat-label">Activities</div>
+                    </div>
+                  </div>
+
+                  <div class="trip-actions">
+                    <button class="trip-action-btn btn-outline">
+                      View Photos
+                    </button>
+                    <button class="trip-action-btn btn-outline">
+                      Add Review
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

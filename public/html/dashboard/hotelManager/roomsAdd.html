@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link rel="icon" href="data:," />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="/css/dashboard/hotelManager/roomsAdd.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/dashboard/hotelManager/sidebar.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/dashboard/hotelManager/styles.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script
+      defer
+      src="/js/dashboard/hotelManager/sidebar.js"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar collapsed" id="sidebar">
+        <div class="logo-title">
+          <span>CHASING HORIZONS</span>
+        </div>
+        <div class="admin">
+          <div class="profile">
+            <span class="admin-photo">
+              <img
+                src="/images/logo.png"
+                alt="photo"
+                width="18rem"
+                height="18rem"
+              />
+            </span>
+          </div>
+          <h5>Admin</h5>
+          <h5>admin@163.com</h5>
+          <div class="admin-icons">
+            <span class="material-symbols-outlined">person</span>
+            <span class="material-symbols-outlined"
+              >settings</span
+            >
+            <span class="material-symbols-outlined">logout</span>
+          </div>
+        </div>
+        <hr />
+        <br />
+        <h5 class="dashboard-heading">DASHBOARDS</h5>
+        <div class="sidenav">
+          <div class="link">
+            <a href="/dashboard/hotelManager">
+              <span class="material-symbols-outlined icon"
+                >dashboard</span
+              >
+              Dashboard</a
+            >
+          </div>
+
+          <div class="link">
+            <a href="/dashboard/hotelManager/booking">
+              <span class="material-symbols-outlined icon"
+                >event</span
+              >
+              Bookings</a
+            >
+          </div>
+
+          <div class="link active">
+            <a href="/dashboard/hotelManager/rooms">
+              <span class="material-symbols-outlined icon"
+                >meeting_room</span
+              >
+              Rooms</a
+            >
+            <button class="dropdown-btn">
+              <span class="material-symbols-outlined"
+                >keyboard_arrow_down</span
+              >
+            </button>
+          </div>
+          <div class="dropdown-container">
+            <a href="/dashboard/hotelManager/rooms">All Rooms</a>
+            <a href="/dashboard/hotelManager/addRoom"
+              >Add Rooms</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="main">
+        <div class="toggle-btn" id="toggle-sidebar">
+          <button class="toggle-btn" style="color: black">
+            ☰
+          </button>
+        </div>
+        <h1 class="add-room-heading">Add Room</h1>
+        <div class="rooms-add-form-container">
+          <form id="addRoomForm">
+            <div class="form-group">
+              <label>Room No*</label>
+              <input type="text" required />
+            </div>
+            <div class="form-group">
+              <label>AC/Non AC*</label>
+              <select required>
+                <option value="">Select</option>
+                <option value="AC">AC</option>
+                <option value="Non AC">Non AC</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Capacity*</label>
+              <input type="number" required />
+            </div>
+            <div class="form-group">
+              <label>Rent</label>
+              <input type="number" />
+            </div>
+            <div
+              class="form-group file-upload"
+              onclick="document.getElementById('fileInput').click()"
+            >
+              <input type="file" id="fileInput" hidden />
+              <p>Choose file or drag and drop file here</p>
+            </div>
+            <div class="form-group">
+              <label>Note</label>
+              <textarea rows="3"></textarea>
+            </div>
+            <div class="buttons">
+              <button type="submit" class="btn btn-submit">
+                Submit
+              </button>
+              <button
+                type="button"
+                class="btn btn-cancel"
+                onclick="resetForm()"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

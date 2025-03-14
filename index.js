@@ -1,9 +1,10 @@
 const express = require("express");
 const path = require("path");
 const app = express();
+const morgan = require("morgan");
 const toursRouter = require("./routes/toursRouter");
 const hotelsRouter = require("./routes/hotelsRouter");
-const morgan = require("morgan");
+const dashboardRouter = require("./routes/dashboardRouter");
 
 // Set EJS as the templating engine
 app.set("view engine", "ejs");
@@ -17,7 +18,15 @@ app.use(morgan("tiny"));
 
 // Define the root route
 app.get("/", (req, res) => {
-  res.render("./login/index", { data: { hobbies: ["Test", "Test1"] } });
+  res.render("index");
+});
+
+app.get("/signUp", (req, res) => {
+  res.sendFile("/html/auth/signUp.html", { root: "public" });
+});
+
+app.get("/signIn", (req, res) => {
+  res.sendFile("/html/auth/signIn.html", { root: "public" });
 });
 
 // Use the tours router for routes starting with "/tours"
@@ -25,6 +34,9 @@ app.use("/tours", toursRouter);
 
 // Use the hotels router for routes starting with "/hotels"
 app.use("/hotels", hotelsRouter);
+
+// Use the dashboard router for routes with "dashboard"
+app.use("/dashboard", dashboardRouter);
 
 const port = 5500;
 
