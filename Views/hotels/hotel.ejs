@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JW Marriott Mumbai Juhu</title>
+    <link rel="stylesheet" href="/css/hotels/hotel.css">
+    <script src="https://kit.fontawesome.com/YOUR-KIT-ID.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">
+        <!-- <img src="cropped_image.png" alt="Chasing Horizons Logo" /> -->
+        <span><%=hotel.id%></span>
+    </div>
+    <div class="nav-links">
+        <a href="#">List your property</a>
+        <a href="#">Support</a>
+        <a href="#">Trips</a>
+        <a href="#">Sign in</a>
+    </div>
+</nav>
+
+<!-- Search Section -->
+<div class="search-section">
+    <h1 class="search-title">Where to?</h1>
+    <div class="search-box">
+        <div class="input-group">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+                <label>Where to?</label>
+                <input type="text" placeholder="Mumbai, Maharashtra, India" />
+            </div>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-calendar-alt"></i>
+            <div>
+                <label>Dates</label>
+                <input type="text" placeholder="17 Feb - 3 Mar" />
+            </div>
+        </div>
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <div>
+                <label>Travellers</label>
+                <input type="text" placeholder="2 travellers, 1 room" />
+            </div>
+        </div>
+        <button class="search-button">Search</button>
+    </div>
+</div>
+
+<!-- Membership Banner -->
+<div class="membership-banner">
+    <span>Get a reward night when you stay for 10 nights</span>
+    <button class="sign-in-button">Sign in now</button>
+</div>
+
+<!-- Image Grid -->
+<div class="image-grid">
+    <!-- Large Main Image -->
+    <div class="main-image">
+        <img src="pexels-pixabay-164595.jpg" alt="Main hotel exterior view">
+    </div>
+
+    <!-- Smaller Grid Images -->
+    <div class="small-image">
+        <img src="pexels-apasaric-2041556.jpg" alt="Room view with sea">
+    </div>
+    <div class="small-image">
+        <img src="pexels-asman-chema-91897-594077.jpg" alt="Room interior with decor">
+    </div>
+    <div class="small-image">
+        <img src="pexels-julieaagaard-2096983.jpg" alt="Beach view at sunset">
+    </div>
+    <div class="small-image">
+        <img src="pexels-pixabay-161758.jpg" alt="Hotel lobby view">
+    </div>
+</div>
+
+<!-- Section Navbar -->
+<div class="section-navbar">
+    <a href="#" class="active">Overview</a>
+    <a href="#hotel-details">About</a>
+    <a href="#filters">Rooms</a>
+    <a href="#accessibility-section">Accessibility</a>
+    <a href="#fees-policies-section">Policies</a>
+    <div class="underline"></div>
+</div>
+
+<!-- Hotel Details Section -->
+<div class="container">
+    <div class="hotel-details">
+        <h1><%=hotel.title%></h1>
+        <div class="rating">
+            <% for(let i = 1 ; i <= hotel.rating ; i++ ) { %>
+                ⭐
+            <% }%>
+        </div>
+        <p class="reserve-now">✔️ <span>Reserve now, pay later</span></p>
+        
+        <!-- <div class="review-box">
+            <span class="rating-score">8.8</span>
+            <div>
+                <h2>Excellent</h2>
+                <p><strong>Guests liked:</strong> Friendly staff</p>
+                <a href="#">See all 884 reviews ></a>
+            </div>
+        </div> -->
+
+        <h2>About this property</h2>
+        <p><%=hotel.description%></p>
+
+        <div class="amenities">
+            <% hotel.amenities.forEach(amenity => { %>
+                <div class="amenity"> <%= amenity %>  </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+<hr class="section-divider">
+
+<header>
+    <h1>Choose your room</h1>
+    <div class="filters">
+        <input type="date" id="check-in" placeholder="Check-in">
+        <input type="date" id="check-out" placeholder="Check-out">
+        <select id="travellers">
+            <option>1 room, 2 travellers</option>
+        </select>
+    </div>
+</header>
+
+<div class="room-container">
+    <% hotel.roomType.forEach(room => { %>
+        <div class="room-card">
+            <img src="<%= room['image'] %>" alt="Room 3">
+            <h2> <%= room['title'] %> </h2>
+            <p class="rating">
+                <% for(let i = 1 ; i <= room['rating'] ; i++ ) { %>
+                    ⭐
+                <% }%>
+
+            </p>
+            <ul>
+                <% room['features'].forEach( feature => { %>
+                <li> <%= feature %> </li>
+                <% });%>            </ul>
+            <div class="price">
+                <p><%= room['price'] %> INR</p>
+            </div>
+            <button class="reserve-btn">Reserve</button>
+        </div>
+    <% }); %>
+</div>
+
+<hr class="section-divider">
+
+
+<!-- Accessibility Section -->
+<div class="accessibility-section">
+    <h2>Accessibility</h2>
+    <p>If you have requests for specific accessibility needs, please contact the property using the information on the reservation confirmation received after booking.</p>
+    
+    <div class="accessibility-columns">
+        <% for(let x in hotel.accessibility){ %>
+            <div class="accessibility-category">
+                <h3> <%= x %> </h3>
+                <ul>
+                    <% hotel.accessibility[x].forEach(y => { %>
+                        <li> <%= y %> </li>
+                    <% }); %> 
+                </ul>
+            </div>
+            <% }; %>
+    </div>
+</div>
+
+<hr class="section-divider">
+
+
+
+    <!-- Fees & Policies Section -->
+<div class="fees-policies-section">
+    <h2>Fees & policies</h2>
+
+    <% for(let x in hotel.extras){%>
+        <div class="policy-category">
+            <h3> <%= x %> </h3>
+            <ul>
+                <% hotel.extras[x].forEach(y => { %>
+                    <li> <%= y %> </li>
+                <% }); %> 
+            </ul>
+        </div>
+    <% }; %>
+
+    <!-- Policies -->
+        <div class="policy-category">
+        <h3>Policies</h3>
+            <% hotel.policies.forEach(x =>{ %>
+                <p> <%=x%> </p>
+            <% }); %>
+        </div>
+       </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+
+        <%hotel.faq.forEach(x=> {%>
+        <div class="faq-item">
+            <button class="faq-question"><%= x["question"] %></button>
+            <div class="faq-answer">
+                <p><%= x["answer"] %></p>
+            </div>
+        </div>
+        <% } ); %>
+    </div>
+</div>
+<script src="/js/hotels/hotel.js"></script>
+</body>
+</html>
