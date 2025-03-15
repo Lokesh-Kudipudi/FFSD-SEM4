@@ -1,25 +1,35 @@
 let currIndex = 0;
 const totalCards = document.querySelectorAll(".card1").length;
 const visibleCards = 5;
-const cardWidth = document.querySelector(".card1").offsetWidth + 10; // card width + margin
+const cardWidth =
+  document.querySelector(".card1").offsetWidth + 10; // card width + margin
 const container = document.getElementById("card-container");
 
-document.getElementById("nextBtn").addEventListener("click", () => {
-  if (currIndex < totalCards - visibleCards) {
-    currIndex++;
-    container.style.transform = `translateX(-${currIndex * cardWidth}px)`;
-  }
-});
+document
+  .getElementById("nextBtn")
+  .addEventListener("click", () => {
+    if (currIndex < totalCards - visibleCards) {
+      currIndex++;
+      container.style.transform = `translateX(-${
+        currIndex * cardWidth
+      }px)`;
+    }
+  });
 
-document.getElementById("prevBtn").addEventListener("click", () => {
-  if (currIndex > 0) {
-    currIndex--;
-    container.style.transform = `translateX(-${currIndex * cardWidth}px)`;
-  }
-});
+document
+  .getElementById("prevBtn")
+  .addEventListener("click", () => {
+    if (currIndex > 0) {
+      currIndex--;
+      container.style.transform = `translateX(-${
+        currIndex * cardWidth
+      }px)`;
+    }
+  });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const hotelCardsContainer = document.querySelector(".hotel-cards");
+  const hotelCardsContainer =
+    document.querySelector(".hotel-cards");
   const leftArrow = document.getElementById("leftArrow");
   const rightArrow = document.getElementById("rightArrow");
 
@@ -147,7 +157,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   rightNavBtn.addEventListener("click", function () {
-    if (currentIndex < swipeCards.children.length - cardsPerPage) {
+    if (
+      currentIndex <
+      swipeCards.children.length - cardsPerPage
+    ) {
       currentIndex += cardsPerPage;
       updateSwipe();
     }
@@ -194,10 +207,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // Add this to your JS file or in a script tag
 function setupImageCarousels() {
-  const carousels = document.querySelectorAll(".card-img-wrapper");
+  const carousels = document.querySelectorAll(
+    ".card-img-wrapper"
+  );
 
   carousels.forEach((carousel) => {
-    const images = carousel.querySelectorAll(".image-carousel img");
+    const images = carousel.querySelectorAll(
+      ".image-carousel img"
+    );
     const leftBtn = carousel.querySelector(".left-img-nav");
     const rightBtn = carousel.querySelector(".right-img-nav");
     let currentImageIndex = 0;
@@ -222,20 +239,26 @@ function setupImageCarousels() {
       e.stopPropagation();
 
       images[currentImageIndex].style.display = "none";
-      currentImageIndex = (currentImageIndex + 1) % images.length;
+      currentImageIndex =
+        (currentImageIndex + 1) % images.length;
       images[currentImageIndex].style.display = "block";
     });
   });
 }
 
 // Run the function when the document is loaded
-document.addEventListener("DOMContentLoaded", setupImageCarousels);
+document.addEventListener(
+  "DOMContentLoaded",
+  setupImageCarousels
+);
 
 const currentImageIndices = [0, 0, 0, 0, 0];
 
 // Navigate image within a card
 function navigateImage(cardIndex, direction) {
-  const wrapper = document.getElementById(`imageWrapper${cardIndex}`);
+  const wrapper = document.getElementById(
+    `imageWrapper${cardIndex}`
+  );
   const images = wrapper.querySelectorAll("img");
 
   if (direction === "next") {
@@ -243,7 +266,8 @@ function navigateImage(cardIndex, direction) {
       (currentImageIndices[cardIndex] + 1) % images.length;
   } else {
     currentImageIndices[cardIndex] =
-      (currentImageIndices[cardIndex] - 1 + images.length) % images.length;
+      (currentImageIndices[cardIndex] - 1 + images.length) %
+      images.length;
   }
 
   wrapper.style.transform = `translateX(-${
@@ -254,7 +278,8 @@ function navigateImage(cardIndex, direction) {
 // Scroll cards carousel
 function scrollCards(direction) {
   const container = document.getElementById("cardsContainer");
-  const cardWidth = document.querySelector(".mns-card").offsetWidth;
+  const cardWidth =
+    document.querySelector(".mns-card").offsetWidth;
   const scrollAmount = cardWidth + 20; // card width + gap
 
   if (direction === "right") {
@@ -285,22 +310,35 @@ cardsContainer.addEventListener("touchend", () => {
 });
 
 // Touch swipe functionality for individual image carousels
-document.querySelectorAll(".rty-image-carousel").forEach((carousel, index) => {
-  let touchStartX, touchEndX;
+document
+  .querySelectorAll(".rty-image-carousel")
+  .forEach((carousel, index) => {
+    let touchStartX, touchEndX;
 
-  carousel.addEventListener("touchstart", (e) => {
-    touchStartX = e.touches[0].clientX;
+    carousel.addEventListener("touchstart", (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener("touchend", (e) => {
+      touchEndX = e.changedTouches[0].clientX;
+
+      if (touchStartX - touchEndX > 50) {
+        // Swiped left, show next image
+        navigateImage(index, "next");
+      } else if (touchEndX - touchStartX > 50) {
+        // Swiped right, show previous image
+        navigateImage(index, "prev");
+      }
+    });
   });
 
-  carousel.addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].clientX;
+// Search Handler
 
-    if (touchStartX - touchEndX > 50) {
-      // Swiped left, show next image
-      navigateImage(index, "next");
-    } else if (touchEndX - touchStartX > 50) {
-      // Swiped right, show previous image
-      navigateImage(index, "prev");
-    }
-  });
-});
+function handleSearch() {
+  const input = document.querySelector("#location");
+  if (input.value.length == 0) {
+    window.location.href = `/hotels/search`;
+  } else {
+    window.location.href = `/hotels/search?q=${input.value}`;
+  }
+}

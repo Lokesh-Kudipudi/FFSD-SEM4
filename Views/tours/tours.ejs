@@ -9,8 +9,9 @@
     <link rel="icon" href="data:," />
     <link href="/css/tours/tours.css" rel="stylesheet" />
     <link href="/css/tours/filter.css" rel="stylesheet" />
-    <link href="/css/tours/header.css" rel="stylesheet" />
-    <link href="/css/tours/toursFooter.css" rel="stylesheet" />
+    <link href="/css/header.css" rel="stylesheet" />
+    <link href="/css/footer.css" rel="stylesheet" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -19,16 +20,29 @@
   </head>
 
   <body>
-    <header class="headerContainer">
+    <header
+      class="headerContainer"
+      style="width: 90%; margin: 0 auto"
+    >
       <div class="headerDiv">
-        <img class="headerLogo" src="/images/tours/logo.png" alt="logo">
+        <img
+          onclick="window.location.href = '/'"
+          class="headerLogo"
+          src="/images/tours/logo.png"
+          alt="logo"
+        />
         <div class="headerLinkContainer">
-          <a class="headerLink" href="/tours" >Tours</a>
-          <a class="headerLink" href="#">Hotels</a>
+          <a class="headerLink" href="/tours">Tours</a>
+          <a class="headerLink" href="/Hotels">Hotels</a>
           <a class="headerLink" href="#">Contact Us</a>
         </div>
         <div class="headerSignInContainer">
-          <button class="headerSignInButton">Sign In</button>
+          <button
+            class="headerSignInButton"
+            onclick="window.location.href = '/'"
+          >
+            Sign In
+          </button>
         </div>
       </div>
     </header>
@@ -44,10 +58,7 @@
             placeholder="Where are you going?"
           />
         </div>
-        <button
-          class="search-button"
-          onclick="handleSearch()"
-        >
+        <button class="search-button" onclick="handleSearch()">
           Search
         </button>
       </div>
@@ -78,7 +89,7 @@
               ><input type="checkbox" /> Jammu & Kashmir</label
             >
           </div>
-        </div> -->   
+        </div> -->
         <div class="dropdown">
           <div class="dropdown-header dropdown-header-rating">
             Rating <span id="arrowRating">&#9650;</span>
@@ -88,23 +99,53 @@
             id="dropdownContentRating"
           >
             <label>
-              <input type="checkbox" value="5" <%= rating?.includes(`5`) ? `checked` : `` %> />
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <input
+                class="rating-input"
+                type="checkbox"
+                value="5"
+              />
+              <i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i>
             </label>
             <label>
-              <input type="checkbox" value="4" <%= rating?.includes(`4`) ? `checked` : `` %> />
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <input
+                class="rating-input"
+                type="checkbox"
+                value="4"
+              />
+              <i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i>
             </label>
             <label>
-              <input type="checkbox" value="3" <%= rating?.includes(`3`) ? `checked` : `` %> />
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <input
+                class="rating-input"
+                type="checkbox"
+                value="3"
+              />
+              <i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i>
             </label>
             <label>
-              <input type="checkbox" value="2" <%= rating?.includes(`2`) ? `checked` : `` %> />
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <input
+                class="rating-input"
+                type="checkbox"
+                value="2"
+              />
+              <i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i>
             </label>
             <label>
-              <input type="checkbox" value="1" <%= rating?.includes(`1`) ? `checked` : `` %> />
+              <input
+                class="rating-input"
+                type="checkbox"
+                value="1"
+              />
               <i class="fa-solid fa-star"></i>
             </label>
           </div>
@@ -130,66 +171,71 @@
           </div>
         </div> -->
 
-        <% tours.forEach(tour => {  %>
+          <% tours.forEach(tour => { %>
           <div class="card">
-            <div style="position: relative;">
+            <div style="position: relative">
               <img
-              src="<%= tour.mainImage %>"
-              alt="Tour Image"
+                src="<%= tour.mainImage %>"
+                alt="Tour Image"
               />
               <% if(tour.tag) { %>
-                <div class="featured"><%= tour.tag %></div>
+              <div class="featured"><%= tour.tag %></div>
               <% }; %>
             </div>
 
             <div class="card-content">
-              <h3 onclick="handleTourClick(`<%=tour.id%>`)" > <%= tour.title %> </h3>
+              <h3 onclick="handleTourClick(`<%=tour.id%>`)">
+                <%= tour.title %>
+              </h3>
               <div class="rating">
                 <% for(let i = 0; i < tour.rating; i++) { %>
-                  <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
                 <% } %>
               </div>
-              <div class="price"> <%= tour.price.amount %> <%= tour.price.currency %></div>
-              <div class="duration"> <%= tour.duration %> </div>
+              <div class="price">
+                <%= tour.price.amount %> <%= tour.price.currency
+                %>
+              </div>
+              <div class="duration"><%= tour.duration %></div>
             </div>
           </div>
-        <% });%>
+          <% });%>
         </div>
         <div class="paginationButtonsContainer">
           <div class="buttonLeft">
             <% if(displayButton.displayLeftButton) { %>
-              <svg
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
               class="size-6 button"
               width="50"
-              >
+            >
               <path
-              fill-rule="evenodd"
-              d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-4.28 9.22a.75.75 0 0 0 0 1.06l3 3a.75.75 0 1 0 1.06-1.06l-1.72-1.72h5.69a.75.75 0 0 0 0-1.5h-5.69l1.72-1.72a.75.75 0 0 0-1.06-1.06l-3 3Z"
-              clip-rule="evenodd"
+                fill-rule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-4.28 9.22a.75.75 0 0 0 0 1.06l3 3a.75.75 0 1 0 1.06-1.06l-1.72-1.72h5.69a.75.75 0 0 0 0-1.5h-5.69l1.72-1.72a.75.75 0 0 0-1.06-1.06l-3 3Z"
+                clip-rule="evenodd"
               />
             </svg>
             <% }; %>
           </div>
           <div class="buttonRight">
             <% if(displayButton.displayRightButton) { %>
-              <svg
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
               class="size-6 button"
               width="50"
-              >
-            <path
-            fill-rule="evenodd"
-            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z"
-            clip-rule="evenodd"
-            />
-          </svg>
-          <% }; %>
-        </div>
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <% }; %>
+          </div>
         </div>
       </div>
     </div>
@@ -207,9 +253,9 @@
         <div class="footer-links">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="/tours">Home</a></li>
-            <li><a href="/tours/search">Tours</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/tours">Tours</a></li>
+            <li><a href="/hotels">Hotels</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
         </div>
@@ -218,13 +264,22 @@
           <h4>Follow Us</h4>
           <div class="social-icons">
             <a href="https://www.youtube.com" target="_blank">
-              <i class="fa-brands fa-youtube" style="font-size: 40px;"></i>
+              <i
+                class="fa-brands fa-youtube"
+                style="font-size: 40px"
+              ></i>
             </a>
             <a href="https://www.instagram.com" target="_blank">
-              <i class="fa-brands fa-square-instagram" style="font-size: 40px;"></i>
+              <i
+                class="fa-brands fa-square-instagram"
+                style="font-size: 40px"
+              ></i>
             </a>
-            <a href="https://x.com/" target="_blank" >
-              <i class="fa-brands fa-square-x-twitter" style="font-size: 40px;"></i>
+            <a href="https://x.com/" target="_blank">
+              <i
+                class="fa-brands fa-square-x-twitter"
+                style="font-size: 40px"
+              ></i>
             </a>
           </div>
         </div>

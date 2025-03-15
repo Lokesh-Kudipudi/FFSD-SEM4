@@ -97,6 +97,8 @@ ratingHeader.addEventListener("click", () => {
 //   toggleDropdown("Location");
 // });
 
+// Function to Handle Tour Card click
+
 function handleTourClick(tourId) {
   window.location.href = `${window.location.protocol}//${window.location.host}/tours/tour/${tourId}`;
 }
@@ -123,7 +125,19 @@ function initialHeaderHeight(filter) {
   }
 }
 
-initialHeaderHeight("Rating");
+function setCheckedRatingInputs() {
+  let url = new URLSearchParams(window.location.search);
+  let rating = url.get("rating")?.split(",");
+  let inputFields = document.querySelectorAll(".rating-input");
+
+  if (rating) {
+    rating.forEach((x) => {
+      let i = parseInt(x);
+      console.log(x);
+      inputFields[5 - i].setAttribute("checked", "true");
+    });
+  }
+}
 
 // Funtion to manage search in tours
 
@@ -143,4 +157,6 @@ function setInputValue() {
   }
 }
 
+initialHeaderHeight("Rating");
+setCheckedRatingInputs();
 setInputValue();

@@ -8,6 +8,12 @@
     />
     <title>Hotels Navbar</title>
     <link rel="stylesheet" href="/css/hotels/index.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
     <script
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
@@ -15,66 +21,78 @@
   </head>
   <body>
     <!-- Navigation Bar -->
-    <nav class="navbar">
-      <div class="logo">
-        <img
-          src="/images/hotels/cropped_image.png"
-          alt="Chasing Horizons Logo"
-        />
-        <span>Chasing Horizons</span>
-      </div>
 
-      <div class="nav-links">
-        <a href="#">List your property</a>
-        <a href="#">Support</a>
-        <a href="#">Trips</a>
-        <a href="#">Sign in</a>
-      </div>
-    </nav>
     <!-- Navigation Bar -->
-    <div class="search-section">
-      <h1 class="search-title">Where to?</h1>
-      <div class="search-box">
-        <div class="input-group">
-          <i class="fas fa-map-marker-alt"></i>
-          <div>
-            <label>Where to?</label>
-            <input
-              type="text"
-              placeholder="Mumbai, Maharashtra, India"
-            />
+    <div class="hero-container">
+      <header
+        class="headerContainer"
+        style="
+          position: absolute;
+          top: 10px;
+          width: 90%;
+          z-index: 2;
+        "
+      >
+        <div class="headerDiv">
+          <img
+            class="headerLogo"
+            src="/images/tours/logo.png"
+            alt="logo"
+            onclick="window.location.href = '/' "
+          />
+          <div class="headerLinkContainer">
+            <a class="headerLink" href="/tours">Tours</a>
+            <a class="headerLink" href="/hotels">Hotels</a>
+            <a class="headerLink" href="#">Contact Us</a>
+          </div>
+          <div class="headerSignInContainer">
+            <button
+              class="headerSignInButton"
+              onclick="window.location.href = '/signIn'"
+            >
+              Sign In
+            </button>
           </div>
         </div>
-        <div class="input-group">
-          <i class="fas fa-calendar-alt"></i>
-          <div>
-            <label>Dates</label>
-            <input type="text" placeholder="17 Feb - 3 Mar" />
-          </div>
-        </div>
-        <div class="input-group">
-          <i class="fas fa-user"></i>
-          <div>
-            <label>Travellers</label>
-            <input
-              type="text"
-              placeholder="2 travellers, 1 room"
-            />
-          </div>
-        </div>
-        <button class="search-button">Search</button>
-      </div>
-    </div>
+      </header>
 
-    <div class="membership-banner">
-      <div class="membership-content">
-        <i class="fas fa-tag"></i>
-        <span
-          >Members save 10% or more on over 100,000 hotels
-          worldwide when signed in</span
-        >
+      <div class="hero-background">
+        <video class="heroBackgroundVideo" autoplay muted>
+          <source
+            src="/videos/hotels/hotelsBg.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support video tag
+        </video>
       </div>
-      <button class="sign-in-button">Sign in now</button>
+
+      <div class="heroMain">
+        <h1 class="heroText">
+          Let's plan your stay among the Horizons.
+        </h1>
+        <h3 class="heroSubText">
+          Experience Luxury, Comfort and Adventure.
+        </h3>
+        <div class="search-container">
+          <div class="search-box">
+            <span class="icon">📍</span>
+            <div class="input-wrapper">
+              <label for="location">Location</label>
+              <input
+                type="text"
+                id="location"
+                placeholder="Where are you going?"
+              />
+            </div>
+            <button
+              class="search-button"
+              onclick="handleSearch()"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Title -->
@@ -850,46 +868,56 @@
           </div>
         </div>
       </div>
-
-      <script src="/js/hotels/index.js"></script>
     </div>
-    <footer class="footer-section">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <h2>Chasing Horizons</h2>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-about">
+          <h3>Chasing Horizons</h3>
           <p>
             Explore the beauty of India with us. Your journey to
             breathtaking destinations starts here!
           </p>
         </div>
+
         <div class="footer-links">
-          <h3>Quick Links</h3>
+          <h4>Quick Links</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Tours</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/tours">Tours</a></li>
+            <li><a href="/hotels">Hotels</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
         </div>
+
         <div class="footer-social">
-          <h3>Follow Us</h3>
+          <h4>Follow Us</h4>
           <div class="social-icons">
-            <a href="#"
-              ><img
-                src="/images/hotels/path-to-youtube-icon.png"
-                alt="YouTube"
-            /></a>
-            <a href="#"
-              ><img
-                src="/images/hotels/path-to-instagram-icon.png"
-                alt="Instagram"
-            /></a>
+            <a href="https://www.youtube.com" target="_blank">
+              <i
+                class="fa-brands fa-youtube"
+                style="font-size: 40px"
+              ></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+              <i
+                class="fa-brands fa-square-instagram"
+                style="font-size: 40px"
+              ></i>
+            </a>
+            <a href="https://x.com/" target="_blank">
+              <i
+                class="fa-brands fa-square-x-twitter"
+                style="font-size: 40px"
+              ></i>
+            </a>
           </div>
         </div>
       </div>
-      <div class="footer-copyright">
-        <p>&copy; 2023 Chasing Horizons. All Rights Reserved.</p>
+
+      <div class="footer-bottom">
+        <p>© 2025 Chasing Horizons. All Rights Reserved.</p>
       </div>
     </footer>
+    <script src="/js/hotels/index.js"></script>
   </body>
 </html>

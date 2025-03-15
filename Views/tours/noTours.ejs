@@ -2,19 +2,49 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <link rel="icon" href="data:," />
     <title>Chasing Horizons | No Tours</title>
-    <link href="/css/tours/filter.css" rel="stylesheet">
-    <link href="/css/tours/noTours.css" rel="stylesheet">
-    <link href="/css/tours/toursFooter.css" rel="stylesheet">
+    <link href="/css/tours/filter.css" rel="stylesheet" />
+    <link href="/css/tours/noTours.css" rel="stylesheet" />
+    <link href="/css/header.css" rel="stylesheet" />
+    <link href="/css/footer.css" rel="stylesheet" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
   </head>
   <body>
-    <div class="allToursHeader"></div>
+    <header
+      class="headerContainer"
+      style="width: 90%; margin: 0 auto"
+    >
+      <div class="headerDiv">
+        <img
+          onclick="window.location.href = '/'"
+          class="headerLogo"
+          src="/images/tours/logo.png"
+          alt="logo"
+        />
+        <div class="headerLinkContainer">
+          <a class="headerLink" href="/tours">Tours</a>
+          <a class="headerLink" href="/Hotels">Hotels</a>
+          <a class="headerLink" href="#">Contact Us</a>
+        </div>
+        <div class="headerSignInContainer">
+          <button
+            class="headerSignInButton"
+            onclick="window.location.href = '/'"
+          >
+            Sign In
+          </button>
+        </div>
+      </div>
+    </header>
 
     <div class="noToursContainer">
       <div class="filter">
@@ -41,7 +71,7 @@
               ><input type="checkbox" /> Jammu & Kashmir</label
             >
           </div>
-        </div> -->   
+        </div> -->
         <div class="dropdown">
           <div class="dropdown-header dropdown-header-rating">
             Rating <span id="arrowRating">&#9650;</span>
@@ -51,20 +81,30 @@
             id="dropdownContentRating"
           >
             <label>
-              <input type="checkbox" value="5"  />
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <input type="checkbox" value="5" />
+              <i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i>
             </label>
             <label>
-              <input type="checkbox" value="4"  />
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <input type="checkbox" value="4" />
+              <i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i>
             </label>
             <label>
               <input type="checkbox" value="3" />
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i>
             </label>
             <label>
               <input type="checkbox" value="2" />
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i>
             </label>
             <label>
               <input type="checkbox" value="1" />
@@ -92,9 +132,9 @@
         <div class="footer-links">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="/tours">Home</a></li>
-            <li><a href="/tours/search">Tours</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/tours">Tours</a></li>
+            <li><a href="/hotels">Hotels</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
         </div>
@@ -103,13 +143,22 @@
           <h4>Follow Us</h4>
           <div class="social-icons">
             <a href="https://www.youtube.com" target="_blank">
-              <i class="fa-brands fa-youtube" style="font-size: 40px;"></i>
+              <i
+                class="fa-brands fa-youtube"
+                style="font-size: 40px"
+              ></i>
             </a>
             <a href="https://www.instagram.com" target="_blank">
-              <i class="fa-brands fa-square-instagram" style="font-size: 40px;"></i>
+              <i
+                class="fa-brands fa-square-instagram"
+                style="font-size: 40px"
+              ></i>
             </a>
-            <a href="https://x.com/" target="_blank" >
-              <i class="fa-brands fa-square-x-twitter" style="font-size: 40px;"></i>
+            <a href="https://x.com/" target="_blank">
+              <i
+                class="fa-brands fa-square-x-twitter"
+                style="font-size: 40px"
+              ></i>
             </a>
           </div>
         </div>

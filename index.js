@@ -18,7 +18,7 @@ app.use(morgan("tiny"));
 
 // Define the root route
 app.get("/", (req, res) => {
-  res.render("index");
+  res.sendFile("/html/index.html", { root: "public" });
 });
 
 app.get("/signUp", (req, res) => {
