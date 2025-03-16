@@ -31,7 +31,7 @@
         <div class="headerLinkContainer">
           <a class="headerLink" href="/tours">Tours</a>
           <a class="headerLink" href="/hotels">Hotels</a>
-          <a class="headerLink" href="#">Contact Us</a>
+          <a class="headerLink" href="/contact">Contact Us</a>
         </div>
         <div class="headerSignInContainer">
           <% if (user) { %>
@@ -479,16 +479,25 @@
               <% for(let i = 1; i <= hotel.rating; i++){ %> ⭐ <%
               }; %>
             </p>
-            <p class="price">
-              <%= hotel.price %> <%= hotel.currency %>
-              <span>Includes taxes & fees</span>
-            </p>
-            <button
-              class="availability"
-              onclick="handleHotelClick(`<%=hotel.id%>`)"
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+              "
             >
-              Book Now!
-            </button>
+              <p class="price">
+                <%= hotel.roomType[0].price %> <%= hotel.currency
+                %>
+                <span>Includes taxes & fees</span>
+              </p>
+              <button
+                style="align-self: center"
+                class="availability"
+                onclick="handleHotelClick(`<%=hotel.id%>`)"
+              >
+                Book Now!
+              </button>
+            </div>
           </div>
         </div>
         <% }); %>
@@ -511,7 +520,7 @@
             <li><a href="/">Home</a></li>
             <li><a href="/tours">Tours</a></li>
             <li><a href="/hotels">Hotels</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
         </div>
 

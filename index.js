@@ -37,6 +37,10 @@ app.get("/", (req, res) => {
   res.render("index", { user: req.session.user });
 });
 
+app.route("/contact").get((req, res) => {
+  res.sendFile("/html/contact.html", { root: "public" });
+});
+
 app
   .route("/signUp")
   .get((req, res) => {
