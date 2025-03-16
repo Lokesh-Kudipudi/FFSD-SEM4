@@ -37,10 +37,12 @@ app.get("/", (req, res) => {
   res.render("index", { user: req.session.user });
 });
 
+// Define the route for the contact page
 app.route("/contact").get((req, res) => {
   res.sendFile("/html/contact.html", { root: "public" });
 });
 
+// Define the route for the sign-up page and handle sign-up form submission
 app
   .route("/signUp")
   .get((req, res) => {
@@ -48,6 +50,7 @@ app
   })
   .post(signUp);
 
+// Define the route for the sign-in page and handle sign-in form submission
 app
   .route("/signIn")
   .get((req, res) => {
@@ -55,6 +58,7 @@ app
   })
   .post(fetchUserByEmailPassword);
 
+// Define the route to get all users
 app.route("/users").get(getUsers);
 
 // Use the tours router for routes starting with "/tours"

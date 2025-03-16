@@ -984,16 +984,19 @@ toursRouter.route("/search").get((req, res) => {
   let query = searchParam?.q;
   let toursToDisplay = allTours;
 
+  // Set default page to 0 if not provided
   if (currentPage == undefined) {
     currentPage = 0;
   }
 
+  // Filter tours by rating if rating parameter is provided
   if (rating) {
     toursToDisplay = toursToDisplay.filter((tour) =>
       rating.includes(String(tour.rating))
     );
   }
 
+  // Filter tours by query if query parameter is provided
   if (query) {
     toursToDisplay = toursToDisplay.filter((tour) => {
       return [
@@ -1012,6 +1015,7 @@ toursRouter.route("/search").get((req, res) => {
     (toursToDisplay.length - 1) / numberOfCardsPerPage
   );
 
+  // Paginate the tours to display based on the current page
   toursToDisplay = toursToDisplay.slice(
     currentPage * numberOfCardsPerPage,
     currentPage * numberOfCardsPerPage + numberOfCardsPerPage
@@ -1020,20 +1024,23 @@ toursRouter.route("/search").get((req, res) => {
   let displayRightButton = true;
   let displayLeftButton = true;
 
+  // Determine if the right navigation button should be displayed
   if (currentPage == numberOfPages) {
     displayRightButton = false;
   }
 
+  // Determine if the left navigation button should be displayed
   if (currentPage == 0) {
     displayLeftButton = false;
   }
 
+  // Render a 'no tours' view if no tours match the search criteria
   if (toursToDisplay.length == 0) {
     res.render("tours/noTours");
     return;
   }
 
-  // Render the 'tours/tours' view
+  // Render the 'tours/tours' view with the filtered and paginated tours
   res.render("tours/tours", {
     tours: toursToDisplay,
     displayButton: { displayLeftButton, displayRightButton },
@@ -1042,11 +1049,12 @@ toursRouter.route("/search").get((req, res) => {
   });
 });
 
-// Define route
+// Define route for displaying a specific tour by ID
 toursRouter.route("/tour/:id").get((req, res) => {
   const id = req.params.id;
   const tour = allTours.filter((tour) => tour.id == id);
 
+  // Render the 'tours/tour' view with the selected tour details
   res.render("tours/tour", { tour: tour[0], user: req.session.user });
 });
 

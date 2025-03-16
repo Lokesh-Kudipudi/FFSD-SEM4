@@ -8,11 +8,6 @@ hotelsRouter.route("/").get((req, res) => {
   res.render("hotels/index", { user: req.session.user });
 });
 
-// hotelsRouter.route("/search").get((req, res) => {
-//   // Render the "hotels/index" view and pass an object with a name property
-//   res.render("hotels/hotels", { name: "Testing" });
-// });
-
 const hotels = [
   {
     id: "H12345",
