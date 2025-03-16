@@ -94,7 +94,7 @@ function showToast(message, type = "info") {
     toast.style.opacity = "1";
   }, 10);
 
-  // Auto remove after 3 seconds
+  // Auto remove after 2 seconds
   setTimeout(() => {
     toast.style.opacity = "0";
     setTimeout(() => {
@@ -102,7 +102,7 @@ function showToast(message, type = "info") {
         toast.parentNode.removeChild(toast);
       }
     }, 300);
-  }, 3000);
+  }, 2000);
 
   return toast;
 }
@@ -112,7 +112,7 @@ const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
 
-function handleSignUp(event) {
+async function handleSignUp(event) {
   event.preventDefault(); // To prevent reload
 
   if (passwordInput.value?.length < 8) {
@@ -122,7 +122,38 @@ function handleSignUp(event) {
     return;
   }
 
-  showToast("Success!", "success");
+  try {
+    const response = await fetch("/signUp", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: nameInput.value,
+        email: emailInput.value,
+        password: passwordInput.value,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok === false) {
+      throw new Error(data.message);
+    } else {
+      showToast(
+        "User signed in successfully, Redirecting to Home Page.",
+        "success"
+      );
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
+    }
+  } catch (err) {
+    showToast(err.message, "error");
+    return;
+  }
+
+  // showToast("Success!", "success");
 }
 
 form.addEventListener("submit", handleSignUp);

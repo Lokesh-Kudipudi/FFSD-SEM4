@@ -34,12 +34,20 @@
           <a class="headerLink" href="#">Contact Us</a>
         </div>
         <div class="headerSignInContainer">
+          <% if (user) { %>
+          <img
+            src="https://api.dicebear.com/9.x/initials/svg?seed=<%= user.name %>"
+            alt="avatar"
+            class="avatar"
+          />
+          <% } else { %>
           <button
-            class="headerSignInButton"
             onclick="window.location.href = '/signIn'"
+            class="headerSignInButton"
           >
             Sign In
           </button>
+          <% }; %>
         </div>
       </div>
     </header>

@@ -2,12 +2,28 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const morgan = require("morgan");
+const session = require("express-session");
 const toursRouter = require("./routes/toursRouter");
 const hotelsRouter = require("./routes/hotelsRouter");
 const dashboardRouter = require("./routes/dashboardRouter");
+const {
+  signUp,
+  getUsers,
+  fetchUserByEmailPassword,
+} = require("./Controller/userController");
 
 // Set EJS as the templating engine
 app.set("view engine", "ejs");
+
+// Implement Sessions
+app.use(
+  session({
+    secret: "ChasingHorizons", // Change this to a secure key
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }, // Set to true if using HTTPS
+  })
+);
 
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, "public")));
@@ -18,16 +34,24 @@ app.use(morgan("tiny"));
 
 // Define the root route
 app.get("/", (req, res) => {
-  res.sendFile("/html/index.html", { root: "public" });
+  res.render("index", { user: req.session.user });
 });
 
-app.get("/signUp", (req, res) => {
-  res.sendFile("/html/auth/signUp.html", { root: "public" });
-});
+app
+  .route("/signUp")
+  .get((req, res) => {
+    res.sendFile("/html/auth/signUp.html", { root: "public" });
+  })
+  .post(signUp);
 
-app.get("/signIn", (req, res) => {
-  res.sendFile("/html/auth/signIn.html", { root: "public" });
-});
+app
+  .route("/signIn")
+  .get((req, res) => {
+    res.sendFile("/html/auth/signIn.html", { root: "public" });
+  })
+  .post(fetchUserByEmailPassword);
+
+app.route("/users").get(getUsers);
 
 // Use the tours router for routes starting with "/tours"
 app.use("/tours", toursRouter);

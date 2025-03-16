@@ -9,6 +9,7 @@
     <title>JW Marriott Mumbai Juhu</title>
     <link rel="stylesheet" href="/css/hotels/hotel.css" />
     <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/header.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -34,12 +35,20 @@
           <a class="headerLink" href="#">Contact Us</a>
         </div>
         <div class="headerSignInContainer">
+          <% if (user) { %>
+          <img
+            src="https://api.dicebear.com/9.x/initials/svg?seed=<%= user.name %>"
+            alt="avatar"
+            class="avatar"
+          />
+          <% } else { %>
           <button
-            class="headerSignInButton"
             onclick="window.location.href = '/signIn'"
+            class="headerSignInButton"
           >
             Sign In
           </button>
+          <% }; %>
         </div>
       </div>
     </header>

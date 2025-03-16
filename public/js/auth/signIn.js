@@ -94,7 +94,7 @@ function showToast(message, type = "info") {
     toast.style.opacity = "1";
   }, 10);
 
-  // Auto remove after 3 seconds
+  // Auto remove after 2 seconds
   setTimeout(() => {
     toast.style.opacity = "0";
     setTimeout(() => {
@@ -102,15 +102,46 @@ function showToast(message, type = "info") {
         toast.parentNode.removeChild(toast);
       }
     }, 300);
-  }, 3000);
+  }, 2000);
 
   return toast;
 }
 
 const authForm = document.querySelector("#authForm");
+const emailInput = document.querySelector("#email");
+const passwordInput = document.querySelector("#password");
 
-function handleSignIn(e) {
+async function handleSignIn(e) {
   e.preventDefault(); // To prevent reload
+
+  const email = emailInput.value;
+  const password = passwordInput.value;
+
+  try {
+    const response = await fetch("/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.status === 200) {
+      showToast(
+        "User signed in successfully, Redirecting to Home Page.",
+        "success"
+      );
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 3000);
+    } else {
+      throw new Error(data.message);
+    }
+  } catch (err) {
+    showToast(err.message, "error");
+  }
 }
 
 authForm.addEventListener("submit", handleSignIn);

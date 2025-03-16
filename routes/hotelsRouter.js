@@ -5,7 +5,7 @@ const hotelsRouter = express.Router(); // Create a new router object
 // Define a route for the root path of the hotelsRouter
 hotelsRouter.route("/").get((req, res) => {
   // Render the "hotels/index" view and pass an object with a name property
-  res.render("hotels/index", { name: "Testing" });
+  res.render("hotels/index", { user: req.session.user });
 });
 
 // hotelsRouter.route("/search").get((req, res) => {
@@ -176,7 +176,10 @@ const hotels = [
 
 hotelsRouter.route("/search").get((req, res) => {
   // Render the "hotels/index" view and pass an object with a name property
-  res.render("hotels/hotels", { hotels });
+  res.render("hotels/hotels", {
+    hotels,
+    user: req.session.user,
+  });
 });
 
 hotelsRouter.route("/hotel/:id").get((req, res) => {
@@ -185,7 +188,7 @@ hotelsRouter.route("/hotel/:id").get((req, res) => {
 
   const hotel = hotels.filter((hotel) => hotel.id == id)[0];
   // Render the "hotels/index" view and pass an object with a name property
-  res.render("hotels/hotel", { hotel });
+  res.render("hotels/hotel", { hotel, user: req.session.user });
 });
 
 module.exports = hotelsRouter; // Export the router object
