@@ -15,6 +15,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
+    <script defer src="/js/tours/index.js"></script>
+    <script defer src="/js/header.js"></script>
   </head>
   <body>
     <section class="heroSection">
@@ -50,11 +52,23 @@
           </div>
           <div class="headerSignInContainer">
             <% if (user) { %>
-            <img
-              src="https://api.dicebear.com/9.x/initials/svg?seed=<%= user.name %>"
-              alt="avatar"
-              class="avatar"
-            />
+            <div class="profileContainer">
+              <img
+                src="https://api.dicebear.com/9.x/initials/svg?seed=<%= user.name %>"
+                alt="avatar"
+                class="avatar"
+                onclick="toggleDropdown()"
+              />
+              <div class="dropdownMenu" id="dropdownMenu">
+                <a href="/dashboard">Profile</a>
+                <% if(user.type == "admin" ){ %>
+                <a href="/dashboard/admin">Dashboard</a>
+                <% };%> <% if(user.type == "hotelManager" ){ %>
+                <a href="/dashboard/hotelManager">Dashboard</a>
+                <% };%>
+                <a href="/logout">Logout</a>
+              </div>
+            </div>
             <% } else { %>
             <button
               onclick="window.location.href = '/signIn'"
@@ -62,7 +76,7 @@
             >
               Sign In
             </button>
-            <% }; %>
+            <% } %>
           </div>
         </div>
       </header>
@@ -323,7 +337,5 @@
         <p>© 2025 Chasing Horizons. All Rights Reserved.</p>
       </div>
     </footer>
-
-    <script src="/js/tours/index.js"></script>
   </body>
 </html>
