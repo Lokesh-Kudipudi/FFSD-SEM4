@@ -27,120 +27,120 @@ document
     }
   });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const hotelCardsContainer =
-    document.querySelector(".hotel-cards");
-  const leftArrow = document.getElementById("leftArrow");
-  const rightArrow = document.getElementById("rightArrow");
+// document.addEventListener("DOMContentLoaded", function () {
+//   const hotelCardsContainer =
+//     document.querySelector(".hotel-cards");
+//   const leftArrow = document.getElementById("leftArrow");
+//   const rightArrow = document.getElementById("rightArrow");
 
-  const hotels = [
-    {
-      image:
-        "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
-      name: "JW Marriott Mumbai Sahar",
-      location: "Mumbai",
-      rating: "⭐ 9.2 Superb (927 reviews)",
-    },
-    {
-      image:
-        "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
-      name: "JW Marriott Mumbai Juhu",
-      location: "Juhu",
-      rating: "⭐ 8.8 Fabulous (886 reviews)",
-    },
-    {
-      image:
-        "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
-      name: "The Leela Mumbai",
-      location: "Andheri",
-      rating: "⭐ 9.2 Superb (1,003 reviews)",
-    },
-    {
-      image:
-        "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
-      name: "Trident Bandra Kurla Mumbai",
-      location: "Bandra Kurla Complex",
-      rating: "⭐ 9.2 Superb (1,000 reviews)",
-    },
-    {
-      image:
-        "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
-      name: "SoBar",
-      location: "Mumbai",
-      rating: "⭐ 9.1 Excellent (950 reviews)",
-    },
-    {
-      image:
-        "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
-      name: "Trident Bandra Kurla Mumbai",
-      location: "Bandra Kurla Complex",
-      rating: "⭐ 9.2 Superb (1,000 reviews)",
-    },
-    {
-      image:
-        "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
-      name: "Trident Bandra Kurla Mumbai",
-      location: "Bandra Kurla Complex",
-      rating: "⭐ 9.2 Superb (1,000 reviews)",
-    },
-    {
-      image:
-        "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
-      name: "Trident Bandra Kurla Mumbai",
-      location: "Bandra Kurla Complex",
-      rating: "⭐ 9.2 Superb (1,000 reviews)",
-    },
-    {
-      image:
-        "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
-      name: "Trident Bandra Kurla Mumbai",
-      location: "Bandra Kurla Complex",
-      rating: "⭐ 9.2 Superb (1,000 reviews)",
-    },
-  ];
+//   const hotels = [
+//     {
+//       image:
+//         "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
+//       name: "JW Marriott Mumbai Sahar",
+//       location: "Mumbai",
+//       rating: "⭐ 9.2 Superb (927 reviews)",
+//     },
+//     {
+//       image:
+//         "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
+//       name: "JW Marriott Mumbai Juhu",
+//       location: "Juhu",
+//       rating: "⭐ 8.8 Fabulous (886 reviews)",
+//     },
+//     {
+//       image:
+//         "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
+//       name: "The Leela Mumbai",
+//       location: "Andheri",
+//       rating: "⭐ 9.2 Superb (1,003 reviews)",
+//     },
+//     {
+//       image:
+//         "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
+//       name: "Trident Bandra Kurla Mumbai",
+//       location: "Bandra Kurla Complex",
+//       rating: "⭐ 9.2 Superb (1,000 reviews)",
+//     },
+//     {
+//       image:
+//         "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
+//       name: "SoBar",
+//       location: "Mumbai",
+//       rating: "⭐ 9.1 Excellent (950 reviews)",
+//     },
+//     {
+//       image:
+//         "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
+//       name: "Trident Bandra Kurla Mumbai",
+//       location: "Bandra Kurla Complex",
+//       rating: "⭐ 9.2 Superb (1,000 reviews)",
+//     },
+//     {
+//       image:
+//         "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
+//       name: "Trident Bandra Kurla Mumbai",
+//       location: "Bandra Kurla Complex",
+//       rating: "⭐ 9.2 Superb (1,000 reviews)",
+//     },
+//     {
+//       image:
+//         "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
+//       name: "Trident Bandra Kurla Mumbai",
+//       location: "Bandra Kurla Complex",
+//       rating: "⭐ 9.2 Superb (1,000 reviews)",
+//     },
+//     {
+//       image:
+//         "https://imgs.search.brave.com/79Jv16CuXlIx0SLUgUvvGdNtecF__awMDcfauKRE8MY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zml2ZXN0YXJhbGxp/YW5jZS5jb20vZmls/ZXMvZml2ZXN0YXJh/bGxpYW5jZS5jb20v/ZmllbGQvaW1hZ2Uv/bm9kZXMvMjAxOC80/NjA0Ny8wX0VYVEVS/SU9SLVhMLmpwZw",
+//       name: "Trident Bandra Kurla Mumbai",
+//       location: "Bandra Kurla Complex",
+//       rating: "⭐ 9.2 Superb (1,000 reviews)",
+//     },
+//   ];
 
-  let currentIndex = 0;
-  const cardsPerPage = 4;
+//   let currentIndex = 0;
+//   const cardsPerPage = 4;
 
-  function renderCards() {
-    hotelCardsContainer.innerHTML = "";
-    const visibleHotels = hotels.slice(
-      currentIndex,
-      currentIndex + cardsPerPage
-    );
+//   function renderCards() {
+//     hotelCardsContainer.innerHTML = "";
+//     const visibleHotels = hotels.slice(
+//       currentIndex,
+//       currentIndex + cardsPerPage
+//     );
 
-    visibleHotels.forEach((hotel) => {
-      const card = document.createElement("div");
-      card.classList.add("card");
+//     visibleHotels.forEach((hotel) => {
+//       const card = document.createElement("div");
+//       card.classList.add("card");
 
-      card.innerHTML = `
-        <img src="${hotel.image}" alt="${hotel.name}">
-        <h3>${hotel.name}</h3>
-        <p>${hotel.location}</p>
-        <span class="rating">${hotel.rating}</span>
-      `;
+//       card.innerHTML = `
+//         <img src="${hotel.image}" alt="${hotel.name}">
+//         <h3>${hotel.name}</h3>
+//         <p>${hotel.location}</p>
+//         <span class="rating">${hotel.rating}</span>
+//       `;
 
-      hotelCardsContainer.appendChild(card);
-    });
-  }
+//       hotelCardsContainer.appendChild(card);
+//     });
+//   }
 
-  leftArrow.addEventListener("click", function () {
-    if (currentIndex > 0) {
-      currentIndex -= cardsPerPage;
-      renderCards();
-    }
-  });
+//   leftArrow.addEventListener("click", function () {
+//     if (currentIndex > 0) {
+//       currentIndex -= cardsPerPage;
+//       renderCards();
+//     }
+//   });
 
-  rightArrow.addEventListener("click", function () {
-    if (currentIndex < hotels.length - cardsPerPage) {
-      currentIndex += cardsPerPage;
-      renderCards();
-    }
-  });
+//   rightArrow.addEventListener("click", function () {
+//     if (currentIndex < hotels.length - cardsPerPage) {
+//       currentIndex += cardsPerPage;
+//       renderCards();
+//     }
+//   });
 
-  // Initial render
-  renderCards();
-});
+//   // Initial render
+//   renderCards();
+// });
 
 document.addEventListener("DOMContentLoaded", function () {
   const swipeCards = document.querySelector(".swipe-cards");

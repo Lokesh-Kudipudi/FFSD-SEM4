@@ -6,7 +6,3 @@ function handleSearch() {
     window.location.href = `/tours/search?q=${input.value}`;
   }
 }
-
-function handleExploreClick() {
-  window.location.href = "/tours/search";
-}

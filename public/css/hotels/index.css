@@ -22,6 +22,7 @@ body {
 
 .heroBackgroundVideo {
   width: 100vw;
+  height: 100vh;
   object-fit: cover;
   filter: brightness(0.3);
 }
@@ -359,6 +360,11 @@ body {
   margin: 0 0 4px 0;
   color: white;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.card-info h3:hover {
+  color: blue;
 }
 
 .card-info p {
@@ -509,6 +515,19 @@ body {
   right: 10px;
 }
 
+.right-nav-btn,
+.left-nav-btn {
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
 /* Add a small JavaScript function to handle image navigation */
 /* Container styles */
 .kcn-wrapper {
@@ -532,6 +551,8 @@ body {
 /* Card carousel container */
 .qwf-carousel-container {
   position: relative;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .hjk-outer-nav {
@@ -551,11 +572,11 @@ body {
 }
 
 .hjk-outer-nav.zpq-left {
-  left: -15px;
+  left: -50px;
 }
 
 .hjk-outer-nav.zpq-right {
-  right: -15px;
+  right: -50px;
 }
 
 .uvb-cards-container {
@@ -659,6 +680,11 @@ body {
   font-size: 16px;
   color: #333;
   margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.wsx-title:hover {
+  color: blue;
 }
 
 .edc-location {

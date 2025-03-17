@@ -25,6 +25,7 @@
 
 .heroBackgroundVideo {
   width: 100vw;
+  height: 100vh;
   object-fit: cover;
   filter: brightness(0.3);
 }
@@ -267,11 +268,16 @@
   padding: 10px;
   width: 100%;
   text-align: left;
+  cursor: pointer;
 }
 
 .overlay h2 {
   font-size: 16px;
   margin-bottom: 5px;
+}
+
+.overlay h2:hover {
+  color: blue;
 }
 
 .overlay p {
