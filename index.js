@@ -12,6 +12,7 @@ const {
   signUpAdmin,
   getUsers,
   fetchUserByEmailPassword,
+  logout,
 } = require("./Controller/userController");
 
 // Set EJS as the templating engine
@@ -69,6 +70,9 @@ app
     res.sendFile("/html/auth/signIn.html", { root: "public" });
   })
   .post(fetchUserByEmailPassword);
+
+// Define the route for the sign-out
+app.route("/logout").get(logout);
 
 // Define the route to get all users
 app.route("/users").get(getUsers).post(signUpAdmin);

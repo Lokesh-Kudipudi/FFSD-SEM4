@@ -1,3 +1,6 @@
+.logo h1 {
+  cursor: pointer;
+}
 .card {
   background-color: white;
   border-radius: 0.5rem;

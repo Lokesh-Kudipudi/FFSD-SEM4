@@ -146,10 +146,17 @@ function signUpAdmin(req, res) {
   }
 }
 
+function logout(req, res) {
+  req.session.destroy();
+  res.render("index", { user: req.session?.user });
+  return;
+}
+
 module.exports = {
   signUpUser,
   signUphotelManager,
   signUpAdmin,
   getUsers,
   fetchUserByEmailPassword,
+  logout,
 };
