@@ -2,10 +2,11 @@ const {
   insertUser,
   getAllUsers,
   getUserByEmail,
+  addAdmin,
 } = require("../Model/usersModel");
 
 // Function to handle user sign-up
-function signUp(req, res) {
+function signUpUser(req, res) {
   try {
     const { name, email, password } = req.body;
     // Insert new user into the database
@@ -14,6 +15,34 @@ function signUp(req, res) {
     const user = getUserByEmail(email);
     // Store user information in session
     req.session.user = user;
+    // Send success response
+    res.status(201).json({
+      status: "success",
+      message: "User created successfully",
+    });
+  } catch (err) {
+    // Send failure response if user already exists
+    res.status(400).json({
+      status: "fail",
+      message: "User already Exists!",
+    });
+  }
+}
+
+// Function to handle user sign-up
+function signUphotelManager(req, res) {
+  try {
+    const { name, email, password } = req.body;
+
+    // Insert new user into the database
+    insertUser(name, email, password, "hotelManager");
+
+    // Retrieve the newly created user by email
+    const user = getUserByEmail(email);
+
+    // Store user information in session
+    req.session.user = user;
+
     // Send success response
     res.status(201).json({
       status: "success",
@@ -53,14 +82,18 @@ function getUsers(req, res) {
 // Function to fetch user by email and password
 function fetchUserByEmailPassword(req, res) {
   const { email, password } = req.body;
+
   // Retrieve user by email
+
   const user = getUserByEmail(email);
+
   if (!user) {
     // Send failure response if user not found
     res.status(404).json({
       status: "fail",
       message: "User not found",
     });
+    return;
   }
 
   if (user.password !== password) {
@@ -69,6 +102,7 @@ function fetchUserByEmailPassword(req, res) {
       status: "fail",
       message: "Invalid password",
     });
+    return;
   }
 
   // Store user information in session
@@ -85,4 +119,37 @@ function fetchUserByEmailPassword(req, res) {
   return user;
 }
 
-module.exports = { signUp, getUsers, fetchUserByEmailPassword };
+function signUpAdmin(req, res) {
+  try {
+    const { name, email, password } = req.body;
+
+    // Insert new user into the database
+    addAdmin(name, email, password);
+
+    // Retrieve the newly created user by email
+    const user = getUserByEmail(email);
+
+    // Store user information in session
+    req.session.user = user;
+
+    // Send success response
+    res.status(201).json({
+      status: "success",
+      message: "User created successfully",
+    });
+  } catch (err) {
+    // Send failure response if user already exists
+    res.status(400).json({
+      status: "fail",
+      message: "User already Exists!",
+    });
+  }
+}
+
+module.exports = {
+  signUpUser,
+  signUphotelManager,
+  signUpAdmin,
+  getUsers,
+  fetchUserByEmailPassword,
+};

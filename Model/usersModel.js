@@ -10,20 +10,37 @@ const query = `CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     email TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL
+    password TEXT NOT NULL,
+    type TEXT NOT NULL DEFAULT 'user'
   )`;
 
 // Execute the query to create the table
 usersDatabase.exec(query);
 
 // Function to insert a new user into the database
-function insertUser(name, email, password) {
+function insertUser(name, email, password, type = "user") {
   try {
     // SQL query to insert a new user
-    const query = `INSERT INTO users (name, email, password) VALUES (?, ?, ?)`;
+    const query = `INSERT INTO users (name, email, password, type) VALUES (?, ?, ?, ?)`;
     const statement = usersDatabase.prepare(query);
+
     // Execute the query with the provided parameters
-    const info = statement.run(name, email, password);
+    const info = statement.run(name, email, password, type);
+    return info;
+  } catch (err) {
+    // Throw an error if something goes wrong
+    throw new Error(err);
+  }
+}
+
+function addAdmin(name, email, password, type = "admin") {
+  try {
+    // SQL query to insert a new user
+    const query = `INSERT INTO users (name, email, password, type) VALUES (?, ?, ?, ?)`;
+    const statement = usersDatabase.prepare(query);
+
+    // Execute the query with the provided parameters
+    const info = statement.run(name, email, password, type);
     return info;
   } catch (err) {
     // Throw an error if something goes wrong
@@ -52,4 +69,9 @@ function getUserByEmail(email) {
 }
 
 // Export the functions for use in other modules
-module.exports = { insertUser, getAllUsers, getUserByEmail };
+module.exports = {
+  insertUser,
+  getAllUsers,
+  getUserByEmail,
+  addAdmin,
+};

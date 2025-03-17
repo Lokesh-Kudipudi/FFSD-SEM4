@@ -7,7 +7,9 @@ const toursRouter = require("./routes/toursRouter");
 const hotelsRouter = require("./routes/hotelsRouter");
 const dashboardRouter = require("./routes/dashboardRouter");
 const {
-  signUp,
+  signUpUser,
+  signUphotelManager,
+  signUpAdmin,
   getUsers,
   fetchUserByEmailPassword,
 } = require("./Controller/userController");
@@ -48,7 +50,17 @@ app
   .get((req, res) => {
     res.sendFile("/html/auth/signUp.html", { root: "public" });
   })
-  .post(signUp);
+  .post(signUpUser);
+
+// Define the route for hotel manager sign-up page and handle sign-up form submission
+app
+  .route("/signUpHotelManager")
+  .get((req, res) => {
+    res.sendFile("/html/auth/signUpHotelManager.html", {
+      root: "public",
+    });
+  })
+  .post(signUphotelManager);
 
 // Define the route for the sign-in page and handle sign-in form submission
 app
@@ -59,7 +71,7 @@ app
   .post(fetchUserByEmailPassword);
 
 // Define the route to get all users
-app.route("/users").get(getUsers);
+app.route("/users").get(getUsers).post(signUpAdmin);
 
 // Use the tours router for routes starting with "/tours"
 app.use("/tours", toursRouter);
