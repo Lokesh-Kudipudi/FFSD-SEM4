@@ -2,33 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chasing Horizons Admin Dashboard</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="/css/dashboard/admin/styles.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/css/dashboard/admin/topbar.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/css/dashboard/admin/sidebar.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/css/dashboard/admin/hotelManagement.css"
-    />
+    <link rel="stylesheet" href="/css/dashboard/admin/styles.css" />
+    <link rel="stylesheet" href="/css/dashboard/admin/topbar.css" />
+    <link rel="stylesheet" href="/css/dashboard/admin/sidebar.css" />
+    <link rel="stylesheet" href="/css/dashboard/admin/hotelManagement.css" />
 
     <script defer src="/js/dashboard/admin/app.js"></script>
+    <script defer src="/js/dashboard/admin/hotelManagement.js"></script>
   </head>
   <body>
     <div class="container">
@@ -49,9 +35,7 @@
             ><i class="fas fa-chart-bar"></i>
             <span class="link-text">Packages</span></a
           >
-          <a
-            href="/dashboard/admin/hotelManagement"
-            class="active"
+          <a href="/dashboard/admin/hotelManagement" class="active"
             ><i class="fas fa-hotel"></i>
             <span class="link-text">Hotel Management</span></a
           >
@@ -69,10 +53,7 @@
           </button>
           <div class="search-bar">
             <i class="fas fa-search"></i>
-            <input
-              type="text"
-              placeholder="Search customers..."
-            />
+            <input type="text" placeholder="Search customers..." />
           </div>
           <div class="user-info">
             <div class="notification-icon">
@@ -89,22 +70,13 @@
           <div class="hotel-page-header">
             <h1 class="hotel-page-title">Hotel Management</h1>
             <div class="hotel-header-actions">
-              <button
-                class="hotel-btn hotel-btn-outline"
-                id="import-btn"
-              >
+              <button class="hotel-btn hotel-btn-outline" id="import-btn">
                 <i class="fas fa-file-import"></i> Import
               </button>
-              <button
-                class="hotel-btn hotel-btn-outline"
-                id="export-btn"
-              >
+              <button class="hotel-btn hotel-btn-outline" id="export-btn">
                 <i class="fas fa-file-export"></i> Export
               </button>
-              <button
-                class="hotel-btn hotel-btn-primary"
-                id="add-hotel-btn"
-              >
+              <button class="hotel-btn hotel-btn-primary" id="add-hotel-btn">
                 <i class="fas fa-plus"></i> Add New Hotel
               </button>
             </div>
@@ -123,15 +95,11 @@
               </div>
 
               <div class="hotel-filter-group">
-                <label class="hotel-filter-label"
-                  >Location</label
-                >
+                <label class="hotel-filter-label">Location</label>
                 <select class="hotel-filter-input">
                   <option value="">All Locations</option>
                   <option value="bali">Bali, Indonesia</option>
-                  <option value="bangkok">
-                    Bangkok, Thailand
-                  </option>
+                  <option value="bangkok">Bangkok, Thailand</option>
                   <option value="dubai">Dubai, UAE</option>
                   <option value="paris">Paris, France</option>
                   <option value="tokyo">Tokyo, Japan</option>
@@ -149,9 +117,7 @@
               </div>
 
               <div class="hotel-filter-group">
-                <label class="hotel-filter-label"
-                  >Star Rating</label
-                >
+                <label class="hotel-filter-label">Star Rating</label>
                 <select class="hotel-filter-input">
                   <option value="">All Ratings</option>
                   <option value="5">5 Stars</option>
@@ -163,12 +129,8 @@
             </div>
 
             <div class="hotel-filter-actions">
-              <button class="hotel-btn hotel-btn-outline">
-                Reset
-              </button>
-              <button class="hotel-btn hotel-btn-primary">
-                Apply Filters
-              </button>
+              <button class="hotel-btn hotel-btn-outline">Reset</button>
+              <button class="hotel-btn hotel-btn-primary">Apply Filters</button>
             </div>
           </div>
 
@@ -177,9 +139,7 @@
             <div class="hotel-card">
               <div class="hotel-card-header">
                 <div>
-                  <div class="hotel-card-title">
-                    Total Hotels
-                  </div>
+                  <div class="hotel-card-title">Total Hotels</div>
                   <div class="hotel-card-value">127</div>
                   <div class="hotel-card-change positive">
                     <i class="fas fa-arrow-up"></i>+5 this month
@@ -194,9 +154,7 @@
             <div class="hotel-card">
               <div class="hotel-card-header">
                 <div>
-                  <div class="hotel-card-title">
-                    Active Hotels
-                  </div>
+                  <div class="hotel-card-title">Active Hotels</div>
                   <div class="hotel-card-value">98</div>
                   <div class="hotel-card-change positive">
                     <i class="fas fa-arrow-up"></i>77.2% of total
@@ -211,9 +169,7 @@
             <div class="hotel-card">
               <div class="hotel-card-header">
                 <div>
-                  <div class="hotel-card-title">
-                    Pending Approval
-                  </div>
+                  <div class="hotel-card-title">Pending Approval</div>
                   <div class="hotel-card-value">12</div>
                   <div class="hotel-card-change negative">
                     <i class="fas fa-arrow-up"></i>+3 this week
@@ -228,13 +184,10 @@
             <div class="hotel-card">
               <div class="hotel-card-header">
                 <div>
-                  <div class="hotel-card-title">
-                    Inactive Hotels
-                  </div>
+                  <div class="hotel-card-title">Inactive Hotels</div>
                   <div class="hotel-card-value">17</div>
                   <div class="hotel-card-change positive">
-                    <i class="fas fa-arrow-down"></i>-2 this
-                    month
+                    <i class="fas fa-arrow-down"></i>-2 this month
                   </div>
                 </div>
                 <div class="hotel-card-icon hotel-bg-danger">
@@ -286,8 +239,7 @@
                     </div>
                   </td>
                   <td>
-                    <span
-                      class="hotel-status-badge hotel-status-active"
+                    <span class="hotel-status-badge hotel-status-active"
                       >Active</span
                     >
                   </td>
@@ -306,19 +258,13 @@
                   <td>15%</td>
                   <td>
                     <div class="hotel-action-buttons">
-                      <div
-                        class="hotel-action-btn hotel-view-btn"
-                      >
+                      <div class="hotel-action-btn hotel-view-btn">
                         <i class="fas fa-eye"></i>
                       </div>
-                      <div
-                        class="hotel-action-btn hotel-edit-btn"
-                      >
+                      <div class="hotel-action-btn hotel-edit-btn">
                         <i class="fas fa-edit"></i>
                       </div>
-                      <div
-                        class="hotel-action-btn hotel-delete-btn"
-                      >
+                      <div class="hotel-action-btn hotel-delete-btn">
                         <i class="fas fa-trash"></i>
                       </div>
                     </div>
@@ -342,8 +288,7 @@
                     </div>
                   </td>
                   <td>
-                    <span
-                      class="hotel-status-badge hotel-status-active"
+                    <span class="hotel-status-badge hotel-status-active"
                       >Active</span
                     >
                   </td>
@@ -362,19 +307,13 @@
                   <td>12%</td>
                   <td>
                     <div class="hotel-action-buttons">
-                      <div
-                        class="hotel-action-btn hotel-view-btn"
-                      >
+                      <div class="hotel-action-btn hotel-view-btn">
                         <i class="fas fa-eye"></i>
                       </div>
-                      <div
-                        class="hotel-action-btn hotel-edit-btn"
-                      >
+                      <div class="hotel-action-btn hotel-edit-btn">
                         <i class="fas fa-edit"></i>
                       </div>
-                      <div
-                        class="hotel-action-btn hotel-delete-btn"
-                      >
+                      <div class="hotel-action-btn hotel-delete-btn">
                         <i class="fas fa-trash"></i>
                       </div>
                     </div>
@@ -398,8 +337,7 @@
                     </div>
                   </td>
                   <td>
-                    <span
-                      class="hotel-status-badge hotel-status-pending"
+                    <span class="hotel-status-badge hotel-status-pending"
                       >Pending</span
                     >
                   </td>
@@ -418,19 +356,13 @@
                   <td>18%</td>
                   <td>
                     <div class="hotel-action-buttons">
-                      <div
-                        class="hotel-action-btn hotel-view-btn"
-                      >
+                      <div class="hotel-action-btn hotel-view-btn">
                         <i class="fas fa-eye"></i>
                       </div>
-                      <div
-                        class="hotel-action-btn hotel-edit-btn"
-                      >
+                      <div class="hotel-action-btn hotel-edit-btn">
                         <i class="fas fa-edit"></i>
                       </div>
-                      <div
-                        class="hotel-action-btn hotel-delete-btn"
-                      >
+                      <div class="hotel-action-btn hotel-delete-btn">
                         <i class="fas fa-trash"></i>
                       </div>
                     </div>
@@ -454,8 +386,7 @@
                     </div>
                   </td>
                   <td>
-                    <span
-                      class="hotel-status-badge hotel-status-active"
+                    <span class="hotel-status-badge hotel-status-active"
                       >Active</span
                     >
                   </td>
@@ -473,19 +404,13 @@
                   <td>14%</td>
                   <td>
                     <div class="hotel-action-buttons">
-                      <div
-                        class="hotel-action-btn hotel-view-btn"
-                      >
+                      <div class="hotel-action-btn hotel-view-btn">
                         <i class="fas fa-eye"></i>
                       </div>
-                      <div
-                        class="hotel-action-btn hotel-edit-btn"
-                      >
+                      <div class="hotel-action-btn hotel-edit-btn">
                         <i class="fas fa-edit"></i>
                       </div>
-                      <div
-                        class="hotel-action-btn hotel-delete-btn"
-                      >
+                      <div class="hotel-action-btn hotel-delete-btn">
                         <i class="fas fa-trash"></i>
                       </div>
                     </div>
@@ -509,8 +434,7 @@
                     </div>
                   </td>
                   <td>
-                    <span
-                      class="hotel-status-badge hotel-status-inactive"
+                    <span class="hotel-status-badge hotel-status-inactive"
                       >Inactive</span
                     >
                   </td>
@@ -528,19 +452,13 @@
                   <td>10%</td>
                   <td>
                     <div class="hotel-action-buttons">
-                      <div
-                        class="hotel-action-btn hotel-view-btn"
-                      >
+                      <div class="hotel-action-btn hotel-view-btn">
                         <i class="fas fa-eye"></i>
                       </div>
-                      <div
-                        class="hotel-action-btn hotel-edit-btn"
-                      >
+                      <div class="hotel-action-btn hotel-edit-btn">
                         <i class="fas fa-edit"></i>
                       </div>
-                      <div
-                        class="hotel-action-btn hotel-delete-btn"
-                      >
+                      <div class="hotel-action-btn hotel-delete-btn">
                         <i class="fas fa-trash"></i>
                       </div>
                     </div>
