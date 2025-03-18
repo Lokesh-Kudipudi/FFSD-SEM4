@@ -1651,9 +1651,26 @@ const hotels = [
 ];
 
 hotelsRouter.route("/search").get((req, res) => {
+  let hotelsToDisplay = hotels;
+
+  const searchParam = req.query;
+
+  const query = searchParam?.q;
+
+  console.log(query);
+
+  if (query) {
+    hotelsToDisplay = hotelsToDisplay.filter((hotel) => {
+      return [hotel.title, hotel.location, hotel.address]
+        .join(" ")
+        .toLowerCase()
+        .includes(query.toLowerCase());
+    });
+  }
+
   // Render the "hotels/index" view and pass an object with a name property
   res.render("hotels/hotels", {
-    hotels,
+    hotels: hotelsToDisplay,
     user: req.session.user,
   });
 });

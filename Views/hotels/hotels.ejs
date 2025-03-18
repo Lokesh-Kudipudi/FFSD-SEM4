@@ -42,9 +42,12 @@
               src="https://api.dicebear.com/9.x/initials/svg?seed=<%= user.name %>"
               alt="avatar"
               class="avatar"
-              onclick="toggleDropdown()"
+              onclick="toggleDropdownHeader()"
             />
-            <div class="dropdownMenu" id="dropdownMenu">
+            <div
+              class="dropdownMenuHeader"
+              id="dropdownMenuHeader"
+            >
               <a href="/dashboard">Profile</a>
               <% if(user.type == "admin" ){ %>
               <a href="/dashboard/admin">Dashboard</a>
@@ -89,328 +92,38 @@
     <div class="hotel-listings">
       <!-- Search and Filter Sidebar -->
       <aside class="filter-sidebar">
-        <button class="compare-btn">
-          Compare properties <span class="close-btn">✖</span>
-        </button>
-        <div class="search-box">
-          <label for="search-hotel"
-            >Search by property name</label
-          >
-          <input
-            type="text"
-            id="search-hotel"
-            placeholder="e.g. Marriott"
-          />
-        </div>
+        <h3
+          style="
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+          "
+        >
+          Filter by
+        </h3>
         <div class="filter-section">
-          <h3>Filter by</h3>
+          <div class="filter-header" onclick="toggleDropdown()">
+            <span>Location</span>
+            <span class="arrow">&#9662;</span>
+          </div>
           <div class="filter-options">
-            <label><input type="checkbox" /> Ocean view</label>
-            <label
-              ><input type="checkbox" /> Bandra Kurla
-              Complex</label
-            >
-            <label
-              ><input type="checkbox" /> Breakfast
-              included</label
-            >
-            <label><input type="checkbox" /> Aparthotel</label>
-            <label
-              ><input type="checkbox" /> Reserve now, pay
-              later</label
-            >
+            <label><input type="checkbox" />Bengaluru</label>
+            <label><input type="checkbox" />Chennai</label>
+            <label><input type="checkbox" />Delhi</label>
+            <label><input type="checkbox" />Kolkata</label>
           </div>
         </div>
 
-        <!-- Price Range Filter -->
         <div class="filter-section">
-          <h3>Price per night</h3>
-          <div class="price-range">
-            <label
-              >Min <input type="text" placeholder="₹0"
-            /></label>
-            <label
-              >Max <input type="text" placeholder="₹28,000+"
-            /></label>
+          <div class="filter-header" onclick="toggleDropdown()">
+            <span>Number of Beds</span>
+            <span class="arrow">&#9662;</span>
           </div>
-          <input
-            type="range"
-            min="0"
-            max="28000"
-            value="14000"
-            class="slider"
-          />
-        </div>
-
-        <!-- Stay Options -->
-        <div class="filter-section">
-          <h3>Stay options</h3>
-          <label
-            ><input type="radio" name="stay" checked />
-            Any</label
-          >
-          <label
-            ><input type="radio" name="stay" /> Hotels</label
-          >
-          <label><input type="radio" name="stay" /> Homes</label>
-        </div>
-
-        <!-- Neighborhood Filter -->
-        <div class="filter-section">
-          <h3>Neighborhood</h3>
-          <label
-            ><input type="radio" name="neighborhood" /> Mumbai
-            (and vicinity)</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" /> Bandra
-            Kurla Complex</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" /> Mumbai
-            (BOM-Chhatrapati Shivaji Intl.)</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" />
-            Juhu</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" /> Andheri
-            East</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" />
-            Dadar</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" />
-            Colaba</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" /> Bandra
-            West</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" /> Andheri
-            West</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" /> Nariman
-            Point</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" />
-            Andheri</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" />
-            Goregoan</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" />
-            Santacruz</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" />
-            Chatrapati Shivaji Maharaj Terminus Railway
-            Station</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" /> Navi
-            Mumbai</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" />
-            Thane</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" />
-            Powai</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" />
-            Malad</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" />
-            Vashi</label
-          >
-          <label
-            ><input type="radio" name="neighborhood" />
-            Mumbai</label
-          >
-        </div>
-
-        <div class="filter-section">
-          <h3>Ameneties</h3>
-          <label><input type="checkbox" /> Kitchen</label>
-          <label><input type="checkbox" /> Gym</label>
-          <label
-            ><input type="checkbox" /> Airport shuttle</label
-          >
-          <label
-            ><input type="checkbox" /> Air Conditioned</label
-          >
-          <label><input type="checkbox" /> Parking</label>
-          <label><input type="checkbox" /> Spa</label>
-          <label><input type="checkbox" /> Hot tub</label>
-          <label><input type="checkbox" /> Outdoor Space</label>
-          <label><input type="checkbox" /> Cribs</label>
-          <label><input type="checkbox" /> Restaurant</label>
-          <label
-            ><input type="checkbox" /> Electric charging
-            station</label
-          >
-          <label><input type="checkbox" /> Wifi</label>
-          <label><input type="checkbox" /> Pet friendly</label>
-          <label
-            ><input type="checkbox" /> Washer and Dryer</label
-          >
-          <label><input type="checkbox" /> Water Park</label>
-          <label><input type="checkbox" /> Bar</label>
-          <label><input type="checkbox" /> Golf course</label>
-          <label><input type="checkbox" /> Casino</label>
-        </div>
-
-        <div class="filter-section">
-          <h3>Property Class</h3>
-          <label><input type="checkbox" /> Rating - 1</label>
-          <label><input type="checkbox" /> Rating - 2</label>
-          <label><input type="checkbox" /> Rating - 3</label>
-          <label><input type="checkbox" /> Rating - 4</label>
-          <label><input type="checkbox" /> Rating - 5</label>
-        </div>
-
-        <div class="filter-section">
-          <h3>Popular Locations</h3>
-          <label
-            ><input type="radio" name="popular_locations" /> Juhu
-            Beach</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" />
-            Gateway of India</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" />
-            Colaba Causeway</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" />
-            Marine Drive</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" /> U.S
-            Consulate General</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" />
-            Powai Lake</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" /> Aksa
-            Beach</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" />
-            Malshej Ghat</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" /> Jio
-            World Convention Centre</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" />
-            Mahalaxmi Racecourse</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" />
-            Mohmmad Ali Road</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" />
-            Alibag</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" />
-            Versova Beach</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" />
-            Nesco Center</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" /> Haji
-            Ali Dargah</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" />
-            Bombay Convention & Exhibition center</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" /> Madh
-            Fort</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" />
-            Front Bay</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" />
-            Gorai Beach</label
-          >
-          <label
-            ><input type="radio" name="popular_locations" /> Tata
-            Memorial Hospital</label
-          >
-        </div>
-
-        <div class="filter-section">
-          <h3>Guest Ratings</h3>
-          <label
-            ><input type="radio" name="guest_ratings" />
-            Any</label
-          >
-          <label
-            ><input type="radio" name="guest_ratings" />
-            Wonderful 9+</label
-          >
-          <label
-            ><input type="radio" name="guest_ratings" /> Very
-            Good 8+</label
-          >
-          <label
-            ><input type="radio" name="guest_ratings" /> Good
-            7+</label
-          >
-        </div>
-
-        <div class="filter-section">
-          <h3>Payment Type</h3>
-          <label
-            ><input type="checkbox" />Reserve now, pay
-            later</label
-          >
-          <label
-            ><input type="checkbox" />Reserve without a credit
-            card</label
-          >
-        </div>
-
-        <div class="filter-section">
-          <h3>Property Cancellation Options</h3>
-          <label
-            ><input type="checkbox" />Fully refundable</label
-          >
-        </div>
-
-        <div class="filter-section">
-          <h3>Number of Bedrooms</h3>
-          <label><input type="checkbox" /> Studio</label>
-          <label><input type="checkbox" /> 1</label>
-          <label><input type="checkbox" /> 2</label>
-          <label><input type="checkbox" /> 3</label>
-          <label><input type="checkbox" /> 4+</label>
+          <div class="filter-options">
+            <label><input type="checkbox" /> 1</label>
+            <label><input type="checkbox" /> 2</label>
+            <label><input type="checkbox" /> 3</label>
+            <label><input type="checkbox" /> 4+</label>
+          </div>
         </div>
 
         <div class="filter-section">

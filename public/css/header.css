@@ -56,7 +56,7 @@
   cursor: pointer;
 }
 
-.dropdownMenu {
+.dropdownMenuHeader {
   display: none;
   position: absolute;
   right: 0;
@@ -71,7 +71,7 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.dropdownMenu a {
+.dropdownMenuHeader a {
   display: block;
   padding: 10px;
   text-decoration: none;
@@ -79,6 +79,6 @@
   transition: background 0.2s;
 }
 
-.dropdownMenu a:hover {
+.dropdownMenuHeader a:hover {
   background: #f0f0f0;
 }

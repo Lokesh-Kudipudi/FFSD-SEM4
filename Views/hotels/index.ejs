@@ -16,7 +16,6 @@
     />
     <script defer src="/js/header.js"></script>
     <script defer src="/js/hotels/index.js"></script>
-
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -51,9 +50,12 @@
                 src="https://api.dicebear.com/9.x/initials/svg?seed=<%= user.name %>"
                 alt="avatar"
                 class="avatar"
-                onclick="toggleDropdown()"
+                onclick="toggleDropdownHeader()"
               />
-              <div class="dropdownMenu" id="dropdownMenu">
+              <div
+                class="dropdownMenuHeader"
+                id="dropdownMenuHeader"
+              >
                 <a href="/dashboard">Profile</a>
                 <% if(user.type == "admin" ){ %>
                 <a href="/dashboard/admin">Dashboard</a>

@@ -25,6 +25,26 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+const input = document.querySelector("#location-header");
+
 function handleHotelClick(hotelId) {
   window.location.href = `${window.location.protocol}//${window.location.host}/hotels/hotel/${hotelId}`;
 }
+
+function handleSearch() {
+  if (input.value.length == 0) {
+    window.location.href = `/hotels/search`;
+  } else {
+    window.location.href = `/hotels/search?q=${input.value}`;
+  }
+}
+
+function setInputValue() {
+  const url = new URLSearchParams(window.location.search);
+  const query = url.get("q");
+  if (query) {
+    input.value = query;
+  }
+}
+
+setInputValue();

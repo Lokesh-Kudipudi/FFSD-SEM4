@@ -1,5 +1,5 @@
-function toggleDropdown() {
-  const dropdown = document.getElementById("dropdownMenu");
+function toggleDropdownHeader() {
+  const dropdown = document.getElementById("dropdownMenuHeader");
   if (dropdown.style.display === "block") {
     dropdown.style.opacity = "0";
     dropdown.style.transform = "translateY(-10px)";
@@ -16,7 +16,7 @@ function toggleDropdown() {
 }
 
 document.addEventListener("click", function (event) {
-  const dropdown = document.getElementById("dropdownMenu");
+  const dropdown = document.getElementById("dropdownMenuHeader");
   const avatar = document.querySelector(".avatar");
   if (
     dropdown &&
