@@ -48,12 +48,10 @@ const hotels = [
       },
       {
         question: "Are pets allowed at JW Marriott Mumbai Juhu?",
-        answer:
-          "Sorry, pets and service animals aren't allowed.",
+        answer: "Sorry, pets and service animals aren't allowed.",
       },
       {
-        question:
-          "Is parking offered on site at JW Marriott Mumbai Juhu?",
+        question: "Is parking offered on site at JW Marriott Mumbai Juhu?",
         answer:
           "Yes, there's free self and valet parking. Electric vehicle charging is available.",
       },
@@ -64,20 +62,17 @@ const hotels = [
           "YCheck-in start time: 3:00 PM; Check-in end time: midnight. Check-out time is noon. Late check-out is available for a charge (subject to availability). Contactless check-in and check-out are available.",
       },
       {
-        question:
-          "What is there to do at JW Marriott Mumbai Juhu and nearby?",
+        question: "What is there to do at JW Marriott Mumbai Juhu and nearby?",
         answer:
           "Have fun during the warmer months with activities nearby such as sailing. Additional recreation onsite includes fitness classes and yoga. Indulge in a treatment at the spa, soothe your senses in the hot tub, or go for a swim in one of the 3 outdoor swimming pools. JW Marriott Mumbai Juhu also has a waterslide and a sauna, as well as a steam room and a garden.",
       },
       {
-        question:
-          "Are there restaurants at or near JW Marriott Mumbai Juhu?",
+        question: "Are there restaurants at or near JW Marriott Mumbai Juhu?",
         answer:
           "Yes, there are 4 onsite restaurants, featuring local and international cuisine and pool views.",
       },
       {
-        question:
-          "What's the area around JW Marriott Mumbai Juhu like?",
+        question: "What's the area around JW Marriott Mumbai Juhu like?",
         answer:
           "Yes, there are 4 onsite restaurants, featuring local and international cuisine and pool views.",
       },
@@ -179,13 +174,7 @@ const hotels = [
     rating: 5,
     currency: "INR",
 
-    amenities: [
-      "🏊‍♀ Pool",
-      "🍷 Bar",
-      "🍽 Fine Dining",
-      "💆‍♂ Spa",
-      "🏋 Gym",
-    ],
+    amenities: ["🏊‍♀ Pool", "🍷 Bar", "🍽 Fine Dining", "💆‍♂ Spa", "🏋 Gym"],
     mainImage:
       "https://cdn.kiwicollection.com/media/property/PR003110/xl/003110-01-hotel-exterior-night.jpg",
     images: [
@@ -197,23 +186,19 @@ const hotels = [
     faq: [
       {
         question: "Does The Leela Palace Bengaluru have a spa?",
-        answer:
-          "Yes, guests can enjoy an Ayurvedic spa experience.",
+        answer: "Yes, guests can enjoy an Ayurvedic spa experience.",
       },
       {
-        question:
-          "Is there a swimming pool at The Leela Palace Bengaluru?",
+        question: "Is there a swimming pool at The Leela Palace Bengaluru?",
         answer:
           "Yes, there is an outdoor temperature-controlled pool available.",
       },
       {
         question: "What are the check-in and check-out timings?",
-        answer:
-          "Check-in starts at 3:00 PM and check-out is until 12:00 PM.",
+        answer: "Check-in starts at 3:00 PM and check-out is until 12:00 PM.",
       },
       {
-        question:
-          "Does the hotel offer airport shuttle service?",
+        question: "Does the hotel offer airport shuttle service?",
         answer:
           "Yes, an airport shuttle service is available for an additional charge.",
       },
@@ -225,8 +210,7 @@ const hotels = [
       },
       {
         question: "Does the hotel have free parking?",
-        answer:
-          "Yes, free self and valet parking are available for guests.",
+        answer: "Yes, free self and valet parking are available for guests.",
       },
     ],
 
@@ -298,11 +282,7 @@ const hotels = [
         title: "Executive Suite, Pool View",
         price: "48000",
         rating: 5,
-        features: [
-          "Private Balcony",
-          "Luxury Bath",
-          "24/7 Room Service",
-        ],
+        features: ["Private Balcony", "Luxury Bath", "24/7 Room Service"],
         image:
           "https://th.bing.com/th/id/OIP.J1zhgytRg40UJsOqFGFrKQHaE7?rs=1&pid=ImgDetMain",
       },
@@ -335,16 +315,12 @@ const hotels = [
     ],
     faq: [
       {
-        question:
-          "Is there an airport shuttle at The Lalit, Kolkata?",
-        answer:
-          "Yes, paid airport shuttle services are available.",
+        question: "Is there an airport shuttle at The Lalit, Kolkata?",
+        answer: "Yes, paid airport shuttle services are available.",
       },
       {
-        question:
-          "Does The Lalit, Kolkata have a swimming pool?",
-        answer:
-          "Yes, the hotel has an outdoor pool with a poolside bar.",
+        question: "Does The Lalit, Kolkata have a swimming pool?",
+        answer: "Yes, the hotel has an outdoor pool with a poolside bar.",
       },
       {
         question: "Are pets allowed at The Lalit, Kolkata?",
@@ -361,8 +337,7 @@ const hotels = [
           "Yes, complimentary Wi-Fi is available in all rooms and public areas.",
       },
       {
-        question:
-          "What safety measures are in place at the hotel?",
+        question: "What safety measures are in place at the hotel?",
         answer:
           "The hotel follows enhanced cleaning procedures, offers contactless check-in, and provides sanitization stations throughout the property.",
       },
@@ -428,11 +403,7 @@ const hotels = [
         title: "Luxury Suite, River View",
         price: "32000",
         rating: 5,
-        features: [
-          "Balcony",
-          "Luxury Bath",
-          "24/7 Butler Service",
-        ],
+        features: ["Balcony", "Luxury Bath", "24/7 Butler Service"],
         image:
           "https://th.bing.com/th/id/OIP.mq3Ges_BfGveiGff6UqSkQHaCU?rs=1&pid=ImgDetMain",
       },
@@ -440,11 +411,7 @@ const hotels = [
         title: "Club Room, Executive Lounge Access",
         price: "26000",
         rating: 4,
-        features: [
-          "Free Lounge Access",
-          "King Bed",
-          "Complimentary Breakfast",
-        ],
+        features: ["Free Lounge Access", "King Bed", "Complimentary Breakfast"],
         image:
           "https://th.bing.com/th/id/OIP.DZO4-IDEKo77EZKIiSwHyQHaEv?rs=1&pid=ImgDetMain",
       },
@@ -460,12 +427,7 @@ const hotels = [
     rating: 4,
     currency: "INR",
 
-    amenities: [
-      "🏊‍♀ Rooftop Pool",
-      "🍸 Bar",
-      "💆‍♂ Spa",
-      "🏋 Gym",
-    ],
+    amenities: ["🏊‍♀ Rooftop Pool", "🍸 Bar", "💆‍♂ Spa", "🏋 Gym"],
     mainImage:
       "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/19/75/8d/c3/exterior.jpg?w=900&h=-1&s=1",
     images: [
@@ -476,37 +438,29 @@ const hotels = [
     ],
     faq: [
       {
-        question:
-          "Is breakfast included at Radisson Blu, Jaipur?",
-        answer:
-          "Yes, complimentary breakfast is available for all guests.",
+        question: "Is breakfast included at Radisson Blu, Jaipur?",
+        answer: "Yes, complimentary breakfast is available for all guests.",
       },
       {
-        question:
-          "Does Radisson Blu, Jaipur have a swimming pool?",
-        answer:
-          "Yes, the hotel features an outdoor rooftop pool.",
+        question: "Does Radisson Blu, Jaipur have a swimming pool?",
+        answer: "Yes, the hotel features an outdoor rooftop pool.",
       },
       {
         question: "What are the check-in and check-out timings?",
-        answer:
-          "Check-in starts at 2 PM, and check-out is until 12 PM.",
+        answer: "Check-in starts at 2 PM, and check-out is until 12 PM.",
       },
       {
-        question:
-          "Does Radisson Blu, Jaipur offer airport transfers?",
+        question: "Does Radisson Blu, Jaipur offer airport transfers?",
         answer:
           "Yes, airport shuttle services are available for an additional charge.",
       },
       {
-        question:
-          "Are there any business facilities at the hotel?",
+        question: "Are there any business facilities at the hotel?",
         answer:
           "Yes, the hotel offers meeting rooms, a business center, and high-speed Wi-Fi.",
       },
       {
-        question:
-          "What dining options are available at the hotel?",
+        question: "What dining options are available at the hotel?",
         answer:
           "Guests can enjoy multiple dining options, including an all-day restaurant, a rooftop bar, and in-room dining.",
       },
@@ -572,11 +526,7 @@ const hotels = [
         title: "Business Suite, Lounge Access",
         price: "28000",
         rating: 5,
-        features: [
-          "Private Lounge",
-          "Work Desk",
-          "Complimentary Drinks",
-        ],
+        features: ["Private Lounge", "Work Desk", "Complimentary Drinks"],
         image:
           "https://www.hotelsgroup.in/radissonblu/gallery/radisson-blu-jaipur-06.jpg",
       },
@@ -584,11 +534,7 @@ const hotels = [
         title: "Royal Suite, Private Balcony",
         price: "35000",
         rating: 5,
-        features: [
-          "Private Balcony",
-          "Luxury Bath",
-          "24/7 Concierge",
-        ],
+        features: ["Private Balcony", "Luxury Bath", "24/7 Concierge"],
         image:
           "https://th.bing.com/th/id/OIP.EG0afA61AhUezWkCpBZKvQHaEK?rs=1&pid=ImgDetMain",
       },
@@ -600,8 +546,7 @@ const hotels = [
     location: "Hyderabad",
     description:
       "A former royal palace now serving as a luxury hotel, Taj Falaknuma Palace offers an experience of grandeur and elegance.",
-    address:
-      "Engine Bowli, Falaknuma, Hyderabad, Telangana 500053",
+    address: "Engine Bowli, Falaknuma, Hyderabad, Telangana 500053",
     rating: 5,
     currency: "INR",
 
@@ -621,14 +566,11 @@ const hotels = [
     ],
     faq: [
       {
-        question:
-          "Is there a dress code at Taj Falaknuma Palace restaurants?",
-        answer:
-          "Yes, formal attire is required for dinner service.",
+        question: "Is there a dress code at Taj Falaknuma Palace restaurants?",
+        answer: "Yes, formal attire is required for dinner service.",
       },
       {
-        question:
-          "Does Taj Falaknuma Palace offer airport transportation?",
+        question: "Does Taj Falaknuma Palace offer airport transportation?",
         answer:
           "Yes, the hotel provides luxury airport transfers for an additional charge.",
       },
@@ -638,8 +580,7 @@ const hotels = [
           "Yes, guests can enjoy Ayurvedic treatments and personalized wellness therapies at the Jiva Spa.",
       },
       {
-        question:
-          "Are guided palace tours available for guests?",
+        question: "Are guided palace tours available for guests?",
         answer:
           "Yes, guests can book guided heritage walks to explore the palace's history and architecture.",
       },
@@ -650,8 +591,7 @@ const hotels = [
       },
       {
         question: "What are the check-in and check-out timings?",
-        answer:
-          "Check-in starts at 2 PM, and check-out is until 12 PM.",
+        answer: "Check-in starts at 2 PM, and check-out is until 12 PM.",
       },
     ],
 
@@ -716,11 +656,7 @@ const hotels = [
         title: "Royal Suite, Private Courtyard",
         price: "55000",
         rating: 5,
-        features: [
-          "Courtyard Access",
-          "Luxury Bath",
-          "24/7 Butler Service",
-        ],
+        features: ["Courtyard Access", "Luxury Bath", "24/7 Butler Service"],
         image:
           "https://d1cdc15hzkd3wm.cloudfront.net/products/medias/originalmark/X1FQUFBF.jpg",
       },
@@ -728,11 +664,7 @@ const hotels = [
         title: "Grand Presidential Suite",
         price: "75000",
         rating: 5,
-        features: [
-          "Private Pool",
-          "Personal Chef",
-          "Exclusive Lounge",
-        ],
+        features: ["Private Pool", "Personal Chef", "Exclusive Lounge"],
         image:
           "https://th.bing.com/th/id/OIP.E1Kdw_kwAwg4qM_NQMIWaQHaE7?rs=1&pid=ImgDetMain",
       },
@@ -765,14 +697,11 @@ const hotels = [
 
     faq: [
       {
-        question:
-          "Do all rooms at Oberoi Udaivilas have lake views?",
-        answer:
-          "Only select premium suites offer direct lake views.",
+        question: "Do all rooms at Oberoi Udaivilas have lake views?",
+        answer: "Only select premium suites offer direct lake views.",
       },
       {
-        question:
-          "Does Oberoi Udaivilas offer private boat transfers?",
+        question: "Does Oberoi Udaivilas offer private boat transfers?",
         answer:
           "Yes, guests can arrive at the hotel via private boat transfers arranged by the hotel.",
       },
@@ -781,8 +710,7 @@ const hotels = [
         answer: "No, pets are not allowed at the property.",
       },
       {
-        question:
-          "Does the hotel provide airport shuttle services?",
+        question: "Does the hotel provide airport shuttle services?",
         answer:
           "Yes, luxury airport transfers can be arranged for an additional fee.",
       },
@@ -850,11 +778,7 @@ const hotels = [
         title: "Premier Room, Garden View",
         price: "45000",
         rating: 5,
-        features: [
-          "Free Breakfast",
-          "Luxury Bath",
-          "24/7 Room Service",
-        ],
+        features: ["Free Breakfast", "Luxury Bath", "24/7 Room Service"],
         image:
           "https://th.bing.com/th/id/OIP.hB72cIV-oYfE2eJM3beJkAHaFj?rs=1&pid=ImgDetMain",
       },
@@ -862,11 +786,7 @@ const hotels = [
         title: "Luxury Suite, Private Pool",
         price: "78000",
         rating: 5,
-        features: [
-          "Private Infinity Pool",
-          "King Bed",
-          "Personal Butler",
-        ],
+        features: ["Private Infinity Pool", "King Bed", "Personal Butler"],
         image:
           "https://cdn.audleytravel.com/1400/1000/60/168184-udaivilas-entrance.jpg",
       },
@@ -874,11 +794,7 @@ const hotels = [
         title: "Kohinoor Suite, Lake View",
         price: "120000",
         rating: 5,
-        features: [
-          "Panoramic Lake View",
-          "Luxury Decor",
-          "Private Garden",
-        ],
+        features: ["Panoramic Lake View", "Luxury Decor", "Private Garden"],
         image:
           "https://qtxasset.com/quartz/qcloud1/media/image/Morning%20at%20The%20Oberoi%20Udaivilas%2C%20Udaipur.jpg?VersionId=M1k8ds8HHvhd.sN9eXmp9fb7PVtfi6pc",
       },
@@ -890,15 +806,9 @@ const hotels = [
     location: "Mumbai",
     description:
       "A modern luxury hotel in the heart of Mumbai, offering wellness-focused amenities and premium accommodations.",
-    address:
-      "International Business Park, Mumbai, Maharashtra 400063",
+    address: "International Business Park, Mumbai, Maharashtra 400063",
     rating: 5,
-    amenities: [
-      "🏊‍♀ Pool",
-      "💆‍♂ Spa",
-      "🏋 Fitness Studio",
-      "🍹 Rooftop Bar",
-    ],
+    amenities: ["🏊‍♀ Pool", "💆‍♂ Spa", "🏋 Fitness Studio", "🍹 Rooftop Bar"],
     currency: "INR",
 
     mainImage:
@@ -911,20 +821,16 @@ const hotels = [
     ],
     faq: [
       {
-        question:
-          "Does The Westin Mumbai have a business center?",
-        answer:
-          "Yes, a fully-equipped business center is available.",
+        question: "Does The Westin Mumbai have a business center?",
+        answer: "Yes, a fully-equipped business center is available.",
       },
       {
-        question:
-          "Is airport transportation available at The Westin Mumbai?",
+        question: "Is airport transportation available at The Westin Mumbai?",
         answer:
           "Yes, paid airport shuttle services can be arranged upon request.",
       },
       {
-        question:
-          "Does the hotel offer early check-in or late check-out?",
+        question: "Does the hotel offer early check-in or late check-out?",
         answer:
           "Early check-in and late check-out are subject to availability and may incur additional charges.",
       },
@@ -1004,11 +910,7 @@ const hotels = [
         title: "Club Room, Lounge Access",
         price: "28000",
         rating: 5,
-        features: [
-          "Executive Lounge Access",
-          "Non Smoking",
-          "Luxury Bath",
-        ],
+        features: ["Executive Lounge Access", "Non Smoking", "Luxury Bath"],
         image:
           "https://th.bing.com/th/id/R.47e79c87b08b3fbad8f7def0c5b7b7ac?rik=klpofztVxvqWPw&riu=http%3a%2f%2fpix10.agoda.net%2fhotelImages%2f195%2f195901%2f195901_17090618310056065186.jpg&ehk=YrNBTC2FInmynIS%2fE842l6msLlpmhNoI8riZHifPqNE%3d&risl=&pid=ImgRaw&r=0",
       },
@@ -1022,12 +924,7 @@ const hotels = [
       "A majestic luxury hotel inspired by South Indian heritage, ITC Grand Chola offers a blend of traditional elegance and modern comfort.",
     address: "Mount Road, Chennai, Tamil Nadu 600032",
     rating: 5,
-    amenities: [
-      "🏊‍♀ Pool",
-      "🍽 Fine Dining",
-      "💆‍♂ Spa",
-      "🏋 Gym",
-    ],
+    amenities: ["🏊‍♀ Pool", "🍽 Fine Dining", "💆‍♂ Spa", "🏋 Gym"],
     currency: "INR",
 
     mainImage:
@@ -1040,14 +937,11 @@ const hotels = [
     ],
     faq: [
       {
-        question:
-          "Does ITC Grand Chola have an airport shuttle service?",
-        answer:
-          "Yes, paid airport transfer services are available.",
+        question: "Does ITC Grand Chola have an airport shuttle service?",
+        answer: "Yes, paid airport transfer services are available.",
       },
       {
-        question:
-          "What dining options are available at ITC Grand Chola?",
+        question: "What dining options are available at ITC Grand Chola?",
         answer:
           "The hotel features multiple fine-dining restaurants, a 24-hour café, and a rooftop bar.",
       },
@@ -1058,18 +952,15 @@ const hotels = [
       },
       {
         question: "Are pets allowed at ITC Grand Chola?",
-        answer:
-          "No, pets are not permitted within the hotel premises.",
+        answer: "No, pets are not permitted within the hotel premises.",
       },
       {
-        question:
-          "What wellness facilities are available at ITC Grand Chola?",
+        question: "What wellness facilities are available at ITC Grand Chola?",
         answer:
           "The hotel offers a full-service luxury spa, a sauna, and a well-equipped fitness center.",
       },
       {
-        question:
-          "Is there a business center at ITC Grand Chola?",
+        question: "Is there a business center at ITC Grand Chola?",
         answer:
           "Yes, a fully-equipped business center and conference rooms are available for guests.",
       },
@@ -1126,11 +1017,7 @@ const hotels = [
         title: "Luxury Room, City View",
         price: "30000",
         rating: 5,
-        features: [
-          "Smart TV",
-          "Luxury Bath",
-          "24/7 Room Service",
-        ],
+        features: ["Smart TV", "Luxury Bath", "24/7 Room Service"],
         image:
           "https://cache.marriott.com/content/dam/marriott-renditions/MAALC/maalc-room-3900-hor-wide.jpg?output-quality=70&interpolation=progressive-bilinear&downsize=1336px:*",
       },
@@ -1175,14 +1062,12 @@ const hotels = [
 
     faq: [
       {
-        question:
-          "Does The Leela Palace provide airport transfers?",
+        question: "Does The Leela Palace provide airport transfers?",
         answer:
           "Yes, airport transfers are available for an additional charge.",
       },
       {
-        question:
-          "What dining options are available at The Leela Palace?",
+        question: "What dining options are available at The Leela Palace?",
         answer:
           "The hotel features multiple fine-dining restaurants, a rooftop bar, and 24-hour in-room dining.",
       },
@@ -1193,18 +1078,15 @@ const hotels = [
       },
       {
         question: "Are pets allowed at The Leela Palace?",
-        answer:
-          "No, pets are not permitted within the hotel premises.",
+        answer: "No, pets are not permitted within the hotel premises.",
       },
       {
-        question:
-          "What wellness facilities are available at The Leela Palace?",
+        question: "What wellness facilities are available at The Leela Palace?",
         answer:
           "The hotel offers a luxury spa, steam room, sauna, and a state-of-the-art fitness center.",
       },
       {
-        question:
-          "Is there a business center at The Leela Palace?",
+        question: "Is there a business center at The Leela Palace?",
         answer:
           "Yes, a fully-equipped business center with high-speed internet and meeting rooms is available.",
       },
@@ -1261,11 +1143,7 @@ const hotels = [
         title: "Grand Deluxe Room, Garden View",
         price: "38000",
         rating: 5,
-        features: [
-          "Luxury Bath",
-          "Non Smoking",
-          "24/7 Room Service",
-        ],
+        features: ["Luxury Bath", "Non Smoking", "24/7 Room Service"],
         image:
           "https://www.theleela.com/prod/content/assets/styles/destinations_slider/public/2021-06/Grande-Deluxe-Room-The-Leela-Palace-New-Delhi.jpg?VersionId=oOunfw00OsE6kmnJo9mRwiHYSflOY77P&itok=QZtmKB3n",
       },
@@ -1309,34 +1187,28 @@ const hotels = [
     ],
     faq: [
       {
-        question:
-          "Does The Lalit Bangalore allow early check-in?",
+        question: "Does The Lalit Bangalore allow early check-in?",
         answer:
           "Early check-in is subject to availability and may incur extra charges.",
       },
       {
-        question:
-          "Does The Lalit Bangalore provide airport shuttle service?",
+        question: "Does The Lalit Bangalore provide airport shuttle service?",
         answer:
           "Yes, paid airport transfer services are available upon request.",
       },
       {
-        question:
-          "Are there dining options available at The Lalit Bangalore?",
+        question: "Are there dining options available at The Lalit Bangalore?",
         answer:
           "Yes, the hotel has multiple restaurants serving Indian and international cuisine.",
       },
       {
-        question:
-          "Does The Lalit Bangalore have a fitness center?",
+        question: "Does The Lalit Bangalore have a fitness center?",
         answer:
           "Yes, the hotel offers a fully equipped gym with modern equipment.",
       },
       {
-        question:
-          "Is there a swimming pool at The Lalit Bangalore?",
-        answer:
-          "Yes, there is an outdoor pool with a poolside bar.",
+        question: "Is there a swimming pool at The Lalit Bangalore?",
+        answer: "Yes, there is an outdoor pool with a poolside bar.",
       },
       {
         question: "Are pets allowed at The Lalit Bangalore?",
@@ -1402,11 +1274,7 @@ const hotels = [
         title: "Executive Suite, Lounge Access",
         price: "40000",
         rating: 5,
-        features: [
-          "Executive Lounge Access",
-          "Luxury Bath",
-          "City View",
-        ],
+        features: ["Executive Lounge Access", "Luxury Bath", "City View"],
         image:
           "https://www.indianholiday.com/pictures/hotel/hotelgalleryn/the-trident-hilton-hotel-chennai-55973.jpg",
       },
@@ -1439,10 +1307,8 @@ const hotels = [
 
     faq: [
       {
-        question:
-          "Does Fortune Park Moksha provide airport shuttle services?",
-        answer:
-          "Yes, paid airport transfers can be arranged upon request.",
+        question: "Does Fortune Park Moksha provide airport shuttle services?",
+        answer: "Yes, paid airport transfers can be arranged upon request.",
       },
       {
         question: "Are pets allowed at Fortune Park Moksha?",
@@ -1454,10 +1320,8 @@ const hotels = [
           "Yes, the hotel has a wellness spa offering rejuvenating treatments.",
       },
       {
-        question:
-          "What are the check-in and check-out times at the hotel?",
-        answer:
-          "Check-in starts at 2 PM, and check-out is until 12 PM.",
+        question: "What are the check-in and check-out times at the hotel?",
+        answer: "Check-in starts at 2 PM, and check-out is until 12 PM.",
       },
     ],
 
@@ -1499,12 +1363,7 @@ const hotels = [
         title: "Premium Room, Mountain View",
         price: "18000",
         rating: 4,
-        features: [
-          "Smart TV",
-          "Free WiFi",
-          "Non Smoking",
-          "Private Balcony",
-        ],
+        features: ["Smart TV", "Free WiFi", "Non Smoking", "Private Balcony"],
         image:
           "https://th.bing.com/th/id/OIP.pcuEQOfarxaLfK-9Tn4UOgHaEQ?rs=1&pid=ImgDetMain",
       },
@@ -1512,11 +1371,7 @@ const hotels = [
         title: "Suite, Private Terrace",
         price: "30000",
         rating: 5,
-        features: [
-          "Spacious Living Area",
-          "Luxury Bath",
-          "Mountain View",
-        ],
+        features: ["Spacious Living Area", "Luxury Bath", "Mountain View"],
         image:
           "https://th.bing.com/th/id/OIP.eUmRjpZOz3-yqS_-wEwRPQHaE8?rs=1&pid=ImgDetMain",
       },
@@ -1532,12 +1387,7 @@ const hotels = [
     rating: 5,
     currency: "INR",
 
-    amenities: [
-      "🏊‍♀ Pool",
-      "🏖 Private Beach",
-      "💆‍♂ Spa",
-      "🍹 Poolside Bar",
-    ],
+    amenities: ["🏊‍♀ Pool", "🏖 Private Beach", "💆‍♂ Spa", "🍹 Poolside Bar"],
     mainImage:
       "https://www.holidify.com/images/cmsuploads/compressed/269273643_20210525121056.jpg",
     images: [
@@ -1549,18 +1399,15 @@ const hotels = [
     faq: [
       {
         question: "Does Novotel Goa Resort offer beach access?",
-        answer:
-          "Yes, the resort provides direct access to a private beach.",
+        answer: "Yes, the resort provides direct access to a private beach.",
       },
       {
         question: "Are pets allowed at Novotel Goa Resort?",
         answer: "No, pets are not allowed at the property.",
       },
       {
-        question:
-          "Does Novotel Goa Resort offer airport shuttle service?",
-        answer:
-          "Yes, the resort offers a paid airport shuttle service.",
+        question: "Does Novotel Goa Resort offer airport shuttle service?",
+        answer: "Yes, the resort offers a paid airport shuttle service.",
       },
       {
         question: "Are there restaurants at Novotel Goa Resort?",
@@ -1574,8 +1421,7 @@ const hotels = [
       },
       {
         question: "Is there a kids' club at Novotel Goa Resort?",
-        answer:
-          "Yes, the resort has a supervised kids' club with activities.",
+        answer: "Yes, the resort has a supervised kids' club with activities.",
       },
     ],
 
@@ -1656,8 +1502,6 @@ hotelsRouter.route("/search").get((req, res) => {
   const searchParam = req.query;
 
   const query = searchParam?.q;
-
-  console.log(query);
 
   if (query) {
     hotelsToDisplay = hotelsToDisplay.filter((hotel) => {
