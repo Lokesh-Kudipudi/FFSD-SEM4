@@ -115,8 +115,26 @@ const passwordInput = document.querySelector("#password");
 async function handleSignUp(event) {
   event.preventDefault(); // To prevent reload
 
+  if (nameInput.value === "") {
+    showToast("Name cannot be empty", "error");
+    nameInput.focus();
+    return;
+  }
+
+  if (emailInput.value === "") {
+    showToast("Email cannot be empty", "error");
+    emailInput.focus();
+    return;
+  }
+
+  if (passwordInput.value === "") {
+    showToast("Password cannot be empty", "error");
+    passwordInput.focus();
+    return;
+  }
+
   if (passwordInput.value?.length < 8) {
-    showToast("Password Length is less than 8", "warning");
+    showToast("Password Length is less than 8", "error");
     passwordInput.value = "";
     passwordInput.focus();
     return;

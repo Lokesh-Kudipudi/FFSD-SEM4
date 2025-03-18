@@ -110,6 +110,24 @@ const passwordInput = document.querySelector("#password");
 async function handleSignUp(event) {
   event.preventDefault(); // To prevent reload
 
+  if (nameInput.value === "") {
+    showToast("Name is required", "error");
+    nameInput.focus();
+    return;
+  }
+
+  if (emailInput.value === "") {
+    showToast("Email is required", "error");
+    emailInput.focus();
+    return;
+  }
+
+  if (passwordInput.value === "") {
+    showToast("Password is required", "error");
+    passwordInput.focus();
+    return;
+  }
+
   if (passwordInput.value?.length < 8) {
     showToast("Password Length is less than 8", "warning");
     passwordInput.value = "";

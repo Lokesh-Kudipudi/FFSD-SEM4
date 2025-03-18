@@ -117,6 +117,16 @@ async function handleSignIn(e) {
   const email = emailInput.value;
   const password = passwordInput.value;
 
+  if (!email) {
+    emailInput.focus();
+    return showToast("Please enter email ", "error");
+  }
+
+  if (!password) {
+    passwordInput.focus();
+    return showToast("Please enter password", "error");
+  }
+
   try {
     const response = await fetch("/signin", {
       method: "POST",
