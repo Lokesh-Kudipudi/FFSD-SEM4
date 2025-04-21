@@ -1,0 +1,20 @@
+const mongoose = require("mongoose");
+
+const userSchema = new mongoose.Schema({
+  id: String,
+  fullName: String,
+  email: String,
+  passwordHash: String,
+  phone: String,
+  address: String,
+  role: {
+    type: String,
+    enum: ["user", "admin", "hotelManager"],
+    default: "user",
+  },
+  bookings: [String], // booking IDs
+});
+
+const User = mongoose.model("User", userSchema);
+
+module.exports = { User };

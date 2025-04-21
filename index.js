@@ -2,38 +2,31 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const morgan = require("morgan");
-const session = require("express-session");
 const toursRouter = require("./routes/toursRouter");
 const hotelsRouter = require("./routes/hotelsRouter");
 const dashboardRouter = require("./routes/dashboardRouter");
+
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
 const {
-  signUpUser,
-  signUphotelManager,
-  signUpAdmin,
-  getUsers,
-  fetchUserByEmailPassword,
-  logout,
-} = require("./Controller/userController");
+  authenticateUser,
+} = require("./middleware/authentication");
+const { userRouter } = require("./routes/userRouter");
+dotenv.config();
 
 // Set EJS as the templating engine
 app.set("view engine", "ejs");
 
-// Implement Sessions
-app.use(
-  session({
-    secret: "ChasingHorizons", // Change this to a secure key
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }, // Set to true if using HTTPS
-  })
-);
+// Cookie Parser
+app.use(cookieParser());
 
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, "public")));
 
 // Parse incoming JSON requests
 app.use(express.json());
-app.use(morgan("tiny"));
+app.use(morgan("dev"));
 
 // Define the root route
 app.get("/", (req, res) => {
@@ -45,37 +38,7 @@ app.route("/contact").get((req, res) => {
   res.sendFile("/html/contact.html", { root: "public" });
 });
 
-// Define the route for the sign-up page and handle sign-up form submission
-app
-  .route("/signUp")
-  .get((req, res) => {
-    res.sendFile("/html/auth/signUp.html", { root: "public" });
-  })
-  .post(signUpUser);
-
-// Define the route for hotel manager sign-up page and handle sign-up form submission
-app
-  .route("/signUpHotelManager")
-  .get((req, res) => {
-    res.sendFile("/html/auth/signUpHotelManager.html", {
-      root: "public",
-    });
-  })
-  .post(signUphotelManager);
-
-// Define the route for the sign-in page and handle sign-in form submission
-app
-  .route("/signIn")
-  .get((req, res) => {
-    res.sendFile("/html/auth/signIn.html", { root: "public" });
-  })
-  .post(fetchUserByEmailPassword);
-
-// Define the route for the sign-out
-app.route("/logout").get(logout);
-
-// Define the route to get all users
-app.route("/users").get(getUsers).post(signUpAdmin);
+app.use("/", userRouter);
 
 // Use the tours router for routes starting with "/tours"
 app.use("/tours", toursRouter);
@@ -87,6 +50,17 @@ app.use("/hotels", hotelsRouter);
 app.use("/dashboard", dashboardRouter);
 
 const port = 5500;
+
+async function connectMongoose() {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("MongoDB Connected");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+connectMongoose();
 
 // Start the server on port
 const server = app.listen(port, () => {

@@ -1,155 +1,224 @@
-const {
-  insertUser,
-  getAllUsers,
-  getUserByEmail,
-  addAdmin,
-} = require("../Model/usersModel");
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const { User } = require("../Model/userModel");
 
-// Function to handle user sign-up
-function signUpUser(req, res) {
+const JWT_SECRET = "your_jwt_secret"; // Use env var in production
+
+// Helper to generate JWT
+function generateToken(user) {
+  return jwt.sign(
+    { id: user._id, email: user.email, role: user.role },
+    JWT_SECRET,
+    { expiresIn: "7d" }
+  );
+}
+
+// Sign up regular user
+async function signUpUser(req, res) {
+  const { fullName, email, password } = req.body;
   try {
-    const { name, email, password } = req.body;
-    // Insert new user into the database
-    insertUser(name, email, password);
-    // Retrieve the newly created user by email
-    const user = getUserByEmail(email);
-    // Store user information in session
-    req.session.user = user;
-    // Send success response
+    const existing = await User.findOne({ email });
+    if (existing) {
+      return res.status(400).json({
+        status: "fail",
+        message: "User already exists!",
+      });
+    }
+
+    const passwordHash = await bcrypt.hash(password, 12);
+    const user = await User.create({
+      fullName,
+      email,
+      passwordHash,
+      role: "user",
+    });
+
+    const token = generateToken(user);
+    res.cookie("token", token, {
+      httpOnly: true, // Prevents JS access on client-side
+      secure: false, // Set to true if using HTTPS
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
+
     res.status(201).json({
       status: "success",
       message: "User created successfully",
-    });
-  } catch (err) {
-    // Send failure response if user already exists
-    res.status(400).json({
-      status: "fail",
-      message: "User already Exists!",
-    });
-  }
-}
-
-// Function to handle user sign-up
-function signUphotelManager(req, res) {
-  try {
-    const { name, email, password } = req.body;
-
-    // Insert new user into the database
-    insertUser(name, email, password, "hotelManager");
-
-    // Retrieve the newly created user by email
-    const user = getUserByEmail(email);
-
-    // Store user information in session
-    req.session.user = user;
-
-    // Send success response
-    res.status(201).json({
-      status: "success",
-      message: "User created successfully",
-    });
-  } catch (err) {
-    // Send failure response if user already exists
-    res.status(400).json({
-      status: "fail",
-      message: "User already Exists!",
-    });
-  }
-}
-
-// Function to get all users
-function getUsers(req, res) {
-  try {
-    // Retrieve all users from the database
-    const users = getAllUsers();
-    // Send success response with users data
-    res.status(200).json({
-      status: "success",
-      data: {
-        users,
+      token,
+      user: {
+        id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        role: user.role,
       },
     });
   } catch (err) {
-    // Send failure response if users not found
-    res.status(400).json({
-      status: "fail",
-      message: "Users not found",
-      error: err.message,
-    });
+    res
+      .status(500)
+      .json({ status: "fail", message: err.message });
   }
 }
 
-// Function to fetch user by email and password
-function fetchUserByEmailPassword(req, res) {
-  const { email, password } = req.body;
-
-  // Retrieve user by email
-
-  const user = getUserByEmail(email);
-
-  if (!user) {
-    // Send failure response if user not found
-    res.status(404).json({
-      status: "fail",
-      message: "User not found",
-    });
-    return;
-  }
-
-  if (user.password !== password) {
-    // Send failure response if password is invalid
-    res.status(401).json({
-      status: "fail",
-      message: "Invalid password",
-    });
-    return;
-  }
-
-  // Store user information in session
-  req.session.user = user;
-
-  // Send success response with user data
-  res.status(200).json({
-    status: "success",
-    data: {
-      user,
-    },
-  });
-
-  return user;
-}
-
-function signUpAdmin(req, res) {
+// Sign up hotel manager
+async function signUphotelManager(req, res) {
+  const { fullName, email, password } = req.body;
   try {
-    const { name, email, password } = req.body;
+    const existing = await mongoose
+      .model("User")
+      .findOne({ email });
+    if (existing) {
+      return res.status(400).json({
+        status: "fail",
+        message: "User already exists!",
+      });
+    }
 
-    // Insert new user into the database
-    addAdmin(name, email, password);
+    const passwordHash = await bcrypt.hash(password, 12);
+    const user = await User.create({
+      fullName,
+      email,
+      passwordHash,
+      role: "hotelManager",
+    });
 
-    // Retrieve the newly created user by email
-    const user = getUserByEmail(email);
+    const token = generateToken(user);
 
-    // Store user information in session
-    req.session.user = user;
+    res.cookie("token", token, {
+      httpOnly: true, // Prevents JS access on client-side
+      secure: false, // Set to true if using HTTPS
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
 
-    // Send success response
     res.status(201).json({
       status: "success",
-      message: "User created successfully",
+      message: "Hotel Manager created successfully",
+      token,
+      user: {
+        id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        role: user.role,
+      },
     });
   } catch (err) {
-    // Send failure response if user already exists
-    res.status(400).json({
-      status: "fail",
-      message: "User already Exists!",
-    });
+    res
+      .status(500)
+      .json({ status: "fail", message: err.message });
   }
 }
 
+// Sign up admin
+async function signUpAdmin(req, res) {
+  const { fullName, email, password } = req.body;
+  try {
+    const existing = await mongoose
+      .model("User")
+      .findOne({ email });
+    if (existing) {
+      return res.status(400).json({
+        status: "fail",
+        message: "User already exists!",
+      });
+    }
+
+    const passwordHash = await bcrypt.hash(password, 12);
+    const user = await User.create({
+      fullName,
+      email,
+      passwordHash,
+      role: "admin",
+    });
+
+    const token = generateToken(user);
+    res.status(201).json({
+      status: "success",
+      message: "Admin created successfully",
+      token,
+      user: {
+        id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        role: user.role,
+      },
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ status: "fail", message: err.message });
+  }
+}
+
+// User login
+async function fetchUserByEmailPassword(req, res) {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res
+        .status(404)
+        .json({ status: "fail", message: "User not found" });
+    }
+
+    const valid = await bcrypt.compare(
+      password,
+      user.passwordHash
+    );
+    if (!valid) {
+      return res
+        .status(401)
+        .json({ status: "fail", message: "Invalid password" });
+    }
+
+    const token = generateToken(user);
+
+    res.cookie("token", token, {
+      httpOnly: true, // Prevents JS access on client-side
+      secure: false, // Set to true if using HTTPS
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
+
+    res.status(200).json({
+      status: "success",
+      message: "Logged in successfully",
+      token,
+      user: {
+        id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        role: user.role,
+      },
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ status: "fail", message: err.message });
+  }
+}
+
+// Get all users (admin use)
+async function getUsers(req, res) {
+  try {
+    const users = await mongoose
+      .model("User")
+      .find()
+      .select("-passwordHash");
+    res.status(200).json({
+      status: "success",
+      data: { users },
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ status: "fail", message: err.message });
+  }
+}
+
+// Logout (handled client-side in JWT — optional server blacklist etc.)
 function logout(req, res) {
-  req.session.destroy();
-  res.render("index", { user: req.session?.user });
-  return;
+  res.status(200).json({
+    status: "success",
+    message: "Logged out successfully",
+  });
 }
 
 module.exports = {
