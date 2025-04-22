@@ -40,7 +40,7 @@
           <% if (user) { %>
           <div class="profileContainer">
             <img
-              src="https://api.dicebear.com/9.x/initials/svg?seed=<%= user.name %>"
+              src="https://api.dicebear.com/9.x/initials/svg?seed=<%= user.fullName %>"
               alt="avatar"
               class="avatar"
               onclick="toggleDropdownHeader()"
@@ -196,44 +196,33 @@
       >
         <h2>Accessibility</h2>
         <p>
-          If you have requests for specific accessibility needs,
-          please contact the property using the information on
-          the reservation confirmation received after booking.
+          If you have specific accessibility needs, please
+          contact the property using your booking confirmation.
         </p>
-
         <div class="accessibility-columns">
-          <% for(let x in hotel.accessibility){ %>
+          <% for (let section in hotel.features) { %>
           <div class="accessibility-category">
-            <h3><%= x %></h3>
+            <h3><%= section %></h3>
             <ul>
-              <% hotel.accessibility[x].forEach(y => { %>
-              <li><%= y %></li>
-              <% }); %>
+              <% if (typeof hotel.features[section][0] ===
+              'string') { %> <%
+              hotel.features[section].forEach(item => {%>
+              <li><%= item %></li>
+              <% }) %> <% } %>
             </ul>
           </div>
-          <% }; %>
+          <% } %>
         </div>
       </div>
 
       <hr class="section-divider" />
 
-      <!-- Fees & Policies Section -->
+      <!-- Fees & Policies -->
       <div
         class="fees-policies-section"
         id="fees-policies-section"
       >
-        <h2>Fees & policies</h2>
-
-        <% for(let x in hotel.extras){%>
-        <div class="policy-category">
-          <h3><%= x %></h3>
-          <ul>
-            <% hotel.extras[x].forEach(y => { %>
-            <li><%= y %></li>
-            <% }); %>
-          </ul>
-        </div>
-        <% }; %>
+        <h2>Fees & Policies</h2>
 
         <!-- Policies -->
         <div class="policy-category">

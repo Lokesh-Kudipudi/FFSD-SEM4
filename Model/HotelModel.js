@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const hotelSchema = new mongoose.Schema({
-  id: String,
   title: String,
   description: String,
   address: String,
@@ -18,14 +17,9 @@ const hotelSchema = new mongoose.Schema({
     },
   ],
   policies: [String],
-  extras: {
-    "Children And Extra Beds": [String],
-    "Dining & Beverages": [String],
-    "Wellness & Recreation": [String],
-  },
-  accessibility: {
-    CommonAreas: [String],
-    Rooms: [String],
+  features: {
+    type: Map,
+    of: [String],
   },
   roomType: [
     {

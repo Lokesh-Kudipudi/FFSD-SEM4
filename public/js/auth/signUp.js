@@ -110,6 +110,8 @@ function showToast(message, type = "info") {
 const form = document.querySelector("#authForm");
 const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
+const phoneInput = document.querySelector("#phone");
+const addressInput = document.querySelector("#address");
 const passwordInput = document.querySelector("#password");
 
 async function handleSignUp(event) {
@@ -127,6 +129,18 @@ async function handleSignUp(event) {
     return;
   }
 
+  if (phoneInput.value === "") {
+    showToast("Phone cannot be empty", "error");
+    phoneInput.focus();
+    return;
+  }
+
+  if (addressInput.value === "") {
+    showToast("Address cannot be empty", "error");
+    addressInput.focus();
+    return;
+  }
+
   if (passwordInput.value === "") {
     showToast("Password cannot be empty", "error");
     passwordInput.focus();
@@ -140,6 +154,13 @@ async function handleSignUp(event) {
     return;
   }
 
+  if (phoneInput.value?.length < 10) {
+    showToast("Phone Number Length is less than 10", "error");
+    phoneInput.value = "";
+    phoneInput.focus();
+    return;
+  }
+
   try {
     const response = await fetch("/signUp", {
       method: "POST",
@@ -147,9 +168,11 @@ async function handleSignUp(event) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: nameInput.value,
+        fullName: nameInput.value,
         email: emailInput.value,
         password: passwordInput.value,
+        phone: phoneInput.value,
+        address: addressInput.value,
       }),
     });
 

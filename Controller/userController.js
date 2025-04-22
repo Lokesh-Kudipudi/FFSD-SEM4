@@ -2,21 +2,83 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { User } = require("../Model/userModel");
-
-const JWT_SECRET = "your_jwt_secret"; // Use env var in production
+const { Hotel } = require("../Model/hotelModel");
+const { Booking } = require("../Model/bookingModel");
+const { Review } = require("../Model/reviewModel");
+const { Payment } = require("../Model/paymentModel");
+const { Tour } = require("../Model/tourModel");
 
 // Helper to generate JWT
 function generateToken(user) {
   return jwt.sign(
-    { id: user._id, email: user.email, role: user.role },
-    JWT_SECRET,
+    {
+      _id: user._id,
+      email: user.email,
+      role: user.role,
+      fullName: user.fullName,
+      phone: user.phone,
+      address: user.address,
+    },
+    process.env.JWT_SECRET,
     { expiresIn: "7d" }
   );
 }
 
 // Sign up regular user
 async function signUpUser(req, res) {
-  const { fullName, email, password } = req.body;
+  const { fullName, email, password, phone, address } = req.body;
+  try {
+    const existing = await User.findOne({ email });
+
+    if (existing) {
+      return res.status(400).json({
+        status: "fail",
+        message: "User already exists!",
+      });
+    }
+
+    const passwordHash = await bcrypt.hash(password, 12);
+    const user = await User.create({
+      fullName,
+      email,
+      phone,
+      address,
+      passwordHash,
+      role: "user",
+    });
+
+    const token = generateToken(user);
+    res.cookie("token", token, {
+      httpOnly: true, // Prevents JS access on client-side
+      secure: false, // Set to true if using HTTPS
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
+
+    req.user = user; // Attach user to request for further use
+
+    res.status(201).json({
+      status: "success",
+      message: "User created successfully",
+      token,
+      user: {
+        _id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        phone: user.phone,
+        address: user.address,
+        role: user.role,
+      },
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ status: "fail", message: err.message });
+  }
+}
+
+// Sign up hotel manager
+async function signUphotelManager(req, res) {
+  const { fullName, email, password, phone, address } = req.body;
   try {
     const existing = await User.findOne({ email });
     if (existing) {
@@ -31,53 +93,8 @@ async function signUpUser(req, res) {
       fullName,
       email,
       passwordHash,
-      role: "user",
-    });
-
-    const token = generateToken(user);
-    res.cookie("token", token, {
-      httpOnly: true, // Prevents JS access on client-side
-      secure: false, // Set to true if using HTTPS
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    });
-
-    res.status(201).json({
-      status: "success",
-      message: "User created successfully",
-      token,
-      user: {
-        id: user._id,
-        fullName: user.fullName,
-        email: user.email,
-        role: user.role,
-      },
-    });
-  } catch (err) {
-    res
-      .status(500)
-      .json({ status: "fail", message: err.message });
-  }
-}
-
-// Sign up hotel manager
-async function signUphotelManager(req, res) {
-  const { fullName, email, password } = req.body;
-  try {
-    const existing = await mongoose
-      .model("User")
-      .findOne({ email });
-    if (existing) {
-      return res.status(400).json({
-        status: "fail",
-        message: "User already exists!",
-      });
-    }
-
-    const passwordHash = await bcrypt.hash(password, 12);
-    const user = await User.create({
-      fullName,
-      email,
-      passwordHash,
+      phone,
+      address,
       role: "hotelManager",
     });
 
@@ -89,15 +106,19 @@ async function signUphotelManager(req, res) {
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
+    req.user = user; // Attach user to request for further use
+
     res.status(201).json({
       status: "success",
       message: "Hotel Manager created successfully",
       token,
       user: {
-        id: user._id,
+        _id: user._id,
         fullName: user.fullName,
         email: user.email,
         role: user.role,
+        phone: user.phone,
+        address: user.address,
       },
     });
   } catch (err) {
@@ -109,11 +130,9 @@ async function signUphotelManager(req, res) {
 
 // Sign up admin
 async function signUpAdmin(req, res) {
-  const { fullName, email, password } = req.body;
+  const { fullName, email, password, phone, address } = req.body;
   try {
-    const existing = await mongoose
-      .model("User")
-      .findOne({ email });
+    const existing = await User.findOne({ email });
     if (existing) {
       return res.status(400).json({
         status: "fail",
@@ -126,20 +145,24 @@ async function signUpAdmin(req, res) {
       fullName,
       email,
       passwordHash,
+      phone,
+      address,
       role: "admin",
     });
 
     const token = generateToken(user);
+
+    res.cookie("token", token, {
+      httpOnly: true, // Prevents JS access on client-side
+      secure: false, // Set to true if using HTTPS
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
+
+    req.user = user; // Attach user to request for further use
+
     res.status(201).json({
       status: "success",
       message: "Admin created successfully",
-      token,
-      user: {
-        id: user._id,
-        fullName: user.fullName,
-        email: user.email,
-        role: user.role,
-      },
     });
   } catch (err) {
     res
@@ -153,6 +176,7 @@ async function fetchUserByEmailPassword(req, res) {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
+
     if (!user) {
       return res
         .status(404)
@@ -177,14 +201,18 @@ async function fetchUserByEmailPassword(req, res) {
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
+    req.user = user; // Attach user to request for further use
+
     res.status(200).json({
       status: "success",
       message: "Logged in successfully",
       token,
       user: {
-        id: user._id,
+        _id: user._id,
         fullName: user.fullName,
         email: user.email,
+        phone: user.phone,
+        address: user.address,
         role: user.role,
       },
     });
@@ -198,13 +226,23 @@ async function fetchUserByEmailPassword(req, res) {
 // Get all users (admin use)
 async function getUsers(req, res) {
   try {
-    const users = await mongoose
-      .model("User")
-      .find()
-      .select("-passwordHash");
+    const users = await User.find().select("-passwordHash");
+    const tours = await Tour.find();
+    const hotels = await Hotel.find();
+    const bookings = await Booking.find();
+    const reviews = await Review.find();
+    const payments = await Payment.find();
+
     res.status(200).json({
       status: "success",
-      data: { users },
+      data: {
+        users,
+        tours,
+        hotels,
+        bookings,
+        reviews,
+        payments,
+      },
     });
   } catch (err) {
     res

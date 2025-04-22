@@ -105,6 +105,8 @@ function showToast(message, type = "info") {
 const form = document.querySelector("#authForm");
 const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
+const phoneInput = document.querySelector("#phone");
+const addressInput = document.querySelector("#address");
 const passwordInput = document.querySelector("#password");
 
 async function handleSignUp(event) {
@@ -119,6 +121,18 @@ async function handleSignUp(event) {
   if (emailInput.value === "") {
     showToast("Email is required", "error");
     emailInput.focus();
+    return;
+  }
+
+  if (phoneInput.value === "") {
+    showToast("Phone is required", "error");
+    phoneInput.focus();
+    return;
+  }
+
+  if (addressInput.value === "") {
+    showToast("Address is required", "error");
+    addressInput.focus();
     return;
   }
 
@@ -142,9 +156,11 @@ async function handleSignUp(event) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: nameInput.value,
+        fullName: nameInput.value,
         email: emailInput.value,
         password: passwordInput.value,
+        phone: phoneInput.value,
+        address: addressInput.value,
       }),
     });
 

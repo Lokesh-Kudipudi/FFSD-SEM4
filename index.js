@@ -13,6 +13,7 @@ const {
   authenticateUser,
 } = require("./middleware/authentication");
 const { userRouter } = require("./routes/userRouter");
+const { autoSignIn } = require("./middleware/autoSignIn");
 dotenv.config();
 
 // Set EJS as the templating engine
@@ -28,9 +29,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(morgan("dev"));
 
+app.use(autoSignIn);
+
 // Define the root route
 app.get("/", (req, res) => {
-  res.render("index", { user: req.session.user });
+  res.render("index", { user: req.user });
 });
 
 // Define the route for the contact page

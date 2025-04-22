@@ -6,7 +6,7 @@ const toursRouter = express.Router();
 // Define route for the root path of tours
 toursRouter.route("/").get((req, res) => {
   // Render the 'tours/index' view with a name variable
-  res.render("tours/index", { user: req.session.user });
+  res.render("tours/index", { user: req.user });
 });
 
 const allTours = [
@@ -1045,7 +1045,7 @@ toursRouter.route("/search").get((req, res) => {
     tours: toursToDisplay,
     displayButton: { displayLeftButton, displayRightButton },
     rating,
-    user: req.session.user
+    user: req.user,
   });
 });
 
@@ -1055,7 +1055,10 @@ toursRouter.route("/tour/:id").get((req, res) => {
   const tour = allTours.filter((tour) => tour.id == id);
 
   // Render the 'tours/tour' view with the selected tour details
-  res.render("tours/tour", { tour: tour[0], user: req.session.user });
+  res.render("tours/tour", {
+    tour: tour[0],
+    user: req.user,
+  });
 });
 
 module.exports = toursRouter;

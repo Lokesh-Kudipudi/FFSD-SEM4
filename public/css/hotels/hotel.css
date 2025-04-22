@@ -62,7 +62,7 @@ body {
   background-color: white;
   border-bottom: 2px solid #ddd;
   position: sticky;
-  top: 80px; /* Adjust based on navbar height */
+  top: 0px; /* Adjust based on navbar height */
   z-index: 999;
 }
 
@@ -330,7 +330,8 @@ h1 {
 
 .accessibility-columns {
   display: flex;
-  gap: 40px;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .accessibility-category {
