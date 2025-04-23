@@ -253,10 +253,15 @@ async function getUsers(req, res) {
 
 // Logout (handled client-side in JWT — optional server blacklist etc.)
 function logout(req, res) {
-  res.status(200).json({
-    status: "success",
-    message: "Logged out successfully",
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: false,
+    sameSite: "Strict",
   });
+
+  req.user = null;
+
+  res.redirect("/");
 }
 
 module.exports = {
