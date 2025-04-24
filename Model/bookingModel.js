@@ -1,22 +1,24 @@
 const mongoose = require("mongoose");
 
 const bookingSchema = new mongoose.Schema({
-  id: String,
-  userId: String,
-  type: { type: String, enum: ["hotel", "tour"] },
-  itemId: String,
-  bookingDate: Date,
-  status: {
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+  type: {
     type: String,
-    enum: ["confirmed", "pending", "cancelled"],
+    enum: ["Hotel", "Tour"],
+    required: true,
   },
-  payment: {
-    method: String,
-    amount: Number,
-    currency: String,
-    status: String,
+  itemId: {
+    type: mongoose.Schema.Types.ObjectId,
+    refPath: "type",
   },
-  details: Object,
+  paymentId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Payment",
+  },
+  bookingDetails: Object,
 });
 
 const Booking = mongoose.model("Booking", bookingSchema);

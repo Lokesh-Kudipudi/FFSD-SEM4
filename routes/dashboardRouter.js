@@ -1,4 +1,11 @@
 const express = require("express");
+const {
+  updateUser,
+  getUserBookingsController,
+} = require("../Controller/userController");
+const {
+  getUserBookings,
+} = require("../Controller/bookingController");
 
 const dashboardRouter = express.Router();
 
@@ -7,26 +14,19 @@ const dashboardRouter = express.Router();
 dashboardRouter.route("/").get((req, res) => {
   // Send User Dashboard
 
-  res.sendFile("/html/dashboard/user/index.html", {
-    root: "public",
-  });
+  res.render("dashboard/user/index", { user: req.user });
 });
 
-dashboardRouter.route("/myTrips").get((req, res) => {
-  // Send User Dashboard
+dashboardRouter.route("/myTrips").get(getUserBookingsController);
 
-  res.sendFile("/html/dashboard/user/myTrips.html", {
-    root: "public",
-  });
-});
+dashboardRouter
+  .route("/settings")
+  .get((req, res) => {
+    // Send User Dashboard
 
-dashboardRouter.route("/settings").get((req, res) => {
-  // Send User Dashboard
-
-  res.sendFile("/html/dashboard/user/settings.html", {
-    root: "public",
-  });
-});
+    res.render("dashboard/user/settings", { user: req.user });
+  })
+  .post(updateUser);
 
 // ADMIN Dashboard
 

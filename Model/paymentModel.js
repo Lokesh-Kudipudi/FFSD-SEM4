@@ -1,9 +1,14 @@
 const mongoose = require("mongoose");
 
 const paymentSchema = new mongoose.Schema({
-  id: String,
-  userId: String, // Refers to the user making the payment
-  bookingId: String, // Associated booking ID
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  }, // Refers to the user making the payment
+  bookingId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Booking",
+  }, // Associated booking ID
   amount: Number,
   currency: String, // e.g., "INR", "USD"
   method: String, // e.g., "credit_card", "upi", "paypal"

@@ -21,9 +21,9 @@
       />
       <div class="dropdownMenuHeader" id="dropdownMenuHeader">
         <a href="/dashboard">Profile</a>
-        <% if(user.role == "admin" ){ %>
+        <% if(user?.role == "admin" ){ %>
         <a href="/dashboard/admin">Dashboard</a>
-        <% };%> <% if(user.role == "hotelManager" ){ %>
+        <% };%> <% if(user?.role == "hotelManager" ){ %>
         <a href="/dashboard/hotelManager">Dashboard</a>
         <% };%>
         <a href="/logout">Logout</a>

@@ -7,6 +7,7 @@ const { Booking } = require("../Model/bookingModel");
 const { Review } = require("../Model/reviewModel");
 const { Payment } = require("../Model/paymentModel");
 const { Tour } = require("../Model/tourModel");
+const { getUserBookings } = require("./bookingController");
 
 // Helper to generate JWT
 function generateToken(user) {
@@ -251,6 +252,59 @@ async function getUsers(req, res) {
   }
 }
 
+// Update User
+
+async function updateUser(req, res) {
+  const { fullName, email, phone, address } = req.body;
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res
+        .status(404)
+        .json({ status: "fail", message: "User not found" });
+    }
+
+    user.fullName = fullName || user.fullName;
+    user.email = email || user.email;
+    user.phone = phone || user.phone;
+    user.address = address || user.address;
+    await user.save();
+
+    const token = generateToken(user);
+
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: false,
+      sameSite: "Strict",
+    });
+
+    res.cookie("token", token, {
+      httpOnly: true, // Prevents JS access on client-side
+      secure: false, // Set to true if using HTTPS
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
+
+    req.user = user;
+
+    res.status(200).json({
+      status: "success",
+      message: "User updated successfully",
+      user: {
+        _id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        phone: user.phone,
+        address: user.address,
+        role: user.role,
+      },
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ status: "fail", message: err.message });
+  }
+}
+
 // Logout (handled client-side in JWT — optional server blacklist etc.)
 function logout(req, res) {
   res.clearCookie("token", {
@@ -264,6 +318,26 @@ function logout(req, res) {
   res.redirect("/");
 }
 
+async function getUserBookingsController(req, res) {
+  // Send User Dashboard
+  try {
+    const bookings = await getUserBookings(req.user._id);
+
+    console.log(bookings.data);
+
+    if (bookings.status == "error") {
+      throw new Error(`${bookings.message}`);
+    }
+
+    res.render("dashboard/user/myTrips", {
+      user: req.user,
+      bookings: bookings.data,
+    });
+  } catch (error) {
+    res.render("dashboard/user/myTrips", { user: req.user });
+  }
+}
+
 module.exports = {
   signUpUser,
   signUphotelManager,
@@ -271,4 +345,6 @@ module.exports = {
   getUsers,
   fetchUserByEmailPassword,
   logout,
+  updateUser,
+  getUserBookingsController,
 };

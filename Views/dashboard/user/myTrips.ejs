@@ -23,30 +23,18 @@
       href="/css/dashboard/user/myTrips.css"
       rel="stylesheet"
     />
+    <link href="/css/header.css" rel="stylesheet" />
+    <script defer src="/js/header.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <title>Document</title>
+    <title>Chasing Horizons - User Trips</title>
   </head>
   <body>
     <div class="app-container">
       <header>
-        <div class="header-content">
-          <div class="logo">
-            <i class="fas fa-globe"></i>
-            <h1>Chasing Horizons</h1>
-          </div>
-          <div class="user-actions">
-            <div class="notification-bell">
-              <i class="fas fa-bell"></i>
-              <span class="notification-count">3</span>
-            </div>
-            <div class="user-avatar">
-              <i class="fas fa-user"></i>
-            </div>
-          </div>
-        </div>
+        <%- include('../../partials/header.ejs') %>
       </header>
 
       <div class="main-content">
@@ -80,12 +68,15 @@
         <main class="dashboard-myTrips">
           <div class="dashboard-header">
             <h1 class="dashboard-title">My Trips</h1>
-            <button class="btn btn-primary">
+            <button
+              onclick="window.location.href = `/tours` "
+              class="btn btn-primary"
+            >
               <span>+</span> Plan New Trip
             </button>
           </div>
 
-          <div class="trip-filters">
+          <!-- <div class="trip-filters">
             <div class="filter-group">
               <span class="filter-label">Filter by:</span>
               <select class="filter-select">
@@ -114,16 +105,14 @@
                 class="filter-search"
               />
             </div>
-          </div>
+          </div> -->
 
           <div class="trips-section">
             <div class="section-header">
               <h2 class="section-title">Upcoming Trips</h2>
             </div>
-
             <div class="trips-grid">
-              <!-- Trip Card 1 -->
-              <div class="trip-card">
+              <!-- <div class="trip-card">
                 <div style="position: relative">
                   <img
                     src="/api/placeholder/400/320"
@@ -169,14 +158,14 @@
                     </button>
                   </div>
                 </div>
-              </div>
-
-              <!-- Trip Card 2 -->
+              </div> -->
+              <% bookings.forEach(booking => { %> <% if
+              (booking.bookingDetails?.status == "upcoming") { %>
               <div class="trip-card">
                 <div style="position: relative">
                   <img
-                    src="/api/placeholder/400/320"
-                    alt="Tokyo"
+                    src="<%= booking.itemId.mainImage %>"
+                    alt="<%= booking.itemId.title %>"
                     class="trip-image"
                   />
                   <div class="trip-status status-upcoming">
@@ -185,26 +174,38 @@
                 </div>
                 <div class="trip-content">
                   <div class="trip-date">
-                    <span>📅</span> July 10 - July 17, 2025
+                    <span>📅</span> <%=
+                    booking.bookingDetails?.startDate %>
                   </div>
                   <h3 class="trip-title">
-                    Tokyo Tech Adventure
+                    <%= booking.itemId.title %>
                   </h3>
                   <div class="trip-destination">
-                    <span>📍</span> Tokyo, Japan
+                    <span>📍</span> <%=
+                    booking.itemId.startLocation %>
                   </div>
 
                   <div class="trip-stats">
                     <div class="stat">
-                      <div class="stat-value">8</div>
+                      <div class="stat-value">
+                        <%= booking.itemId.itinerary.length %>
+                      </div>
                       <div class="stat-label">Days</div>
                     </div>
                     <div class="stat">
-                      <div class="stat-value">1</div>
+                      <div class="stat-value">
+                        <%= booking.itemId.destinations.length %>
+                      </div>
                       <div class="stat-label">Destinations</div>
                     </div>
                     <div class="stat">
-                      <div class="stat-value">5</div>
+                      <div class="stat-value">
+                        <% let activityCount = 0; if
+                        (booking.itemId.itinerary) {
+                        booking.itemId.itinerary.forEach(day => {
+                        activityCount += day.activities?.length
+                        || 0; }); } %> <%= activityCount %>
+                      </div>
                       <div class="stat-label">Activities</div>
                     </div>
                   </div>
@@ -219,55 +220,7 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Trip Card 3 -->
-              <div class="trip-card">
-                <div style="position: relative">
-                  <img
-                    src="/api/placeholder/400/320"
-                    alt="Paris"
-                    class="trip-image"
-                  />
-                  <div class="trip-status status-upcoming">
-                    Upcoming
-                  </div>
-                </div>
-                <div class="trip-content">
-                  <div class="trip-date">
-                    <span>📅</span> Sept 5 - Sept 12, 2025
-                  </div>
-                  <h3 class="trip-title">
-                    Romantic Paris Escape
-                  </h3>
-                  <div class="trip-destination">
-                    <span>📍</span> Paris, France
-                  </div>
-
-                  <div class="trip-stats">
-                    <div class="stat">
-                      <div class="stat-value">7</div>
-                      <div class="stat-label">Days</div>
-                    </div>
-                    <div class="stat">
-                      <div class="stat-value">1</div>
-                      <div class="stat-label">Destinations</div>
-                    </div>
-                    <div class="stat">
-                      <div class="stat-value">6</div>
-                      <div class="stat-label">Activities</div>
-                    </div>
-                  </div>
-
-                  <div class="trip-actions">
-                    <button class="trip-action-btn btn-outline">
-                      View Details
-                    </button>
-                    <button class="trip-action-btn btn-primary">
-                      Manage
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <% }; %> <% }); %>
             </div>
           </div>
 
@@ -278,8 +231,7 @@
             </div>
 
             <div class="trips-grid">
-              <!-- Trip Card 4 -->
-              <div class="trip-card">
+              <!-- <div class="trip-card">
                 <div style="position: relative">
                   <img
                     src="/api/placeholder/400/320"
@@ -323,14 +275,15 @@
                     </button>
                   </div>
                 </div>
-              </div>
-
-              <!-- Trip Card 5 -->
+              </div> -->
+              <% bookings.forEach(booking => { %> <% if
+              (booking.bookingDetails?.status == "completed") {
+              %>
               <div class="trip-card">
                 <div style="position: relative">
                   <img
-                    src="/api/placeholder/400/320"
-                    alt="Cancun"
+                    src="<%= booking.itemId.mainImage %>"
+                    alt="<%= booking.itemId.title %>"
                     class="trip-image"
                   />
                   <div class="trip-status status-completed">
@@ -339,40 +292,50 @@
                 </div>
                 <div class="trip-content">
                   <div class="trip-date">
-                    <span>📅</span> Dec 20 - Dec 27, 2024
+                    <span>📅</span> <%=
+                    booking.bookingDetails?.startDate %>
                   </div>
                   <h3 class="trip-title">
-                    Cancun Beach Vacation
+                    <%= booking.itemId.title %>
                   </h3>
                   <div class="trip-destination">
-                    <span>📍</span> Cancun, Mexico
+                    <span>📍</span> <%=
+                    booking.itemId.startLocation %>
                   </div>
 
                   <div class="trip-stats">
                     <div class="stat">
-                      <div class="stat-value">7</div>
+                      <div class="stat-value">
+                        <%= booking.itemId.itinerary.length %>
+                      </div>
                       <div class="stat-label">Days</div>
                     </div>
                     <div class="stat">
-                      <div class="stat-value">1</div>
+                      <div class="stat-value">
+                        <%= booking.itemId.destinations.length %>
+                      </div>
                       <div class="stat-label">Destinations</div>
                     </div>
                     <div class="stat">
-                      <div class="stat-value">4</div>
+                      <div class="stat-value">
+                        <% let activityCount = 0; if
+                        (booking.itemId.itinerary) {
+                        booking.itemId.itinerary.forEach(day => {
+                        activityCount += day.activities?.length
+                        || 0; }); } %> <%= activityCount %>
+                      </div>
                       <div class="stat-label">Activities</div>
                     </div>
                   </div>
 
                   <div class="trip-actions">
                     <button class="trip-action-btn btn-outline">
-                      View Photos
-                    </button>
-                    <button class="trip-action-btn btn-outline">
                       Add Review
                     </button>
                   </div>
                 </div>
               </div>
+              <% }; %> <% }); %>
             </div>
           </div>
         </main>

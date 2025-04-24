@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0"
     />
     <link rel="icon" href="data:," />
-    <title>Document</title>
+    <title>Chasing Horizons - User Dashboard</title>
     <link
       href="/css/dashboard/user/index.css"
       rel="stylesheet"
@@ -24,6 +24,8 @@
       href="/css/dashboard/user/sidebar.css"
       rel="stylesheet"
     />
+    <link href="/css/header.css" rel="stylesheet" />
+    <script defer src="/js/header.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -32,23 +34,7 @@
   <body>
     <div class="app-container">
       <header>
-        <div class="header-content">
-          <div class="logo">
-            <i class="fas fa-globe"></i>
-            <h1 onclick="window.location.href = '/'">
-              Chasing Horizons
-            </h1>
-          </div>
-          <div class="user-actions">
-            <div class="notification-bell">
-              <i class="fas fa-bell"></i>
-              <span class="notification-count">3</span>
-            </div>
-            <div class="user-avatar">
-              <i class="fas fa-user"></i>
-            </div>
-          </div>
-        </div>
+        <%- include('../../partials/header.ejs') %>
       </header>
 
       <div class="main-content">
