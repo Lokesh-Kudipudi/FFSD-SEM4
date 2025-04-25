@@ -1,5 +1,9 @@
 const express = require("express");
-const { URLSearchParams } = require("url");
+const {
+  getTourById,
+  getAllTours,
+} = require("../Controller/tourController");
+
 // Create a new router object
 const toursRouter = express.Router();
 
@@ -976,13 +980,15 @@ const tours = [
 ];
 
 // Define route for the search path of tours
-toursRouter.route("/search").get((req, res) => {
+toursRouter.route("/search").get(async (req, res) => {
   const searchParam = req.query;
 
   let currentPage = searchParam?.page;
   let rating = searchParam?.rating?.split(",");
   let query = searchParam?.q;
-  let toursToDisplay = allTours;
+  let toursQuery = await getAllTours(); // Fetch all tours
+
+  let toursToDisplay = toursQuery.data; // Extract the data from the query result
 
   // Set default page to 0 if not provided
   if (currentPage == undefined) {
@@ -1050,13 +1056,15 @@ toursRouter.route("/search").get((req, res) => {
 });
 
 // Define route for displaying a specific tour by ID
-toursRouter.route("/tour/:id").get((req, res) => {
+toursRouter.route("/tour/:id").get(async (req, res) => {
   const id = req.params.id;
-  const tour = allTours.filter((tour) => tour.id == id);
+  const toursQuery = await getTourById(id); // Fetch the tour details by ID
+
+  const tour = toursQuery.data; // Extract the data from the query result
 
   // Render the 'tours/tour' view with the selected tour details
   res.render("tours/tour", {
-    tour: tour[0],
+    tour: tour,
     user: req.user,
   });
 });

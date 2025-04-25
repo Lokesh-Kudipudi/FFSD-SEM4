@@ -228,21 +228,11 @@ async function fetchUserByEmailPassword(req, res) {
 async function getUsers(req, res) {
   try {
     const users = await User.find().select("-passwordHash");
-    const tours = await Tour.find();
-    const hotels = await Hotel.find();
-    const bookings = await Booking.find();
-    const reviews = await Review.find();
-    const payments = await Payment.find();
 
     res.status(200).json({
       status: "success",
       data: {
         users,
-        tours,
-        hotels,
-        bookings,
-        reviews,
-        payments,
       },
     });
   } catch (err) {
@@ -322,8 +312,6 @@ async function getUserBookingsController(req, res) {
   // Send User Dashboard
   try {
     const bookings = await getUserBookings(req.user._id);
-
-    console.log(bookings.data);
 
     if (bookings.status == "error") {
       throw new Error(`${bookings.message}`);

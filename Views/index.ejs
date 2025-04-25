@@ -15,14 +15,34 @@
     <link href="/css/index.css" rel="stylesheet" />
     <link href="/css/header.css" rel="stylesheet" />
     <link href="/css/footer.css" rel="stylesheet" />
+    <link href="/css/chatbot.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
     <script defer src="/js/header.js"></script>
     <script defer src="/js/index.js"></script>
+    <script defer src="/js/chatbot.js"></script>
   </head>
   <body>
+    <div style="z-index: 3">
+      <div id="chatIcon">💬</div>
+      <div id="chatContainer">
+        <div class="chat-header">Chat Assistant</div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Type your message..."
+          />
+          <button id="chat-button" onclick="sendChatMessage()">
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Hero Section -->
     <div class="hero">
       <header

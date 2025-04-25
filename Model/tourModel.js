@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const tourSchema = new mongoose.Schema({
-  id: String,
   title: String,
   tags: [String],
   mainImage: String,

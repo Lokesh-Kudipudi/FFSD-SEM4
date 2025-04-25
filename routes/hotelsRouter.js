@@ -24,8 +24,6 @@ hotelsRouter.route("/search").get(async (req, res) => {
 
   let hotelsToDisplay = response.data;
 
-  console.log(response);
-
   const searchParam = req.query;
 
   const query = searchParam?.q;
