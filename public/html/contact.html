@@ -21,23 +21,10 @@
         </p>
         <form onsubmit="return validatePhoneNumber()">
           <div class="form-group">
-            <label for="firstName">First name</label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              required
-            />
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
           </div>
-          <div class="form-group">
-            <label for="lastName">Last name</label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              required
-            />
-          </div>
+
           <div class="form-group">
             <label for="email">Work email</label>
             <input
@@ -51,6 +38,7 @@
             <label for="phone">Mobile number (+91)</label>
             <input type="tel" id="phone" name="phone" required />
           </div>
+
           <div class="form-group">
             <label for="reason">Reason for contact</label>
             <select id="reason" name="reason" required>
@@ -68,6 +56,16 @@
                 Other (please specify)
               </option>
             </select>
+          </div>
+          <div class="form-group">
+            <label for="query">Query</label>
+            <textarea
+              type="text"
+              id="query"
+              style="width: 100%; height: 60px"
+              name="query"
+              required
+            ></textarea>
           </div>
           <div
             style="
