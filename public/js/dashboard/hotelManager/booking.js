@@ -2,110 +2,86 @@ const tableBody = document.querySelector(
   ".main-bookings-table-body"
 );
 
-const bookingsInfo = [
-  {
-    name: "Jay Soni",
-    package: "Business",
-    room: "Delux",
-    status: "Cancelled",
-    checkIn: "02/21/2025",
-    checkOut: "02/23/2025",
-    payment: "Paid",
-    email: "test@example.com",
-    mobile: "1234567890",
-  },
-  {
-    name: "Sarah Smith",
-    package: "Business",
-    room: "Super Delux",
-    status: "Booked",
-    checkIn: "02/12/2025",
-    checkOut: "02/15/2025",
-    payment: "Unpaid",
-    email: "test@example.com",
-    mobile: "1234567890",
-  },
-  {
-    name: "Jay Soni",
-    package: "Business",
-    room: "Delux",
-    status: "Cancelled",
-    checkIn: "02/21/2025",
-    checkOut: "02/23/2025",
-    payment: "Paid",
-    email: "test@example.com",
-    mobile: "1234567890",
-  },
+let hotelId;
 
-  {
-    name: "Smita parikh",
-    package: "All inclusive",
-    room: "villa",
-    status: "CheckOut",
-    checkIn: "02/16/2025",
-    checkOut: "02/19/2025",
-    payment: "UnPaid",
-    email: "test@example.com",
-    mobile: "1234567890",
-  },
-  {
-    name: "Pankaj sinha ",
-    package: "Wedding",
-    room: "Double",
-    status: "Booked",
-    checkIn: "02/11/2025",
-    checkOut: "02/14/2025",
-    payment: "UnPaid",
-    email: "test@example.com",
-    mobile: "1234567890",
-  },
-  {
-    name: "Pankaj sinha ",
-    package: "Business",
-    room: "Single",
-    status: "CheckIn",
-    checkIn: "02/27/2025",
-    checkOut: "02/28/2025",
-    payment: "UnPaid",
-    email: "test@example.com",
-    mobile: "1234567890",
-  },
-  {
-    name: "Jay Soni",
-    package: "All inclusive",
-    room: "Delux",
-    status: "booked",
-    checkIn: "02/17/2025",
-    checkOut: "02/20/2025",
-    payment: "Paid",
-    email: "test@example.com",
-    mobile: "1234567890",
-  },
+let bookingsInfo = [];
 
-  {
-    name: "Smita parikh",
-    package: "Wedding",
-    room: "Delux",
-    status: "CheckOut",
-    checkIn: "02/07/2025",
-    checkOut: "02/10/2025",
-    payment: "Paid",
-    email: "test@example.com",
-    mobile: "1234567890",
-  },
+const loadBookingDetails = () => {
+  // Generate table rows dynamically
+  bookingsInfo.forEach((booking, index) => {
+    const row = document.createElement("tr");
 
-  {
-    name: "Pooja Patel",
-    package: "Business",
-    room: " Super Delux",
-    status: "Cancelled",
-    checkIn: "02/09/2025",
-    checkOut: "02/12/2025",
-    payment: "UnPaid",
-    email: "test@example.com",
-    mobile: "1234567890",
-  },
-];
+    row.innerHTML = `
+      <td>${booking.userId.fullName}</td>
+      <td> PACKAGE </td>
+      <td> ROOM </td>
+      <td style="${stylesForBookingStatus(
+        booking.bookingDetails.status
+      )}">${booking.bookingDetails.status}</td>
+      <td>${booking.bookingDetails.startDate}</td>
+      <td>${booking.bookingDetails.endDate}</td>
+      <td style="${stylesForPaymentStatus(
+        booking.paymentId.status
+      )}">${booking.paymentId.status}</td>
+      <td>
+        <span class="material-symbols-outlined" style="color: #aa1419;">email</span> ${
+          booking.userId.email
+        }
+      </td>
+      <td>
+        <span class="material-symbols-outlined" style="color: #7e9b3b;">phone</span> ${
+          booking.userId.phone
+        }
+      </td>
+      <td>
+        <span class="action-btn" data-id="${index}">⋮</span>
+        <div class="action-menu" id="menu-${index}">
+          <a href="editBooking.html?id=${index}"><span class="material-symbols-outlined icon">edit</span> Edit Booking</a>
+          <a href="deleteBooking.html?id=${index}" class="delete"><span class="material-symbols-outlined icon">delete</span> Delete Booking</a>
+          <a href="cancelBooking.html?id=${index}"><span class="material-symbols-outlined icon">cancel</span> Cancel Booking</a>
+        </div>
+      </td>
+    `;
+
+    tableBody.appendChild(row);
+  });
+};
+
+async function fetchBookings() {
+  const hotelIDs = await fetch(
+    "/dashboard/api/hotelManager/owner",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const hotelIDsData = await hotelIDs.json();
+
+  hotelId = hotelIDsData.hotelIds;
+
+  const bookings = await fetch(
+    "/dashboard/api/hotelManager/booking",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        hotelId: hotelId,
+      }),
+    }
+  );
+
+  const bookingsData = await bookings.json();
+
+  bookingsInfo = bookingsData.bookings;
+
+  loadBookingDetails();
+}
+
+fetchBookings();
 
 // Function to apply styles to statuses
 const stylesForBookingStatus = (status) => {
@@ -127,45 +103,6 @@ const stylesForPaymentStatus = (payment) => {
     ? "color: lightgreen;"
     : "color: red;";
 };
-
-// Generate table rows dynamically
-bookingsInfo.forEach((booking, index) => {
-  const row = document.createElement("tr");
-
-  row.innerHTML = `
-      <td>${booking.name}</td>
-      <td>${booking.package}</td>
-      <td>${booking.room}</td>
-      <td style="${stylesForBookingStatus(booking.status)}">${
-    booking.status
-  }</td>
-      <td>${booking.checkIn}</td>
-      <td>${booking.checkOut}</td>
-      <td style="${stylesForPaymentStatus(booking.payment)}">${
-    booking.payment
-  }</td>
-      <td>
-        <span class="material-symbols-outlined" style="color: #aa1419;">email</span> ${
-          booking.email
-        }
-      </td>
-      <td>
-        <span class="material-symbols-outlined" style="color: #7e9b3b;">phone</span> ${
-          booking.mobile
-        }
-      </td>
-      <td>
-        <span class="action-btn" data-id="${index}">⋮</span>
-        <div class="action-menu" id="menu-${index}">
-          <a href="editBooking.html?id=${index}"><span class="material-symbols-outlined icon">edit</span> Edit Booking</a>
-          <a href="deleteBooking.html?id=${index}" class="delete"><span class="material-symbols-outlined icon">delete</span> Delete Booking</a>
-          <a href="cancelBooking.html?id=${index}"><span class="material-symbols-outlined icon">cancel</span> Cancel Booking</a>
-        </div>
-      </td>
-    `;
-
-  tableBody.appendChild(row);
-});
 
 document.addEventListener("click", function (event) {
   // Close any open menus
