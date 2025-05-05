@@ -14,10 +14,6 @@ const bookingSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     refPath: "type",
   },
-  paymentId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Payment",
-  },
   bookingDetails: Object,
 });
 

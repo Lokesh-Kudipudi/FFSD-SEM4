@@ -61,7 +61,7 @@
               <%= tour.price.currency %> <%= tour.price.amount -
               tour.price.discount*tour.price.amount %>
             </div>
-            <a href="#" class="hero-button"
+            <a href="#choice-section" class="hero-button"
               >Check Availability</a
             >
             <div class="hero-info">
@@ -173,7 +173,7 @@
         </div>
       </div>
 
-      <div class="choice-section">
+      <div id="choice-section" class="choice-section">
         <h2>Select a departure month</h2>
         <div class="choice-selection-container">
           <button class="choice-month choice-selected">
@@ -258,7 +258,10 @@
                   </span>
                 </div>
               </div>
-              <button class="booking-card-confirm-btn">
+              <button
+                data-booking-string="<%=bookingDetail.startDate%>_<%=bookingDetail.endDate%>_<%=bookingDetail.discount%>_<%=tour._id%>"
+                class="booking-card-confirm-btn"
+              >
                 Confirm Dates
               </button>
             </div>

@@ -159,8 +159,9 @@
                   </div>
                 </div>
               </div> -->
-              <% bookings.forEach(booking => { %> <% if
-              (booking.bookingDetails?.status == "upcoming") { %>
+              <% bookings?.forEach(booking => { %> <% if
+              (booking.bookingDetails?.status == "upcoming" ||
+              booking.bookingDetails?.status == "pending") { %>
               <div class="trip-card">
                 <div style="position: relative">
                   <img
@@ -276,7 +277,7 @@
                   </div>
                 </div>
               </div> -->
-              <% bookings.forEach(booking => { %> <% if
+              <% bookings?.forEach(booking => { %> <% if
               (booking.bookingDetails?.status == "completed") {
               %>
               <div class="trip-card">

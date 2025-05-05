@@ -322,7 +322,10 @@ async function getUserBookingsController(req, res) {
       bookings: bookings.data,
     });
   } catch (error) {
-    res.render("dashboard/user/myTrips", { user: req.user });
+    res.render("dashboard/user/myTrips", {
+      user: req.user,
+      bookings: [],
+    });
   }
 }
 
