@@ -53,7 +53,7 @@
             data-tab="trips"
           >
             <i class="fas fa-calendar"></i>
-            <span>My Trips</span>
+            <span>My Bookings</span>
           </a>
           <a
             href="/dashboard/settings"
@@ -65,206 +65,32 @@
           </a>
         </nav>
 
-        <main class="dashboard">
-          <div class="search-container">
-            <i class="fas fa-search"></i>
-            <input
-              type="text"
-              class="search-input"
-              placeholder="Search destinations, hotels, or activities..."
-            />
-          </div>
-
-          <div class="dashboard-grid">
-            <!-- Upcoming trips -->
-            <div class="card trips-card">
-              <div class="card-header">
-                <h2 class="card-title">Upcoming Trips</h2>
-                <button class="view-all">View All</button>
-              </div>
-              <div class="trips-list">
-                <div class="trip-item">
-                  <div class="trip-header">
-                    <h3 class="trip-destination">
-                      Paris, France
-                    </h3>
-                    <span class="trip-status status-confirmed"
-                      >Confirmed</span
-                    >
-                  </div>
-                  <p class="trip-dates">
-                    2025-04-15 to 2025-04-22
-                  </p>
-                </div>
-                <div class="trip-item">
-                  <div class="trip-header">
-                    <h3 class="trip-destination">
-                      Tokyo, Japan
-                    </h3>
-                    <span class="trip-status status-planning"
-                      >Planning</span
-                    >
-                  </div>
-                  <p class="trip-dates">
-                    2025-06-10 to 2025-06-20
-                  </p>
-                </div>
-              </div>
-              <button class="new-trip-btn">Plan New Trip</button>
-            </div>
-
-            <!-- Weather widget -->
-            <div class="card">
-              <h2 class="card-title">Weather Updates</h2>
-              <div class="weather-current">
-                <p class="weather-city">New York</p>
-                <div class="weather-temp">
-                  <i class="fas fa-cloud-sun"></i>
-                  <span class="weather-temp-value">52°F</span>
-                </div>
-                <p class="weather-condition">Partly Cloudy</p>
-                <div class="weather-details">
-                  <span>Humidity: 45%</span>
-                  <span>Wind: 8 mph</span>
-                </div>
-              </div>
-              <div class="weather-forecast">
-                <div class="forecast-day">
-                  <p class="forecast-day-name">Mon</p>
-                  <div class="forecast-icon">☀️</div>
-                  <p class="forecast-high">54°</p>
-                  <p class="forecast-low">42°</p>
-                </div>
-                <div class="forecast-day">
-                  <p class="forecast-day-name">Tue</p>
-                  <div class="forecast-icon">☁️</div>
-                  <p class="forecast-high">58°</p>
-                  <p class="forecast-low">45°</p>
-                </div>
-                <div class="forecast-day">
-                  <p class="forecast-day-name">Wed</p>
-                  <div class="forecast-icon">🌧️</div>
-                  <p class="forecast-high">62°</p>
-                  <p class="forecast-low">48°</p>
-                </div>
-                <div class="forecast-day">
-                  <p class="forecast-day-name">Thu</p>
-                  <div class="forecast-icon">⛅</div>
-                  <p class="forecast-high">57°</p>
-                  <p class="forecast-low">44°</p>
-                </div>
-                <div class="forecast-day">
-                  <p class="forecast-day-name">Fri</p>
-                  <div class="forecast-icon">☀️</div>
-                  <p class="forecast-high">55°</p>
-                  <p class="forecast-low">43°</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Saved destinations -->
-            <div class="card">
-              <div class="card-header">
-                <h2 class="card-title">Saved Destinations</h2>
-                <button class="view-all">View All</button>
-              </div>
-              <div class="destinations-list">
-                <div class="destination-item">
-                  <div class="destination-icon">🏖️</div>
-                  <div class="destination-info">
-                    <h3>Bali, Indonesia</h3>
-                    <p class="destination-time">
-                      Best time: May-September
-                    </p>
-                  </div>
-                </div>
-                <div class="destination-item">
-                  <div class="destination-icon">⛰️</div>
-                  <div class="destination-info">
-                    <h3>Swiss Alps</h3>
-                    <p class="destination-time">
-                      Best time: December-March
-                    </p>
-                  </div>
-                </div>
-                <div class="destination-item">
-                  <div class="destination-icon">🏙️</div>
-                  <div class="destination-info">
-                    <h3>New York City</h3>
-                    <p class="destination-time">
-                      Best time: April-June
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Recent activity -->
-            <div class="card activity-card">
-              <h2 class="card-title">Recent Activity</h2>
-              <div class="activity-list">
-                <div class="activity-item">
-                  <div class="activity-icon">✈️</div>
-                  <div class="activity-details">
-                    <p>
-                      <span class="activity-action"
-                        >Booked flight</span
-                      >
-                      for Paris
-                    </p>
-                    <p class="activity-date">2025-03-05</p>
-                  </div>
-                </div>
-                <div class="activity-item">
-                  <div class="activity-icon">🏨</div>
-                  <div class="activity-details">
-                    <p>
-                      <span class="activity-action"
-                        >Saved hotel</span
-                      >
-                      for Tokyo
-                    </p>
-                    <p class="activity-date">2025-03-04</p>
-                  </div>
-                </div>
-                <div class="activity-item">
-                  <div class="activity-icon">🔍</div>
-                  <div class="activity-details">
-                    <p>
-                      <span class="activity-action"
-                        >Browsed tours</span
-                      >
-                      for Bali
-                    </p>
-                    <p class="activity-date">2025-03-03</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Travel tips -->
-            <div class="card">
-              <h2 class="card-title">Travel Tips</h2>
-              <div class="travel-tips">
-                <p class="tip-item">
-                  ✓ Remember to check visa requirements before
-                  booking
-                </p>
-                <p class="tip-item">
-                  ✓ Exchange currency before your trip for better
-                  rates
-                </p>
-                <p class="tip-item">
-                  ✓ Pack essential medications in your carry-on
-                  luggage
-                </p>
-                <button class="more-tips-btn">
-                  View more tips
-                </button>
-              </div>
+        <div class="dashboard">
+          <div class="card">
+            <div class="card-title">Total Trips Booked</div>
+            <div class="card-value">
+              <%=userAnalytics.totalTours%>
             </div>
           </div>
-        </main>
+          <div class="card">
+            <div class="card-title">Total Trips Cost</div>
+            <div class="card-value">
+              <%=userAnalytics.totalSpentOnTours%>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Total Hotels Booked</div>
+            <div class="card-value">
+              <%=userAnalytics.totalHotels%>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Total Hotels Cost</div>
+            <div class="card-value">
+              <%=userAnalytics.totalSpentOnHotels%>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

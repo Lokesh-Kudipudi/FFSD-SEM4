@@ -6,7 +6,6 @@ const {
 const {
   makeTourBooking,
 } = require("../Controller/bookingController");
-const { setDefaultBaseUrls } = require("@google/genai");
 
 // Create a new router object
 const toursRouter = express.Router();
@@ -111,6 +110,13 @@ toursRouter.route("/tour/:id").get(async (req, res) => {
 
 toursRouter.route("/booking").post(async (req, res) => {
   const { startDate, endDate, tourId } = req.body; // Extract booking details from the request body
+
+  if (!req.user) {
+    return res.json({
+      status: "fail",
+      message: "User not authenticated",
+    });
+  } // Redirect to sign-in page if user is not authenticated
 
   await makeTourBooking(req.user._id, tourId, {
     startDate: startDate,

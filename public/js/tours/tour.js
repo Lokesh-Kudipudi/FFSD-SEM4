@@ -22,19 +22,31 @@ choiceSelectionContainer.addEventListener("click", (e) => {
 });
 
 async function makeBooking(tourId, bookingDetails) {
-  const response = await fetch("/tours/booking", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      tourId: tourId,
-      startDate: bookingDetails.startDate,
-      endDate: bookingDetails.endDate,
-    }),
-  });
+  try {
+    const response = await fetch("/tours/booking", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        tourId: tourId,
+        startDate: bookingDetails.startDate,
+        endDate: bookingDetails.endDate,
+      }),
+    });
 
-  window.location.href = "/dashboard/myTrips";
+    const data = await response.json();
+
+    if (data.status == "fail") {
+      alert(data.message);
+    } else {
+      window.location.href = "/dashboard/myTrips";
+    }
+  } catch (error) {
+    console.log("Error making booking:", error);
+  }
+
+  // window.location.href = "/dashboard/myTrips";
 }
 
 document

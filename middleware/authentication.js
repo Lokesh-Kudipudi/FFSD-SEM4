@@ -22,4 +22,17 @@ function authenticateUser(req, res, next) {
   }
 }
 
-module.exports = { authenticateUser };
+function authenticateRole(role) {
+  return (req, res, next) => {
+    if (!req.user || !role.includes(req.user.role)) {
+      return res.status(401).json({
+        status: "fail",
+        message:
+          "Access denied. You do not have the required role.",
+      }); // Redirect to home if user does not have the required role
+    }
+    next(); // Continue to the next middleware or route handler
+  };
+}
+
+module.exports = { authenticateUser, authenticateRole };

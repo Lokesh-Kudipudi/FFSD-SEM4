@@ -46,6 +46,7 @@ userRouter.route("/logout").get(logout);
 // Define the route to get all users
 userRouter.route("/users").get(getUsers).post(signUpAdmin);
 
+// Tours for recommendation
 let tours = [];
 
 userRouter.route("/recommendation").get(async (req, res) => {

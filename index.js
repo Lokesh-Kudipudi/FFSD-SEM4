@@ -11,6 +11,7 @@ const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const {
   authenticateUser,
+  authenticateRole,
 } = require("./middleware/authentication");
 const { userRouter } = require("./routes/userRouter");
 const { autoSignIn } = require("./middleware/autoSignIn");
@@ -50,7 +51,7 @@ app.use("/tours", toursRouter);
 app.use("/hotels", hotelsRouter);
 
 // Use the dashboard router for routes with "dashboard"
-app.use("/dashboard", dashboardRouter);
+app.use("/dashboard", authenticateUser, dashboardRouter);
 
 const port = 5500;
 

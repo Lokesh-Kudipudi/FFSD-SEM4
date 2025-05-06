@@ -60,7 +60,12 @@ async function makeTourBooking(userId, tourId, bookingDetails) {
       userId,
       type: "Tour",
       itemId: tourId,
-      bookingDetails,
+      bookingDetails: {
+        ...bookingDetails,
+        price:
+          tour.price.amount -
+          tour.price.discount * tour.price.amount,
+      },
     });
 
     const savedBooking = await booking.save();

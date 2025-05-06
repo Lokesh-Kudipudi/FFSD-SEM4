@@ -4,80 +4,110 @@ const {
   getUserBookingsController,
 } = require("../Controller/userController");
 const {
-  getUserBookings,
   getHotelBookings,
 } = require("../Controller/bookingController");
 const {
   getHotelIdsByOwnerId,
   addHotelIdToOwner,
 } = require("../Controller/ownerController");
+const {
+  getUserAnalytics,
+  getAdminHomepageAnalytics,
+} = require("../Controller/analyticsController");
+const {
+  authenticateRole,
+} = require("../middleware/authentication");
 
 const dashboardRouter = express.Router();
 
 // USER Dashboard Routes
 
-dashboardRouter.route("/").get((req, res) => {
-  // Send User Dashboard
+dashboardRouter
+  .route("/")
+  .get(
+    authenticateRole(["user", "admin", "hotelManager"]),
+    async (req, res) => {
+      const userAnalytics = await getUserAnalytics(req.user._id);
 
-  res.render("dashboard/user/index", { user: req.user });
-});
+      console.log(userAnalytics);
+      // Send User Dashboard
 
-dashboardRouter.route("/myTrips").get(getUserBookingsController);
+      res.render("dashboard/user/index", {
+        user: req.user,
+        userAnalytics,
+      });
+    }
+  );
+
+dashboardRouter
+  .route("/myTrips")
+  .get(
+    authenticateRole(["user", "admin", "hotelManager"]),
+    getUserBookingsController
+  );
 
 dashboardRouter
   .route("/settings")
-  .get((req, res) => {
-    // Send User Dashboard
+  .get(
+    authenticateRole(["user", "admin", "hotelManager"]),
+    (req, res) => {
+      // Send User Dashboard
 
-    res.render("dashboard/user/settings", { user: req.user });
-  })
+      res.render("dashboard/user/settings", { user: req.user });
+    }
+  )
   .post(updateUser);
 
 // ADMIN Dashboard
 
-dashboardRouter.route("/admin").get((req, res) => {
-  // Send Admin Dashboard
-  res.sendFile("/html/dashboard/admin/index.html", {
-    root: "public",
-  });
-});
-
-dashboardRouter.route("/admin/analytics").get((req, res) => {
-  // Send Admin Dashboard
-  res.sendFile("/html/dashboard/admin/analytics.html", {
-    root: "public",
-  });
-});
-
-dashboardRouter.route("/admin/customers").get((req, res) => {
-  // Send Admin Dashboard
-  res.sendFile("/html/dashboard/admin/customers.html", {
-    root: "public",
-  });
-});
-
 dashboardRouter
-  .route("/admin/hotelManagement")
-  .get((req, res) => {
+  .route("/admin")
+  .get(authenticateRole(["admin"]), async (req, res) => {
     // Send Admin Dashboard
-    res.sendFile("/html/dashboard/admin/hotelManagement.html", {
-      root: "public",
+
+    const adminAnalytics = await getAdminHomepageAnalytics();
+
+    res.render("dashboard/admin/index", {
+      adminAnalytics,
     });
   });
 
-dashboardRouter.route("/admin/packages").get((req, res) => {
-  // Send Admin Dashboard
-  res.sendFile("/html/dashboard/admin/packages.html", {
-    root: "public",
+dashboardRouter
+  .route("/admin/analytics")
+  .get(authenticateRole(["admin"]), (req, res) => {
+    // Send Admin Dashboard
+    res.render("dashboard/admin/analytics");
   });
-});
 
-dashboardRouter.route("/hotelManager").get((req, res) => {
-  // Send Hotel Manager Dashboard
-  res.sendFile("/html/dashboard/hotelManager/index.html", {
-    root: "public",
+dashboardRouter
+  .route("/admin/customers")
+  .get(authenticateRole(["admin"]), (req, res) => {
+    // Send Admin Dashboard
+    res.render("dashboard/admin/customers");
   });
-});
+
+dashboardRouter
+  .route("/admin/hotelManagement")
+  .get(authenticateRole(["admin"]), (req, res) => {
+    // Send Admin Dashboard
+    res.render("dashboard/admin/hotelManagement");
+  });
+
+dashboardRouter
+  .route("/admin/packages")
+  .get(authenticateRole(["admin"]), (req, res) => {
+    // Send Admin Dashboard
+    res.render("dashboard/admin/packages");
+  });
+
+dashboardRouter
+  .route("/hotelManager")
+  .get(authenticateRole(["hotelManager"]), (req, res) => {
+    // Send Hotel Manager Dashboard
+    res.sendFile("/html/dashboard/hotelManager/index.html", {
+      root: "public",
+    });
+  });
 
 dashboardRouter
   .route("/api/hotelManager/booking")
@@ -104,7 +134,7 @@ dashboardRouter
 
 dashboardRouter
   .route("/hotelManager/booking")
-  .get((req, res) => {
+  .get(authenticateRole(["hotelManager"]), (req, res) => {
     // Send Hotel Manager Dashboard
     res.sendFile("/html/dashboard/hotelManager/booking.html", {
       root: "public",
@@ -113,7 +143,7 @@ dashboardRouter
 
 dashboardRouter
   .route("/api/hotelManager/owner")
-  .get(async (req, res) => {
+  .get(authenticateRole(["hotelManager"]), async (req, res) => {
     if (!req.user || req.user.role !== "hotelManager") {
       return res.status(401).json({ message: "Unauthorizrsed" });
     }
@@ -152,16 +182,21 @@ dashboardRouter
     }
   });
 
-dashboardRouter.route("/hotelManager/rooms").get((req, res) => {
-  // Send Hotel Manager Dashboard
-  res.sendFile("/html/dashboard/hotelManager/roomsIndex.html", {
-    root: "public",
+dashboardRouter
+  .route("/hotelManager/rooms")
+  .get(authenticateRole(["hotelManager"]), (req, res) => {
+    // Send Hotel Manager Dashboard
+    res.sendFile(
+      "/html/dashboard/hotelManager/roomsIndex.html",
+      {
+        root: "public",
+      }
+    );
   });
-});
 
 dashboardRouter
   .route("/hotelManager/addRoom")
-  .get((req, res) => {
+  .get(authenticateRole(["hotelManager"]), (req, res) => {
     // Send Hotel Manager Dashboard
     res.sendFile("/html/dashboard/hotelManager/roomsAdd.html", {
       root: "public",
