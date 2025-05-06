@@ -11,7 +11,7 @@
 
     <link
       rel="stylesheet"
-      href="/css/dashboard/hotelManager/booking.css"
+      href="/css/dashboard/hotelManager/roomsIndex.css"
     />
     <link
       rel="stylesheet"
@@ -38,7 +38,7 @@
     ></script>
     <script
       defer
-      src="/js/dashboard/hotelManager/booking.js"
+      src="/js/dashboard/hotelManager/roomsIndex.js"
     ></script>
   </head>
   <body>
@@ -81,7 +81,7 @@
             >
           </div>
 
-          <div class="link active">
+          <div class="link">
             <a href="/dashboard/hotelManager/booking">
               <span class="material-symbols-outlined icon"
                 >event</span
@@ -90,7 +90,7 @@
             >
           </div>
 
-          <div class="link">
+          <div class="link active">
             <a href="/dashboard/hotelManager/rooms">
               <span class="material-symbols-outlined icon"
                 >meeting_room</span
@@ -116,63 +116,24 @@
           <button class="toggle-btn" style="color: black">
             ☰
           </button>
-
-          <div class="main-bookings-header">
-            <div class="allbookings">
-              <h3>All Bookings</h3>
-            </div>
-            <div class="main-bookings-header-icons">
-              <span class="material-symbols-outlined icon"
-                >home</span
-              >
-              <ul class="list">
-                <li>Bookings</li>
-                <li>All Bookings</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="main-bookings">
-            <table class="main-bookings-table">
-              <thead class="main-bookings-table-head">
-                <tr>
-                  <th>Name</th>
-                  <th>Package</th>
-                  <th>Room Type</th>
-                  <th>Status</th>
-                  <th>Check In</th>
-                  <th>Check Out</th>
-                  <th>Email</th>
-                  <th>Mobile</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody class="main-bookings-table-body">
-                <!-- <tr>
-                  <td><input type="checkbox" /></td>
-                  <td>John Deo</td>
-                  <td>All inclusive</td>
-                  <td>Delux</td>
-                  <td>Cancelled</td>
-                  <td>02/28/2025</td>
-                  <td>02/28/2025</td>
-                  <td>paid</td>
-                  <td>
-                    <span class="material-symbols-outlined email-icon">email</span
-                    >test@gmail.com
-                  </td>
-                  <td>
-                    <span class="material-symbols-outlined phone-icon"
-                      >phone</span
-                    >
-                    1234567890
-                  </td>
-                  <td>...</td>
-                </tr>-->
-              </tbody>
-            </table>
-          </div>
         </div>
+
+        <h1 class="occupancy-heading">Occupancy</h1>
+        <div class="filter-container">
+          <select id="statusFilter">
+            <option value="all">All</option>
+            <option value="available">Available</option>
+            <option value="booked">Booked</option>
+          </select>
+          <select id="roomTypeFilter">
+            <option value="all">All</option>
+            <option value="Deluxe">Deluxe</option>
+            <option value="Suite">Suite</option>
+            <option value="Standard">Standard</option>
+          </select>
+          <button onclick="applyFilters()">Filter</button>
+        </div>
+        <div class="room-grid" id="roomGrid"></div>
       </div>
     </div>
   </body>

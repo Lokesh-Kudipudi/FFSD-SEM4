@@ -20,9 +20,6 @@ const loadBookingDetails = () => {
       )}">${booking.bookingDetails.status}</td>
       <td>${booking.bookingDetails.startDate}</td>
       <td>${booking.bookingDetails.endDate}</td>
-      <td style="${stylesForPaymentStatus(
-        booking.paymentId.status
-      )}">${booking.paymentId.status}</td>
       <td>
         <span class="material-symbols-outlined" style="color: #aa1419;">email</span> ${
           booking.userId.email
@@ -77,6 +74,8 @@ async function fetchBookings() {
   const bookingsData = await bookings.json();
 
   bookingsInfo = bookingsData.bookings;
+
+  console.log(bookingsInfo);
 
   loadBookingDetails();
 }

@@ -29,7 +29,6 @@ async function getHotelBookings(hotelId) {
   try {
     const bookings = await Booking.find({ itemId: hotelId })
       .populate("userId")
-      .populate("paymentId")
       .lean();
 
     if (!bookings) {
@@ -87,19 +86,21 @@ async function makeTourBooking(userId, tourId, bookingDetails) {
 async function cancelBooking(bookingId) {
   try {
     const result = await Booking.updateOne(
-      { _id: bookingId, 'bookingDetails.status': 'pending' },
-      { $set: { 'bookingDetails.status': 'cancel' } }
+      { _id: bookingId, "bookingDetails.status": "pending" },
+      { $set: { "bookingDetails.status": "cancel" } }
     );
 
     if (result.modifiedCount === 1) {
-      console.log('Booking status updated to cancel.');
+      console.log("Booking status updated to cancel.");
 
       return {
         status: "success",
         message: "Booking cancelled successfully.",
       };
     } else {
-      console.log('No pending booking found or already updated.');
+      console.log(
+        "No pending booking found or already updated."
+      );
 
       return {
         status: "error",
@@ -107,7 +108,7 @@ async function cancelBooking(bookingId) {
       };
     }
   } catch (error) {
-    console.error('Error updating booking status:', error);
+    console.error("Error updating booking status:", error);
   }
 }
 
@@ -115,5 +116,5 @@ module.exports = {
   getUserBookings,
   getHotelBookings,
   makeTourBooking,
-  cancelBooking
+  cancelBooking,
 };

@@ -5,7 +5,7 @@ const {
 } = require("../Controller/userController");
 const {
   getHotelBookings,
-  cancelBooking
+  cancelBooking,
 } = require("../Controller/bookingController");
 const {
   getHotelIdsByOwnerId,
@@ -98,20 +98,17 @@ dashboardRouter
 dashboardRouter
   .route("/admin/packages")
   .get(authenticateRole(["admin"]), async (req, res) => {
-
     const packageAnalytics = await getAdminPackagesAnalytics();
 
     // Send Admin Dashboard
-    res.render("dashboard/admin/packages", {packageAnalytics});
+    res.render("dashboard/admin/packages", { packageAnalytics });
   });
 
 dashboardRouter
   .route("/hotelManager")
   .get(authenticateRole(["hotelManager"]), (req, res) => {
     // Send Hotel Manager Dashboard
-    res.sendFile("/html/dashboard/hotelManager/index.html", {
-      root: "public",
-    });
+    res.render("dashboard/hotelManager/index");
   });
 
 dashboardRouter
@@ -129,7 +126,7 @@ dashboardRouter
 
     if (bookings) {
       res.status(200).json({
-        message: "Bookings fetched successfully",
+        message: "Bookings fetched.",
         bookings: bookings.data,
       });
     } else {
@@ -141,9 +138,7 @@ dashboardRouter
   .route("/hotelManager/booking")
   .get(authenticateRole(["hotelManager"]), (req, res) => {
     // Send Hotel Manager Dashboard
-    res.sendFile("/html/dashboard/hotelManager/booking.html", {
-      root: "public",
-    });
+    res.render("dashboard/hotelManager/booking");
   });
 
 dashboardRouter
@@ -191,21 +186,14 @@ dashboardRouter
   .route("/hotelManager/rooms")
   .get(authenticateRole(["hotelManager"]), (req, res) => {
     // Send Hotel Manager Dashboard
-    res.sendFile(
-      "/html/dashboard/hotelManager/roomsIndex.html",
-      {
-        root: "public",
-      }
-    );
+    res.render("dashboard/hotelManager/roomsIndex");
   });
 
 dashboardRouter
   .route("/hotelManager/addRoom")
   .get(authenticateRole(["hotelManager"]), (req, res) => {
     // Send Hotel Manager Dashboard
-    res.sendFile("/html/dashboard/hotelManager/roomsAdd.html", {
-      root: "public",
-    });
+    res.render("dashboard/hotelManager/roomsAdd");
   });
 
 dashboardRouter
@@ -214,14 +202,16 @@ dashboardRouter
     try {
       const { bookingId } = req.params;
       const result = await cancelBooking(bookingId);
-      
+
       if (result.status === "success") {
         res.status(200).json(result);
       } else {
         res.status(400).json(result);
       }
     } catch (error) {
-      res.status(500).json({ status: "error", message: error.message });
+      res
+        .status(500)
+        .json({ status: "error", message: error.message });
     }
   });
 
