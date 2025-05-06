@@ -161,8 +161,38 @@ async function getAdminPackagesAnalytics() {
   } catch (error) {}
 }
 
+async function getHotelMangerHomePageAnalytics(hotelId) {
+  try {
+    const bookings = await Booking.find({
+      itemId: hotelId,
+    }).lean();
+
+    if (!bookings) {
+      throw new Error("No bookings found for this user.");
+    }
+
+    const totalBookings = bookings.length;
+    const totalRevenue = bookings.reduce(
+      (acc, booking) => acc + booking.bookingDetails?.price || 0,
+      0
+    );
+
+    return {
+      status: "success",
+      totalBookings,
+      totalRevenue,
+    };
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+}
+
 module.exports = {
   getUserAnalytics,
   getAdminHomepageAnalytics,
   getAdminPackagesAnalytics,
+  getHotelMangerHomePageAnalytics,
 };

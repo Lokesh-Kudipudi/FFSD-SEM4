@@ -13,13 +13,11 @@ const loadBookingDetails = () => {
 
     row.innerHTML = `
       <td>${booking.userId.fullName}</td>
-      <td> PACKAGE </td>
-      <td> ROOM </td>
       <td style="${stylesForBookingStatus(
         booking.bookingDetails.status
       )}">${booking.bookingDetails.status}</td>
-      <td>${booking.bookingDetails.startDate}</td>
-      <td>${booking.bookingDetails.endDate}</td>
+      <td>${booking.bookingDetails.checkInDate}</td>
+      <td>${booking.bookingDetails.checkOutDate}</td>
       <td>
         <span class="material-symbols-outlined" style="color: #aa1419;">email</span> ${
           booking.userId.email
@@ -30,6 +28,10 @@ const loadBookingDetails = () => {
           booking.userId.phone
         }
       </td>
+      
+    `;
+
+    /*
       <td>
         <span class="action-btn" data-id="${index}">⋮</span>
         <div class="action-menu" id="menu-${index}">
@@ -38,7 +40,7 @@ const loadBookingDetails = () => {
           <a href="cancelBooking.html?id=${index}"><span class="material-symbols-outlined icon">cancel</span> Cancel Booking</a>
         </div>
       </td>
-    `;
+    */
 
     tableBody.appendChild(row);
   });

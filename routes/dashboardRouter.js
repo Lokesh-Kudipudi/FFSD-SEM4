@@ -15,6 +15,7 @@ const {
   getUserAnalytics,
   getAdminHomepageAnalytics,
   getAdminPackagesAnalytics,
+  getHotelMangerHomePageAnalytics,
 } = require("../Controller/analyticsController");
 const {
   authenticateRole,
@@ -106,9 +107,16 @@ dashboardRouter
 
 dashboardRouter
   .route("/hotelManager")
-  .get(authenticateRole(["hotelManager"]), (req, res) => {
+  .get(authenticateRole(["hotelManager"]), async (req, res) => {
+    const hotelId = await getHotelIdsByOwnerId(req.user._id);
+    const hotelManagerAnalytics =
+      await getHotelMangerHomePageAnalytics(hotelId);
+    console.log(hotelManagerAnalytics);
+
     // Send Hotel Manager Dashboard
-    res.render("dashboard/hotelManager/index");
+    res.render("dashboard/hotelManager/index", {
+      hotelManagerAnalytics,
+    });
   });
 
 dashboardRouter

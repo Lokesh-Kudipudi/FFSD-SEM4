@@ -122,13 +122,13 @@
           <div class="card">
             <div class="card-content">
               <h4>New Booking</h4>
-              <h5>1,879</h5>
-              <p class="growth">
+              <h5><%= hotelManagerAnalytics.totalBookings %></h5>
+              <!-- <p class="growth">
                 <span class="icon">⬆</span> +7.5%
-              </p>
+              </p> -->
             </div>
           </div>
-          <div class="card">
+          <!-- <div class="card">
             <div class="card-content">
               <h4>Available Rooms</h4>
               <h5>55</h5>
@@ -136,17 +136,19 @@
                 <span class="icon">⬇</span> -5.7%
               </p>
             </div>
-          </div>
+          </div> -->
           <div class="card">
             <div class="card-content">
               <h4>Revenue</h4>
-              <h5>$2,287</h5>
-              <p class="growth">
+              <h5>
+                <%= hotelManagerAnalytics.totalRevenue %> INR
+              </h5>
+              <!-- <p class="growth">
                 <span class="icon">⬆</span> +5.3%
-              </p>
+              </p> -->
             </div>
           </div>
-          <div class="card">
+          <!-- <div class="card">
             <div class="card-content">
               <h4>Checkout</h4>
               <h5>567</h5>
@@ -154,7 +156,7 @@
                 <span class="icon">⬇</span> -2.4%
               </p>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!--available rooms -->
@@ -204,30 +206,33 @@
         </div> -->
 
         <!--table of booked rooms -->
-        <!-- <div class="available-rooms">
+        <div class="available-rooms">
           <div class="available-rooms-info">
             <h5>Bookings</h5>
-            <button>View All</button>
+            <button
+              onclick="{window.location.href = '/dashboard/hotelManager/booking'}"
+            >
+              View All
+            </button>
           </div>
           <div class="available-rooms-table">
             <table>
               <thead>
                 <tr>
-                  <td>Room NO</td>
                   <td>Name</td>
                   <td>Check in</td>
                   <td>Checkout</td>
                   <td>Mobile</td>
+                  <td>Email</td>
                   <td>Status</td>
-                  
                 </tr>
               </thead>
-              <tbody class="available-rooms-info-table-body">
-                
-              </tbody>
+              <tbody
+                class="available-rooms-info-table-body"
+              ></tbody>
             </table>
           </div>
-        </div> -->
+        </div>
 
         <!--guest list and booking sources -->
         <!-- <div class="cards3">
