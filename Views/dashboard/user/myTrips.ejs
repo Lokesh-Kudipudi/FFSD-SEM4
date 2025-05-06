@@ -163,6 +163,7 @@
               <% bookings?.forEach(booking => { %> <% if
               (booking.bookingDetails?.status == "upcoming" ||
               booking.bookingDetails?.status == "pending") { %>
+              <% if (booking.type == "Tour") { %>
               <div class="trip-card">
                 <div style="position: relative">
                   <img
@@ -213,16 +214,65 @@
                   </div>
 
                   <div class="trip-actions">
-                    <button data-itemId="<%=booking.itemId._id%>" data-bookingId="<%=booking._id%>" class="trip-action-btn btn-outline cancel-trip">
+                    <button
+                      data-itemId="<%=booking.itemId._id%>"
+                      data-bookingId="<%=booking._id%>"
+                      class="trip-action-btn btn-outline cancel-trip"
+                    >
                       Cancel
                     </button>
-                    <button data-itemId="<%=booking.itemId._id%>"  class="view-details-trip trip-action-btn btn-primary">
+                    <button
+                      data-itemId="<%=booking.itemId._id%>"
+                      class="view-details-trip trip-action-btn btn-primary"
+                    >
                       View Details
                     </button>
                   </div>
                 </div>
               </div>
-              <% }; %> <% }); %>
+              <% } else { %>
+              <div class="trip-card">
+                <div style="position: relative">
+                  <img
+                    src="<%= booking.itemId.mainImage %>"
+                    alt="<%= booking.itemId.title %>"
+                    class="trip-image"
+                  />
+                  <div class="trip-status status-upcoming">
+                    Upcoming
+                  </div>
+                </div>
+                <div class="trip-content">
+                  <div class="trip-date">
+                    <span>📅</span> <%=
+                    booking.bookingDetails?.startDate %>
+                  </div>
+                  <h3 class="trip-title">
+                    <%= booking.itemId.title %>
+                  </h3>
+                  <div class="trip-destination">
+                    <span>📍</span> <%= booking.itemId.location
+                    %>
+                  </div>
+
+                  <div class="trip-actions">
+                    <button
+                      data-itemId="<%=booking.itemId._id%>"
+                      data-bookingId="<%=booking._id%>"
+                      class="trip-action-btn btn-outline cancel-trip"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onclick="{window.location.href = '/hotels/hotel/<%=booking.itemId._id%> '}"
+                      class="trip-action-btn btn-primary"
+                    >
+                      View Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <% }; %> <% }; %> <% }); %>
             </div>
           </div>
 

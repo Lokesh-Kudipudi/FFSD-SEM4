@@ -3,6 +3,9 @@ const {
   getAllHotels,
   getHotelById,
 } = require("../Controller/hotelController");
+const {
+  makeHotelBooking,
+} = require("../Controller/bookingController");
 
 const hotelsRouter = express.Router(); // Create a new router object
 
@@ -60,6 +63,28 @@ hotelsRouter.route("/hotel/:id").get(async (req, res) => {
 
   // Render the "hotels/index" view and pass an object with a name property
   res.render("hotels/hotel", { hotel, user: req.user });
+});
+
+hotelsRouter.route("/booking/:id").post(async (req, res) => {
+  const id = req.params.id;
+
+  let response = await makeHotelBooking(
+    req.user._id,
+    id,
+    req.body
+  );
+
+  if (response.status != "success") {
+    res.json({
+      stats: "Fail",
+      message: response.message,
+    });
+  } else {
+    res.json({
+      status: "success",
+      message: "Booking successful",
+    });
+  }
 });
 
 module.exports = hotelsRouter; // Export the router object

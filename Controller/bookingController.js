@@ -1,6 +1,7 @@
 const { Booking } = require("../Model/bookingModel");
 const { Payment } = require("../Model/paymentModel");
 const { Tour } = require("../Model/tourModel");
+const { Hotel } = require("../Model/hotelModel");
 
 async function getUserBookings(userId) {
   try {
@@ -83,6 +84,43 @@ async function makeTourBooking(userId, tourId, bookingDetails) {
   }
 }
 
+async function makeHotelBooking(
+  userId,
+  hotelId,
+  bookingDetails
+) {
+  try {
+    // Validate the hotel exists
+    const hotel = await Hotel.findById(hotelId);
+    if (!hotel) {
+      throw new Error("Hotel not found.");
+    }
+    // Create a new booking object
+    const booking = new Booking({
+      userId,
+      type: "Hotel",
+      itemId: hotelId,
+      bookingDetails: {
+        ...bookingDetails,
+      },
+    });
+
+    const savedBooking = await booking.save();
+
+    return {
+      status: "success",
+      data: {
+        booking: savedBooking,
+      },
+    };
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+}
+
 async function cancelBooking(bookingId) {
   try {
     const result = await Booking.updateOne(
@@ -116,5 +154,6 @@ module.exports = {
   getUserBookings,
   getHotelBookings,
   makeTourBooking,
+  makeHotelBooking,
   cancelBooking,
 };

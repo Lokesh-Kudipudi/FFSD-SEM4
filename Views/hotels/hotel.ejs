@@ -124,7 +124,7 @@
 
       <div class="room-container">
         <% hotel.roomType.forEach(room => { %>
-        <div class="room-card">
+        <div class="room-card" data-hotelId="<%=hotel._id%>">
           <img src="<%= room['image'] %>" alt="Room 3" />
           <h2><%= room['title'] %></h2>
           <p class="rating">

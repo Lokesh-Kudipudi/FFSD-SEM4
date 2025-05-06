@@ -29,7 +29,7 @@ async function getUserAnalytics(userId) {
       0
     );
     const totalSpentOnHotels = hotelsBookings.reduce(
-      (acc, booking) => acc + booking.itemId.price,
+      (acc, booking) => acc + booking.bookingDetails?.price,
       0
     );
 
@@ -116,8 +116,10 @@ async function getAdminHomepageAnalytics() {
 
 async function getAdminPackagesAnalytics() {
   try {
-    const packages = await Tour.find({}).select("title duration rating status startLocation price").lean();
-    
+    const packages = await Tour.find({})
+      .select("title duration rating status startLocation price")
+      .lean();
+
     // Use Aggregate and find the total bookings for each package
     const bookings = await Booking.aggregate([
       {
@@ -132,12 +134,18 @@ async function getAdminPackagesAnalytics() {
         },
       },
     ]);
- 
-    const totalPackages = packages.length;
-    const activePackages = packages.filter(pkg => pkg.status === "active").length;
 
-    const bookingAnalytics = packages.map(pkg => {
-      const bookingsCount = bookings.find(booking => booking._id.toString() === pkg._id.toString())?.totalBookings || 0;
+    const totalPackages = packages.length;
+    const activePackages = packages.filter(
+      (pkg) => pkg.status === "active"
+    ).length;
+
+    const bookingAnalytics = packages.map((pkg) => {
+      const bookingsCount =
+        bookings.find(
+          (booking) =>
+            booking._id.toString() === pkg._id.toString()
+        )?.totalBookings || 0;
       return {
         ...pkg,
         totalBookings: bookingsCount,
@@ -149,9 +157,12 @@ async function getAdminPackagesAnalytics() {
       totalPackages,
       activePackages,
       bookingAnalytics,
-    }
-  } catch (error) {
-  }
+    };
+  } catch (error) {}
 }
 
-module.exports = { getUserAnalytics, getAdminHomepageAnalytics, getAdminPackagesAnalytics };
+module.exports = {
+  getUserAnalytics,
+  getAdminHomepageAnalytics,
+  getAdminPackagesAnalytics,
+};
