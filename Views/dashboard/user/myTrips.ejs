@@ -25,6 +25,7 @@
     />
     <link href="/css/header.css" rel="stylesheet" />
     <script defer src="/js/header.js"></script>
+    <script defer src="/js/dashboard/user/myTrips.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -212,11 +213,11 @@
                   </div>
 
                   <div class="trip-actions">
-                    <button class="trip-action-btn btn-outline">
-                      View Details
+                    <button data-itemId="<%=booking.itemId._id%>" data-bookingId="<%=booking._id%>" class="trip-action-btn btn-outline cancel-trip">
+                      Cancel
                     </button>
-                    <button class="trip-action-btn btn-primary">
-                      Manage
+                    <button data-itemId="<%=booking.itemId._id%>"  class="view-details-trip trip-action-btn btn-primary">
+                      View Details
                     </button>
                   </div>
                 </div>

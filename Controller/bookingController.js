@@ -84,8 +84,34 @@ async function makeTourBooking(userId, tourId, bookingDetails) {
   }
 }
 
+async function cancelBooking(bookingId) {
+  try {
+    const booking = await Booking.findById(bookingId);
+    if (!booking) {
+      throw new Error("Booking not found");
+    }
+
+    booking.bookingDetails.status = "cancelled";
+
+    const updatedBooking = await booking.save();
+
+    console.log(updatedBooking);  
+
+    return {
+      status: "success",
+      data: updatedBooking
+    };
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message
+    };
+  }
+}
+
 module.exports = {
   getUserBookings,
   getHotelBookings,
   makeTourBooking,
+  cancelBooking
 };

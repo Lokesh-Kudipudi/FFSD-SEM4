@@ -5,6 +5,8 @@ const {
 } = require("../Controller/userController");
 const {
   getHotelBookings,
+  getUserBookings,
+  cancelBooking
 } = require("../Controller/bookingController");
 const {
   getHotelIdsByOwnerId,
@@ -201,6 +203,23 @@ dashboardRouter
     res.sendFile("/html/dashboard/hotelManager/roomsAdd.html", {
       root: "public",
     });
+  });
+
+dashboardRouter
+  .route("/api/bookings/cancel/:bookingId")
+  .post(authenticateRole(["user", "admin", "hotelManager"]), async (req, res) => {
+    try {
+      const { bookingId } = req.params;
+      const result = await cancelBooking(bookingId);
+      
+      if (result.status === "success") {
+        res.status(200).json(result);
+      } else {
+        res.status(400).json(result);
+      }
+    } catch (error) {
+      res.status(500).json({ status: "error", message: error.message });
+    }
   });
 
 module.exports = dashboardRouter;
