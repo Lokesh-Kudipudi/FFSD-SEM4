@@ -114,4 +114,44 @@ async function getAdminHomepageAnalytics() {
   }
 }
 
-module.exports = { getUserAnalytics, getAdminHomepageAnalytics };
+async function getAdminPackagesAnalytics() {
+  try {
+    const packages = await Tour.find({}).select("title duration rating status startLocation price").lean();
+    
+    // Use Aggregate and find the total bookings for each package
+    const bookings = await Booking.aggregate([
+      {
+        $match: {
+          type: "Tour",
+        },
+      },
+      {
+        $group: {
+          _id: "$itemId",
+          totalBookings: { $sum: 1 },
+        },
+      },
+    ]);
+ 
+    const totalPackages = packages.length;
+    const activePackages = packages.filter(pkg => pkg.status === "active").length;
+
+    const bookingAnalytics = packages.map(pkg => {
+      const bookingsCount = bookings.find(booking => booking._id.toString() === pkg._id.toString())?.totalBookings || 0;
+      return {
+        ...pkg,
+        totalBookings: bookingsCount,
+      };
+    });
+
+    return {
+      status: "success",
+      totalPackages,
+      activePackages,
+      bookingAnalytics,
+    }
+  } catch (error) {
+  }
+}
+
+module.exports = { getUserAnalytics, getAdminHomepageAnalytics, getAdminPackagesAnalytics };

@@ -68,29 +68,20 @@
           <button class="toggle-btn" id="toggle-sidebar">
             <i style="color: black" class="fas fa-bars"></i>
           </button>
-          <div class="search-bar">
+          <!-- <div class="search-bar">
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Search..." />
-          </div>
+          </div> -->
           <div class="user-info">
-            <div class="notification-icon">
+            <!-- <div class="notification-icon">
               <i class="fas fa-bell"></i>
               <span class="notification-badge">3</span>
-            </div>
-            <div class="user-avatar">
-              <span>AD</span>
-            </div>
+            </div> -->
+            <div class="user-avatar">AD</div>
             <div class="user-name">Admin</div>
           </div>
         </div>
         <!-- Tabs -->
-        <div class="tabs">
-          <div class="tab active">All Packages</div>
-          <div class="tab">Featured</div>
-          <div class="tab">Active</div>
-          <div class="tab">Drafts</div>
-          <div class="tab">Inactive</div>
-        </div>
 
         <!-- Metrics Cards -->
         <div class="cards">
@@ -114,8 +105,8 @@
                 <line x1="7" y1="7" x2="7.01" y2="7"></line>
               </svg>
             </div>
-            <div class="card-value">126</div>
-            <div class="card-trend trend-up">
+            <div class="card-value"> <%= packageAnalytics.totalPackages %> </div>
+            <!-- <div class="card-trend trend-up">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -130,7 +121,7 @@
                 <polyline points="18 15 12 9 6 15"></polyline>
               </svg>
               14% from last month
-            </div>
+            </div> -->
           </div>
 
           <div class="card">
@@ -152,8 +143,8 @@
                 ></polyline>
               </svg>
             </div>
-            <div class="card-value">98</div>
-            <div class="card-trend trend-up">
+            <div class="card-value"><%= packageAnalytics.activePackages %></div>
+            <!-- <div class="card-trend trend-up">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -168,10 +159,10 @@
                 <polyline points="18 15 12 9 6 15"></polyline>
               </svg>
               8% from last month
-            </div>
+            </div> -->
           </div>
 
-          <div class="card">
+          <!-- <div class="card">
             <div class="card-header">
               <span class="card-title"
                 >Avg. Bookings/Package</span
@@ -212,51 +203,13 @@
               </svg>
               3% from last month
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!-- Packages Table -->
         <div class="table-container">
           <div class="table-header">
             <h2 class="table-title">All Packages</h2>
-
-            <div class="table-actions">
-              <button class="btn btn-secondary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <line x1="12" y1="5" x2="12" y2="19"></line>
-                  <polyline points="19 12 12 19 5 12"></polyline>
-                </svg>
-                Export
-              </button>
-              <button class="btn btn-secondary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polygon
-                    points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"
-                  ></polygon>
-                </svg>
-                Filter
-              </button>
-            </div>
           </div>
 
           <table>
@@ -273,6 +226,7 @@
               </tr>
             </thead>
             <tbody>
+              <% packageAnalytics.bookingAnalytics.forEach(bkg => { %>
               <tr>
                 <td>
                   <div
@@ -282,40 +236,20 @@
                       gap: 12px;
                     "
                   >
-                    <img
-                      src="/api/placeholder/120/80"
-                      alt="Bali Paradise"
-                      class="package-image"
-                    />
-                    <div>Bali Paradise Explorer</div>
+                    <div> <%= bkg.title %> </div>
                   </div>
                 </td>
-                <td>Bali, Indonesia</td>
-                <td>7 Days</td>
-                <td>$1,299</td>
-                <td>120</td>
-                <td>4.8</td>
+                <td><%= bkg.startLocation %></td>
+                <td><%= bkg.duration %></td>
+                <td> <%= bkg.price.amount %> </td>
+                <td> <%= bkg.totalBookings %> </td>
+                <td> <%= bkg.rating %> </td>
                 <td>
-                  <span class="status-badge status-active"
-                    >Active</span
+                  <span class="status-badge status-<%=bkg.status%>"
+                    ><%= bkg.status %></span
                   >
                 </td>
                 <td class="actions-cell">
-                  <button class="action-btn">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M12 21a9 9 0 1 0-9-9"></path>
-                    </svg>
-                  </button>
                   <button class="action-btn">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -352,6 +286,8 @@
                   </button>
                 </td>
               </tr>
+              <% }); %>
+
               <!-- Additional rows can be added here -->
             </tbody>
           </table>

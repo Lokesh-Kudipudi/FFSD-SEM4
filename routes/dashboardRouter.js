@@ -14,6 +14,7 @@ const {
 const {
   getUserAnalytics,
   getAdminHomepageAnalytics,
+  getAdminPackagesAnalytics,
 } = require("../Controller/analyticsController");
 const {
   authenticateRole,
@@ -96,9 +97,12 @@ dashboardRouter
 
 dashboardRouter
   .route("/admin/packages")
-  .get(authenticateRole(["admin"]), (req, res) => {
+  .get(authenticateRole(["admin"]), async (req, res) => {
+
+    const packageAnalytics = await getAdminPackagesAnalytics();
+
     // Send Admin Dashboard
-    res.render("dashboard/admin/packages");
+    res.render("dashboard/admin/packages", {packageAnalytics});
   });
 
 dashboardRouter
