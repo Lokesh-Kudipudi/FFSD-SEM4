@@ -5,7 +5,6 @@ const {
 } = require("../Controller/userController");
 const {
   getHotelBookings,
-  getUserBookings,
   cancelBooking
 } = require("../Controller/bookingController");
 const {
@@ -207,7 +206,7 @@ dashboardRouter
 
 dashboardRouter
   .route("/api/bookings/cancel/:bookingId")
-  .post(authenticateRole(["user", "admin", "hotelManager"]), async (req, res) => {
+  .post(async (req, res) => {
     try {
       const { bookingId } = req.params;
       const result = await cancelBooking(bookingId);

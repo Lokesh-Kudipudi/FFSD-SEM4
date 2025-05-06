@@ -86,26 +86,28 @@ async function makeTourBooking(userId, tourId, bookingDetails) {
 
 async function cancelBooking(bookingId) {
   try {
-    const booking = await Booking.findById(bookingId);
-    if (!booking) {
-      throw new Error("Booking not found");
+    const result = await Booking.updateOne(
+      { _id: bookingId, 'bookingDetails.status': 'pending' },
+      { $set: { 'bookingDetails.status': 'cancel' } }
+    );
+
+    if (result.modifiedCount === 1) {
+      console.log('Booking status updated to cancel.');
+
+      return {
+        status: "success",
+        message: "Booking cancelled successfully.",
+      };
+    } else {
+      console.log('No pending booking found or already updated.');
+
+      return {
+        status: "error",
+        message: "Booking not found or already cancelled.",
+      };
     }
-
-    booking.bookingDetails.status = "cancelled";
-
-    const updatedBooking = await booking.save();
-
-    console.log(updatedBooking);  
-
-    return {
-      status: "success",
-      data: updatedBooking
-    };
   } catch (error) {
-    return {
-      status: "error",
-      message: error.message
-    };
+    console.error('Error updating booking status:', error);
   }
 }
 
