@@ -136,11 +136,11 @@ dashboardRouter
     const hotelId = await getHotelIdsByOwnerId(req.user._id);
     const hotelManagerAnalytics =
       await getHotelMangerHomePageAnalytics(hotelId);
-    console.log(hotelManagerAnalytics);
 
     // Send Hotel Manager Dashboard
     res.render("dashboard/hotelManager/index", {
       hotelManagerAnalytics,
+      user: req.user,
     });
   });
 
@@ -220,7 +220,9 @@ dashboardRouter
   .route("/hotelManager/booking")
   .get(authenticateRole(["hotelManager"]), (req, res) => {
     // Send Hotel Manager Dashboard
-    res.render("dashboard/hotelManager/booking");
+    res.render("dashboard/hotelManager/booking", {
+      user: req.user,
+    });
   });
 
 dashboardRouter
@@ -280,6 +282,7 @@ dashboardRouter
     // Send Hotel Manager Dashboard
     res.render("dashboard/hotelManager/roomsAdd", {
       roomTypes: roomTypes.data,
+      user: req.user,
     });
   });
 

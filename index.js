@@ -15,6 +15,9 @@ const {
 } = require("./middleware/authentication");
 const { userRouter } = require("./routes/userRouter");
 const { autoSignIn } = require("./middleware/autoSignIn");
+const {
+  createContactForm,
+} = require("./Controller/contactController");
 dotenv.config();
 
 // Set EJS as the templating engine
@@ -38,9 +41,27 @@ app.get("/", (req, res) => {
 });
 
 // Define the route for the contact page
-app.route("/contact").get((req, res) => {
-  res.sendFile("/html/contact.html", { root: "public" });
-});
+app
+  .route("/contact")
+  .get((req, res) => {
+    res.sendFile("/html/contact.html", { root: "public" });
+  })
+  .post(async (req, res) => {
+    const { name, email, phone, reason, query } = req.body;
+
+    await createContactForm({
+      name,
+      email,
+      phone,
+      reason,
+      query,
+    });
+
+    res.json({
+      message: "Contact form submitted successfully",
+      data: { name, email, phone, reason, query },
+    });
+  });
 
 app.use("/", userRouter);
 

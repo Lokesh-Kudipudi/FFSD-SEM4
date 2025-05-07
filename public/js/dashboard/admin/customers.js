@@ -1,6 +1,7 @@
 const customerModal = document.getElementById("customerModal");
 const closeModalBtn = document.getElementById("closeModalBtn");
-const viewCustomerBtns = document.querySelectorAll(".view-customer");
+const viewCustomerBtns =
+  document.querySelectorAll(".view-customer");
 
 viewCustomerBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -37,7 +38,9 @@ tabs.forEach((tab) => {
 const statusFilter = document.querySelector(
   ".filter-group:nth-child(1) .filter-input"
 );
-const customerRows = document.querySelectorAll(".customers-table tbody tr");
+const customerRows = document.querySelectorAll(
+  ".customers-table tbody tr"
+);
 
 // Add event listener to the status filter
 statusFilter.addEventListener("change", function () {
@@ -47,7 +50,9 @@ statusFilter.addEventListener("change", function () {
   customerRows.forEach((row) => {
     // Get the status cell text (removing whitespace)
     const statusCell = row.querySelector(".status-badge");
-    const rowStatus = statusCell.textContent.trim().toLowerCase();
+    const rowStatus = statusCell.textContent
+      .trim()
+      .toLowerCase();
 
     // Show/hide row based on filter selection
     if (selectedStatus === "" || rowStatus === selectedStatus) {
@@ -282,12 +287,16 @@ document.addEventListener("DOMContentLoaded", function () {
     styleElement.textContent = css;
 
     // Apply table responsive class at small screens
-    const customersTable = document.querySelector(".customers-table");
+    const customersTable = document.querySelector(
+      ".customers-table"
+    );
     if (customersTable) {
       if (width <= 576) {
         customersTable.classList.add("table-responsive-mobile");
       } else {
-        customersTable.classList.remove("table-responsive-mobile");
+        customersTable.classList.remove(
+          "table-responsive-mobile"
+        );
       }
     }
   }
@@ -324,16 +333,16 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       // Close sidebar when clicking outside
-      document.addEventListener("click", function (event) {
-        const isMobile = window.innerWidth < 992;
-        if (
-          isMobile &&
-          !sidebar.contains(event.target) &&
-          event.target !== toggleBtn
-        ) {
-          sidebar.classList.remove("open");
-        }
-      });
+      // document.addEventListener("click", function (event) {
+      //   const isMobile = window.innerWidth < 992;
+      //   if (
+      //     isMobile &&
+      //     !sidebar.contains(event.target) &&
+      //     event.target !== toggleBtn
+      //   ) {
+      //     sidebar.classList.remove("open");
+      //   }
+      // });
     }
   }
 
@@ -402,9 +411,15 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Filtering by membership:", membershipType);
 
     // Get all customer elements - adjust this selector to match your actual customer elements
-    const customerElements = document.querySelectorAll("[data-membership]"); // Find elements with data-membership attribute
+    const customerElements = document.querySelectorAll(
+      "[data-membership]"
+    ); // Find elements with data-membership attribute
 
-    console.log("Found", customerElements.length, "customer elements");
+    console.log(
+      "Found",
+      customerElements.length,
+      "customer elements"
+    );
 
     if (customerElements.length === 0) {
       console.warn(
@@ -442,7 +457,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Initialize the filter on page load
-  console.log("Initializing filter with value:", membershipFilter.value);
+  console.log(
+    "Initializing filter with value:",
+    membershipFilter.value
+  );
   filterCustomersByMembership(membershipFilter.value);
 });
 
@@ -482,7 +500,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const statusValue = statusFilter.value;
 
     // Get all customer rows
-    const customerRows = document.querySelectorAll(".customers-table tbody tr");
+    const customerRows = document.querySelectorAll(
+      ".customers-table tbody tr"
+    );
 
     // Loop through each customer row
     customerRows.forEach((row) => {
@@ -490,8 +510,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Filter by membership
       if (membershipValue !== "") {
-        const membershipCell = row.querySelector("td:nth-child(4) .tier-badge");
-        const membershipText = membershipCell.textContent.trim().toLowerCase();
+        const membershipCell = row.querySelector(
+          "td:nth-child(4) .tier-badge"
+        );
+        const membershipText = membershipCell.textContent
+          .trim()
+          .toLowerCase();
         if (membershipText !== membershipValue.toLowerCase()) {
           showRow = false;
         }
@@ -499,8 +523,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Filter by status
       if (statusValue !== "" && showRow) {
-        const statusCell = row.querySelector("td:nth-child(5) .status-badge");
-        const statusText = statusCell.textContent.trim().toLowerCase();
+        const statusCell = row.querySelector(
+          "td:nth-child(5) .status-badge"
+        );
+        const statusText = statusCell.textContent
+          .trim()
+          .toLowerCase();
         if (statusText !== statusValue.toLowerCase()) {
           showRow = false;
         }
@@ -508,7 +536,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Improved date filter code
       if (dateValue !== "" && showRow) {
-        const lastTravelCell = row.querySelector("td:nth-child(6)");
+        const lastTravelCell = row.querySelector(
+          "td:nth-child(6)"
+        );
         const lastTravelText = lastTravelCell.textContent.trim(); // "Mar 1, 2025"
 
         // Convert display date format to a proper date object
@@ -524,9 +554,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Compare year, month, and day instead of full dates
         const sameYear =
-          lastTravelDate.getFullYear() === filterDate.getFullYear();
-        const sameMonth = lastTravelDate.getMonth() === filterDate.getMonth();
-        const sameDay = lastTravelDate.getDate() === filterDate.getDate();
+          lastTravelDate.getFullYear() ===
+          filterDate.getFullYear();
+        const sameMonth =
+          lastTravelDate.getMonth() === filterDate.getMonth();
+        const sameDay =
+          lastTravelDate.getDate() === filterDate.getDate();
 
         if (!(sameYear && sameMonth && sameDay)) {
           showRow = false;
@@ -559,7 +592,9 @@ document.addEventListener("DOMContentLoaded", function () {
     statusFilter.value = "";
 
     // Show all rows
-    const customerRows = document.querySelectorAll(".customers-table tbody tr");
+    const customerRows = document.querySelectorAll(
+      ".customers-table tbody tr"
+    );
     customerRows.forEach((row) => {
       row.style.display = "";
     });
@@ -587,15 +622,21 @@ document.addEventListener("DOMContentLoaded", function () {
   membershipFilter.addEventListener("change", function () {
     // Apply only membership filter
     const membershipValue = this.value;
-    const customerRows = document.querySelectorAll(".customers-table tbody tr");
+    const customerRows = document.querySelectorAll(
+      ".customers-table tbody tr"
+    );
 
     customerRows.forEach((row) => {
       if (membershipValue === "") {
         // Show all rows if no membership filter
         row.style.display = "";
       } else {
-        const membershipCell = row.querySelector("td:nth-child(4) .tier-badge");
-        const membershipText = membershipCell.textContent.trim().toLowerCase();
+        const membershipCell = row.querySelector(
+          "td:nth-child(4) .tier-badge"
+        );
+        const membershipText = membershipCell.textContent
+          .trim()
+          .toLowerCase();
 
         if (membershipText === membershipValue.toLowerCase()) {
           row.style.display = "";
@@ -624,7 +665,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
   // Get all view customer buttons
-  const viewButtons = document.querySelectorAll(".view-customer");
+  const viewButtons =
+    document.querySelectorAll(".view-customer");
   const modal = document.getElementById("customerModal");
   const closeModalBtn = document.getElementById("closeModalBtn");
 
@@ -635,13 +677,25 @@ document.addEventListener("DOMContentLoaded", function () {
       const row = this.closest("tr");
 
       // Extract customer information from the row
-      const customerName = row.querySelector(".customer-name").textContent;
-      const customerEmail = row.querySelector("td:nth-child(2)").textContent;
-      const customerPhone = row.querySelector("td:nth-child(3)").textContent;
-      const customerMembership = row.querySelector(".tier-badge").textContent;
-      const lastTravel = row.querySelector("td:nth-child(6)").textContent;
-      const totalBookings = row.querySelector("td:nth-child(7)").textContent;
-      const amountSpent = row.querySelector("td:nth-child(8)").textContent;
+      const customerName =
+        row.querySelector(".customer-name").textContent;
+      const customerEmail = row.querySelector(
+        "td:nth-child(2)"
+      ).textContent;
+      const customerPhone = row.querySelector(
+        "td:nth-child(3)"
+      ).textContent;
+      const customerMembership =
+        row.querySelector(".tier-badge").textContent;
+      const lastTravel = row.querySelector(
+        "td:nth-child(6)"
+      ).textContent;
+      const totalBookings = row.querySelector(
+        "td:nth-child(7)"
+      ).textContent;
+      const amountSpent = row.querySelector(
+        "td:nth-child(8)"
+      ).textContent;
 
       // Get customer initials for avatar
       const initials = customerName
@@ -650,19 +704,26 @@ document.addEventListener("DOMContentLoaded", function () {
         .join("");
 
       // Update modal with customer information
-      modal.querySelector(".customer-profile-avatar").textContent = initials;
-      modal.querySelector(".customer-profile-name").textContent = customerName;
-      modal.querySelector(".customer-profile-email").textContent =
-        customerEmail;
+      modal.querySelector(
+        ".customer-profile-avatar"
+      ).textContent = initials;
+      modal.querySelector(".customer-profile-name").textContent =
+        customerName;
+      modal.querySelector(
+        ".customer-profile-email"
+      ).textContent = customerEmail;
 
       // Update customer stats
-      const statValues = modal.querySelectorAll(".customer-stat-value");
+      const statValues = modal.querySelectorAll(
+        ".customer-stat-value"
+      );
       statValues[0].textContent = totalBookings;
       statValues[1].textContent = amountSpent;
       statValues[2].textContent = customerMembership;
 
       // Update profile tab details
-      const detailsValues = modal.querySelectorAll(".details-value");
+      const detailsValues =
+        modal.querySelectorAll(".details-value");
       detailsValues[0].textContent = customerName;
       detailsValues[1].textContent = customerEmail;
       detailsValues[2].textContent = customerPhone;
@@ -710,8 +771,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
   // Get all view and edit buttons
-  const viewButtons = document.querySelectorAll(".action-btn.view-customer");
-  const editButtons = document.querySelectorAll(".action-btn:nth-child(2)"); // Edit buttons
+  const viewButtons = document.querySelectorAll(
+    ".action-btn.view-customer"
+  );
+  const editButtons = document.querySelectorAll(
+    ".action-btn:nth-child(2)"
+  ); // Edit buttons
   const modal = document.getElementById("customerModal");
   const closeModalBtn = document.getElementById("closeModalBtn");
 
@@ -726,13 +791,25 @@ document.addEventListener("DOMContentLoaded", function () {
     isEditMode = editMode;
 
     // Extract customer information from the row
-    const customerName = row.querySelector(".customer-name").textContent;
-    const customerEmail = row.querySelector("td:nth-child(2)").textContent;
-    const customerPhone = row.querySelector("td:nth-child(3)").textContent;
-    const customerMembership = row.querySelector(".tier-badge").textContent;
-    const lastTravel = row.querySelector("td:nth-child(6)").textContent;
-    const totalBookings = row.querySelector("td:nth-child(7)").textContent;
-    const amountSpent = row.querySelector("td:nth-child(8)").textContent;
+    const customerName =
+      row.querySelector(".customer-name").textContent;
+    const customerEmail = row.querySelector(
+      "td:nth-child(2)"
+    ).textContent;
+    const customerPhone = row.querySelector(
+      "td:nth-child(3)"
+    ).textContent;
+    const customerMembership =
+      row.querySelector(".tier-badge").textContent;
+    const lastTravel = row.querySelector(
+      "td:nth-child(6)"
+    ).textContent;
+    const totalBookings = row.querySelector(
+      "td:nth-child(7)"
+    ).textContent;
+    const amountSpent = row.querySelector(
+      "td:nth-child(8)"
+    ).textContent;
 
     // Get customer initials for avatar
     const initials = customerName
@@ -746,7 +823,8 @@ document.addEventListener("DOMContentLoaded", function () {
       : "Customer Details";
 
     // Update modal with customer information
-    modal.querySelector(".customer-profile-avatar").textContent = initials;
+    modal.querySelector(".customer-profile-avatar").textContent =
+      initials;
 
     // Update profile fields based on mode (editable or not)
     if (editMode) {
@@ -759,7 +837,9 @@ document.addEventListener("DOMContentLoaded", function () {
       ).innerHTML = `<input type="email" class="edit-input" id="edit-email" value="${customerEmail}">`;
 
       // Update customer stats (keep as text but could be made editable)
-      const statValues = modal.querySelectorAll(".customer-stat-value");
+      const statValues = modal.querySelectorAll(
+        ".customer-stat-value"
+      );
       statValues[0].textContent = totalBookings;
       statValues[1].textContent = amountSpent;
       statValues[2].innerHTML = `
@@ -780,7 +860,8 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
 
       // Update profile tab details
-      const detailsValues = modal.querySelectorAll(".details-value");
+      const detailsValues =
+        modal.querySelectorAll(".details-value");
       detailsValues[0].innerHTML = `<input type="text" class="edit-input" id="edit-fullname" value="${customerName}">`;
       detailsValues[1].innerHTML = `<input type="email" class="edit-input" id="edit-profile-email" value="${customerEmail}">`;
       detailsValues[2].innerHTML = `<input type="tel" class="edit-input" id="edit-phone" value="${customerPhone}">`;
@@ -792,34 +873,43 @@ document.addEventListener("DOMContentLoaded", function () {
         saveBtn.className = "btn btn-primary";
         saveBtn.id = "saveChangesBtn";
         saveBtn.textContent = "Save Changes";
-        modal.querySelector(".modal-header").appendChild(saveBtn);
+        modal
+          .querySelector(".modal-header")
+          .appendChild(saveBtn);
 
         // Add event listener to save button
         saveBtn.addEventListener("click", saveCustomerChanges);
       } else {
-        document.getElementById("saveChangesBtn").style.display = "block";
+        document.getElementById("saveChangesBtn").style.display =
+          "block";
       }
     } else {
       // View mode - display as text
-      modal.querySelector(".customer-profile-name").textContent = customerName;
-      modal.querySelector(".customer-profile-email").textContent =
-        customerEmail;
+      modal.querySelector(".customer-profile-name").textContent =
+        customerName;
+      modal.querySelector(
+        ".customer-profile-email"
+      ).textContent = customerEmail;
 
       // Update customer stats
-      const statValues = modal.querySelectorAll(".customer-stat-value");
+      const statValues = modal.querySelectorAll(
+        ".customer-stat-value"
+      );
       statValues[0].textContent = totalBookings;
       statValues[1].textContent = amountSpent;
       statValues[2].textContent = customerMembership;
 
       // Update profile tab details
-      const detailsValues = modal.querySelectorAll(".details-value");
+      const detailsValues =
+        modal.querySelectorAll(".details-value");
       detailsValues[0].textContent = customerName;
       detailsValues[1].textContent = customerEmail;
       detailsValues[2].textContent = customerPhone;
 
       // Hide save button if it exists
       if (document.getElementById("saveChangesBtn")) {
-        document.getElementById("saveChangesBtn").style.display = "none";
+        document.getElementById("saveChangesBtn").style.display =
+          "none";
       }
     }
 
@@ -832,18 +922,27 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!currentRow) return;
 
     // Get edited values
-    const editedName = document.getElementById("edit-name").value;
-    const editedEmail = document.getElementById("edit-email").value;
-    const editedPhone = document.getElementById("edit-phone").value;
-    const editedMembership = document.getElementById("edit-membership").value;
+    const editedName =
+      document.getElementById("edit-name").value;
+    const editedEmail =
+      document.getElementById("edit-email").value;
+    const editedPhone =
+      document.getElementById("edit-phone").value;
+    const editedMembership = document.getElementById(
+      "edit-membership"
+    ).value;
 
     // Update the row in the table
-    currentRow.querySelector(".customer-name").textContent = editedName;
-    currentRow.querySelector("td:nth-child(2)").textContent = editedEmail;
-    currentRow.querySelector("td:nth-child(3)").textContent = editedPhone;
+    currentRow.querySelector(".customer-name").textContent =
+      editedName;
+    currentRow.querySelector("td:nth-child(2)").textContent =
+      editedEmail;
+    currentRow.querySelector("td:nth-child(3)").textContent =
+      editedPhone;
 
     // Update membership with the correct class
-    const membershipBadge = currentRow.querySelector(".tier-badge");
+    const membershipBadge =
+      currentRow.querySelector(".tier-badge");
     membershipBadge.textContent = editedMembership;
 
     // Remove all tier classes and add the correct one
@@ -853,11 +952,15 @@ document.addEventListener("DOMContentLoaded", function () {
       "tier-silver",
       "tier-bronze"
     );
-    membershipBadge.classList.add(`tier-${editedMembership.toLowerCase()}`);
+    membershipBadge.classList.add(
+      `tier-${editedMembership.toLowerCase()}`
+    );
 
     // Improved date filter code
     if (dateValue !== "" && showRow) {
-      const lastTravelCell = row.querySelector("td:nth-child(6)");
+      const lastTravelCell = row.querySelector(
+        "td:nth-child(6)"
+      );
       const lastTravelText = lastTravelCell.textContent.trim(); // "Mar 1, 2025"
 
       // Convert display date format to a proper date object
@@ -873,9 +976,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Compare year, month, and day instead of full dates
       const sameYear =
-        lastTravelDate.getFullYear() === filterDate.getFullYear();
-      const sameMonth = lastTravelDate.getMonth() === filterDate.getMonth();
-      const sameDay = lastTravelDate.getDate() === filterDate.getDate();
+        lastTravelDate.getFullYear() ===
+        filterDate.getFullYear();
+      const sameMonth =
+        lastTravelDate.getMonth() === filterDate.getMonth();
+      const sameDay =
+        lastTravelDate.getDate() === filterDate.getDate();
 
       if (!(sameYear && sameMonth && sameDay)) {
         showRow = false;
@@ -886,7 +992,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .split(" ")
       .map((name) => name[0])
       .join("");
-    currentRow.querySelector(".customer-avatar").textContent = initials;
+    currentRow.querySelector(".customer-avatar").textContent =
+      initials;
 
     // Close the modal or switch to view mode
     modal.style.display = "none";
@@ -946,7 +1053,9 @@ document.addEventListener("DOMContentLoaded", function () {
 // Select all delete buttons
 document.addEventListener("DOMContentLoaded", function () {
   // Add event listeners to all delete buttons
-  const deleteButtons = document.querySelectorAll(".action-btn.delete");
+  const deleteButtons = document.querySelectorAll(
+    ".action-btn.delete"
+  );
 
   deleteButtons.forEach((button) => {
     button.addEventListener("click", function (e) {
@@ -956,11 +1065,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const row = this.closest("tr");
 
       // Get customer name for confirmation message
-      const customerName = row.querySelector(".customer-name").textContent;
+      const customerName =
+        row.querySelector(".customer-name").textContent;
 
       // Show confirmation dialog
       if (
-        confirm(`Are you sure you want to delete customer "${customerName}"?`)
+        confirm(
+          `Are you sure you want to delete customer "${customerName}"?`
+        )
       ) {
         // Visual feedback - fade out effect
         row.style.transition = "opacity 0.5s";
@@ -1182,7 +1294,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to add customer to the table
   function addCustomerToTable(customerData) {
-    const tableBody = document.querySelector(".customers-table tbody");
+    const tableBody = document.querySelector(
+      ".customers-table tbody"
+    );
 
     // Create new row
     const newRow = document.createElement("tr");
@@ -1231,7 +1345,9 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
 
     // Add event listener to the new delete button
-    const deleteButton = newRow.querySelector(".action-btn.delete");
+    const deleteButton = newRow.querySelector(
+      ".action-btn.delete"
+    );
     deleteButton.addEventListener("click", function (e) {
       e.preventDefault();
 
@@ -1343,10 +1459,13 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   // Function to check if modal is positioned correctly
   function ensureModalVisibility() {
-    const addCustomerModal = document.getElementById("addCustomerModal");
+    const addCustomerModal = document.getElementById(
+      "addCustomerModal"
+    );
     if (!addCustomerModal) return;
 
-    const modalContent = addCustomerModal.querySelector(".modal-content");
+    const modalContent =
+      addCustomerModal.querySelector(".modal-content");
 
     // Only proceed if modal is visible
     if (addCustomerModal.style.display === "flex") {

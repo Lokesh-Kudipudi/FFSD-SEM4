@@ -105,16 +105,16 @@ const stylesForPaymentStatus = (payment) => {
     : "color: red;";
 };
 
-document.addEventListener("click", function (event) {
-  // Close any open menus
-  document.querySelectorAll(".action-menu").forEach((menu) => {
-    menu.style.display = "none";
-  });
+// document.addEventListener("click", function (event) {
+//   // Close any open menus
+//   document.querySelectorAll(".action-menu").forEach((menu) => {
+//     menu.style.display = "none";
+//   });
 
-  // Open menu only if the action button was clicked
-  if (event.target.classList.contains("action-btn")) {
-    const menuId = event.target.getAttribute("data-id");
-    const menu = document.getElementById(`menu-${menuId}`);
-    menu.style.display = "block";
-  }
-});
+//   // Open menu only if the action button was clicked
+//   if (event.target.classList.contains("action-btn")) {
+//     const menuId = event.target.getAttribute("data-id");
+//     const menu = document.getElementById(`menu-${menuId}`);
+//     menu.style.display = "block";
+//   }
+// });
