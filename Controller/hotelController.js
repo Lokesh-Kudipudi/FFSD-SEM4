@@ -2,7 +2,7 @@ const { Hotel } = require("../Model/hotelModel");
 
 async function getAllHotels() {
   try {
-    const hotels = await Hotel.find();
+    const hotels = await Hotel.find().lean();
     return {
       status: "success",
       data: hotels,

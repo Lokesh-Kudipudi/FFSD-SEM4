@@ -21,6 +21,9 @@ const {
   authenticateRole,
 } = require("../middleware/authentication");
 const { getTourById } = require("../Controller/tourController");
+const {
+  getAllHotels,
+} = require("../Controller/hotelController");
 
 const dashboardRouter = express.Router();
 
@@ -92,9 +95,13 @@ dashboardRouter
 
 dashboardRouter
   .route("/admin/hotelManagement")
-  .get(authenticateRole(["admin"]), (req, res) => {
+  .get(authenticateRole(["admin"]), async (req, res) => {
+    const hotels = await getAllHotels();
+
     // Send Admin Dashboard
-    res.render("dashboard/admin/hotelManagement");
+    res.render("dashboard/admin/hotelManagement", {
+      hotels: hotels.data,
+    });
   });
 
 dashboardRouter
