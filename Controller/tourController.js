@@ -46,8 +46,55 @@ async function getTourById(tourId) {
   }
 }
 
+async function updateTour(tourId, updateData) {
+  try {
+    const updatedTour = await Tour.findByIdAndUpdate(
+      tourId,
+      updateData,
+      { new: true }
+    ).lean();
+    if (!updatedTour) {
+      return {
+        status: "fail",
+        message: "Tour not found",
+      };
+    }
+    return {
+      status: "success",
+      data: updatedTour,
+    };
+  } catch (error) {
+    throw new Error("Error updating tour: " + error.message);
+  }
+}
+
+async function deleteTour(tourId) {
+  try {
+    const deletedTour = await Tour.findByIdAndDelete(
+      tourId
+    ).lean();
+    if (!deletedTour) {
+      return {
+        status: "fail",
+        message: "Tour not found",
+      };
+    }
+    return {
+      status: "success",
+      message: "Tour deleted successfully",
+    };
+  } catch (error) {
+    return {
+      status: "fail",
+      message: "Tour not found",
+    };
+  }
+}
+
 module.exports = {
   getAllTours,
   getTourById,
   getRecommendedTours,
+  updateTour,
+  deleteTour,
 };

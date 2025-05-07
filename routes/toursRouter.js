@@ -2,10 +2,13 @@ const express = require("express");
 const {
   getTourById,
   getAllTours,
+  updateTour,
+  deleteTour,
 } = require("../Controller/tourController");
 const {
   makeTourBooking,
 } = require("../Controller/bookingController");
+const Tour = require("../Model/tourModel"); // Assuming the model is named tourModel.js
 
 // Create a new router object
 const toursRouter = express.Router();
@@ -128,6 +131,79 @@ toursRouter.route("/booking").post(async (req, res) => {
     status: "success",
     message: "Booking created successfully",
   });
+});
+
+// POST route to handle new tour data
+toursRouter.post("/api/tour", async (req, res) => {
+  try {
+    const tourData = req.body;
+
+    // Create a new tour document
+    const newTour = new Tour(tourData);
+
+    // Save the document to the database
+    await newTour.save();
+
+    res
+      .status(201)
+      .json({ message: "Tour created successfully!" });
+  } catch (error) {
+    console.error("Error creating tour:", error);
+    res.status(500).json({
+      message: "Failed to create tour",
+      error: error.message,
+    });
+  }
+});
+
+// PUT route to update an existing tour by ID
+toursRouter.put("/api/tour/:id", async (req, res) => {
+  try {
+    const tourId = req.params.id;
+    const updatedData = req.body;
+
+    // Find the tour by ID and update it
+    const updatedTour = await updateTour(tourId, updatedData);
+
+    if (!updatedTour) {
+      return res.status(404).json({ message: "Tour not found" });
+    }
+
+    res.status(200).json({
+      message: "Tour updated successfully!",
+      tour: updatedTour,
+    });
+  } catch (error) {
+    console.error("Error updating tour:", error);
+    res.status(500).json({
+      message: "Failed to update tour",
+      error: error.message,
+    });
+  }
+});
+
+// DELETE route to remove a tour by ID
+toursRouter.delete("/api/tour/:id", async (req, res) => {
+  try {
+    const tourId = req.params.id;
+
+    // Find the tour by ID and delete it
+    const deletedTour = await deleteTour(tourId);
+
+    if (!deletedTour) {
+      return res.status(404).json({ message: "Tour not found" });
+    }
+
+    res
+      .status(200)
+      .json({ message: "Tour deleted successfully!" });
+  } catch (error) {
+    console.error("Error deleting tour:", error);
+    res.status(500).json({
+      message: "Failed to delete tour",
+      error: error.message,
+    });
+  }
 });
 
 module.exports = toursRouter;

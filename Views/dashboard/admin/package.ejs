@@ -359,7 +359,7 @@
               <button class="form-button" type="submit">
                 Submit
               </button>
-              <button class="form-button">Delete</button>
+              <button class="form-button delete">Delete</button>
             </div>
           </div>
         </form>
@@ -467,6 +467,129 @@
           itineraryIndex--;
         }
       }
+
+      document
+        .querySelector("form")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault(); // Prevent default form submission
+
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData.entries());
+
+          // Convert nested fields like destinations, itinerary, and bookingDetails
+          data.destinations = Array.from(
+            document.querySelectorAll(".destination-entry")
+          ).map((entry) => ({
+            name: entry.querySelector('input[name$="[name]"]')
+              .value,
+            image: entry.querySelector('input[name$="[image]"]')
+              .value,
+          }));
+
+          data.itinerary = Array.from(
+            document.querySelectorAll(".itinerary-entry")
+          ).map((entry) => ({
+            day: entry.querySelector('input[name$="[day]"]')
+              .value,
+            location: entry.querySelector(
+              'input[name$="[location]"]'
+            ).value,
+            activities: entry
+              .querySelector('input[name$="[activities]"]')
+              .value.split(",")
+              .map((activity) => activity.trim()),
+          }));
+
+          data.bookingDetails = Array.from(
+            document.querySelectorAll(".booking-entry")
+          ).map((entry) => ({
+            startDate: entry.querySelector(
+              'input[name$="[startDate]"]'
+            ).value,
+            startDay: entry.querySelector(
+              'input[name$="[startDay]"]'
+            ).value,
+            endDate: entry.querySelector(
+              'input[name$="[endDate]"]'
+            ).value,
+            endDay: entry.querySelector(
+              'input[name$="[endDay]"]'
+            ).value,
+            status: entry.querySelector(
+              'input[name$="[status]"]'
+            ).value,
+            discount: parseFloat(
+              entry.querySelector('input[name$="[discount]"]')
+                .value
+            ),
+          }));
+
+          try {
+            const response = await fetch(
+              `/tours/api/tour/${data._id}`,
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+              }
+            );
+
+            if (response.ok) {
+              alert("Tour data submitted successfully!");
+              window.location.reload();
+            } else {
+              const error = await response.json();
+              alert(`Error: ${error.message}`);
+            }
+          } catch (error) {
+            console.error("Error submitting form:", error);
+            alert(
+              "An error occurred while submitting the form."
+            );
+          }
+        });
+
+      document
+        .querySelector(".form-button.delete")
+        .addEventListener("click", async function (event) {
+          event.preventDefault(); // Prevent default button behavior
+
+          const tourId = document.querySelector(
+            'input[name="_id"]'
+          ).value;
+
+          if (!tourId) {
+            alert("No tour selected for deletion.");
+            return;
+          }
+
+          const confirmDelete = confirm(
+            "Are you sure you want to delete this tour?"
+          );
+          if (!confirmDelete) return;
+
+          try {
+            const response = await fetch(
+              `/tours/api/tour/${tourId}`,
+              {
+                method: "DELETE",
+              }
+            );
+
+            if (response.ok) {
+              alert("Tour deleted successfully!");
+              window.location.href = "/dashboard/admin/packages";
+            } else {
+              const error = await response.json();
+              alert(`Error: ${error.message}`);
+            }
+          } catch (error) {
+            console.error("Error deleting tour:", error);
+            alert("An error occurred while deleting the tour.");
+          }
+        });
     </script>
   </body>
 </html>
