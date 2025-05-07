@@ -23,7 +23,11 @@ const {
 const { getTourById } = require("../Controller/tourController");
 const {
   getAllHotels,
+  addRoomType,
+  updateRoomType,
+  getRoomTypesByHotelId,
 } = require("../Controller/hotelController");
+const { Types } = require("mongoose");
 
 const dashboardRouter = express.Router();
 
@@ -140,6 +144,55 @@ dashboardRouter
     });
   });
 
+// Add a new room type
+dashboardRouter.post("/api/rooms", async (req, res) => {
+  const { title, price, rating, image, features } = req.body;
+  const newRoom = {
+    title,
+    price,
+    rating,
+    image,
+    features,
+    _id: new Types.ObjectId(),
+  };
+  const hotelId = await getHotelIdsByOwnerId(req.user._id);
+  const newRoomObject = await addRoomType(hotelId, newRoom);
+  res.status(201).json({
+    message: "Room added successfully",
+    room: newRoomObject,
+  });
+});
+
+// Edit an existing room type
+dashboardRouter.put(
+  "/api/rooms/:roomTypeId",
+  async (req, res) => {
+    console.log(req.path);
+    const { roomTypeId } = req.params;
+    const { title, price, rating, image, features } = req.body;
+    const updatedRoom = {
+      title,
+      price,
+      rating,
+      image,
+      features,
+    };
+
+    const hotelId = await getHotelIdsByOwnerId(req.user._id);
+
+    const updatedRoomObject = await updateRoomType(
+      hotelId,
+      roomTypeId,
+      updatedRoom
+    );
+
+    res.status(200).json({
+      message: "Room updated successfully",
+      room: updatedRoomObject,
+    });
+  }
+);
+
 dashboardRouter
   .route("/api/hotelManager/booking")
   .post(async (req, res) => {
@@ -220,9 +273,14 @@ dashboardRouter
 
 dashboardRouter
   .route("/hotelManager/addRoom")
-  .get(authenticateRole(["hotelManager"]), (req, res) => {
+  .get(authenticateRole(["hotelManager"]), async (req, res) => {
+    const hotelId = await getHotelIdsByOwnerId(req.user._id);
+    const roomTypes = await getRoomTypesByHotelId(hotelId);
+
     // Send Hotel Manager Dashboard
-    res.render("dashboard/hotelManager/roomsAdd");
+    res.render("dashboard/hotelManager/roomsAdd", {
+      roomTypes: roomTypes.data,
+    });
   });
 
 dashboardRouter
