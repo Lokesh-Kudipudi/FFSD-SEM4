@@ -117,7 +117,9 @@ async function getAdminHomepageAnalytics() {
 async function getAdminPackagesAnalytics() {
   try {
     const packages = await Tour.find({})
-      .select("title duration rating status startLocation price")
+      .select(
+        "title duration rating status startLocation price _id"
+      )
       .lean();
 
     // Use Aggregate and find the total bookings for each package

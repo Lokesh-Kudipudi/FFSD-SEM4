@@ -35,7 +35,10 @@
   <body>
     <div class="container">
       <div class="sidebar" id="sidebar">
-        <div class="logo-title">
+        <div
+          class="logo-title"
+          onclick="{window.location.href = '/'}"
+        >
           <span>Chasing Horizons</span>
         </div>
         <div class="sidebar-links">
@@ -43,22 +46,22 @@
             ><i class="fas fa-tachometer-alt"></i>
             <span class="link-text">Overview</span></a
           >
-          <a href="/dashboard/admin/customers"
+          <!-- <a href="/dashboard/admin/customers"
             ><i class="fas fa-users"></i>
             <span class="link-text">Customers</span></a
-          >
+          > -->
           <a href="/dashboard/admin/packages" class="active"
             ><i class="fas fa-chart-bar"></i>
-            <span class="link-text">Packages</span></a
+            <span class="link-text active">Packages</span></a
           >
           <a href="/dashboard/admin/hotelManagement"
             ><i class="fas fa-hotel"></i>
             <span class="link-text">Hotel Management</span></a
           >
-          <a href="/dashboard/admin/analytics"
+          <!-- <a href="/dashboard/admin/analytics" class="active"
             ><i class="fas fa-plane"></i>
             <span class="link-text">Analytics</span></a
-          >
+          > -->
         </div>
       </div>
 
@@ -105,7 +108,9 @@
                 <line x1="7" y1="7" x2="7.01" y2="7"></line>
               </svg>
             </div>
-            <div class="card-value"> <%= packageAnalytics.totalPackages %> </div>
+            <div class="card-value">
+              <%= packageAnalytics.totalPackages %>
+            </div>
             <!-- <div class="card-trend trend-up">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +148,9 @@
                 ></polyline>
               </svg>
             </div>
-            <div class="card-value"><%= packageAnalytics.activePackages %></div>
+            <div class="card-value">
+              <%= packageAnalytics.activePackages %>
+            </div>
             <!-- <div class="card-trend trend-up">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -226,7 +233,8 @@
               </tr>
             </thead>
             <tbody>
-              <% packageAnalytics.bookingAnalytics.forEach(bkg => { %>
+              <% packageAnalytics.bookingAnalytics.forEach(bkg =>
+              { %>
               <tr>
                 <td>
                   <div
@@ -236,21 +244,25 @@
                       gap: 12px;
                     "
                   >
-                    <div> <%= bkg.title %> </div>
+                    <div><%= bkg.title %></div>
                   </div>
                 </td>
                 <td><%= bkg.startLocation %></td>
                 <td><%= bkg.duration %></td>
-                <td> <%= bkg.price.amount %> </td>
-                <td> <%= bkg.totalBookings %> </td>
-                <td> <%= bkg.rating %> </td>
+                <td><%= bkg.price.amount %></td>
+                <td><%= bkg.totalBookings %></td>
+                <td><%= bkg.rating %></td>
                 <td>
-                  <span class="status-badge status-<%=bkg.status%>"
+                  <span
+                    class="status-badge status-<%=bkg.status%>"
                     ><%= bkg.status %></span
                   >
                 </td>
                 <td class="actions-cell">
-                  <button class="action-btn">
+                  <button
+                    class="action-btn"
+                    onclick="{window.location.href = '/dashboard/admin/packages/<%=bkg._id%>'}"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -266,7 +278,7 @@
                       <path d="M4 3l4 4-4 4"></path>
                     </svg>
                   </button>
-                  <button class="action-btn">
+                  <!-- <button class="action-btn">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -283,7 +295,7 @@
                         d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
                       ></path>
                     </svg>
-                  </button>
+                  </button> -->
                 </td>
               </tr>
               <% }); %>

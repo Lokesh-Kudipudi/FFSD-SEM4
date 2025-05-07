@@ -245,7 +245,7 @@
                 <div class="trip-content">
                   <div class="trip-date">
                     <span>📅</span> <%=
-                    booking.bookingDetails?.startDate %>
+                    booking.bookingDetails?.checkInDate %>
                   </div>
                   <h3 class="trip-title">
                     <%= booking.itemId.title %>
@@ -330,7 +330,7 @@
               </div> -->
               <% bookings?.forEach(booking => { %> <% if
               (booking.bookingDetails?.status == "completed") {
-              %>
+              %> <% if (booking.type == "Tour") { %>
               <div class="trip-card">
                 <div style="position: relative">
                   <img
@@ -338,7 +338,7 @@
                     alt="<%= booking.itemId.title %>"
                     class="trip-image"
                   />
-                  <div class="trip-status status-completed">
+                  <div class="trip-status status-upcoming">
                     Completed
                   </div>
                 </div>
@@ -355,7 +355,7 @@
                     booking.itemId.startLocation %>
                   </div>
 
-                  <div class="trip-stats">
+                  <!-- <div class="trip-stats">
                     <div class="stat">
                       <div class="stat-value">
                         <%= booking.itemId.itinerary.length %>
@@ -378,16 +378,68 @@
                       </div>
                       <div class="stat-label">Activities</div>
                     </div>
-                  </div>
+                  </div> -->
 
-                  <div class="trip-actions">
-                    <button class="trip-action-btn btn-outline">
-                      Add Review
+                  <!-- <div class="trip-actions">
+                    <button
+                      data-itemId="<%=booking.itemId._id%>"
+                      data-bookingId="<%=booking._id%>"
+                      class="trip-action-btn btn-outline cancel-trip"
+                    >
+                      Cancel
                     </button>
-                  </div>
+                    <button
+                      data-itemId="<%=booking.itemId._id%>"
+                      class="view-details-trip trip-action-btn btn-primary"
+                    >
+                      View Details
+                    </button>
+                  </div> -->
                 </div>
               </div>
-              <% }; %> <% }); %>
+              <% } else { %>
+              <div class="trip-card">
+                <div style="position: relative">
+                  <img
+                    src="<%= booking.itemId.mainImage %>"
+                    alt="<%= booking.itemId.title %>"
+                    class="trip-image"
+                  />
+                  <div class="trip-status status-upcoming">
+                    Completed
+                  </div>
+                </div>
+                <div class="trip-content">
+                  <div class="trip-date">
+                    <span>📅</span> <%=
+                    booking.bookingDetails?.checkInDate %>
+                  </div>
+                  <h3 class="trip-title">
+                    <%= booking.itemId.title %>
+                  </h3>
+                  <div class="trip-destination">
+                    <span>📍</span> <%= booking.itemId.location
+                    %>
+                  </div>
+
+                  <!-- <div class="trip-actions">
+                    <button
+                      data-itemId="<%=booking.itemId._id%>"
+                      data-bookingId="<%=booking._id%>"
+                      class="trip-action-btn btn-outline cancel-trip"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onclick="{window.location.href = '/hotels/hotel/<%=booking.itemId._id%> '}"
+                      class="trip-action-btn btn-primary"
+                    >
+                      View Details
+                    </button>
+                  </div> -->
+                </div>
+              </div>
+              <% }; %> <% }; %> <% }); %>
             </div>
           </div>
         </main>

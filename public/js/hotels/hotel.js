@@ -83,6 +83,11 @@ reserveButtons.forEach((button) => {
     });
     const data = await response.json();
 
+    if (data.status == "fail") {
+      alert("Booking failed: " + data.message);
+      return;
+    }
+
     if (data.status === "success") {
       alert("Booking successful!");
       window.location.href = "/dashboard/myTrips";

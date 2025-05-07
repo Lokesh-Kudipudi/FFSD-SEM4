@@ -20,6 +20,7 @@ const {
 const {
   authenticateRole,
 } = require("../middleware/authentication");
+const { getTourById } = require("../Controller/tourController");
 
 const dashboardRouter = express.Router();
 
@@ -100,9 +101,22 @@ dashboardRouter
   .route("/admin/packages")
   .get(authenticateRole(["admin"]), async (req, res) => {
     const packageAnalytics = await getAdminPackagesAnalytics();
+    packageAnalytics.bookingAnalytics.forEach((bkg) => {
+      bkg._id = bkg._id.toString();
+    });
 
     // Send Admin Dashboard
     res.render("dashboard/admin/packages", { packageAnalytics });
+  });
+
+dashboardRouter
+  .route("/admin/packages/:id")
+  .get(authenticateRole(["admin"]), async (req, res) => {
+    const packageId = req.params.id;
+    const Tour = await getTourById(packageId);
+
+    // Send Admin Dashboard
+    res.render("dashboard/admin/package", { tour: Tour.data });
   });
 
 dashboardRouter

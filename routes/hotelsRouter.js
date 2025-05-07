@@ -68,6 +68,13 @@ hotelsRouter.route("/hotel/:id").get(async (req, res) => {
 hotelsRouter.route("/booking/:id").post(async (req, res) => {
   const id = req.params.id;
 
+  if (!req.user) {
+    return res.status(401).json({
+      status: "fail",
+      message: "User not authenticated",
+    });
+  }
+
   let response = await makeHotelBooking(
     req.user._id,
     id,

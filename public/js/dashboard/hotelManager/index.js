@@ -16,7 +16,7 @@ async function fetchBookings() {
   );
   const hotelIDsData = await hotelIDs.json();
 
-  hotelId = hotelIDsData.hotelIds;
+  let hotelId = hotelIDsData.hotelIds;
 
   const bookings = await fetch(
     "/dashboard/api/hotelManager/booking",
