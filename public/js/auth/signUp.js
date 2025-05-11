@@ -117,6 +117,14 @@ const passwordInput = document.querySelector("#password");
 async function handleSignUp(event) {
   event.preventDefault(); // To prevent reload
 
+  // Name should not start with a number
+  if (/^\d/.test(nameInput.value)) {
+    showToast("Name should not start with a number", "error");
+    nameInput.value = "";
+    nameInput.focus();
+    return;
+  }
+
   if (nameInput.value === "") {
     showToast("Name cannot be empty", "error");
     nameInput.focus();
@@ -154,8 +162,8 @@ async function handleSignUp(event) {
     return;
   }
 
-  if (phoneInput.value?.length < 10) {
-    showToast("Phone Number Length is less than 10", "error");
+  if (phoneInput.value?.length == 10) {
+    showToast("Phone Number Length is not 10", "error");
     phoneInput.value = "";
     phoneInput.focus();
     return;

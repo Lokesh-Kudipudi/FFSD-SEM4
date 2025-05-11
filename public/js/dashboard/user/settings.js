@@ -107,6 +107,12 @@ const saveBtn = document.querySelector("#save-button");
 function validateForm({ fullName, email, phone, address }) {
   const errors = [];
 
+  // Name starts with number
+  const nameRegex = /^[a-zA-Z\s]+$/;
+  if (!fullName || !nameRegex.test(fullName)) {
+    errors.push("Name must contain only letters and spaces.");
+  }
+
   if (!fullName || fullName.length < 2) {
     errors.push("fullName must be at least 2 characters.");
   }
