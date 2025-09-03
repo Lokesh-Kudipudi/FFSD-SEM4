@@ -1,5 +1,4 @@
 const { Booking } = require("../Model/bookingModel");
-const { Payment } = require("../Model/paymentModel");
 const { Tour } = require("../Model/tourModel");
 const { Hotel } = require("../Model/hotelModel");
 

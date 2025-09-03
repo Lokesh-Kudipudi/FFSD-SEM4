@@ -74,8 +74,6 @@ app.use("/hotels", hotelsRouter);
 // Use the dashboard router for routes with "dashboard"
 app.use("/dashboard", authenticateUser, dashboardRouter);
 
-const port = 5500;
-
 async function connectMongoose() {
   try {
     await mongoose.connect(process.env.MONGO_URI);
@@ -86,10 +84,5 @@ async function connectMongoose() {
 }
 
 connectMongoose();
-
-// Start the server on port
-const server = app.listen(port, () => {
-  console.log(`Server Started on port ${port}`);
-});
 
 module.exports = app;
