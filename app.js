@@ -85,4 +85,8 @@ async function connectMongoose() {
 
 connectMongoose();
 
+app.listen(process.env.PORT || 5500, () => {
+  console.log("Server is running on port 3000");
+});
+
 module.exports = app;
