@@ -21,6 +21,7 @@ const {
 dotenv.config();
 
 // Set EJS as the templating engine
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 // Cookie Parser
@@ -88,4 +89,3 @@ connectMongoose();
 app.listen(process.env.PORT || 5500, () => {
   console.log("Server is running on port 3000");
 });
-
