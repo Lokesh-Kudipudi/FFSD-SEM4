@@ -162,7 +162,7 @@ async function handleSignUp(event) {
     return;
   }
 
-  if (phoneInput.value?.length == 10) {
+  if (phoneInput.value?.length != 10) {
     showToast("Phone Number Length is not 10", "error");
     phoneInput.value = "";
     phoneInput.focus();

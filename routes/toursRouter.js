@@ -27,6 +27,7 @@ toursRouter.route("/search").get(async (req, res) => {
   let rating = searchParam?.rating?.split(",");
   let query = searchParam?.q;
   let toursQuery = await getAllTours(); // Fetch all tours
+  console.log(toursQuery);
 
   let toursToDisplay = toursQuery.data; // Extract the data from the query result
 
@@ -82,7 +83,7 @@ toursRouter.route("/search").get(async (req, res) => {
 
   // Render a 'no tours' view if no tours match the search criteria
   if (toursToDisplay.length == 0) {
-    res.render("tours/noTours");
+    res.render("tours/noTours", { user: req?.user });
     return;
   }
 
@@ -91,7 +92,7 @@ toursRouter.route("/search").get(async (req, res) => {
     tours: toursToDisplay,
     displayButton: { displayLeftButton, displayRightButton },
     rating,
-    user: req.user,
+    user: req?.user,
   });
 });
 
