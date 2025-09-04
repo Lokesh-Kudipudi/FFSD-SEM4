@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Queries - Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="/css/dashboard/admin/styles.css" />
+    <link rel="stylesheet" href="/css/dashboard/admin/topbar.css" />
+    <link rel="stylesheet" href="/css/dashboard/admin/sidebar.css" />
+    <style>
+        .queries-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .query-item {
+            border: 1px solid #eee;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .query-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .query-name {
+            font-weight: bold;
+        }
+        .query-date {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .query-message {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .query-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .btn-resolve, .btn-delete {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-resolve {
+            background-color: #2196F3;
+            color: white;
+        }
+        .btn-delete {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Same sidebar as index.ejs -->
+        <%= include('../partials/sidebar') %>
+
+        <main class="main">
+            <!-- Same topbar as index.ejs -->
+            <%= include('../partials/topbar') %>
+
+            <h1 class="dashboard-title">User Queries</h1>
+            
+            <div class="queries-container">
+                <% userQueries.forEach(query => { %>
+                <div class="query-item">
+                    <div class="query-header">
+                        <span class="query-name"><%= query.name %></span>
+                        <span class="query-date"><%= query.date %></span>
+                    </div>
+                    <div class="query-email">Email: <%= query.email %></div>
+                    <div class="query-message"><%= query.message %></div>
+                    <div class="query-actions">
+                        <button class="btn-resolve">Mark Resolved</button>
+                        <button class="btn-delete">Delete</button>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
