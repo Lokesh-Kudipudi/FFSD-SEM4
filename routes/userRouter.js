@@ -11,6 +11,9 @@ const { chatGemini } = require("../api/gemini");
 const {
   getRecommendedTours,
 } = require("../Controller/tourController");
+const {
+  getAllToursGemini,
+} = require("../Controller/tourController");
 
 const userRouter = express.Router();
 
@@ -62,7 +65,21 @@ userRouter.route("/recommendation").get(async (req, res) => {
 });
 
 // Gemini API route
+async function fetchTours() {
+  const { status, data: toursData } = await getAllToursGemini();
+  if (status === "success") {
+    return toursData;
+  } else {
+    return [];
+  }
+}
+
+let toursData = [];
+
 userRouter.route("/gemini").post(async (req, res) => {
+  if (toursData.length === 0) {
+    toursData = await fetchTours();
+  }
   try {
     /*
     history: [
@@ -75,7 +92,11 @@ userRouter.route("/gemini").post(async (req, res) => {
     // const historyObj = JSON.parse(history);
     console.log("History:", history);
 
-    const response = await chatGemini(userInput, history);
+    const response = await chatGemini(
+      userInput,
+      history,
+      toursData
+    );
 
     const regex =
       /<(message|user_intent|tours|hotels|redirect)>(.*?)<\/\1>/g;
