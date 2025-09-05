@@ -131,6 +131,16 @@ dashboardRouter
   });
 
 dashboardRouter
+  .route("/admin/packages/:id")
+  .get(authenticateRole(["admin"]), async (req, res) => {
+    const packageId = req.params.id;
+    const Tour = await getTourById(packageId);
+
+    // Send Admin Dashboard
+    res.render("dashboard/admin/package", { tour: Tour.data });
+  });
+
+dashboardRouter
   .route("/hotelManager")
   .get(authenticateRole(["hotelManager"]), async (req, res) => {
     const hotelId = await getHotelIdsByOwnerId(req.user._id);
