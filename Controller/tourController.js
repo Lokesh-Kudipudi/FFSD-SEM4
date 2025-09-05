@@ -1,5 +1,21 @@
 const { Tour } = require("../Model/tourModel");
 
+async function getAllToursGemini() {
+  try {
+    const tours = await Tour.find()
+      .select(
+        "title tags duration startLocation description language price destinations"
+      )
+      .lean();
+    return {
+      status: "success",
+      data: tours,
+    };
+  } catch (error) {
+    throw new Error("Error fetching tours: " + error.message);
+  }
+}
+
 async function getAllTours() {
   try {
     const tours = await Tour.find().lean();
@@ -97,4 +113,5 @@ module.exports = {
   getRecommendedTours,
   updateTour,
   deleteTour,
+  getAllToursGemini,
 };
