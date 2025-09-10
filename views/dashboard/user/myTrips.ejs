@@ -49,12 +49,28 @@
             <span>Overview</span>
           </a>
           <a
-            href="/dashboard/myTrips"
-            class="nav-item active"
-            data-tab="trips"
+            href="/dashboard/bookings/analytics"
+            class="nav-item"
+            data-tab="bookings"
           >
-            <i class="fas fa-calendar"></i>
-            <span>My Bookings</span>
+            <i class="fas fa-chart-bar"></i>
+            <span>Booking Analytics</span>
+          </a>
+          <a
+            href="/dashboard/bookings/hotels"
+            class="nav-item"
+            data-tab="hotel-bookings"
+          >
+            <i class="fas fa-bed"></i>
+            <span>Hotel Bookings</span>
+          </a>
+          <a
+            href="/dashboard/bookings/tours"
+            class="nav-item"
+            data-tab="tour-bookings"
+          >
+            <i class="fas fa-map-marked-alt"></i>
+            <span>Tour Bookings</span>
           </a>
           <a
             href="/dashboard/settings"
@@ -108,6 +124,19 @@
             </div>
           </div> -->
 
+          <!-- Error/Message Display -->
+          <% if (typeof error !== 'undefined' && error) { %>
+          <div class="alert alert-error" style="background-color: #fee; border: 1px solid #fcc; color: #c33; padding: 15px; margin-bottom: 20px; border-radius: 6px;">
+            <strong>Error:</strong> <%= error %>
+          </div>
+          <% } %>
+          
+          <% if (typeof message !== 'undefined' && message) { %>
+          <div class="alert alert-info" style="background-color: #e7f3ff; border: 1px solid #b8daff; color: #004085; padding: 15px; margin-bottom: 20px; border-radius: 6px;">
+            <%= message %>
+          </div>
+          <% } %>
+
           <div class="trips-section">
             <div class="section-header">
               <h2 class="section-title">Upcoming</h2>
@@ -160,9 +189,10 @@
                   </div>
                 </div>
               </div> -->
-              <% bookings?.forEach(booking => { %> <% if
-              (booking.bookingDetails?.status == "upcoming" ||
-              booking.bookingDetails?.status == "pending") { %>
+              <% if (bookings && Array.isArray(bookings)) { %>
+                <% bookings.forEach(booking => { %> <% if
+                (booking && booking.bookingDetails?.status == "upcoming" ||
+                booking && booking.bookingDetails?.status == "pending") { %>
               <% if (booking.type == "Tour") { %>
               <div class="trip-card">
                 <div style="position: relative">
@@ -273,6 +303,12 @@
                 </div>
               </div>
               <% }; %> <% }; %> <% }); %>
+              <% } else { %>
+                <div class="empty-state" style="text-align: center; padding: 40px; color: #666;">
+                  <i class="fas fa-calendar-times" style="font-size: 48px; margin-bottom: 16px; color: #ddd;"></i>
+                  <p>No upcoming bookings found.</p>
+                </div>
+              <% } %>
             </div>
           </div>
 
@@ -328,9 +364,10 @@
                   </div>
                 </div>
               </div> -->
-              <% bookings?.forEach(booking => { %> <% if
-              (booking.bookingDetails?.status == "completed") {
-              %> <% if (booking.type == "Tour") { %>
+              <% if (bookings && Array.isArray(bookings)) { %>
+                <% bookings.forEach(booking => { %> <% if
+                (booking && (booking.bookingDetails?.status == "completed" || booking.bookingDetails?.status == "cancel")) {
+                %> <% if (booking.type == "Tour") { %>
               <div class="trip-card">
                 <div style="position: relative">
                   <img
@@ -338,8 +375,8 @@
                     alt="<%= booking.itemId.title %>"
                     class="trip-image"
                   />
-                  <div class="trip-status status-upcoming">
-                    Completed
+                  <div class="trip-status <%= booking.bookingDetails?.status === 'cancel' ? 'status-cancelled' : 'status-completed' %>">
+                    <%= booking.bookingDetails?.status === 'cancel' ? 'Cancelled' : 'Completed' %>
                   </div>
                 </div>
                 <div class="trip-content">
@@ -405,8 +442,8 @@
                     alt="<%= booking.itemId.title %>"
                     class="trip-image"
                   />
-                  <div class="trip-status status-upcoming">
-                    Completed
+                  <div class="trip-status <%= booking.bookingDetails?.status === 'cancel' ? 'status-cancelled' : 'status-completed' %>">
+                    <%= booking.bookingDetails?.status === 'cancel' ? 'Cancelled' : 'Completed' %>
                   </div>
                 </div>
                 <div class="trip-content">
@@ -440,6 +477,12 @@
                 </div>
               </div>
               <% }; %> <% }; %> <% }); %>
+              <% } else { %>
+                <div class="empty-state" style="text-align: center; padding: 40px; color: #666;">
+                  <i class="fas fa-history" style="font-size: 48px; margin-bottom: 16px; color: #ddd;"></i>
+                  <p>No past bookings found.</p>
+                </div>
+              <% } %>
             </div>
           </div>
         </main>

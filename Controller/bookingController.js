@@ -6,18 +6,33 @@ async function getUserBookings(userId) {
   try {
     const bookings = await Booking.find({ userId: userId })
       .populate("userId")
-      .populate("itemId")
+      .populate({
+        path: "itemId",
+        // This will use the refPath to determine which model to populate
+      })
       .lean();
 
-    if (!bookings) {
-      throw new Error("No bookings found for this user.");
+    if (!bookings || bookings.length === 0) {
+      return {
+        status: "success",
+        data: [],
+        message: "No bookings found for this user."
+      };
+    }
+
+    // Filter out bookings where itemId failed to populate (null)
+    const validBookings = bookings.filter(booking => booking.itemId !== null);
+
+    if (validBookings.length !== bookings.length) {
+      console.warn(`${bookings.length - validBookings.length} bookings had invalid itemId references`);
     }
 
     return {
       status: "success",
-      data: bookings,
+      data: validBookings,
     };
   } catch (error) {
+    console.error('Error in getUserBookings:', error);
     return {
       status: "error",
       message: error.message,
@@ -61,6 +76,8 @@ async function makeTourBooking(userId, tourId, bookingDetails) {
       itemId: tourId,
       bookingDetails: {
         ...bookingDetails,
+        status: bookingDetails.status || "pending", // Default to pending if no status provided
+        bookingDate: new Date(),
         price:
           tour.price.amount -
           tour.price.discount * tour.price.amount,
@@ -101,6 +118,8 @@ async function makeHotelBooking(
       itemId: hotelId,
       bookingDetails: {
         ...bookingDetails,
+        status: bookingDetails.status || "pending", // Default to pending if no status provided
+        bookingDate: new Date(),
       },
     });
 

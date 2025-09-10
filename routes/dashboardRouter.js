@@ -2,6 +2,9 @@ const express = require("express");
 const {
   updateUser,
   getUserBookingsController,
+  getBookingAnalyticsController,
+  getHotelBookingsController,
+  getTourBookingsController,
 } = require("../Controller/userController");
 const {
   getHotelBookings,
@@ -55,6 +58,30 @@ dashboardRouter
   .get(
     authenticateRole(["user", "admin", "hotelManager"]),
     getUserBookingsController
+  );
+
+// Booking Analytics Route
+dashboardRouter
+  .route("/bookings/analytics")
+  .get(
+    authenticateRole(["user", "admin", "hotelManager"]),
+    getBookingAnalyticsController
+  );
+
+// Hotel Bookings Route
+dashboardRouter
+  .route("/bookings/hotels")
+  .get(
+    authenticateRole(["user", "admin", "hotelManager"]),
+    getHotelBookingsController
+  );
+
+// Tour Bookings Route
+dashboardRouter
+  .route("/bookings/tours")
+  .get(
+    authenticateRole(["user", "admin", "hotelManager"]),
+    getTourBookingsController
   );
 
 dashboardRouter
