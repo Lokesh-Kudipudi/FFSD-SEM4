@@ -8,6 +8,7 @@
     />
     <title>Hotels Navbar</title>
     <link rel="stylesheet" href="/css/hotels/hotels.css" />
+    <link rel="stylesheet" href="/css/hotels/filters.css" />
     <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link
@@ -63,23 +64,24 @@
             <span class="arrow">&#9662;</span>
           </div>
           <div class="filter-options">
-            <label><input type="checkbox" />Bengaluru</label>
-            <label><input type="checkbox" />Chennai</label>
-            <label><input type="checkbox" />Delhi</label>
-            <label><input type="checkbox" />Kolkata</label>
+            <label><input type="checkbox" data-filter="location" value="Colorado" />Colorado</label>
+            <label><input type="checkbox" data-filter="location" value="South Carolina" />South Carolina</label>
+            <label><input type="checkbox" data-filter="location" value="Arizona" />Arizona</label>
+            <label><input type="checkbox" data-filter="location" value="Florida" />Florida</label>
+            <label><input type="checkbox" data-filter="location" value="New York" />New York</label>
           </div>
         </div>
 
         <div class="filter-section">
           <div class="filter-header" onclick="toggleDropdown()">
-            <span>Number of Beds</span>
+            <span>Bed Type</span>
             <span class="arrow">&#9662;</span>
           </div>
           <div class="filter-options">
-            <label><input type="checkbox" /> 1</label>
-            <label><input type="checkbox" /> 2</label>
-            <label><input type="checkbox" /> 3</label>
-            <label><input type="checkbox" /> 4+</label>
+            <label><input type="checkbox" data-filter="beds" value="Twin beds" /> Twin beds</label>
+            <label><input type="checkbox" data-filter="beds" value="King-sized bed" /> King-sized bed</label>
+            <label><input type="checkbox" data-filter="beds" value="Queen-sized bed" /> Queen-sized bed</label>
+            <label><input type="checkbox" data-filter="beds" value="Four-poster bed" /> Four-poster bed</label>
           </div>
         </div>
 
@@ -89,17 +91,13 @@
             <span class="arrow">&#9662;</span>
           </div>
           <div class="filter-options">
-            <label><input type="checkbox" /> Aparthotel</label>
-            <label><input type="checkbox" /> Apartment</label>
-            <label><input type="checkbox" /> Hotel</label>
-            <label><input type="checkbox" /> Villa</label>
-            <label
-              ><input type="checkbox" /> Hostel/Backpacker
-              accommodation</label
-            >
-            <label><input type="checkbox" /> Cabin</label>
-            <label><input type="checkbox" /> Lodge</label>
-            <label><input type="checkbox" /> Camping</label>
+            <label><input type="checkbox" data-filter="propertyType" value="Apartment" /> Apartment</label>
+            <label><input type="checkbox" data-filter="propertyType" value="Villa" /> Villa</label>
+            <label><input type="checkbox" data-filter="propertyType" value="Camping"/> Camping</label>
+            <label><input type="checkbox" data-filter="propertyType" value="Cottage"/> Cottage</label>
+            <label><input type="checkbox" data-filter="propertyType" value="Garden-Suite"> Garden-Suite</label>
+            <label><input type="checkbox" data-filter="propertyType" value="Ocean-view"> Ocean-view</label>
+            <label><input type="checkbox" data-filter="propertyType" value="Business-Suite"> Business-Suite</label>
           </div>
         </div>
 
@@ -109,36 +107,17 @@
             <span class="arrow">&#9662;</span>
           </div>
           <div class="filter-options">
-            <label><input type="checkbox" /> Elevator</label>
-            <label
-              ><input type="checkbox" /> Sign language-capable
-              staff</label
-            >
-            <label
-              ><input type="checkbox" /> Service animals
-              allowed</label
-            >
-            <label
-              ><input type="checkbox" /> Roll-in shower</label
-            >
-            <label
-              ><input type="checkbox" /> Stair-free path to
-              entrance</label
-            >
-            <label
-              ><input type="checkbox" /> In-room
-              accessibility</label
-            >
-            <label
-              ><input type="checkbox" /> Accessible
-              bathroom</label
-            >
-            <label
-              ><input type="checkbox" /> Wheelchair accessible
-              parking</label
-            >
+            <label><input type="checkbox" data-filter="accessibility" value="Private-Kitchen"> Private-Kitchen</label>
+            <label><input type="checkbox" data-filter="accessibility" value="Private-garden"> Private-garden</label>
+            <label><input type="checkbox" data-filter="accessibility" value="Fire pit"> Fire pit</label>
+            <label><input type="checkbox" data-filter="accessibility" value="Private Mini-bar"> Private Mini-bar</label>
+            <label><input type="checkbox" data-filter="accessibility" value="Work Station"> Work Station</label>
+            
           </div>
         </div>
+
+        <button class="availability" style="margin-top: 16px" onclick="applyHotelFilters()">Apply Filters</button>
+        <button class="availability" style="margin-top: 8px; background-color: #6c757d; border-color: #6c757d" onclick="clearAllFilters()">Clear Filters</button>
       </aside>
 
       <!-- Hotel Cards -->

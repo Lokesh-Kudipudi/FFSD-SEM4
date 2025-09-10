@@ -308,25 +308,163 @@ function logout(req, res) {
   res.redirect("/");
 }
 
-async function getUserBookingsController(req, res) {
-  // Send User Dashboard
+async function getBookingAnalytics(userId) {
   try {
-    const bookings = await getUserBookings(req.user._id);
-
-    if (bookings.status == "error") {
-      throw new Error(`${bookings.message}`);
+    const bookings = await getUserBookings(userId);
+    
+    if (bookings.status === "error") {
+      return {
+        status: "error",
+        message: bookings.message
+      };
     }
+    
+    const userBookings = Array.isArray(bookings.data) ? bookings.data : [];
+    
+    // Separate hotel and tour bookings
+    const hotelBookings = userBookings.filter(booking => booking.type === 'Hotel');
+    const tourBookings = userBookings.filter(booking => booking.type === 'Tour');
+    
+    // Count by status
+    const getStatusCounts = (bookingList) => {
+      const counts = {
+        pending: 0,
+        upcoming: 0,
+        completed: 0,
+        cancelled: 0,
+        total: bookingList.length
+      };
+      
+      bookingList.forEach(booking => {
+        const status = booking.bookingDetails?.status || 'pending';
+        if (status === 'cancel') {
+          counts.cancelled++;
+        } else {
+          counts[status] = (counts[status] || 0) + 1;
+        }
+      });
+      
+      return counts;
+    };
+    
+    const analytics = {
+      total: {
+        count: userBookings.length,
+        hotels: hotelBookings.length,
+        tours: tourBookings.length
+      },
+      hotels: getStatusCounts(hotelBookings),
+      tours: getStatusCounts(tourBookings),
+      recent: userBookings
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+        .slice(0, 5)
+    };
+    
+    return {
+      status: "success",
+      data: analytics
+    };
+  } catch (error) {
+    console.error('Error in getBookingAnalytics:', error);
+    return {
+      status: "error",
+      message: error.message
+    };
+  }
+}
 
-    res.render("dashboard/user/myTrips", {
+async function getBookingAnalyticsController(req, res) {
+  try {
+    const analytics = await getBookingAnalytics(req.user._id);
+    
+    if (analytics.status === "error") {
+      console.error('Error fetching booking analytics:', analytics.message);
+      return res.render("dashboard/user/bookingAnalytics", {
+        user: req.user,
+        analytics: null,
+        error: "Failed to load booking analytics. Please try again later."
+      });
+    }
+    
+    res.render("dashboard/user/bookingAnalytics", {
       user: req.user,
-      bookings: bookings.data,
+      analytics: analytics.data
     });
   } catch (error) {
-    res.render("dashboard/user/myTrips", {
+    console.error('Unexpected error in getBookingAnalyticsController:', error);
+    res.render("dashboard/user/bookingAnalytics", {
       user: req.user,
-      bookings: [],
+      analytics: null,
+      error: "An unexpected error occurred. Please try again later."
     });
   }
+}
+
+async function getHotelBookingsController(req, res) {
+  try {
+    const bookings = await getUserBookings(req.user._id);
+    
+    if (bookings.status === "error") {
+      console.error('Error fetching hotel bookings:', bookings.message);
+      return res.render("dashboard/user/hotelBookings", {
+        user: req.user,
+        bookings: [],
+        error: "Failed to load hotel bookings. Please try again later."
+      });
+    }
+    
+    const userBookings = Array.isArray(bookings.data) ? bookings.data : [];
+    const hotelBookings = userBookings.filter(booking => booking.type === 'Hotel');
+    
+    res.render("dashboard/user/hotelBookings", {
+      user: req.user,
+      bookings: hotelBookings,
+      message: hotelBookings.length === 0 ? "No hotel bookings found. Explore our hotels!" : null
+    });
+  } catch (error) {
+    console.error('Unexpected error in getHotelBookingsController:', error);
+    res.render("dashboard/user/hotelBookings", {
+      user: req.user,
+      bookings: [],
+      error: "An unexpected error occurred. Please try again later."
+    });
+  }
+}
+
+async function getTourBookingsController(req, res) {
+  try {
+    const bookings = await getUserBookings(req.user._id);
+    
+    if (bookings.status === "error") {
+      console.error('Error fetching tour bookings:', bookings.message);
+      return res.render("dashboard/user/tourBookings", {
+        user: req.user,
+        bookings: [],
+        error: "Failed to load tour bookings. Please try again later."
+      });
+    }
+    
+    const userBookings = Array.isArray(bookings.data) ? bookings.data : [];
+    const tourBookings = userBookings.filter(booking => booking.type === 'Tour');
+    
+    res.render("dashboard/user/tourBookings", {
+      user: req.user,
+      bookings: tourBookings,
+      message: tourBookings.length === 0 ? "No tour bookings found. Discover amazing tours!" : null
+    });
+  } catch (error) {
+    console.error('Unexpected error in getTourBookingsController:', error);
+    res.render("dashboard/user/tourBookings", {
+      user: req.user,
+      bookings: [],
+      error: "An unexpected error occurred. Please try again later."
+    });
+  }
+}
+
+async function getUserBookingsController(req, res) {
+  // Redirect to analytics page by default
+  res.redirect('/dashboard/bookings/analytics');
 }
 
 module.exports = {
@@ -338,4 +476,8 @@ module.exports = {
   logout,
   updateUser,
   getUserBookingsController,
+  getBookingAnalyticsController,
+  getHotelBookingsController,
+  getTourBookingsController,
+  getBookingAnalytics,
 };
