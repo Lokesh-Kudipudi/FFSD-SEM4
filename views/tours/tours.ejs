@@ -8,7 +8,8 @@
     />
     <link rel="icon" href="data:," />
     <link href="/css/tours/tours.css" rel="stylesheet" />
-    <link href="/css/tours/filter.css" rel="stylesheet" />
+    <!-- <link href="/css/tours/filter.css" rel="stylesheet" /> -->
+    <link href="/css/hotels/filters.css" rel="stylesheet" />
     <link href="/css/header.css" rel="stylesheet" />
     <link href="/css/footer.css" rel="stylesheet" />
 
@@ -47,43 +48,334 @@
     </div>
 
     <div class="toursContainer">
-      <div class="filter">
-        <!-- <div class="dropdown">
-          <div class="dropdown-header dropdown-header-location">
-            Locations <span id="arrowLocation">&#9650;</span>
+      <!-- Filter Sidebar -->
+      <aside class="filter-sidebar">
+        <h3
+          style="
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+          "
+        >
+          Filter by
+        </h3>
+        
+        <!-- Start Location Filter -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <span>Start Location</span>
+            <span class="arrow" id="arrowStartLocation">&#9662;</span>
           </div>
-          <div
-            class="dropdown-content"
-            id="dropdownContentLocation"
-          >
-            <label><input type="checkbox" /> Andaman</label>
+          <div class="filter-options" id="dropdownContentStartLocation">
             <label
-              ><input type="checkbox" /> Andhra Pradesh</label
+              ><input
+                type="checkbox"
+                data-filter="startLocation"
+                value="Delhi"
+              />Delhi</label
             >
-            <label><input type="checkbox" /> Assam</label>
-            <label><input type="checkbox" /> Dubai</label>
-            <label><input type="checkbox" /> Gujarat</label>
             <label
-              ><input type="checkbox" /> Himachal Pradesh</label
+              ><input
+                type="checkbox"
+                data-filter="startLocation"
+                value="Mumbai"
+              />Mumbai</label
             >
-            <label><input type="checkbox" /> Indonesia</label>
             <label
-              ><input type="checkbox" /> Jammu & Kashmir</label
+              ><input
+                type="checkbox"
+                data-filter="startLocation"
+                value="Bangalore"
+              />Bangalore</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="startLocation"
+                value="Chennai"
+              />Chennai</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="startLocation"
+                value="Kolkata"
+              />Kolkata</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="startLocation"
+                value="Hyderabad"
+              />Hyderabad</label
             >
           </div>
-        </div> -->
-        <div class="dropdown">
-          <div class="dropdown-header dropdown-header-rating">
-            Rating <span id="arrowRating">&#9650;</span>
+        </div>
+
+        <!-- Duration Filter -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <span>Duration</span>
+            <span class="arrow" id="arrowDuration">&#9662;</span>
           </div>
-          <div
-            class="dropdown-content"
-            id="dropdownContentRating"
-          >
+          <div class="filter-options" id="dropdownContentDuration">
+            <label
+              ><input
+                type="checkbox"
+                data-filter="duration"
+                value="1-3 days"
+              />1-3 days</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="duration"
+                value="4-7 days"
+              />4-7 days</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="duration"
+                value="8+ days"
+              />8+ days</label
+            >
+          </div>
+        </div>
+
+        <!-- Language Filter -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <span>Language</span>
+            <span class="arrow" id="arrowLanguage">&#9662;</span>
+          </div>
+          <div class="filter-options" id="dropdownContentLanguage">
+            <label
+              ><input
+                type="checkbox"
+                data-filter="language"
+                value="English"
+              />English</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="language"
+                value="Hindi"
+              />Hindi</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="language"
+                value="Tamil"
+              />Tamil</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="language"
+                value="Telugu"
+              />Telugu</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="language"
+                value="Bengali"
+              />Bengali</label
+            >
+          </div>
+        </div>
+
+        <!-- Tour Type/Tags Filter -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <span>Tour Type</span>
+            <span class="arrow" id="arrowTags">&#9662;</span>
+          </div>
+          <div class="filter-options" id="dropdownContentTags">
+            <label
+              ><input
+                type="checkbox"
+                data-filter="tags"
+                value="Adventure"
+              />Adventure</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="tags"
+                value="Cultural"
+              />Cultural</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="tags"
+                value="Wildlife"
+              />Wildlife</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="tags"
+                value="Beach"
+              />Beach</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="tags"
+                value="Spiritual"
+              />Spiritual</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="tags"
+                value="Hill Station"
+              />Hill Station</label
+            >
+          </div>
+        </div>
+
+        <!-- Price Range Filter -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <span>Price Range</span>
+            <span class="arrow" id="arrowPriceRange">&#9662;</span>
+          </div>
+          <div class="filter-options" id="dropdownContentPriceRange">
+            <label
+              ><input
+                type="checkbox"
+                data-filter="priceRange"
+                value="Budget (Under ₹20,000)"
+              />Budget (Under ₹20,000)</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="priceRange"
+                value="Mid-range (₹20,000 - ₹50,000)"
+              />Mid-range (₹20,000 - ₹50,000)</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="priceRange"
+                value="Luxury (Above ₹50,000)"
+              />Luxury (Above ₹50,000)</label
+            >
+          </div>
+        </div>
+
+        <!-- Available Months Filter -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <span>Available Months</span>
+            <span class="arrow" id="arrowAvailableMonths">&#9662;</span>
+          </div>
+          <div class="filter-options" id="dropdownContentAvailableMonths">
+            <label
+              ><input
+                type="checkbox"
+                data-filter="availableMonths"
+                value="January"
+              />January</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="availableMonths"
+                value="February"
+              />February</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="availableMonths"
+                value="March"
+              />March</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="availableMonths"
+                value="April"
+              />April</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="availableMonths"
+                value="May"
+              />May</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="availableMonths"
+                value="June"
+              />June</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="availableMonths"
+                value="July"
+              />July</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="availableMonths"
+                value="August"
+              />August</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="availableMonths"
+                value="September"
+              />September</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="availableMonths"
+                value="October"
+              />October</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="availableMonths"
+                value="November"
+              />November</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                data-filter="availableMonths"
+                value="December"
+              />December</label
+            >
+          </div>
+        </div>
+
+        <!-- Rating Filter (keep existing one) -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <span>Rating</span>
+            <span class="arrow" id="arrowRating">&#9662;</span>
+          </div>
+          <div class="filter-options" id="dropdownContentRating">
             <label>
               <input
                 class="rating-input"
                 type="checkbox"
+                data-filter="rating"
                 value="5"
               />
               <i class="fa-solid fa-star"></i
@@ -96,6 +388,7 @@
               <input
                 class="rating-input"
                 type="checkbox"
+                data-filter="rating"
                 value="4"
               />
               <i class="fa-solid fa-star"></i
@@ -107,6 +400,7 @@
               <input
                 class="rating-input"
                 type="checkbox"
+                data-filter="rating"
                 value="3"
               />
               <i class="fa-solid fa-star"></i
@@ -117,6 +411,7 @@
               <input
                 class="rating-input"
                 type="checkbox"
+                data-filter="rating"
                 value="2"
               />
               <i class="fa-solid fa-star"></i
@@ -126,14 +421,35 @@
               <input
                 class="rating-input"
                 type="checkbox"
+                data-filter="rating"
                 value="1"
               />
               <i class="fa-solid fa-star"></i>
             </label>
           </div>
         </div>
-      </div>
-      <div>
+
+        <button
+          class="apply-filters-btn"
+          style="margin-top: 16px"
+          onclick="applyTourFilters()"
+        >
+          Apply Filters
+        </button>
+        <button
+          class="clear-filters-btn"
+          style="
+            margin-top: 8px;
+            background-color: #6c757d;
+            border-color: #6c757d;
+          "
+          onclick="clearAllFilters()"
+        >
+          Clear Filters
+        </button>
+      </aside>
+      <!-- Tours Container -->
+      <div class="tours-container">
         <div class="allToursContainer">
           <!-- <div class="card">
           <div style="position: relative">

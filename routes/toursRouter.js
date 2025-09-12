@@ -57,6 +57,189 @@ toursRouter.route("/search").get(async (req, res) => {
     });
   }
 
+  // Filter by start locations
+  const locationsParam = searchParam.startLocation;
+  const selectedLocations = Array.isArray(locationsParam)
+    ? locationsParam
+    : locationsParam
+    ? [locationsParam]
+    : [];
+
+  if (selectedLocations.length > 0) {
+    const set = new Set(
+      selectedLocations.map((l) => String(l).toLowerCase())
+    );
+    toursToDisplay = toursToDisplay.filter((tour) =>
+      set.has(String(tour.startLocation || "").toLowerCase())
+    );
+  }
+
+  // Filter by duration
+  const durationsParam = searchParam.duration;
+  const selectedDurations = Array.isArray(durationsParam)
+    ? durationsParam
+    : durationsParam
+    ? [durationsParam]
+    : [];
+
+  if (selectedDurations.length > 0) {
+    toursToDisplay = toursToDisplay.filter((tour) => {
+      return selectedDurations.some((selectedDuration) => {
+        const duration = String(selectedDuration).toLowerCase();
+        const tourDuration = String(tour.duration || "").toLowerCase();
+        
+        // Enhanced duration matching
+        if (duration.includes("1-3 days")) {
+          return /\b([1-3])\s*(day|night)/i.test(tourDuration);
+        }
+        if (duration.includes("4-7 days")) {
+          return /\b([4-7])\s*(day|night)/i.test(tourDuration);
+        }
+        if (duration.includes("8+ days")) {
+          return /\b([8-9]|[1-9]\d+)\s*(day|night)/i.test(tourDuration);
+        }
+        
+        // Default exact match
+        return tourDuration.includes(duration);
+      });
+    });
+  }
+
+  // Filter by language
+  const languagesParam = searchParam.language;
+  const selectedLanguages = Array.isArray(languagesParam)
+    ? languagesParam
+    : languagesParam
+    ? [languagesParam]
+    : [];
+
+  if (selectedLanguages.length > 0) {
+    const set = new Set(
+      selectedLanguages.map((l) => String(l).toLowerCase())
+    );
+    toursToDisplay = toursToDisplay.filter((tour) =>
+      set.has(String(tour.language || "").toLowerCase())
+    );
+  }
+
+  // Filter by tags
+  const tagsParam = searchParam.tags;
+  const selectedTags = Array.isArray(tagsParam)
+    ? tagsParam
+    : tagsParam
+    ? [tagsParam]
+    : [];
+
+  if (selectedTags.length > 0) {
+    toursToDisplay = toursToDisplay.filter((tour) => {
+      return selectedTags.some((selectedTag) => {
+        const tag = String(selectedTag).toLowerCase();
+        const tourTags = Array.isArray(tour.tags)
+          ? tour.tags.map((t) => String(t).toLowerCase())
+          : [];
+        const searchableText = [
+          ...tourTags,
+          tour.description?.toLowerCase() || "",
+          ...(tour.includes || []).map(i => String(i).toLowerCase())
+        ].join(" ");
+
+        // Enhanced tag matching with synonyms
+        if (tag.includes("adventure")) {
+          return (
+            searchableText.includes("adventure") ||
+            searchableText.includes("trekking") ||
+            searchableText.includes("hiking") ||
+            searchableText.includes("climbing")
+          );
+        }
+        if (tag.includes("cultural")) {
+          return (
+            searchableText.includes("cultural") ||
+            searchableText.includes("heritage") ||
+            searchableText.includes("historical") ||
+            searchableText.includes("traditional")
+          );
+        }
+        if (tag.includes("wildlife")) {
+          return (
+            searchableText.includes("wildlife") ||
+            searchableText.includes("safari") ||
+            searchableText.includes("nature") ||
+            searchableText.includes("animals")
+          );
+        }
+        if (tag.includes("beach")) {
+          return (
+            searchableText.includes("beach") ||
+            searchableText.includes("coastal") ||
+            searchableText.includes("ocean") ||
+            searchableText.includes("seaside")
+          );
+        }
+        if (tag.includes("spiritual")) {
+          return (
+            searchableText.includes("spiritual") ||
+            searchableText.includes("religious") ||
+            searchableText.includes("temple") ||
+            searchableText.includes("pilgrimage")
+          );
+        }
+        
+        // Default exact match
+        return searchableText.includes(tag);
+      });
+    });
+  }
+
+  // Filter by price range
+  const priceRangeParam = searchParam.priceRange;
+  const selectedPriceRanges = Array.isArray(priceRangeParam)
+    ? priceRangeParam
+    : priceRangeParam
+    ? [priceRangeParam]
+    : [];
+
+  if (selectedPriceRanges.length > 0) {
+    toursToDisplay = toursToDisplay.filter((tour) => {
+      const tourPrice = tour.price?.amount || 0;
+      return selectedPriceRanges.some((priceRange) => {
+        const range = String(priceRange).toLowerCase();
+        
+        if (range.includes("budget") || range.includes("under-20000")) {
+          return tourPrice < 20000;
+        }
+        if (range.includes("mid-range") || range.includes("20000-50000")) {
+          return tourPrice >= 20000 && tourPrice <= 50000;
+        }
+        if (range.includes("luxury") || range.includes("above-50000")) {
+          return tourPrice > 50000;
+        }
+        
+        return false;
+      });
+    });
+  }
+
+  // Filter by available months
+  const monthsParam = searchParam.availableMonths;
+  const selectedMonths = Array.isArray(monthsParam)
+    ? monthsParam
+    : monthsParam
+    ? [monthsParam]
+    : [];
+
+  if (selectedMonths.length > 0) {
+    toursToDisplay = toursToDisplay.filter((tour) => {
+      if (!Array.isArray(tour.availableMonths)) return false;
+      return selectedMonths.some((selectedMonth) => {
+        const month = String(selectedMonth).toLowerCase();
+        return tour.availableMonths.some(availableMonth => 
+          String(availableMonth).toLowerCase().includes(month)
+        );
+      });
+    });
+  }
+
   const numberOfCardsPerPage = 12;
   const numberOfPages = Math.floor(
     (toursToDisplay.length - 1) / numberOfCardsPerPage
