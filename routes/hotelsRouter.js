@@ -40,7 +40,7 @@ hotelsRouter.route("/search").get(async (req, res) => {
     });
   }
 
-  // locations: support multiple ?location=A&location=B
+  // locations: support multiple ?location=A&location=B - Done
   const locationsParam = searchParam.location;
   const selectedLocations = Array.isArray(locationsParam)
     ? locationsParam
@@ -69,52 +69,74 @@ hotelsRouter.route("/search").get(async (req, res) => {
     hotelsToDisplay = hotelsToDisplay.filter((hotel) => {
       return selectedAmenities.every((selectedAmenity) => {
         const amenity = String(selectedAmenity).toLowerCase();
-        
+
         // Get all searchable content for amenities
         const hotelAmenities = Array.isArray(hotel.amenities)
           ? hotel.amenities.map((a) => String(a).toLowerCase())
           : [];
-        const fromFeatures = hotel.features
-          ? Array.from(hotel.features.values()).flat().map((f) => String(f).toLowerCase())
-          : [];
-        const allFeatures = [...hotelAmenities, ...fromFeatures, hotel.description?.toLowerCase() || ''];
-        const searchableText = allFeatures.join(' ');
-        
+        const allFeatures = [
+          ...hotelAmenities,
+          hotel.description?.toLowerCase() || "",
+        ];
+        const searchableText = allFeatures.join(" ");
+
         // Enhanced matching with synonyms
-        if (amenity.includes('private-kitchen') || amenity.includes('private kitchen')) {
-          return searchableText.includes('kitchen') || 
-                 searchableText.includes('kitchenette') || 
-                 searchableText.includes('cooking');
+        if (
+          amenity.includes("private-kitchen") ||
+          amenity.includes("private kitchen")
+        ) {
+          return (
+            searchableText.includes("kitchen") ||
+            searchableText.includes("kitchenette") ||
+            searchableText.includes("cooking")
+          );
         }
-        
-        if (amenity.includes('private-garden') || amenity.includes('private garden')) {
-          return searchableText.includes('garden') || 
-                 searchableText.includes('terrace') || 
-                 searchableText.includes('patio') || 
-                 searchableText.includes('balcony');
+
+        if (
+          amenity.includes("private-garden") ||
+          amenity.includes("private garden")
+        ) {
+          return (
+            searchableText.includes("garden") ||
+            searchableText.includes("terrace") ||
+            searchableText.includes("patio") ||
+            searchableText.includes("balcony")
+          );
         }
-        
-        if (amenity.includes('fire pit')) {
-          return searchableText.includes('fire pit') || 
-                 searchableText.includes('fireplace') || 
-                 searchableText.includes('bonfire');
+
+        if (amenity.includes("fire pit")) {
+          return (
+            searchableText.includes("fire pit") ||
+            searchableText.includes("fireplace") ||
+            searchableText.includes("bonfire")
+          );
         }
-        
-        if (amenity.includes('private mini-bar') || amenity.includes('mini-bar')) {
-          return searchableText.includes('mini-bar') || 
-                 searchableText.includes('minibar') || 
-                 searchableText.includes('refreshment') || 
-                 searchableText.includes('bar');
+
+        if (
+          amenity.includes("private mini-bar") ||
+          amenity.includes("mini-bar")
+        ) {
+          return (
+            searchableText.includes("mini-bar") ||
+            searchableText.includes("minibar") ||
+            searchableText.includes("refreshment") ||
+            searchableText.includes("bar")
+          );
         }
-        
-        if (amenity.includes('work station') || amenity.includes('workstation')) {
-          return searchableText.includes('work station') || 
-                 searchableText.includes('workstation') || 
-                 searchableText.includes('office') || 
-                 searchableText.includes('desk') || 
-                 searchableText.includes('business center');
+
+        if (
+          amenity.includes("work station") ||
+          amenity.includes("workstation")
+        ) {
+          return (
+            searchableText.includes("work station") ||
+            searchableText.includes("workstation") ||
+            searchableText.includes("office") ||
+            searchableText.includes("desk") ||
+            searchableText.includes("business center")
+          );
         }
-        
+
         // Default exact match
         return searchableText.includes(amenity);
       });
@@ -137,43 +159,65 @@ hotelsRouter.route("/search").get(async (req, res) => {
           const searchable = [rt.title, ...(rt.features || [])]
             .join(" ")
             .toLowerCase();
-          
+
           // Enhanced bed matching
-          if (bed.includes('twin beds') || bed.includes('twin bed')) {
-            return searchable.includes('twin') || 
-                   searchable.includes('single') || 
-                   searchable.includes('2 beds') || 
-                   searchable.includes('two beds');
+          if (
+            bed.includes("twin beds") ||
+            bed.includes("twin bed")
+          ) {
+            return (
+              searchable.includes("twin") ||
+              searchable.includes("single") ||
+              searchable.includes("2 beds") ||
+              searchable.includes("two beds")
+            );
           }
-          
-          if (bed.includes('king-sized bed') || bed.includes('king bed')) {
-            return searchable.includes('king') || 
-                   searchable.includes('king-size') || 
-                   searchable.includes('king size');
+
+          if (
+            bed.includes("king-sized bed") ||
+            bed.includes("king bed")
+          ) {
+            return (
+              searchable.includes("king") ||
+              searchable.includes("king-size") ||
+              searchable.includes("king size")
+            );
           }
-          
-          if (bed.includes('queen-sized bed') || bed.includes('queen bed')) {
-            return searchable.includes('queen') || 
-                   searchable.includes('queen-size') || 
-                   searchable.includes('queen size');
+
+          if (
+            bed.includes("queen-sized bed") ||
+            bed.includes("queen bed")
+          ) {
+            return (
+              searchable.includes("queen") ||
+              searchable.includes("queen-size") ||
+              searchable.includes("queen size")
+            );
           }
-          
-          if (bed.includes('four-poster bed') || bed.includes('four poster')) {
-            return searchable.includes('four-poster') || 
-                   searchable.includes('four poster') || 
-                   searchable.includes('canopy') || 
-                   searchable.includes('luxury bed');
+
+          if (
+            bed.includes("four-poster bed") ||
+            bed.includes("four poster")
+          ) {
+            return (
+              searchable.includes("four-poster") ||
+              searchable.includes("four poster") ||
+              searchable.includes("canopy") ||
+              searchable.includes("luxury bed")
+            );
           }
-          
+
           // Handle numeric patterns
           if (bed === "4+") {
-            return /\b([4-9]|\d{2,})\b/.test(searchable) ||
+            return (
+              /\b([4-9]|\d{2,})\b/.test(searchable) ||
               searchable.includes("4+") ||
               searchable.includes("four") ||
               searchable.includes("family") ||
-              searchable.includes("large");
+              searchable.includes("large")
+            );
           }
-          
+
           // Default exact match
           return searchable.includes(bed);
         });
@@ -192,10 +236,10 @@ hotelsRouter.route("/search").get(async (req, res) => {
     hotelsToDisplay = hotelsToDisplay.filter((hotel) => {
       return selectedPropertyTypes.some((selectedType) => {
         const type = String(selectedType).toLowerCase();
-        
+
         // Get searchable content from hotel
         const fromFeatures = hotel.features
-          ? Array.from(hotel.features.values()).flat()
+          ? Object.values(hotel.features).flat()
           : [];
         const searchable = [
           hotel.title,
@@ -208,43 +252,64 @@ hotelsRouter.route("/search").get(async (req, res) => {
           .filter(Boolean)
           .join(" ")
           .toLowerCase();
-        
+
         // Enhanced matching logic
-        if (type.includes('apartment') && 
-            (searchable.includes('apartment') || 
-             searchable.includes('flat') || 
-             searchable.includes('suite'))) return true;
-        
-        if (type.includes('villa') && 
-            (searchable.includes('villa') || 
-             searchable.includes('bungalow') || 
-             searchable.includes('mansion'))) return true;
-        
-        if (type.includes('camping') && 
-            (searchable.includes('camping') || 
-             searchable.includes('tent') || 
-             searchable.includes('cabin'))) return true;
-        
-        if (type.includes('cottage') && 
-            (searchable.includes('cottage') || 
-             searchable.includes('cabin') || 
-             searchable.includes('chalet'))) return true;
-        
-        if (type.includes('garden-suite') && 
-            (searchable.includes('garden') || 
-             searchable.includes('suite'))) return true;
-        
-        if (type.includes('ocean-view') && 
-            (searchable.includes('ocean') || 
-             searchable.includes('sea') || 
-             searchable.includes('beach') || 
-             searchable.includes('waterfront'))) return true;
-        
-        if (type.includes('business-suite') && 
-            (searchable.includes('business') || 
-             searchable.includes('executive') || 
-             searchable.includes('corporate'))) return true;
-        
+        if (
+          type.includes("apartment") &&
+          (searchable.includes("apartment") ||
+            searchable.includes("flat") ||
+            searchable.includes("suite"))
+        )
+          return true;
+
+        if (
+          type.includes("villa") &&
+          (searchable.includes("villa") ||
+            searchable.includes("bungalow") ||
+            searchable.includes("mansion"))
+        )
+          return true;
+
+        if (
+          type.includes("camping") &&
+          (searchable.includes("camping") ||
+            searchable.includes("tent") ||
+            searchable.includes("cabin"))
+        )
+          return true;
+
+        if (
+          type.includes("cottage") &&
+          (searchable.includes("cottage") ||
+            searchable.includes("cabin") ||
+            searchable.includes("chalet"))
+        )
+          return true;
+
+        if (
+          type.includes("garden-suite") &&
+          (searchable.includes("garden") ||
+            searchable.includes("suite"))
+        )
+          return true;
+
+        if (
+          type.includes("ocean-view") &&
+          (searchable.includes("ocean") ||
+            searchable.includes("sea") ||
+            searchable.includes("beach") ||
+            searchable.includes("waterfront"))
+        )
+          return true;
+
+        if (
+          type.includes("business-suite") &&
+          (searchable.includes("business") ||
+            searchable.includes("executive") ||
+            searchable.includes("corporate"))
+        )
+          return true;
+
         // Default exact match
         return searchable.includes(type);
       });
