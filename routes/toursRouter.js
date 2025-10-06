@@ -24,23 +24,14 @@ toursRouter.route("/search").get(async (req, res) => {
   const searchParam = req.query;
 
   let currentPage = searchParam?.page;
-  let rating = searchParam?.rating?.split(",");
   let query = searchParam?.q;
   let toursQuery = await getAllTours(); // Fetch all tours
-  console.log(toursQuery);
 
   let toursToDisplay = toursQuery.data; // Extract the data from the query result
 
   // Set default page to 0 if not provided
   if (currentPage == undefined) {
     currentPage = 0;
-  }
-
-  // Filter tours by rating if rating parameter is provided
-  if (rating) {
-    toursToDisplay = toursToDisplay.filter((tour) =>
-      rating.includes(String(tour.rating))
-    );
   }
 
   // Filter tours by query if query parameter is provided
@@ -86,8 +77,10 @@ toursRouter.route("/search").get(async (req, res) => {
     toursToDisplay = toursToDisplay.filter((tour) => {
       return selectedDurations.some((selectedDuration) => {
         const duration = String(selectedDuration).toLowerCase();
-        const tourDuration = String(tour.duration || "").toLowerCase();
-        
+        const tourDuration = String(
+          tour.duration || ""
+        ).toLowerCase();
+
         // Enhanced duration matching
         if (duration.includes("1-3 days")) {
           return /\b([1-3])\s*(day|night)/i.test(tourDuration);
@@ -96,9 +89,11 @@ toursRouter.route("/search").get(async (req, res) => {
           return /\b([4-7])\s*(day|night)/i.test(tourDuration);
         }
         if (duration.includes("8+ days")) {
-          return /\b([8-9]|[1-9]\d+)\s*(day|night)/i.test(tourDuration);
+          return /\b([8-9]|[1-9]\d+)\s*(day|night)/i.test(
+            tourDuration
+          );
         }
-        
+
         // Default exact match
         return tourDuration.includes(duration);
       });
@@ -140,7 +135,9 @@ toursRouter.route("/search").get(async (req, res) => {
         const searchableText = [
           ...tourTags,
           tour.description?.toLowerCase() || "",
-          ...(tour.includes || []).map(i => String(i).toLowerCase())
+          ...(tour.includes || []).map((i) =>
+            String(i).toLowerCase()
+          ),
         ].join(" ");
 
         // Enhanced tag matching with synonyms
@@ -184,7 +181,7 @@ toursRouter.route("/search").get(async (req, res) => {
             searchableText.includes("pilgrimage")
           );
         }
-        
+
         // Default exact match
         return searchableText.includes(tag);
       });
@@ -204,17 +201,26 @@ toursRouter.route("/search").get(async (req, res) => {
       const tourPrice = tour.price?.amount || 0;
       return selectedPriceRanges.some((priceRange) => {
         const range = String(priceRange).toLowerCase();
-        
-        if (range.includes("budget") || range.includes("under-20000")) {
+
+        if (
+          range.includes("budget") ||
+          range.includes("under-20000")
+        ) {
           return tourPrice < 20000;
         }
-        if (range.includes("mid-range") || range.includes("20000-50000")) {
+        if (
+          range.includes("mid-range") ||
+          range.includes("20000-50000")
+        ) {
           return tourPrice >= 20000 && tourPrice <= 50000;
         }
-        if (range.includes("luxury") || range.includes("above-50000")) {
+        if (
+          range.includes("luxury") ||
+          range.includes("above-50000")
+        ) {
           return tourPrice > 50000;
         }
-        
+
         return false;
       });
     });
@@ -233,7 +239,7 @@ toursRouter.route("/search").get(async (req, res) => {
       if (!Array.isArray(tour.availableMonths)) return false;
       return selectedMonths.some((selectedMonth) => {
         const month = String(selectedMonth).toLowerCase();
-        return tour.availableMonths.some(availableMonth => 
+        return tour.availableMonths.some((availableMonth) =>
           String(availableMonth).toLowerCase().includes(month)
         );
       });
@@ -264,17 +270,10 @@ toursRouter.route("/search").get(async (req, res) => {
     displayLeftButton = false;
   }
 
-  // Render a 'no tours' view if no tours match the search criteria
-  if (toursToDisplay.length == 0) {
-    res.render("tours/noTours", { user: req?.user });
-    return;
-  }
-
   // Render the 'tours/tours' view with the filtered and paginated tours
   res.render("tours/tours", {
     tours: toursToDisplay,
     displayButton: { displayLeftButton, displayRightButton },
-    rating,
     user: req?.user,
   });
 });
