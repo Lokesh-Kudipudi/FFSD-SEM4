@@ -2,31 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chasing Horizons Admin Dashboard</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="/css/dashboard/admin/styles.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/css/dashboard/admin/index.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/css/dashboard/admin/topbar.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/css/dashboard/admin/sidebar.css"
-    />
+    <link rel="stylesheet" href="/css/dashboard/admin/styles.css" />
+    <link rel="stylesheet" href="/css/dashboard/admin/index.css" />
+    <link rel="stylesheet" href="/css/dashboard/admin/topbar.css" />
+    <link rel="stylesheet" href="/css/dashboard/admin/sidebar.css" />
 
     <script defer src="/js/dashboard/admin/app.js"></script>
   </head>
@@ -34,10 +19,7 @@
   <body>
     <div class="container">
       <div class="sidebar" id="sidebar">
-        <div
-          class="logo-title"
-          onclick="{window.location.href = '/'}"
-        >
+        <div class="logo-title" onclick="{window.location.href = '/'}">
           <span>Chasing Horizons</span>
         </div>
         <div class="sidebar-links">
@@ -61,15 +43,11 @@
             ><i class="fas fa-plane"></i>
             <span class="link-text">Analytics</span></a
           > -->
-<a href="/dashboard/admin/contactUs">
-    <i class="fas fa-envelope"></i>
-    <span class="link-text">Contact Us</span>
-  </a>
-  
-  <a href="/dashboard/admin/queries">
-    <i class="fas fa-question-circle"></i>
-    <span class="link-text">Queries</span>
-  </a>
+
+          <a href="/dashboard/admin/queries">
+            <i class="fas fa-question-circle"></i>
+            <span class="link-text">Queries</span>
+          </a>
         </div>
       </div>
       <main class="main">
@@ -278,8 +256,7 @@
             <a href="#" class="view-all">View All</a>
           </div>
           <div class="destination-list">
-            <% adminAnalytics.populatedResults.forEach(result =>
-            { %>
+            <% adminAnalytics.populatedResults.forEach(result => { %>
             <div class="destination-card">
               <div class="destination-img">
                 <img
@@ -290,9 +267,7 @@
               </div>
               <div class="destination-info">
                 <h4><%= result.item.title %></h4>
-                <p>
-                  <%= result.totalBookings %> bookings this month
-                </p>
+                <p><%= result.totalBookings %> bookings this month</p>
               </div>
             </div>
             <% }); %>
@@ -302,4 +277,3 @@
     </div>
   </body>
 </html>
-

@@ -11,6 +11,18 @@ async function createContactForm(contactData) {
   }
 }
 
+const getAllQueries = async (req, res) => {
+  try {
+    const userQueries = await ContactForm.find().sort({ createdAt: -1 });
+
+    res.render("dashboard/admin/queries", { user: req.user, userQueries });
+  } catch (error) {
+    console.error("Error fetching queries:", error);
+    res.status(500).send("Server Error: Unable to fetch queries");
+  }
+};
+
 module.exports = {
   createContactForm,
+  getAllQueries,
 };
