@@ -58,14 +58,19 @@
         >
           Filter by
         </h3>
-        
+
         <!-- Start Location Filter -->
         <div class="filter-section">
           <div class="filter-header">
             <span>Start Location</span>
-            <span class="arrow" id="arrowStartLocation">&#9662;</span>
+            <span class="arrow" id="arrowStartLocation"
+              >&#9662;</span
+            >
           </div>
-          <div class="filter-options" id="dropdownContentStartLocation">
+          <div
+            class="filter-options"
+            id="dropdownContentStartLocation"
+          >
             <label
               ><input
                 type="checkbox"
@@ -78,14 +83,14 @@
                 type="checkbox"
                 data-filter="startLocation"
                 value="Mumbai"
-              />Mumbai</label
+              />Goa</label
             >
             <label
               ><input
                 type="checkbox"
                 data-filter="startLocation"
                 value="Bangalore"
-              />Bangalore</label
+              />Kochi</label
             >
             <label
               ><input
@@ -99,14 +104,14 @@
                 type="checkbox"
                 data-filter="startLocation"
                 value="Kolkata"
-              />Kolkata</label
+              />Varanasi</label
             >
             <label
               ><input
                 type="checkbox"
                 data-filter="startLocation"
                 value="Hyderabad"
-              />Hyderabad</label
+              />Jaipur</label
             >
           </div>
         </div>
@@ -117,7 +122,10 @@
             <span>Duration</span>
             <span class="arrow" id="arrowDuration">&#9662;</span>
           </div>
-          <div class="filter-options" id="dropdownContentDuration">
+          <div
+            class="filter-options"
+            id="dropdownContentDuration"
+          >
             <label
               ><input
                 type="checkbox"
@@ -148,7 +156,10 @@
             <span>Language</span>
             <span class="arrow" id="arrowLanguage">&#9662;</span>
           </div>
-          <div class="filter-options" id="dropdownContentLanguage">
+          <div
+            class="filter-options"
+            id="dropdownContentLanguage"
+          >
             <label
               ><input
                 type="checkbox"
@@ -233,8 +244,8 @@
               ><input
                 type="checkbox"
                 data-filter="tags"
-                value="Hill Station"
-              />Hill Station</label
+                value="Monuments"
+              />Monuments</label
             >
           </div>
         </div>
@@ -243,9 +254,14 @@
         <div class="filter-section">
           <div class="filter-header">
             <span>Price Range</span>
-            <span class="arrow" id="arrowPriceRange">&#9662;</span>
+            <span class="arrow" id="arrowPriceRange"
+              >&#9662;</span
+            >
           </div>
-          <div class="filter-options" id="dropdownContentPriceRange">
+          <div
+            class="filter-options"
+            id="dropdownContentPriceRange"
+          >
             <label
               ><input
                 type="checkbox"
@@ -274,9 +290,14 @@
         <div class="filter-section">
           <div class="filter-header">
             <span>Available Months</span>
-            <span class="arrow" id="arrowAvailableMonths">&#9662;</span>
+            <span class="arrow" id="arrowAvailableMonths"
+              >&#9662;</span
+            >
           </div>
-          <div class="filter-options" id="dropdownContentAvailableMonths">
+          <div
+            class="filter-options"
+            id="dropdownContentAvailableMonths"
+          >
             <label
               ><input
                 type="checkbox"
@@ -364,80 +385,15 @@
           </div>
         </div>
 
-        <!-- Rating Filter (keep existing one) -->
-        <div class="filter-section">
-          <div class="filter-header">
-            <span>Rating</span>
-            <span class="arrow" id="arrowRating">&#9662;</span>
-          </div>
-          <div class="filter-options" id="dropdownContentRating">
-            <label>
-              <input
-                class="rating-input"
-                type="checkbox"
-                data-filter="rating"
-                value="5"
-              />
-              <i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i>
-            </label>
-            <label>
-              <input
-                class="rating-input"
-                type="checkbox"
-                data-filter="rating"
-                value="4"
-              />
-              <i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i>
-            </label>
-            <label>
-              <input
-                class="rating-input"
-                type="checkbox"
-                data-filter="rating"
-                value="3"
-              />
-              <i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i>
-            </label>
-            <label>
-              <input
-                class="rating-input"
-                type="checkbox"
-                data-filter="rating"
-                value="2"
-              />
-              <i class="fa-solid fa-star"></i
-              ><i class="fa-solid fa-star"></i>
-            </label>
-            <label>
-              <input
-                class="rating-input"
-                type="checkbox"
-                data-filter="rating"
-                value="1"
-              />
-              <i class="fa-solid fa-star"></i>
-            </label>
-          </div>
-        </div>
-
         <button
-          class="apply-filters-btn"
+          class="availability"
           style="margin-top: 16px"
           onclick="applyTourFilters()"
         >
           Apply Filters
         </button>
         <button
-          class="clear-filters-btn"
+          class="availability"
           style="
             margin-top: 8px;
             background-color: #6c757d;
