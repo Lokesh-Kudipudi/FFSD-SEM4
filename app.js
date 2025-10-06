@@ -15,9 +15,7 @@ const {
 } = require("./middleware/authentication");
 const { userRouter } = require("./routes/userRouter");
 const { autoSignIn } = require("./middleware/autoSignIn");
-const {
-  createContactForm,
-} = require("./Controller/contactController");
+const { createContactForm } = require("./Controller/contactController");
 dotenv.config();
 
 // Set EJS as the templating engine

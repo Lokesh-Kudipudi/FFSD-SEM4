@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="data:," />
     <link href="/css/tours/tours.css" rel="stylesheet" />
     <!-- <link href="/css/tours/filter.css" rel="stylesheet" /> -->
@@ -23,10 +20,7 @@
   </head>
 
   <body>
-    <header
-      class="headerContainer"
-      style="width: 90%; margin: 0 auto"
-    >
+    <header class="headerContainer" style="width: 90%; margin: 0 auto">
       <%- include('../partials/header.ejs') %>
     </header>
 
@@ -35,27 +29,16 @@
         <span class="icon">📍</span>
         <div class="input-wrapper">
           <label for="location">Location</label>
-          <input
-            type="text"
-            id="location"
-            placeholder="Where are you going?"
-          />
+          <input type="text" id="location" placeholder="Where are you going?" />
         </div>
-        <button class="search-button" onclick="handleSearch()">
-          Search
-        </button>
+        <button class="search-button" onclick="handleSearch()">Search</button>
       </div>
     </div>
 
     <div class="toursContainer">
       <!-- Filter Sidebar -->
       <aside class="filter-sidebar">
-        <h3
-          style="
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-          "
-        >
+        <h3 style="border-bottom: 1px solid #ccc; padding-bottom: 10px">
           Filter by
         </h3>
 
@@ -63,14 +46,9 @@
         <div class="filter-section">
           <div class="filter-header">
             <span>Start Location</span>
-            <span class="arrow" id="arrowStartLocation"
-              >&#9662;</span
-            >
+            <span class="arrow" id="arrowStartLocation">&#9662;</span>
           </div>
-          <div
-            class="filter-options"
-            id="dropdownContentStartLocation"
-          >
+          <div class="filter-options" id="dropdownContentStartLocation">
             <label
               ><input
                 type="checkbox"
@@ -122,10 +100,7 @@
             <span>Duration</span>
             <span class="arrow" id="arrowDuration">&#9662;</span>
           </div>
-          <div
-            class="filter-options"
-            id="dropdownContentDuration"
-          >
+          <div class="filter-options" id="dropdownContentDuration">
             <label
               ><input
                 type="checkbox"
@@ -156,10 +131,7 @@
             <span>Language</span>
             <span class="arrow" id="arrowLanguage">&#9662;</span>
           </div>
-          <div
-            class="filter-options"
-            id="dropdownContentLanguage"
-          >
+          <div class="filter-options" id="dropdownContentLanguage">
             <label
               ><input
                 type="checkbox"
@@ -254,14 +226,9 @@
         <div class="filter-section">
           <div class="filter-header">
             <span>Price Range</span>
-            <span class="arrow" id="arrowPriceRange"
-              >&#9662;</span
-            >
+            <span class="arrow" id="arrowPriceRange">&#9662;</span>
           </div>
-          <div
-            class="filter-options"
-            id="dropdownContentPriceRange"
-          >
+          <div class="filter-options" id="dropdownContentPriceRange">
             <label
               ><input
                 type="checkbox"
@@ -290,14 +257,9 @@
         <div class="filter-section">
           <div class="filter-header">
             <span>Available Months</span>
-            <span class="arrow" id="arrowAvailableMonths"
-              >&#9662;</span
-            >
+            <span class="arrow" id="arrowAvailableMonths">&#9662;</span>
           </div>
-          <div
-            class="filter-options"
-            id="dropdownContentAvailableMonths"
-          >
+          <div class="filter-options" id="dropdownContentAvailableMonths">
             <label
               ><input
                 type="checkbox"
@@ -385,6 +347,65 @@
           </div>
         </div>
 
+        <!-- Rating Filter (keep existing one) -->
+        <div class="filter-section">
+          <div class="filter-header">
+            <span>Rating</span>
+            <span class="arrow" id="arrowRating">&#9662;</span>
+          </div>
+          <div class="filter-options" id="dropdownContentRating">
+            <label>
+              <input
+                class="rating-input"
+                type="checkbox"
+                data-filter="rating"
+                value="5"
+              />
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i>
+            </label>
+            <label>
+              <input
+                class="rating-input"
+                type="checkbox"
+                data-filter="rating"
+                value="4"
+              />
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </label>
+            <label>
+              <input
+                class="rating-input"
+                type="checkbox"
+                data-filter="rating"
+                value="3"
+              />
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i>
+            </label>
+            <label>
+              <input
+                class="rating-input"
+                type="checkbox"
+                data-filter="rating"
+                value="2"
+              />
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </label>
+            <label>
+              <input
+                class="rating-input"
+                type="checkbox"
+                data-filter="rating"
+                value="1"
+              />
+              <i class="fa-solid fa-star"></i>
+            </label>
+          </div>
+        </div>
+
         <button
           class="availability"
           style="margin-top: 16px"
@@ -428,10 +449,7 @@
           <% tours.forEach(tour => { %>
           <div class="card">
             <div style="position: relative">
-              <img
-                src="<%= tour.mainImage %>"
-                alt="Tour Image"
-              />
+              <img src="<%= tour.mainImage %>" alt="Tour Image" />
               <% if(tour.tag) { %>
               <div class="featured"><%= tour.tag %></div>
               <% }; %>
@@ -447,8 +465,7 @@
                 <% } %>
               </div>
               <div class="price">
-                <%= tour.price.amount %> <%= tour.price.currency
-                %>
+                <%= tour.price.amount %> <%= tour.price.currency %>
               </div>
               <div class="duration"><%= tour.duration %></div>
             </div>
@@ -499,8 +516,8 @@
         <div class="footer-about">
           <h3>Chasing Horizons</h3>
           <p>
-            Explore the beauty of India with us. Your journey to
-            breathtaking destinations starts here!
+            Explore the beauty of India with us. Your journey to breathtaking
+            destinations starts here!
           </p>
         </div>
 
@@ -518,10 +535,7 @@
           <h4>Follow Us</h4>
           <div class="social-icons">
             <a href="https://www.youtube.com" target="_blank">
-              <i
-                class="fa-brands fa-youtube"
-                style="font-size: 40px"
-              ></i>
+              <i class="fa-brands fa-youtube" style="font-size: 40px"></i>
             </a>
             <a href="https://www.instagram.com" target="_blank">
               <i
