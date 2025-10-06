@@ -30,7 +30,10 @@ const {
 } = require("../Controller/hotelController");
 const { Types } = require("mongoose");
 
-const { getAllQueries } = require("../Controller/contactController");
+const {
+  getAllQueries,
+  deleteQuery,
+} = require("../Controller/contactController");
 
 const dashboardRouter = express.Router();
 
@@ -54,6 +57,7 @@ dashboardRouter
   );
 
 dashboardRouter.get("/admin/queries", getAllQueries);
+dashboardRouter.delete("/admin/queries/:id", deleteQuery);
 
 dashboardRouter
   .route("/myTrips")

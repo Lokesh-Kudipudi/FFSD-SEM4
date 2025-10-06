@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hotels Navbar</title>
     <link rel="stylesheet" href="/css/hotels/index.css" />
     <link rel="stylesheet" href="/css/hotels/filters.css" />
@@ -25,33 +22,21 @@
     <div class="hero-container">
       <header
         class="headerContainer"
-        style="
-          position: absolute;
-          top: 10px;
-          width: 90%;
-          z-index: 2;
-        "
+        style="position: absolute; top: 10px; width: 90%; z-index: 2"
       >
         <%- include('../partials/header.ejs') %>
       </header>
 
       <div class="hero-background">
         <video class="heroBackgroundVideo" autoplay muted>
-          <source
-            src="/videos/hotels/hotelsBg.mp4"
-            type="video/mp4"
-          />
+          <source src="/videos/hotels/hotelsBg.mp4" type="video/mp4" />
           Your browser does not support video tag
         </video>
       </div>
 
       <div class="heroMain">
-        <h1 class="heroText">
-          Let's plan your stay among the Horizons.
-        </h1>
-        <h3 class="heroSubText">
-          Experience Luxury, Comfort and Adventure.
-        </h3>
+        <h1 class="heroText">Let's plan your stay among the Horizons.</h1>
+        <h3 class="heroSubText">Experience Luxury, Comfort and Adventure.</h3>
         <div class="search-container">
           <div class="search-box">
             <span class="icon">📍</span>
@@ -63,10 +48,7 @@
                 placeholder="Where are you going?"
               />
             </div>
-            <button
-              class="search-button"
-              onclick="handleSearch()"
-            >
+            <button class="search-button" onclick="handleSearch()">
               Search
             </button>
           </div>
@@ -78,12 +60,7 @@
 
     <h1
       class="title"
-      style="
-        color: darkblue;
-        font-size: 40px;
-        margin: 30px;
-        padding: 40px;
-      "
+      style="color: darkblue; font-size: 40px; margin: 30px; padding: 40px"
     >
       Discover your new favourite stay
     </h1>
@@ -124,10 +101,7 @@
             class="card1"
             onclick="window.location.href='/hotels/search?amenities=Apartment'"
           >
-            <img
-              src="/images/hotels/apartment.webp"
-              alt="Apartment"
-            />
+            <img src="/images/hotels/apartment.webp" alt="Apartment" />
             <div class="card-title">Apartment</div>
           </div>
           <div
@@ -183,9 +157,7 @@
     </div>
 
     <div class="zebra-container">
-      <h2 class="fancy-title">
-        Top deals for a last minute getaway
-      </h2>
+      <h2 class="fancy-title">Top deals for a last minute getaway</h2>
       <p class="date-info">Showing deals for: 12 Mar - 14 Mar</p>
 
       <div style="display: flex; align-items: center; gap: 20px">
@@ -217,25 +189,17 @@
                 <button class="right-img-nav">&gt;</button>
               </div>
               <div class="card-info">
-                <h3
-                  onclick="window.location.href='/hotels/hotel/681a0ab103630ab1bbe784f0'"
-                >
+                <h3 onclick="window.location.href='/hotels/search'">
                   The Leela palace
                 </h3>
                 <p>Bengaluru</p>
                 <span class="rating"
                   ><span>5.0</span> Very good (1 review)</span
                 >
-                <p class="price">
-                  ₹25,000 <span>₹48,000</span> per night
-                </p>
-                <p class="total">
-                  ₹29,570 total includes taxes & fees
-                </p>
+                <p class="price">₹25,000 <span>₹48,000</span> per night</p>
+                <p class="total">₹29,570 total includes taxes & fees</p>
                 <span class="discount-badge">40% off</span>
-                <span class="member-price"
-                  >Member Price available</span
-                >
+                <span class="member-price">Member Price available</span>
               </div>
             </div>
             <div class="zebra-card">
@@ -262,24 +226,14 @@
                 <button class="right-img-nav">&gt;</button>
               </div>
               <div class="card-info">
-                <h3
-                  onclick="window.location.href='/hotels/hotel/681a0b5f03630ab1bbe784f2'"
-                >
+                <h3 onclick="window.location.href='/hotels/search'">
                   The Lalit
                 </h3>
                 <p>Kolkata</p>
-                <span class="rating"
-                  >⭐ 5.0 Very good (8 reviews)</span
-                >
-                <p class="price">
-                  ₹18,000 <span>₹26,000</span> per night
-                </p>
-                <p class="total">
-                  ₹56,000 total includes taxes & fees
-                </p>
-                <span class="member-price"
-                  >Member Price available</span
-                >
+                <span class="rating">⭐ 5.0 Very good (8 reviews)</span>
+                <p class="price">₹18,000 <span>₹26,000</span> per night</p>
+                <p class="total">₹56,000 total includes taxes & fees</p>
+                <span class="member-price">Member Price available</span>
               </div>
             </div>
             <div class="zebra-card">
@@ -306,24 +260,14 @@
                 <button class="right-img-nav">&gt;</button>
               </div>
               <div class="card-info">
-                <h3
-                  onclick="window.location.href='/hotels/hotel/681a0ba503630ab1bbe784f5'"
-                >
+                <h3 onclick="window.location.href='/hotels/search'">
                   Radisson Blu
                 </h3>
                 <p>Jaipur</p>
-                <span class="rating"
-                  >⭐ 4.0 Very good (12 reviews)</span
-                >
-                <p class="price">
-                  ₹15,000 <span>₹28,000</span> per night
-                </p>
-                <p class="total">
-                  ₹50,275 total includes taxes & fees
-                </p>
-                <span class="member-price"
-                  >Member Price available</span
-                >
+                <span class="rating">⭐ 4.0 Very good (12 reviews)</span>
+                <p class="price">₹15,000 <span>₹28,000</span> per night</p>
+                <p class="total">₹50,275 total includes taxes & fees</p>
+                <span class="member-price">Member Price available</span>
               </div>
             </div>
             <div class="zebra-card">
@@ -350,24 +294,14 @@
                 <button class="right-img-nav">&gt;</button>
               </div>
               <div class="card-info">
-                <h3
-                  onclick="window.location.href='/hotels/hotel/681a0c0703630ab1bbe784f7'"
-                >
+                <h3 onclick="window.location.href='/hotels/search'">
                   Taj Falaknuma Palace
                 </h3>
                 <p>Hyderabad</p>
-                <span class="rating"
-                  >⭐ 4.8 Very good (86 reviews)</span
-                >
-                <p class="price">
-                  ₹35,000 <span>₹55,000</span> per night
-                </p>
-                <p class="total">
-                  ₹112,625 total includes taxes & fees
-                </p>
-                <span class="member-price"
-                  >Member Price available</span
-                >
+                <span class="rating">⭐ 4.8 Very good (86 reviews)</span>
+                <p class="price">₹35,000 <span>₹55,000</span> per night</p>
+                <p class="total">₹112,625 total includes taxes & fees</p>
+                <span class="member-price">Member Price available</span>
               </div>
             </div>
             <div class="zebra-card">
@@ -394,24 +328,14 @@
                 <button class="right-img-nav">&gt;</button>
               </div>
               <div class="card-info">
-                <h3
-                  onclick="window.location.href='/hotels/hotel/681a0d0d03630ab1bbe784f9'"
-                >
+                <h3 onclick="window.location.href='/hotels/search'">
                   Oberoi Udaivilas
                 </h3>
                 <p>Udaipur</p>
-                <span class="rating"
-                  >⭐ 5.0 Very good (4 reviews)</span
-                >
-                <p class="price">
-                  ₹45,000 <span>₹78,000</span> per night
-                </p>
-                <p class="total">
-                  ₹142,970 total includes taxes & fees
-                </p>
-                <span class="member-price"
-                  >Member Price available</span
-                >
+                <span class="rating">⭐ 5.0 Very good (4 reviews)</span>
+                <p class="price">₹45,000 <span>₹78,000</span> per night</p>
+                <p class="total">₹142,970 total includes taxes & fees</p>
+                <span class="member-price">Member Price available</span>
               </div>
             </div>
             <div class="zebra-card">
@@ -440,18 +364,10 @@
               <div class="card-info">
                 <h3>The Westin</h3>
                 <p>Mumbai</p>
-                <span class="rating"
-                  >⭐ 4.2 Very good (8 reviews)</span
-                >
-                <p class="price">
-                  ₹22,000 <span>₹28,000</span> per night
-                </p>
-                <p class="total">
-                  ₹69,690 total includes taxes & fees
-                </p>
-                <span class="member-price"
-                  >Member Price available</span
-                >
+                <span class="rating">⭐ 4.2 Very good (8 reviews)</span>
+                <p class="price">₹22,000 <span>₹28,000</span> per night</p>
+                <p class="total">₹69,690 total includes taxes & fees</p>
+                <span class="member-price">Member Price available</span>
               </div>
             </div>
             <div class="zebra-card">
@@ -478,24 +394,14 @@
                 <button class="right-img-nav">&gt;</button>
               </div>
               <div class="card-info">
-                <h3
-                  onclick="window.location.href='/hotels/hotel/681a0e5703630ab1bbe784fd'"
-                >
+                <h3 onclick="window.location.href='/hotels/search'">
                   ITC Grand Chola
                 </h3>
                 <p>Chennai</p>
-                <span class="rating"
-                  >⭐ 5.0 Very good (1 review)</span
-                >
-                <p class="price">
-                  ₹30,000 <span>₹60,000</span> per night
-                </p>
-                <p class="total">
-                  ₹102,500 total includes taxes & fees
-                </p>
-                <span class="member-price"
-                  >Member Price available</span
-                >
+                <span class="rating">⭐ 5.0 Very good (1 review)</span>
+                <p class="price">₹30,000 <span>₹60,000</span> per night</p>
+                <p class="total">₹102,500 total includes taxes & fees</p>
+                <span class="member-price">Member Price available</span>
               </div>
             </div>
             <div class="zebra-card">
@@ -522,24 +428,14 @@
                 <button class="right-img-nav">&gt;</button>
               </div>
               <div class="card-info">
-                <h3
-                  onclick="window.location.href='/hotels/hotel/681a34e41fe8f9e763d5ef23'"
-                >
+                <h3 onclick="window.location.href='/hotels/search'">
                   The Leela Palace
                 </h3>
                 <p>New Delhi</p>
-                <span class="rating"
-                  >⭐ 4.0 Very good (5 reviews)</span
-                >
-                <p class="price">
-                  ₹38,000 <span>₹62,000</span> per night
-                </p>
-                <p class="total">
-                  ₹116,400 total includes taxes & fees
-                </p>
-                <span class="member-price"
-                  >Member Price available</span
-                >
+                <span class="rating">⭐ 4.0 Very good (5 reviews)</span>
+                <p class="price">₹38,000 <span>₹62,000</span> per night</p>
+                <p class="total">₹116,400 total includes taxes & fees</p>
+                <span class="member-price">Member Price available</span>
               </div>
             </div>
             <!-- Repeat similar structure for other cards -->
@@ -554,10 +450,7 @@
       <p class="lkm-dates">Showing deals for: 4 Apr - 6 Apr</p>
 
       <div class="qwf-carousel-container">
-        <div
-          class="hjk-outer-nav zpq-left"
-          onclick="scrollCards('left')"
-        >
+        <div class="hjk-outer-nav zpq-left" onclick="scrollCards('left')">
           &lt;
         </div>
 
@@ -604,7 +497,7 @@
               </div>
               <h3
                 class="wsx-title"
-                onclick="window.location.href='/hotels/hotel/681a35341fe8f9e763d5ef25'"
+                onclick="window.location.href='/hotels/search'"
               >
                 Novotel Goa Resort & Spa
               </h3>
@@ -661,7 +554,7 @@
               </div>
               <h3
                 class="wsx-title"
-                onclick="window.location.href='/hotels/hotel/681a340c1fe8f9e763d5ef21'"
+                onclick="window.location.href='/hotels/search'"
               >
                 Fortune Park Moksha
               </h3>
@@ -718,7 +611,7 @@
               </div>
               <h3
                 class="wsx-title"
-                onclick="window.location.href='/hotels/hotel/681a0ab103630ab1bbe784f0'"
+                onclick="window.location.href='/hotels/search'"
               >
                 The Lalit
               </h3>
@@ -775,7 +668,7 @@
               </div>
               <h3
                 class="wsx-title"
-                onclick="window.location.href='/hotels/hotel/681a34e41fe8f9e763d5ef23'"
+                onclick="window.location.href='/hotels/search'"
               >
                 The Leela Palace
               </h3>
@@ -831,7 +724,7 @@
               </div>
               <h3
                 class="wsx-title"
-                onclick="window.location.href='/hotels/hotel/681a0e1703630ab1bbe784fb'"
+                onclick="window.location.href='/hotels/search'"
               >
                 The Westin
               </h3>
@@ -846,10 +739,7 @@
           </div>
         </div>
 
-        <div
-          class="hjk-outer-nav zpq-right"
-          onclick="scrollCards('right')"
-        >
+        <div class="hjk-outer-nav zpq-right" onclick="scrollCards('right')">
           &gt;
         </div>
       </div>
@@ -860,8 +750,8 @@
         <div class="footer-about">
           <h3>Chasing Horizons</h3>
           <p>
-            Explore the beauty of India with us. Your journey to
-            breathtaking destinations starts here!
+            Explore the beauty of India with us. Your journey to breathtaking
+            destinations starts here!
           </p>
         </div>
 
@@ -879,10 +769,7 @@
           <h4>Follow Us</h4>
           <div class="social-icons">
             <a href="https://www.youtube.com" target="_blank">
-              <i
-                class="fa-brands fa-youtube"
-                style="font-size: 40px"
-              ></i>
+              <i class="fa-brands fa-youtube" style="font-size: 40px"></i>
             </a>
             <a href="https://www.instagram.com" target="_blank">
               <i

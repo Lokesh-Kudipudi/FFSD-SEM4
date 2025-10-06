@@ -11,6 +11,10 @@ async function createContactForm(contactData) {
   }
 }
 
+<<<<<<< Updated upstream
+module.exports = {
+  createContactForm,
+=======
 const getAllQueries = async (req, res) => {
   try {
     const userQueries = await ContactForm.find().sort({ createdAt: -1 });
@@ -22,7 +26,35 @@ const getAllQueries = async (req, res) => {
   }
 };
 
+const deleteQuery = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const deletedQuery = await ContactForm.findByIdAndDelete(id);
+
+    if (!deletedQuery) {
+      return res.status(404).json({
+        success: false,
+        message: "Query not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Query deleted successfully",
+    });
+  } catch (error) {
+    console.error("Error deleting query:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server Error: Unable to delete query",
+    });
+  }
+};
+
 module.exports = {
   createContactForm,
   getAllQueries,
+  deleteQuery,
+>>>>>>> Stashed changes
 };
