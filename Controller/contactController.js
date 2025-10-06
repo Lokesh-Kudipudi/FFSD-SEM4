@@ -11,10 +11,7 @@ async function createContactForm(contactData) {
   }
 }
 
-<<<<<<< Updated upstream
-module.exports = {
-  createContactForm,
-=======
+
 const getAllQueries = async (req, res) => {
   try {
     const userQueries = await ContactForm.find().sort({ createdAt: -1 });
@@ -56,5 +53,6 @@ module.exports = {
   createContactForm,
   getAllQueries,
   deleteQuery,
->>>>>>> Stashed changes
+
 };
+
