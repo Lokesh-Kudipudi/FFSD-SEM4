@@ -20,7 +20,9 @@ const {
   getAdminPackagesAnalytics,
   getHotelMangerHomePageAnalytics,
 } = require("../Controller/analyticsController");
-const { authenticateRole } = require("../middleware/authentication");
+const {
+  authenticateRole,
+} = require("../middleware/authentication");
 const { getTourById } = require("../Controller/tourController");
 const {
   getAllHotels,
@@ -92,11 +94,14 @@ dashboardRouter
 
 dashboardRouter
   .route("/settings")
-  .get(authenticateRole(["user", "admin", "hotelManager"]), (req, res) => {
-    // Send User Dashboard
+  .get(
+    authenticateRole(["user", "admin", "hotelManager"]),
+    (req, res) => {
+      // Send User Dashboard
 
-    res.render("dashboard/user/settings", { user: req.user });
-  })
+      res.render("dashboard/user/settings", { user: req.user });
+    }
+  )
   .post(updateUser);
 
 // ADMIN Dashboard
@@ -151,13 +156,10 @@ dashboardRouter
   });
 
 dashboardRouter
-  .route("/admin/packages/:id")
+  .route("/admin/packages/add")
   .get(authenticateRole(["admin"]), async (req, res) => {
-    const packageId = req.params.id;
-    const Tour = await getTourById(packageId);
-
     // Send Admin Dashboard
-    res.render("dashboard/admin/package", { tour: Tour.data });
+    res.render("dashboard/admin/addPackage");
   });
 
 dashboardRouter
@@ -174,9 +176,8 @@ dashboardRouter
   .route("/hotelManager")
   .get(authenticateRole(["hotelManager"]), async (req, res) => {
     const hotelId = await getHotelIdsByOwnerId(req.user._id);
-    const hotelManagerAnalytics = await getHotelMangerHomePageAnalytics(
-      hotelId
-    );
+    const hotelManagerAnalytics =
+      await getHotelMangerHomePageAnalytics(hotelId);
 
     // Send Hotel Manager Dashboard
     res.render("dashboard/hotelManager/index", {
@@ -205,52 +206,57 @@ dashboardRouter.post("/api/rooms", async (req, res) => {
 });
 
 // Edit an existing room type
-dashboardRouter.put("/api/rooms/:roomTypeId", async (req, res) => {
-  console.log(req.path);
-  const { roomTypeId } = req.params;
-  const { title, price, rating, image, features } = req.body;
-  const updatedRoom = {
-    title,
-    price,
-    rating,
-    image,
-    features,
-  };
+dashboardRouter.put(
+  "/api/rooms/:roomTypeId",
+  async (req, res) => {
+    console.log(req.path);
+    const { roomTypeId } = req.params;
+    const { title, price, rating, image, features } = req.body;
+    const updatedRoom = {
+      title,
+      price,
+      rating,
+      image,
+      features,
+    };
 
-  const hotelId = await getHotelIdsByOwnerId(req.user._id);
+    const hotelId = await getHotelIdsByOwnerId(req.user._id);
 
-  const updatedRoomObject = await updateRoomType(
-    hotelId,
-    roomTypeId,
-    updatedRoom
-  );
+    const updatedRoomObject = await updateRoomType(
+      hotelId,
+      roomTypeId,
+      updatedRoom
+    );
 
-  res.status(200).json({
-    message: "Room updated successfully",
-    room: updatedRoomObject,
-  });
-});
-
-dashboardRouter.route("/api/hotelManager/booking").post(async (req, res) => {
-  if (!req.user || req.user.role !== "hotelManager") {
-    return res.status(401).json({ message: "Unauthorized" });
-  }
-
-  console.log(req.body);
-
-  const { hotelId } = req.body;
-
-  const bookings = await getHotelBookings(hotelId);
-
-  if (bookings) {
     res.status(200).json({
-      message: "Bookings fetched.",
-      bookings: bookings.data,
+      message: "Room updated successfully",
+      room: updatedRoomObject,
     });
-  } else {
-    res.status(404).json({ message: "No bookings found" });
   }
-});
+);
+
+dashboardRouter
+  .route("/api/hotelManager/booking")
+  .post(async (req, res) => {
+    if (!req.user || req.user.role !== "hotelManager") {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    console.log(req.body);
+
+    const { hotelId } = req.body;
+
+    const bookings = await getHotelBookings(hotelId);
+
+    if (bookings) {
+      res.status(200).json({
+        message: "Bookings fetched.",
+        bookings: bookings.data,
+      });
+    } else {
+      res.status(404).json({ message: "No bookings found" });
+    }
+  });
 
 dashboardRouter
   .route("/hotelManager/booking")
@@ -283,7 +289,9 @@ dashboardRouter
     const ownerId = req.user._id;
 
     if (!hotelId) {
-      return res.status(400).json({ message: "Hotel ID is required" });
+      return res
+        .status(400)
+        .json({ message: "Hotel ID is required" });
     }
 
     const newOwner = await addHotelIdToOwner(ownerId, hotelId);
@@ -333,7 +341,9 @@ dashboardRouter
         res.status(400).json(result);
       }
     } catch (error) {
-      res.status(500).json({ status: "error", message: error.message });
+      res
+        .status(500)
+        .json({ status: "error", message: error.message });
     }
   });
 
